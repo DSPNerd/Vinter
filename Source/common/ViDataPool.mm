@@ -69,9 +69,8 @@ namespace vi
             @autoreleasepool
             {
                 NSString *filePath = [NSString stringWithUTF8String:_filePath.c_str()];
-                NSString *file = [filePath lastPathComponent];
-                NSString *name = [file stringByDeletingPathExtension];
-                NSString *exte = [file pathExtension];
+                NSString *name = [filePath stringByDeletingPathExtension];
+                NSString *exte = [filePath pathExtension];
                 NSString *path = nil;
                 
                 filePath = [[NSBundle mainBundle] resourcePath];

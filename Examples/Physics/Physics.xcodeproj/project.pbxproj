@@ -1,0 +1,293 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E9D61F6A1452FAFA00CA134B /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9D61F691452FAFA00CA134B /* Cocoa.framework */; };
+		E9D61F741452FAFA00CA134B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E9D61F721452FAFA00CA134B /* InfoPlist.strings */; };
+		E9D61F761452FAFA00CA134B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E9D61F751452FAFA00CA134B /* main.m */; };
+		E9D61F7A1452FAFA00CA134B /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = E9D61F781452FAFA00CA134B /* Credits.rtf */; };
+		E9D61F7D1452FAFA00CA134B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E9D61F7C1452FAFA00CA134B /* AppDelegate.m */; };
+		E9D61F801452FAFB00CA134B /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9D61F7E1452FAFB00CA134B /* MainMenu.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		E9D61F651452FAFA00CA134B /* Physics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Physics.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E9D61F691452FAFA00CA134B /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		E9D61F6C1452FAFA00CA134B /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		E9D61F6D1452FAFA00CA134B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		E9D61F6E1452FAFA00CA134B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		E9D61F711452FAFA00CA134B /* Physics-Info.plist */ = {isa = PBXFileReference; path = "Physics-Info.plist"; sourceTree = "<group>"; };
+		E9D61F731452FAFA00CA134B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E9D61F751452FAFA00CA134B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		E9D61F771452FAFA00CA134B /* Physics-Prefix.pch */ = {isa = PBXFileReference; path = "Physics-Prefix.pch"; sourceTree = "<group>"; };
+		E9D61F791452FAFA00CA134B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		E9D61F7B1452FAFA00CA134B /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
+		E9D61F7C1452FAFA00CA134B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		E9D61F7F1452FAFB00CA134B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E9D61F621452FAFA00CA134B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E9D61F6A1452FAFA00CA134B /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E9D61F5A1452FAF900CA134B = {
+			isa = PBXGroup;
+			children = (
+				E9D61F6F1452FAFA00CA134B /* Physics */,
+				E9D61F681452FAFA00CA134B /* Frameworks */,
+				E9D61F661452FAFA00CA134B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E9D61F661452FAFA00CA134B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E9D61F651452FAFA00CA134B /* Physics.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E9D61F681452FAFA00CA134B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E9D61F691452FAFA00CA134B /* Cocoa.framework */,
+				E9D61F6B1452FAFA00CA134B /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E9D61F6B1452FAFA00CA134B /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E9D61F6C1452FAFA00CA134B /* AppKit.framework */,
+				E9D61F6D1452FAFA00CA134B /* CoreData.framework */,
+				E9D61F6E1452FAFA00CA134B /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		E9D61F6F1452FAFA00CA134B /* Physics */ = {
+			isa = PBXGroup;
+			children = (
+				E9D61F7B1452FAFA00CA134B /* AppDelegate.h */,
+				E9D61F7C1452FAFA00CA134B /* AppDelegate.m */,
+				E9D61F7E1452FAFB00CA134B /* MainMenu.xib */,
+				E9D61F701452FAFA00CA134B /* Supporting Files */,
+			);
+			path = Physics;
+			sourceTree = "<group>";
+		};
+		E9D61F701452FAFA00CA134B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E9D61F711452FAFA00CA134B /* Physics-Info.plist */,
+				E9D61F721452FAFA00CA134B /* InfoPlist.strings */,
+				E9D61F751452FAFA00CA134B /* main.m */,
+				E9D61F771452FAFA00CA134B /* Physics-Prefix.pch */,
+				E9D61F781452FAFA00CA134B /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E9D61F641452FAFA00CA134B /* Physics */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E9D61F831452FAFB00CA134B /* Build configuration list for PBXNativeTarget "Physics" */;
+			buildPhases = (
+				E9D61F611452FAFA00CA134B /* Sources */,
+				E9D61F621452FAFA00CA134B /* Frameworks */,
+				E9D61F631452FAFA00CA134B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Physics;
+			productName = Physics;
+			productReference = E9D61F651452FAFA00CA134B /* Physics.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E9D61F5C1452FAF900CA134B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = E9D61F5F1452FAF900CA134B /* Build configuration list for PBXProject "Physics" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = E9D61F5A1452FAF900CA134B;
+			productRefGroup = E9D61F661452FAFA00CA134B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E9D61F641452FAFA00CA134B /* Physics */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E9D61F631452FAFA00CA134B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E9D61F741452FAFA00CA134B /* InfoPlist.strings in Resources */,
+				E9D61F7A1452FAFA00CA134B /* Credits.rtf in Resources */,
+				E9D61F801452FAFB00CA134B /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E9D61F611452FAFA00CA134B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E9D61F761452FAFA00CA134B /* main.m in Sources */,
+				E9D61F7D1452FAFA00CA134B /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		E9D61F721452FAFA00CA134B /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E9D61F731452FAFA00CA134B /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		E9D61F781452FAFA00CA134B /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E9D61F791452FAFA00CA134B /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		E9D61F7E1452FAFB00CA134B /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E9D61F7F1452FAFB00CA134B /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E9D61F811452FAFB00CA134B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		E9D61F821452FAFB00CA134B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		E9D61F841452FAFB00CA134B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Physics/Physics-Prefix.pch";
+				INFOPLIST_FILE = "Physics/Physics-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		E9D61F851452FAFB00CA134B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Physics/Physics-Prefix.pch";
+				INFOPLIST_FILE = "Physics/Physics-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E9D61F5F1452FAF900CA134B /* Build configuration list for PBXProject "Physics" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E9D61F811452FAFB00CA134B /* Debug */,
+				E9D61F821452FAFB00CA134B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E9D61F831452FAFB00CA134B /* Build configuration list for PBXNativeTarget "Physics" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E9D61F841452FAFB00CA134B /* Debug */,
+				E9D61F851452FAFB00CA134B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E9D61F5C1452FAF900CA134B /* Project object */;
+}
