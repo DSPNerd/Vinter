@@ -27,16 +27,38 @@ namespace vi
             cameras  = new std::vector<vi::scene::camera *>();
             
             addCamera(camera);
+            
+#ifdef ViPhysicsChipmunk
+            totalPhysicsTime = 0.0;
+            
+            space = cpSpaceNew();
+            setGravity(vi::common::vector2(0.0, 100.0));
+#endif
         }
         
         scene::~scene()
         {
+#ifdef ViPhysicsChipmunk
+            cpSpaceFree(space);
+#endif
+            
             delete cameras;
             delete quadtree;
         }
         
         void scene::draw(vi::graphic::renderer *renderer, double timestep)
         {
+#ifdef ViPhysicsChipmunk
+            static double physicsstep = 1.0 / 60.0;
+            
+            totalPhysicsTime += timestep;
+            while(totalPhysicsTime >= physicsstep)
+            {
+                totalPhysicsTime -= physicsstep;
+                cpSpaceStep(space, physicsstep);
+            }
+#endif
+            
             std::vector<vi::scene::camera *>::iterator iterator;
             for(iterator=cameras->begin(); iterator!=cameras->end(); iterator++)
             {
@@ -45,6 +67,19 @@ namespace vi
             }
         }
         
+        
+#ifdef ViPhysicsChipmunk
+        void scene::setGravity(vi::common::vector2 const& tgravity)
+        {
+            gravity = cpv(tgravity.x, tgravity.y);
+            cpSpaceSetGravity(space, gravity);
+        }
+        
+        vi::common::vector2 scene::getGravity()
+        {
+            return gravity;
+        }
+#endif
         
         
         void scene::addCamera(vi::scene::camera *camera)
@@ -80,10 +115,29 @@ namespace vi
         void scene::addNode(vi::scene::sceneNode *node)
         {
             quadtree->insertObject(node);
+            node->scene = this;
+            
+#ifdef ViPhysicsChipmunk
+            if(node->waitingForActivation)
+            {
+                cpSpaceAddShape(space, node->shape);
+                cpSpaceAddBody(space, node->body);
+                node->waitingForActivation = false;
+            }
+#endif
         }
         
         void scene::removeNode(vi::scene::sceneNode *node)
         {
+#ifdef ViPhysicsChipmunk
+            if(node->body)
+                cpSpaceRemoveBody(space, node->body);
+            
+            if(node->shape)
+                cpSpaceRemoveShape(space, node->shape);
+#endif
+            
+            node->scene = NULL;
             quadtree->removeObject(node);
         }
         

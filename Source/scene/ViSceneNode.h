@@ -7,6 +7,7 @@
 //
 
 #include <vector>
+#import "ViBase.h"
 #import "ViMesh.h"
 #import "ViVector2.h"
 #import "ViCamera.h"
@@ -28,6 +29,8 @@ namespace vi
     
     namespace scene
     {
+        class scene;
+        
         enum
         {
             /**
@@ -40,6 +43,12 @@ namespace vi
              **/
             sceneNodeFlagDynamic = 2
         };
+        
+        typedef enum
+        {
+            sceneNodePhysicTypeBox,
+            sceneNodePhysicTypeCircle
+        } sceneNodePhysicType;
         
         /**
          * @brief A scene node represents a object inside a scene
@@ -54,6 +63,7 @@ namespace vi
         class sceneNode
         {
             friend class vi::common::quadtree;
+            friend class vi::scene::scene;
         public:
             /**
              * Constructor
@@ -114,6 +124,19 @@ namespace vi
              **/
             void removeChild(vi::scene::sceneNode *child);
             
+#ifdef ViPhysicsChipmunk
+            void enablePhysics(sceneNodePhysicType type=sceneNodePhysicTypeBox);
+            void disablePhysics();
+            
+            void setMass(GLfloat mass);
+            void setInertia(GLfloat inertia);
+            void setElasticity(GLfloat elasticity);
+            void setFriction(GLfloat friction);
+            void setSurfaceVelocity(vi::common::vector2 const& velocity);
+            void setGroup(uint32_t group);
+            
+            GLfloat suggestedInertia();
+#endif
             
             /**
              * The rotation of the node
@@ -164,10 +187,30 @@ namespace vi
             void update();
             
         private:
+#ifdef ViPhysicsChipmunk
+            cpBody  *body;
+            cpShape *shape;
+            
+            bool waitingForActivation;
+            bool initializedInertia;
+            
+            cpFloat mass;
+            cpFloat inertia;
+            cpFloat elasticity;
+            cpFloat friction;
+            
+            cpVect surfaceVelocity;
+            uint32_t group;
+            
+            sceneNodePhysicType physicType;
+#endif
+            
             bool knownDynamic;
             
             vi::common::quadtree *tree;
+            vi::scene::scene *scene;
             vi::scene::sceneNode *parent;
+            
             std::vector<vi::scene::sceneNode *> childs;
         };
     }

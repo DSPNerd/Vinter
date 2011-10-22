@@ -39,9 +39,7 @@ namespace vi
             {
                 vector2 res(*this);
                 return !(res == other);
-            }
-            
-            
+            }            
             
             inline vector2 operator= (vector2 const& other)
             {

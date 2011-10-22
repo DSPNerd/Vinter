@@ -24,6 +24,14 @@
 #include <arm_neon.h>
 #endif
 
+#ifndef ViNoPhysics
+    #define ViPhysicsChipmunk
+#endif
+
+#ifdef ViPhysicsChipmunk
+#include "chipmunk.h"
+#endif
+
 /**
  * @defgroup ViBase Base stuff
  * @{
@@ -35,7 +43,7 @@
 /**
  * The current minor release.
  **/
-#define ViVersionMinor 3
+#define ViVersionMinor 4
 /**
  * The current patch release.
  **/

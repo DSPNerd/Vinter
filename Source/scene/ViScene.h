@@ -7,6 +7,8 @@
 //
 
 #include <vector>
+#import "ViBase.h"
+#import "ViVector2.h"
 
 namespace vi
 {
@@ -31,6 +33,7 @@ namespace vi
          **/
         class scene
         {
+            friend class vi::scene::sceneNode;
         public:
             /**
              * Construcor for a scene. The minX, minY, maxX and maxY values are used to generate quadtree of this size for scene management.
@@ -82,10 +85,22 @@ namespace vi
             
             void draw(vi::graphic::renderer *renderer, double timestep);
             
+#ifdef ViPhysicsChipmunk
+            void setGravity(vi::common::vector2 const& gravity);            
+            vi::common::vector2 getGravity();
+#endif
+            
         private:
             std::vector<vi::scene::camera *> *cameras;
             std::vector<vi::scene::sceneNode *>nodes;
             vi::common::quadtree *quadtree;
+            
+#ifdef ViPhysicsChipmunk
+            double totalPhysicsTime;
+            
+            cpSpace *space;
+            cpVect gravity;
+#endif
         };
     }
 }
