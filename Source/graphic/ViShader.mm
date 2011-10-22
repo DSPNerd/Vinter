@@ -7,7 +7,7 @@
 //
 
 #import "ViShader.h"
-#import "ViViewProtocol.h"
+#import "ViDataPool.h"
 #import "ViKernel.h"
 #import "ViContext.h"
 
@@ -17,7 +17,7 @@ namespace vi
     {
         shader::shader(std::string vertexFile, std::string fragmentFile)
         {            
-            generateShaderFromPaths([NSBundle mainBundle], vertexFile, fragmentFile);
+            generateShaderFromPaths(vertexFile, fragmentFile);
         }
         
         shader::shader(defaultShader shader)
@@ -25,15 +25,15 @@ namespace vi
             switch (shader)
             {
                 case defaultShaderTexture:
-                    generateShaderFromPaths([NSBundle mainBundle], "ViTextureShader.vsh", "ViTextureShader.fsh");
+                    generateShaderFromPaths("/Vinter.bundle/Shaders/ViTextureShader.vsh", "/Vinter.bundle/Shaders/ViTextureShader.fsh");
                     break;
                     
                 case defaultShaderShape:
-                    generateShaderFromPaths([NSBundle mainBundle], "ViShapeShader.vsh", "ViShapeShader.fsh");
+                    generateShaderFromPaths("/Vinter.bundle/Shaders/ViShapeShader.vsh", "/Vinter.bundle/Shaders/ViShapeShader.fsh");
                     break;
                     
                 case defaultShaderSprite:
-                    generateShaderFromPaths([NSBundle mainBundle], "ViSpriteShader.vsh", "ViSpriteShader.fsh");
+                    generateShaderFromPaths("/Vinter.bundle/Shaders/ViSpriteShader.vsh", "/Vinter.bundle/Shaders/ViSpriteShader.fsh");
                     break;
                     
                 default:
@@ -60,7 +60,7 @@ namespace vi
         
         
         
-        void shader::generateShaderFromPaths(NSBundle *bundle, std::string vertexFile, std::string fragmentFile)
+        void shader::generateShaderFromPaths(std::string vertexFile, std::string fragmentFile)
         {
             bool result;
             
@@ -77,29 +77,12 @@ namespace vi
             
             @autoreleasepool
             {
-                NSString *vFile = [NSString stringWithUTF8String:vertexFile.c_str()];
-                NSString *fFile = [NSString stringWithUTF8String:fragmentFile.c_str()];
+                std::string vertexPath = vi::common::dataPool::pathForFile(vertexFile);
+                std::string fragmentPath = vi::common::dataPool::pathForFile(fragmentFile);
                 
-                NSString *vertexPath = nil;
-                NSString *fragmentPath = nil;
-                
-    #ifdef __IPHONE_OS_VERSION_MAX_ALLOWED
-                vertexPath = [bundle pathForResource:[[vFile stringByDeletingPathExtension] stringByAppendingString:@"_iOS"]
-                                              ofType:[vFile pathExtension]];
-                
-                fragmentPath = [bundle pathForResource:[[fFile stringByDeletingPathExtension] stringByAppendingString:@"_iOS"]
-                                                ofType:[fFile pathExtension]];
-    #endif
-                
-                if(!vertexPath)
-                    vertexPath = [bundle pathForResource:[vFile stringByDeletingPathExtension] ofType:[vFile pathExtension]];
-                
-                if(!fragmentPath)
-                    fragmentPath = [bundle pathForResource:[fFile stringByDeletingPathExtension] ofType:[fFile pathExtension]];
-                
-                result = (vertexPath && fragmentPath);
+                result = (vertexPath.length() > 0 && fragmentPath.length() > 0);
                 if(result)
-                    result = create(vertexPath, fragmentPath);
+                    result = create([NSString stringWithUTF8String:vertexPath.c_str()], [NSString stringWithUTF8String:fragmentPath.c_str()]);
             }
             
             if(!result)

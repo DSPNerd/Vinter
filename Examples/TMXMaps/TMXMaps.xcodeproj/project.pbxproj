@@ -39,14 +39,6 @@
 		E99FD11414505F5C00C33CD3 /* ViShape.mm in Sources */ = {isa = PBXBuildFile; fileRef = E99FD0D914505F5C00C33CD3 /* ViShape.mm */; };
 		E99FD11514505F5C00C33CD3 /* ViSprite.mm in Sources */ = {isa = PBXBuildFile; fileRef = E99FD0DB14505F5C00C33CD3 /* ViSprite.mm */; };
 		E99FD11614505F5C00C33CD3 /* ViSpriteFactory.mm in Sources */ = {isa = PBXBuildFile; fileRef = E99FD0DD14505F5C00C33CD3 /* ViSpriteFactory.mm */; };
-		E99FD11714505F5C00C33CD3 /* ViParticleShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = E99FD0DF14505F5C00C33CD3 /* ViParticleShader.fsh */; };
-		E99FD11814505F5C00C33CD3 /* ViParticleShader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = E99FD0E014505F5C00C33CD3 /* ViParticleShader.vsh */; };
-		E99FD11914505F5C00C33CD3 /* ViShapeShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = E99FD0E114505F5C00C33CD3 /* ViShapeShader.fsh */; };
-		E99FD11A14505F5C00C33CD3 /* ViShapeShader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = E99FD0E214505F5C00C33CD3 /* ViShapeShader.vsh */; };
-		E99FD11B14505F5C00C33CD3 /* ViSpriteShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = E99FD0E314505F5C00C33CD3 /* ViSpriteShader.fsh */; };
-		E99FD11C14505F5C00C33CD3 /* ViSpriteShader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = E99FD0E414505F5C00C33CD3 /* ViSpriteShader.vsh */; };
-		E99FD11D14505F5C00C33CD3 /* ViTextureShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = E99FD0E514505F5C00C33CD3 /* ViTextureShader.fsh */; };
-		E99FD11E14505F5C00C33CD3 /* ViTextureShader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = E99FD0E614505F5C00C33CD3 /* ViTextureShader.vsh */; };
 		E99FD12014505F7300C33CD3 /* Logox512.icns in Resources */ = {isa = PBXBuildFile; fileRef = E99FD11F14505F7300C33CD3 /* Logox512.icns */; };
 		E99FD12A14505FEA00C33CD3 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E99FD12914505FEA00C33CD3 /* OpenGL.framework */; };
 		E99FD1541450615400C33CD3 /* ViXML.mm in Sources */ = {isa = PBXBuildFile; fileRef = E99FD1531450615400C33CD3 /* ViXML.mm */; };
@@ -57,6 +49,7 @@
 		E9B5D88614511E7A00A05F5E /* IsometricTexture.png in Resources */ = {isa = PBXBuildFile; fileRef = E9B5D88214511E7A00A05F5E /* IsometricTexture.png */; };
 		E9B5D88714511E7A00A05F5E /* OrthogonalMap.tmx in Resources */ = {isa = PBXBuildFile; fileRef = E9B5D88314511E7A00A05F5E /* OrthogonalMap.tmx */; };
 		E9B5D88814511E7A00A05F5E /* OrthogonalTexture.png in Resources */ = {isa = PBXBuildFile; fileRef = E9B5D88414511E7A00A05F5E /* OrthogonalTexture.png */; };
+		E9B5D89714528EC600A05F5E /* Vinter.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E9B5D89614528EC600A05F5E /* Vinter.bundle */; };
 		E9E8ED621450C33E0066D9DB /* ViSpriteBatch.mm in Sources */ = {isa = PBXBuildFile; fileRef = E9E8ED611450C33E0066D9DB /* ViSpriteBatch.mm */; };
 /* End PBXBuildFile section */
 
@@ -131,14 +124,6 @@
 		E99FD0DB14505F5C00C33CD3 /* ViSprite.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViSprite.mm; sourceTree = "<group>"; };
 		E99FD0DC14505F5C00C33CD3 /* ViSpriteFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViSpriteFactory.h; sourceTree = "<group>"; };
 		E99FD0DD14505F5C00C33CD3 /* ViSpriteFactory.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViSpriteFactory.mm; sourceTree = "<group>"; };
-		E99FD0DF14505F5C00C33CD3 /* ViParticleShader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ViParticleShader.fsh; sourceTree = "<group>"; };
-		E99FD0E014505F5C00C33CD3 /* ViParticleShader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ViParticleShader.vsh; sourceTree = "<group>"; };
-		E99FD0E114505F5C00C33CD3 /* ViShapeShader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ViShapeShader.fsh; sourceTree = "<group>"; };
-		E99FD0E214505F5C00C33CD3 /* ViShapeShader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ViShapeShader.vsh; sourceTree = "<group>"; };
-		E99FD0E314505F5C00C33CD3 /* ViSpriteShader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ViSpriteShader.fsh; sourceTree = "<group>"; };
-		E99FD0E414505F5C00C33CD3 /* ViSpriteShader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ViSpriteShader.vsh; sourceTree = "<group>"; };
-		E99FD0E514505F5C00C33CD3 /* ViTextureShader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ViTextureShader.fsh; sourceTree = "<group>"; };
-		E99FD0E614505F5C00C33CD3 /* ViTextureShader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ViTextureShader.vsh; sourceTree = "<group>"; };
 		E99FD0E714505F5C00C33CD3 /* Vinter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vinter.h; sourceTree = "<group>"; };
 		E99FD11F14505F7300C33CD3 /* Logox512.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Logox512.icns; sourceTree = "<group>"; };
 		E99FD12914505FEA00C33CD3 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
@@ -153,6 +138,7 @@
 		E9B5D88214511E7A00A05F5E /* IsometricTexture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IsometricTexture.png; sourceTree = "<group>"; };
 		E9B5D88314511E7A00A05F5E /* OrthogonalMap.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = OrthogonalMap.tmx; sourceTree = "<group>"; };
 		E9B5D88414511E7A00A05F5E /* OrthogonalTexture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OrthogonalTexture.png; sourceTree = "<group>"; };
+		E9B5D89614528EC600A05F5E /* Vinter.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Vinter.bundle; sourceTree = "<group>"; };
 		E9E8ED601450C33E0066D9DB /* ViSpriteBatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViSpriteBatch.h; sourceTree = "<group>"; };
 		E9E8ED611450C33E0066D9DB /* ViSpriteBatch.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViSpriteBatch.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -261,7 +247,7 @@
 				E99FD0B914505F5C00C33CD3 /* graphic */,
 				E99FD0C914505F5C00C33CD3 /* input */,
 				E99FD0CE14505F5C00C33CD3 /* scene */,
-				E99FD0DE14505F5C00C33CD3 /* shader */,
+				E9B5D89614528EC600A05F5E /* Vinter.bundle */,
 				E99FD0E714505F5C00C33CD3 /* Vinter.h */,
 			);
 			name = Source;
@@ -370,21 +356,6 @@
 			path = scene;
 			sourceTree = "<group>";
 		};
-		E99FD0DE14505F5C00C33CD3 /* shader */ = {
-			isa = PBXGroup;
-			children = (
-				E99FD0DF14505F5C00C33CD3 /* ViParticleShader.fsh */,
-				E99FD0E014505F5C00C33CD3 /* ViParticleShader.vsh */,
-				E99FD0E114505F5C00C33CD3 /* ViShapeShader.fsh */,
-				E99FD0E214505F5C00C33CD3 /* ViShapeShader.vsh */,
-				E99FD0E314505F5C00C33CD3 /* ViSpriteShader.fsh */,
-				E99FD0E414505F5C00C33CD3 /* ViSpriteShader.vsh */,
-				E99FD0E514505F5C00C33CD3 /* ViTextureShader.fsh */,
-				E99FD0E614505F5C00C33CD3 /* ViTextureShader.vsh */,
-			);
-			path = shader;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -435,20 +406,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E99FD11714505F5C00C33CD3 /* ViParticleShader.fsh in Resources */,
-				E99FD11814505F5C00C33CD3 /* ViParticleShader.vsh in Resources */,
-				E99FD11914505F5C00C33CD3 /* ViShapeShader.fsh in Resources */,
-				E99FD11A14505F5C00C33CD3 /* ViShapeShader.vsh in Resources */,
-				E99FD11B14505F5C00C33CD3 /* ViSpriteShader.fsh in Resources */,
-				E99FD11C14505F5C00C33CD3 /* ViSpriteShader.vsh in Resources */,
-				E99FD11D14505F5C00C33CD3 /* ViTextureShader.fsh in Resources */,
-				E99FD11E14505F5C00C33CD3 /* ViTextureShader.vsh in Resources */,
 				E99FD08414505F1700C33CD3 /* MainMenu.xib in Resources */,
 				E99FD12014505F7300C33CD3 /* Logox512.icns in Resources */,
 				E9B5D88514511E7A00A05F5E /* IsometricMap.tmx in Resources */,
 				E9B5D88614511E7A00A05F5E /* IsometricTexture.png in Resources */,
 				E9B5D88714511E7A00A05F5E /* OrthogonalMap.tmx in Resources */,
 				E9B5D88814511E7A00A05F5E /* OrthogonalTexture.png in Resources */,
+				E9B5D89714528EC600A05F5E /* Vinter.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

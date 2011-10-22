@@ -101,7 +101,7 @@ namespace vi
             bool compileShader(GLuint *shader, GLenum type, NSString *path);
             bool linkProgram();
             
-            void generateShaderFromPaths(NSBundle *bundle, std::string vertexFile, std::string fragmentFile);
+            void generateShaderFromPaths(std::string vertexFile, std::string fragmentFile);
             void getUniforms();
         };
     }
