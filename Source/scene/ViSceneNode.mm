@@ -36,6 +36,7 @@ namespace vi
 #ifdef ViPhysicsChipmunk
             waitingForActivation = false;
             initializedInertia = false;
+            bodyIsSleeping = false;
             
             body  = NULL;
             shape = NULL;
@@ -264,6 +265,9 @@ namespace vi
                 cpSpaceAddBody(scene->space, body);
                 cpSpaceAddShape(scene->space, shape);
                 waitingForActivation = false;
+                
+                if(bodyIsSleeping)
+                    cpBodySleep(body);
             }
             else
                 waitingForActivation = true;
@@ -317,6 +321,51 @@ namespace vi
                 cpShapeFree(shape);
                 shape = NULL;
             }
+        }
+        
+        
+        void sceneNode::resetForce()
+        {
+            if(body)
+                cpBodyResetForces(body);
+        }
+        
+        void sceneNode::applyForce(vi::common::vector2 const& force, vi::common::vector2 const& offset)
+        {
+            if(body)
+                cpBodyApplyForce(body, cpv(force.x, force.y), cpv(offset.x, offset.y));
+            
+            bodyIsSleeping = false;
+        }
+        
+        void sceneNode::applyImpulse(vi::common::vector2 const& impulse, vi::common::vector2 const& offset)
+        {
+            if(body)
+                cpBodyApplyImpulse(body, cpv(impulse.x, impulse.y), cpv(offset.x, offset.y));
+            
+            bodyIsSleeping = false;
+        }
+        
+        
+        void sceneNode::sleep()
+        {
+            if(body && scene)
+                cpBodySleep(body);
+            
+            bodyIsSleeping = true;
+        }
+        
+        void sceneNode::activate()
+        {
+            if(body && scene)
+                cpBodyActivate(body);
+            
+            bodyIsSleeping = false;
+        }
+        
+        bool sceneNode::isSleeping()
+        {
+            return bodyIsSleeping;
         }
         
         

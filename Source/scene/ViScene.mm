@@ -49,7 +49,7 @@ namespace vi
         void scene::draw(vi::graphic::renderer *renderer, double timestep)
         {
 #ifdef ViPhysicsChipmunk
-            static double physicsstep = 1.0 / 30.0;
+            static double physicsstep = 1.0 / 60.0;
             
             totalPhysicsTime += timestep;
             while(totalPhysicsTime >= physicsstep)
@@ -69,15 +69,36 @@ namespace vi
         
         
 #ifdef ViPhysicsChipmunk
-        void scene::setGravity(vi::common::vector2 const& tgravity)
+        void scene::setGravity(vi::common::vector2 const& gravity)
         {
-            gravity = cpv(tgravity.x, tgravity.y);
-            cpSpaceSetGravity(space, gravity);
+            cpSpaceSetGravity(space, cpv(gravity.x, gravity.y));
         }
+        
+        void scene::setDamping(GLfloat damping)
+        {
+            cpSpaceSetDamping(space, damping);
+        }
+        
+        void scene::setCollisionSlop(GLfloat slop)
+        {
+            cpSpaceSetCollisionSlop(space, slop);
+        }
+        
         
         vi::common::vector2 scene::getGravity()
         {
-            return gravity;
+            cpVect gravitiy = cpSpaceGetGravity(space);
+            return vi::common::vector2(gravitiy.x, gravitiy.y);
+        }
+        
+        GLfloat scene::getDamping()
+        {
+            return cpSpaceGetDamping(space);
+        }
+        
+        GLfloat scene::getCollisionSlop()
+        {
+            return cpSpaceGetCollisionSlop(space);
         }
 #endif
         
@@ -124,6 +145,9 @@ namespace vi
                 {
                     cpSpaceAddShape(space, node->shape);
                     cpSpaceAddBody(space, node->body);
+                    
+                    if(node->isSleeping())
+                        cpBodySleep(node->body);
                 }
                 else
                 {

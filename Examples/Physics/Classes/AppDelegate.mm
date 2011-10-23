@@ -22,9 +22,11 @@
     sprite = new vi::scene::sprite(texture);
     sprite->enablePhysics(vi::scene::sceneNodePhysicTypeCircle);
     sprite->setElasticity(0.3);
-    sprite->setFriction(0.04);
+    sprite->setFriction(0.4);
     sprite->setMass(10.0);
+    
     sprite->setInertia(sprite->suggestedInertia());
+    sprite->applyImpulse(vi::common::vector2(5000.0f, 0.0f));
     
     scene->addNode(sprite);
     
@@ -33,7 +35,8 @@
     vi::scene::sceneNode *ground = new vi::scene::sceneNode();
     ground->setPosition(vi::common::vector2(-100.0f, 400.0f));
     ground->makeStaticObject(vi::common::vector2(800.0f, 500.0f));
-    ground->setFriction(1.0);
+    ground->setFriction(0.8);
+    ground->setElasticity(0.3);
     
     scene->addNode(ground);
     
@@ -41,7 +44,8 @@
     vi::scene::sceneNode *wall = new vi::scene::sceneNode();
     wall->setPosition(vi::common::vector2(600.0, 500.0));
     wall->makeStaticObject(vi::common::vector2(600.0, 0.0));
-    wall->setFriction(1.0);
+    wall->setFriction(0.8);
+    wall->setElasticity(0.4);
     
     scene->addNode(wall);
 }

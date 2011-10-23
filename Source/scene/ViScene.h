@@ -86,8 +86,13 @@ namespace vi
             void draw(vi::graphic::renderer *renderer, double timestep);
             
 #ifdef ViPhysicsChipmunk
-            void setGravity(vi::common::vector2 const& gravity);            
+            void setGravity(vi::common::vector2 const& gravity); 
+            void setDamping(GLfloat damping);
+            void setCollisionSlop(GLfloat slop);
+            
             vi::common::vector2 getGravity();
+            GLfloat getDamping();
+            GLfloat getCollisionSlop();
 #endif
             
         private:
@@ -97,9 +102,7 @@ namespace vi
             
 #ifdef ViPhysicsChipmunk
             double totalPhysicsTime;
-            
             cpSpace *space;
-            cpVect gravity;
 #endif
         };
     }

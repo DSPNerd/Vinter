@@ -136,6 +136,14 @@ namespace vi
             void setSurfaceVelocity(vi::common::vector2 const& velocity);
             void setGroup(uint32_t group);
             
+            void resetForce();
+            void applyForce(vi::common::vector2 const& force, vi::common::vector2 const& offset=vi::common::vector2());
+            void applyImpulse(vi::common::vector2 const& impulse, vi::common::vector2 const& offset=vi::common::vector2());
+            
+            void sleep();
+            void activate();
+            bool isSleeping();
+            
             GLfloat suggestedInertia();
 #endif
             
@@ -195,6 +203,7 @@ namespace vi
             bool waitingForActivation;
             bool initializedInertia;
             bool isStatic;
+            bool bodyIsSleeping;
             
             cpFloat mass;
             cpFloat inertia;
