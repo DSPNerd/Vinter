@@ -18,12 +18,13 @@
     kernel = new vi::common::kernel(scene, renderer, [renderView context]);
     kernel->startRendering(30);
     
-    texture = new vi::graphic::texture("Brick.png");
+    texture = new vi::graphic::texture("BlueBall.png");
     sprite = new vi::scene::sprite(texture);
-    sprite->enablePhysics();
-    sprite->setElasticity(0.5);
-    sprite->setFriction(0.004);
+    sprite->enablePhysics(vi::scene::sceneNodePhysicTypeCircle);
+    sprite->setElasticity(0.3);
+    sprite->setFriction(0.04);
     sprite->setMass(10.0);
+    sprite->setInertia(sprite->suggestedInertia());
     
     scene->addNode(sprite);
     

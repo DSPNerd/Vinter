@@ -87,6 +87,9 @@ setIsFull(cpHashSet *set)
 	return (set->entries >= set->size);
 }
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wconversion"
+
 static void
 cpHashSetResize(cpHashSet *set)
 {
@@ -102,7 +105,7 @@ cpHashSetResize(cpHashSet *set)
 		while(bin){
 			cpHashSetBin *next = bin->next;
 			
-			int idx = (int)bin->hash%newSize;
+			int idx = bin->hash%newSize;
 			bin->next = newTable[idx];
 			newTable[idx] = bin;
 			
@@ -115,6 +118,8 @@ cpHashSetResize(cpHashSet *set)
 	set->table = newTable;
 	set->size = newSize;
 }
+
+#pragma clang diagnostic pop
 
 static inline void
 recycleBin(cpHashSet *set, cpHashSetBin *bin)
@@ -152,10 +157,13 @@ cpHashSetCount(cpHashSet *set)
 	return set->entries;
 }
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wconversion"
+
 void *
 cpHashSetInsert(cpHashSet *set, cpHashValue hash, void *ptr, void *data, cpHashSetTransFunc trans)
 {
-	int idx = (int)hash%set->size;
+	int idx = hash%set->size;
 	
 	// Find the bin with the matching element.
 	cpHashSetBin *bin = set->table[idx];
@@ -181,7 +189,7 @@ cpHashSetInsert(cpHashSet *set, cpHashValue hash, void *ptr, void *data, cpHashS
 void *
 cpHashSetRemove(cpHashSet *set, cpHashValue hash, void *ptr)
 {
-	int idx = (int)hash%set->size;
+	int idx = hash%set->size;
 	
 	cpHashSetBin **prev_ptr = &set->table[idx];
 	cpHashSetBin *bin = set->table[idx];
@@ -210,13 +218,15 @@ cpHashSetRemove(cpHashSet *set, cpHashValue hash, void *ptr)
 void *
 cpHashSetFind(cpHashSet *set, cpHashValue hash, void *ptr)
 {	
-	int idx = (int)hash%set->size;
+	int idx = hash%set->size;
 	cpHashSetBin *bin = set->table[idx];
 	while(bin && !set->eql(ptr, bin->elt))
 		bin = bin->next;
 		
 	return (bin ? bin->elt : set->default_value);
 }
+
+#pragma clang diagnotic pop
 
 void
 cpHashSetEach(cpHashSet *set, cpHashSetIteratorFunc func, void *data)

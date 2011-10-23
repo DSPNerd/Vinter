@@ -241,6 +241,9 @@ floor_int(cpFloat f)
 	return (f < 0.0f && f != i ? i - 1 : i);
 }
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wconversion"
+
 static inline void
 hashHandle(cpSpaceHash *hash, cpHandle *hand, cpBB bb)
 {
@@ -254,7 +257,7 @@ hashHandle(cpSpaceHash *hash, cpHandle *hand, cpBB bb)
 	int n = hash->numcells;
 	for(int i=l; i<=r; i++){
 		for(int j=b; j<=t; j++){
-			int idx = (int)hash_func(i,j,n);
+			int idx = hash_func(i,j,n);
 			cpSpaceHashBin *bin = hash->table[idx];
 			
 			// Don't add an object twice to the same cell.
@@ -269,6 +272,8 @@ hashHandle(cpSpaceHash *hash, cpHandle *hand, cpBB bb)
 		}
 	}
 }
+
+#pragma clang diagnostic pop
 
 #pragma mark Basic Operations
 
@@ -376,15 +381,20 @@ query_helper(cpSpaceHash *hash, cpSpaceHashBin **bin_ptr, void *obj, cpSpatialIn
 	}
 }
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wconversion"
+
 static void
 cpSpaceHashPointQuery(cpSpaceHash *hash, cpVect point, cpSpatialIndexQueryFunc func, void *data)
 {
 	cpFloat dim = hash->celldim;
-	int idx = (int)hash_func(floor_int(point.x/dim), floor_int(point.y/dim), hash->numcells);  // Fix by ShiftZ
+	int idx = hash_func(floor_int(point.x/dim), floor_int(point.y/dim), hash->numcells);  // Fix by ShiftZ
 	
 	query_helper(hash, &hash->table[idx], &point, func, data);
 	hash->stamp++;
 }
+
+#pragma clang diagnostic pop
 
 static void
 cpSpaceHashQuery(cpSpaceHash *hash, void *obj, cpBB bb, cpSpatialIndexQueryFunc func, void *data)
@@ -416,6 +426,9 @@ typedef struct queryRehashContext {
 	void *data;
 } queryRehashContext;
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wconversion"
+
 // Hashset iterator func used with cpSpaceHashQueryRehash().
 static void
 queryRehash_helper(cpHandle *hand, queryRehashContext *context)
@@ -439,7 +452,7 @@ queryRehash_helper(cpHandle *hand, queryRehashContext *context)
 
 	for(int i=l; i<=r; i++){
 		for(int j=b; j<=t; j++){
-			int idx = (int)hash_func(i,j,n);
+			int idx = hash_func(i,j,n);
 			cpSpaceHashBin *bin = table[idx];
 			
 			if(containsHandle(bin, hand)) continue;
@@ -457,6 +470,8 @@ queryRehash_helper(cpHandle *hand, queryRehashContext *context)
 	// Increment the stamp for each object hashed.
 	hash->stamp++;
 }
+
+#pragma clang diagnostic pop
 
 static void
 cpSpaceHashReindexQuery(cpSpaceHash *hash, cpSpatialIndexQueryFunc func, void *data)
@@ -496,9 +511,11 @@ segmentQuery_helper(cpSpaceHash *hash, cpSpaceHashBin **bin_ptr, void *obj, cpSp
 	return t;
 }
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wconversion"
+#pragma clang diagnostic ignored "-Wmissing-prototypes"
+
 // modified from http://playtechs.blogspot.com/2007/03/raytracing-on-grid.html
-void
-cpSpaceHashSegmentQuery(cpSpaceHash *hash, void *obj, cpVect a, cpVect b, cpFloat t_exit, cpSpatialIndexSegmentQueryFunc func, void *data);
 void
 cpSpaceHashSegmentQuery(cpSpaceHash *hash, void *obj, cpVect a, cpVect b, cpFloat t_exit, cpSpatialIndexSegmentQueryFunc func, void *data)
 {
@@ -540,7 +557,7 @@ cpSpaceHashSegmentQuery(cpSpaceHash *hash, void *obj, cpVect a, cpVect b, cpFloa
 	cpSpaceHashBin **table = hash->table;
 
 	while(t < t_exit){
-		int idx = (int)hash_func(cell_x, cell_y, n);
+		int idx = hash_func(cell_x, cell_y, n);
 		t_exit = cpfmin(t_exit, segmentQuery_helper(hash, &table[idx], obj, func, data));
 
 		if (next_v < next_h){
@@ -556,6 +573,8 @@ cpSpaceHashSegmentQuery(cpSpaceHash *hash, void *obj, cpVect a, cpVect b, cpFloa
 	
 	hash->stamp++;
 }
+
+#pragma clang diagnostic pop
 
 #pragma mark Misc
 

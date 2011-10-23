@@ -96,7 +96,7 @@ cpBodyNewStatic()
 	return cpBodyInitStatic(cpBodyAlloc());
 }
 
-#pragma clang diagnostic pop
+#pragma clang pop
 
 void cpBodyDestroy(cpBody *body){}
 

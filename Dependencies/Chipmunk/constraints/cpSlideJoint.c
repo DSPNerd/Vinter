@@ -112,7 +112,7 @@ static const cpConstraintClass klass = {
 };
 CP_DefineClassGetter(cpSlideJoint)
 
-#pragma clang diagnostic pop
+#pragma mark diagnostic pop
 
 cpSlideJoint *
 cpSlideJointAlloc(void)

@@ -49,6 +49,7 @@ namespace vi
         {
             NSData *data = [[NSData alloc] initWithContentsOfURL:url];
             createFromBytes((char *)[data bytes], [data length]);
+            [data release];
         }
         
         xmlParser::xmlParser(NSData *data)
