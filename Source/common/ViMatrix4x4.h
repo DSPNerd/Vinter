@@ -51,7 +51,7 @@ namespace vi
             /**
              * Rotates the matrix by the given vector.
              **/
-            void rotate(vector3 const& rot);
+            void rotate(GLfloat angle, vector3 const& rot);
 
             
             /**
@@ -67,7 +67,7 @@ namespace vi
             /**
              * Resets the matrix and then rotates it by the given vector.
              **/
-            void makeRotation(vector3 const& rot);
+            void makeRotation(GLfloat angle, vector3 const& rot);
 
             /**
              * Resets the matrix to the identy matrix.

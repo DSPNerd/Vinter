@@ -49,7 +49,7 @@ namespace vi
         void scene::draw(vi::graphic::renderer *renderer, double timestep)
         {
 #ifdef ViPhysicsChipmunk
-            static double physicsstep = 1.0 / 60.0;
+            static double physicsstep = 1.0 / 30.0;
             
             totalPhysicsTime += timestep;
             while(totalPhysicsTime >= physicsstep)
@@ -120,8 +120,16 @@ namespace vi
 #ifdef ViPhysicsChipmunk
             if(node->waitingForActivation)
             {
-                cpSpaceAddShape(space, node->shape);
-                cpSpaceAddBody(space, node->body);
+                if(!node->isStatic)
+                {
+                    cpSpaceAddShape(space, node->shape);
+                    cpSpaceAddBody(space, node->body);
+                }
+                else
+                {
+                    node->makeStaticObject(node->staticEnd);
+                }
+                
                 node->waitingForActivation = false;
             }
 #endif

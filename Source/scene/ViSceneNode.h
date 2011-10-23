@@ -126,6 +126,7 @@ namespace vi
             
 #ifdef ViPhysicsChipmunk
             void enablePhysics(sceneNodePhysicType type=sceneNodePhysicTypeBox);
+            void makeStaticObject(vi::common::vector2 const& end);
             void disablePhysics();
             
             void setMass(GLfloat mass);
@@ -193,6 +194,7 @@ namespace vi
             
             bool waitingForActivation;
             bool initializedInertia;
+            bool isStatic;
             
             cpFloat mass;
             cpFloat inertia;
@@ -202,6 +204,7 @@ namespace vi
             cpVect surfaceVelocity;
             uint32_t group;
             
+            vi::common::vector2 staticEnd;
             sceneNodePhysicType physicType;
 #endif
             

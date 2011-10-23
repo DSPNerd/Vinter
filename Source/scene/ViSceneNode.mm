@@ -70,7 +70,7 @@ namespace vi
                 
                 position = vi::common::vector2(pPos.x, pPos.y) - (size * 0.5);
                 rotation = pRot;
-                
+
                 update();
             }
 #endif
@@ -85,7 +85,7 @@ namespace vi
                 
                 vi::common::matrix4x4 rotationMatrix;
                 rotationMatrix.makeTranslate(vi::common::vector3(halfWidth, halfHeight, 0.0f));
-                rotationMatrix.rotate(vi::common::vector3(0.0f, rotation, 0.0f));
+                rotationMatrix.rotate(rotation, vi::common::vector3(0.0f, 0.0f, 1.0f));
                 rotationMatrix.translate(vi::common::vector3(-halfWidth, -halfHeight, 0.0f));
                 
                 matrix *= rotationMatrix;
@@ -229,6 +229,7 @@ namespace vi
             if(shape)
                 disablePhysics();
             
+            isStatic = false;
             physicType = type;
             body = cpBodyNew(mass, initializedInertia ? inertia : suggestedInertia());
             
@@ -263,6 +264,30 @@ namespace vi
                 cpSpaceAddBody(scene->space, body);
                 cpSpaceAddShape(scene->space, shape);
                 waitingForActivation = false;
+            }
+            else
+                waitingForActivation = true;
+        }
+        
+        void sceneNode::makeStaticObject(vi::common::vector2 const& end)
+        {
+            if(shape)
+                disablePhysics();
+            
+            isStatic = true;
+            staticEnd = end;
+            
+            if(scene)
+            {
+                shape = cpSegmentShapeNew(scene->space->staticBody, cpv(position.x, position.y), cpv(end.x, end.y), 0);
+                waitingForActivation = false;
+                
+                cpShapeSetFriction(shape, friction);
+                cpShapeSetElasticity(shape, elasticity);
+                cpShapeSetSurfaceVelocity(shape, surfaceVelocity);
+                cpShapeSetGroup(shape, group);
+                
+                cpSpaceAddShape(scene->space, shape);
             }
             else
                 waitingForActivation = true;

@@ -165,44 +165,51 @@ namespace vi
             *this *= temp;
         }
         
-        void matrix4x4::rotate(vector3 const& rot)
+        void matrix4x4::rotate(GLfloat angle, vector3 const& rot)
         {
-            const float fSinPitch(sin(rot.x));
-            const float fCosPitch(cos(rot.x));
-            const float fSinYaw(sin(rot.y));
-            const float fCosYaw(cos(rot.y));
-            const float fSinRoll(sin(rot.z));
-            const float fCosRoll(cos(rot.z));
-            const float fCosPitchCosYaw(fCosPitch * fCosYaw);
-            const float fSinPitchSinYaw(fSinPitch * fSinYaw);
+            float x=rot.x, y=rot.y, z=rot.z;
+            float sinAngle, cosAngle;
+            float mag = sqrtf(x * x + y * y + z * z);
             
-            float x = fSinRoll * fCosPitchCosYaw     - fCosRoll * fSinPitchSinYaw;
-            float y = fCosRoll * fSinPitch * fCosYaw + fSinRoll * fCosPitch * fSinYaw;
-            float z = fCosRoll * fCosPitch * fSinYaw - fSinRoll * fSinPitch * fCosYaw;
-            float w = fCosRoll * fCosPitchCosYaw     + fSinRoll * fSinPitchSinYaw;
+            sinAngle = sinf(angle);
+            cosAngle = cosf(angle);
             
-            float length = sqrt(x*x + y*y + z*z + w*w);
-            if(length != kViEpsilonFloat)
+            if(mag > kViEpsilonFloat)
             {
-                float fac = 1.0f / length;
-                w *= fac;
-                x *= fac;
-                y *= fac;
-                z *= fac;   
+                float xx, yy, zz, xy, yz, zx, xs, ys, zs;
+                float oneMinusCos;
+                
+                x /= mag;
+                y /= mag;
+                z /= mag;
+                
+                xx = x * x;
+                yy = y * y;
+                zz = z * z;
+                xy = x * y;
+                yz = y * z;
+                zx = z * x;
+                xs = x * sinAngle;
+                ys = y * sinAngle;
+                zs = z * sinAngle;
+                oneMinusCos = 1.0f - cosAngle;		
+                
+                
+                matrix4x4 rotMat;
+                rotMat.matrix[0] = (oneMinusCos * xx) + cosAngle;
+                rotMat.matrix[1] = (oneMinusCos * xy) - zs;
+                rotMat.matrix[2] = (oneMinusCos * zx) + ys;
+                
+                rotMat.matrix[4] = (oneMinusCos * xy) + zs;
+                rotMat.matrix[5] = (oneMinusCos * yy) + cosAngle;
+                rotMat.matrix[6] = (oneMinusCos * yz) - xs;
+                
+                rotMat.matrix[8] = (oneMinusCos * zx) - ys;
+                rotMat.matrix[9] = (oneMinusCos * yz) + xs;
+                rotMat.matrix[10] = (oneMinusCos * zz) + cosAngle;
+                
+                *this *= rotMat;
             }
-            
-            matrix4x4 rotationMat;
-            rotationMat.matrix[0]  = 1.0f - 2.0f * (y * y + z * z);
-            rotationMat.matrix[4]  = 2.0f * (x * y - z * w);
-            rotationMat.matrix[8]  = 2.0f * (x * z + y * w);
-            rotationMat.matrix[1]  = 2.0f * (x * y + z * w);
-            rotationMat.matrix[5]  = 1.0f - 2.0f * (x * x + z * z);
-            rotationMat.matrix[9]  = 2.0f * (y * z - x * w);
-            rotationMat.matrix[2]  = 2.0f * (x * z - y * w);
-            rotationMat.matrix[6]  = 2.0f * (y * z + x * w);
-            rotationMat.matrix[10] = 1.0f - 2.0f * (x * x + y * y);
-            
-            *this *= rotationMat;
         }
         
         
@@ -229,42 +236,51 @@ namespace vi
             matrix[15] = 1.0f;
         }
 
-        void matrix4x4::makeRotation(vector3 const& rot)
+        void matrix4x4::makeRotation(GLfloat angle, vector3 const& rot)
         {
-            const float fSinPitch(sin(rot.x));
-            const float fCosPitch(cos(rot.x));
-            const float fSinYaw(sin(rot.y));
-            const float fCosYaw(cos(rot.y));
-            const float fSinRoll(sin(rot.z));
-            const float fCosRoll(cos(rot.z));
-            const float fCosPitchCosYaw(fCosPitch * fCosYaw);
-            const float fSinPitchSinYaw(fSinPitch * fSinYaw);
+            float x=rot.x, y=rot.y, z=rot.z;
+            float sinAngle, cosAngle;
+            float mag = sqrtf(x * x + y * y + z * z);
             
-            float x = fSinRoll * fCosPitchCosYaw     - fCosRoll * fSinPitchSinYaw;
-            float y = fCosRoll * fSinPitch * fCosYaw + fSinRoll * fCosPitch * fSinYaw;
-            float z = fCosRoll * fCosPitch * fSinYaw - fSinRoll * fSinPitch * fCosYaw;
-            float w = fCosRoll * fCosPitchCosYaw     + fSinRoll * fSinPitchSinYaw;
+            sinAngle = sinf(angle);
+            cosAngle = cosf(angle);
             
-            float length = sqrt(x*x + y*y + z*z + w*w);
-            if(length != kViEpsilonFloat)
+            if(mag > kViEpsilonFloat)
             {
-                float fac = 1.0f / length;
-                w *= fac;
-                x *= fac;
-                y *= fac;
-                z *= fac;   
+                float xx, yy, zz, xy, yz, zx, xs, ys, zs;
+                float oneMinusCos;
+                
+                x /= mag;
+                y /= mag;
+                z /= mag;
+                
+                xx = x * x;
+                yy = y * y;
+                zz = z * z;
+                xy = x * y;
+                yz = y * z;
+                zx = z * x;
+                xs = x * sinAngle;
+                ys = y * sinAngle;
+                zs = z * sinAngle;
+                oneMinusCos = 1.0f - cosAngle;		
+                
+                
+                matrix4x4 rotMat;
+                rotMat.matrix[0] = (oneMinusCos * xx) + cosAngle;
+                rotMat.matrix[1] = (oneMinusCos * xy) - zs;
+                rotMat.matrix[2] = (oneMinusCos * zx) + ys;
+                
+                rotMat.matrix[4] = (oneMinusCos * xy) + zs;
+                rotMat.matrix[5] = (oneMinusCos * yy) + cosAngle;
+                rotMat.matrix[6] = (oneMinusCos * yz) - xs;
+                
+                rotMat.matrix[8] = (oneMinusCos * zx) - ys;
+                rotMat.matrix[9] = (oneMinusCos * yz) + xs;
+                rotMat.matrix[10] = (oneMinusCos * zz) + cosAngle;
+                
+                *this *= rotMat;
             }
-            
-            makeIdentity();
-            matrix[0]  = 1.0f - 2.0f * (y * y + z * z);
-            matrix[4]  = 2.0f * (x * y - z * w);
-            matrix[8]  = 2.0f * (x * z + y * w);
-            matrix[1]  = 2.0f * (x * y + z * w);
-            matrix[5]  = 1.0f - 2.0f * (x * x + z * z);
-            matrix[9]  = 2.0f * (y * z - x * w);
-            matrix[2]  = 2.0f * (x * z - y * w);
-            matrix[6]  = 2.0f * (y * z + x * w);
-            matrix[10] = 1.0f - 2.0f * (x * x + y * y);
         }
         
         
