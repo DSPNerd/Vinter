@@ -14,6 +14,7 @@ namespace vi
     {
         class quadtree;
         class rect;
+        class vector2;
     }
     
     namespace graphic
@@ -81,6 +82,7 @@ namespace vi
         
             
             void draw(vi::graphic::renderer *renderer, double timestep);
+            vi::scene::sceneNode *trace(vi::common::vector2 const& from, vi::common::vector2 const& to, uint32_t layer);
             
         private:
             std::vector<vi::scene::camera *> *cameras;

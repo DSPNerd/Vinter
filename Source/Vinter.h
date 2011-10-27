@@ -17,6 +17,7 @@
 #import "ViVector2.h"
 #import "ViVector3.h"
 #import "ViRect.h"
+#import "ViLine.h"
 #import "ViMatrix4x4.h"
 #import "ViQuadtree.h"
 

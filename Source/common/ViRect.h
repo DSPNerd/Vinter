@@ -50,19 +50,19 @@ namespace vi
             /**
              * Returns the position of the left side of the rect
              **/
-            float left();            
+            float left() const;            
             /**
              * Returns the position of the right side of the rect
              **/
-            float right();
+            float right() const;
             /**
              * Returns the position of the top side of the rect
              **/
-            float top();
+            float top() const;
             /**
              * Returns the position of the bottom side of the rect
              **/
-            float bottom();
+            float bottom() const;
                    
             
             /**

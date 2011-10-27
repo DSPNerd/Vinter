@@ -28,6 +28,8 @@ namespace vi
     
     namespace scene
     {
+        class scene;
+        
         enum
         {
             /**
@@ -54,6 +56,7 @@ namespace vi
         class sceneNode
         {
             friend class vi::common::quadtree;
+            friend class vi::scene::scene;
         public:
             /**
              * Constructor
