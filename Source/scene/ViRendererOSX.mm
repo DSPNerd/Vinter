@@ -45,12 +45,13 @@ namespace vi
             currentCamera = camera;
             
             std::vector<vi::scene::sceneNode *> *nodes = scene->nodesInRect(camera->frame);
-            this->renderNodeList(nodes, timestep);
+            this->renderNodeList(nodes, timestep, false);
+            this->renderNodeList(scene->UINodes(), timestep, true);
             
             camera->unbind();
         }
         
-        void rendererOSX::renderNodeList(std::vector<vi::scene::sceneNode *> *nodes, double timestep)
+        void rendererOSX::renderNodeList(std::vector<vi::scene::sceneNode *> *nodes, double timestep, bool uiNodes)
         {
             std::vector<vi::scene::sceneNode *>::iterator iterator;
             
@@ -64,25 +65,33 @@ namespace vi
                 node->visit(timestep);
                 
                 this->setMaterial(node->material);
-                this->renderNode(node);
+                this->renderNode(node, uiNodes);
                 
                 if(node->hasChilds())
                 {
                     vi::common::vector2 nodePos = node->getPosition();
                     
                     translation += nodePos;
-                    this->renderNodeList(node->getChilds(), timestep);
+                    this->renderNodeList(node->getChilds(), timestep, uiNodes);
                     translation -= nodePos;
                 }
             }
         }
         
-        void rendererOSX::renderNode(vi::scene::sceneNode *node)
+        void rendererOSX::renderNode(vi::scene::sceneNode *node, bool isUINode)
         {
             if(!node->mesh)
                 return; 
             
-  
+            if(!vi::common::rect(node->getPosition(), node->getSize()).intersectsRect(currentCamera->frame) && !isUINode)
+                return;
+            
+            vi::common::matrix4x4 cameraMatrix = !isUINode ? currentCamera->viewMatrix : vi::common::matrix4x4();
+            
+            if(isUINode)
+                cameraMatrix.makeTranslate(vi::common::vector3(0.0, currentCamera->frame.size.y, 0.0));
+            
+            
             vi::common::matrix4x4 nodeMatrix = node->matrix;
             if(translation.length() >= kViEpsilonFloat)
             {
@@ -93,14 +102,14 @@ namespace vi
 				glUniformMatrix4fv(currentMaterial->shader->matProj, 1, GL_FALSE, currentCamera->projectionMatrix.matrix);
             
             if(currentMaterial->shader->matView != -1)
-                glUniformMatrix4fv(currentMaterial->shader->matView, 1, GL_FALSE, currentCamera->viewMatrix.matrix);
+                glUniformMatrix4fv(currentMaterial->shader->matView, 1, GL_FALSE, cameraMatrix.matrix);
 			
             if(currentMaterial->shader->matModel != -1)
                 glUniformMatrix4fv(currentMaterial->shader->matModel, 1, GL_FALSE, nodeMatrix.matrix);
             
             if(currentMaterial->shader->matProjViewModel != -1)
             {
-                vi::common::matrix4x4 matProjViewModel = currentCamera->projectionMatrix * currentCamera->viewMatrix * nodeMatrix;
+                vi::common::matrix4x4 matProjViewModel = currentCamera->projectionMatrix * cameraMatrix * nodeMatrix;
                 glUniformMatrix4fv(currentMaterial->shader->matProjViewModel, 1, GL_FALSE, matProjViewModel.matrix);
             }
             
@@ -112,7 +121,7 @@ namespace vi
                 
                 if(parameter.location == -1)
                     continue;
-            
+                
                 
                 switch(parameter.type)
                 {
@@ -195,7 +204,7 @@ namespace vi
                 }
             }
             
-
+            
             if(node->mesh->ivbo == -1)
 			{
 				glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
@@ -213,6 +222,7 @@ namespace vi
             
             lastMesh = node->mesh;
         }
+        
         
         
         void rendererOSX::setMaterial(vi::graphic::material *material)

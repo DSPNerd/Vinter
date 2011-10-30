@@ -17,19 +17,20 @@ namespace vi
     {
         sceneNode::sceneNode(vi::common::vector2 const& pos, vi::common::vector2 const& tsize, uint32_t tlayer)
         {
-            position = pos;
-            size = tsize;
-            layer = tlayer;
-            rotation = 0.0;
+            position    = pos;
+            size        = tsize;
+            layer       = tlayer;
+            rotation    = 0.0;
             
             flags = 0;
-
-            material = NULL;
-            mesh = NULL;
             
-            noPass = NULL;
-            tree = NULL;
-            parent = NULL;
+            material    = NULL;
+            mesh        = NULL;
+            noPass      = NULL;
+            
+            scene   = NULL;
+            tree    = NULL;
+            parent  = NULL;
         }
         
         sceneNode::~sceneNode()
@@ -42,15 +43,6 @@ namespace vi
         {
             matrix.makeIdentity();
             matrix.translate(vi::common::vector3(position.x, - position.y - size.y, 0.0));
-            
-            /*while(rotation > 360.0f)
-            {
-                rotation -= 360.0f;
-            }
-            while(rotation < 360.0f)
-            {
-                rotation += 360.0f;
-            }*/
             
             if(rotation > kViEpsilonFloat)
             {

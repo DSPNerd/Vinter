@@ -166,11 +166,13 @@ namespace vi
              **/
             void update();
             
+            vi::common::quadtree *tree;
+            vi::scene::scene *scene;
+            vi::scene::sceneNode *parent;
+            
         private:
             bool knownDynamic;
             
-            vi::common::quadtree *tree;
-            vi::scene::sceneNode *parent;
             std::vector<vi::scene::sceneNode *> childs;
         };
     }

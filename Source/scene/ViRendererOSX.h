@@ -41,8 +41,8 @@ namespace vi
             virtual void renderSceneWithCamera(vi::scene::scene *scene, vi::scene::camera *camera, double timestep);
             
         private:
-            void renderNodeList(std::vector<vi::scene::sceneNode *> *nodes, double timestep);
-            void renderNode(vi::scene::sceneNode *node);
+            void renderNodeList(std::vector<vi::scene::sceneNode *> *nodes, double timestep, bool uiNodes);
+            void renderNode(vi::scene::sceneNode *node, bool isUINode);
             void setMaterial(vi::graphic::material *material);
             
             viUniformIv uniformIvFuncs[4];

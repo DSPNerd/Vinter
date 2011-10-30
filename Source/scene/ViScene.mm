@@ -79,13 +79,51 @@ namespace vi
         
         
         
+        void scene::addUINode(vi::scene::sceneNode *node)
+        {
+            uiNodes.push_back(node);
+            node->scene = this;
+        }
+        
+        void scene::removeUINode(vi::scene::sceneNode *node)
+        {
+            node->scene = NULL;
+            
+            std::vector<vi::scene::sceneNode *>::iterator iterator;
+            for(iterator=uiNodes.begin(); iterator!=uiNodes.end(); iterator++)
+            {
+                vi::scene::sceneNode *tnode = *iterator; 
+                if(node == tnode)
+                {
+                    uiNodes.erase(iterator);
+                    break;
+                }
+            }
+        }     
+        
+        void scene::deleteAllUINodes()
+        {
+            std::vector<vi::scene::sceneNode *>::iterator iterator;
+            for(iterator=uiNodes.begin(); iterator!=uiNodes.end(); iterator++)
+            {
+                vi::scene::sceneNode *node = *iterator; 
+                delete node;
+            }
+            
+            uiNodes.clear();
+        }
+        
+        
+        
         void scene::addNode(vi::scene::sceneNode *node)
         {
             quadtree->insertObject(node);
+            node->scene = this;
         }
         
         void scene::removeNode(vi::scene::sceneNode *node)
         {
+            node->scene = NULL;
             quadtree->removeObject(node);
         }
         
@@ -104,8 +142,13 @@ namespace vi
             return &nodes;
         }
         
+        std::vector<vi::scene::sceneNode *> *scene::UINodes()
+        {
+            return &uiNodes;
+        }
         
-        vi::scene::sceneNode *scene::trace(vi::common::vector2 const& from, vi::common::vector2 const& to, uint32_t layer)
+        
+        vi::scene::sceneNode *scene::trace(vi::common::vector2 const& from, vi::common::vector2 const& to, uint32_t layer, hitInfo *info)
         {
             GLfloat x1 = MIN(from.x, to.x) - 1.0f;
             GLfloat y1 = MIN(from.y, to.y) - 1.0f;
@@ -118,6 +161,7 @@ namespace vi
             std::vector<vi::scene::sceneNode *> objects;
             std::vector<vi::scene::sceneNode *>::iterator iterator;
             
+            vi::common::vector2 hitVec, hitVec2;
             vi::scene::sceneNode *hitNode = NULL;
             GLfloat hitDistance;
             
@@ -127,25 +171,83 @@ namespace vi
                 vi::scene::sceneNode *node = *iterator;
                 if(layer == 0 || node->layer == layer)
                 {
-                    vi::common::vector2 hitVec;
-                    bool intersects = line.intersects(vi::common::rect(node->position, node->size), &hitVec);
+                    bool intersects = line.intersects(vi::common::rect(node->position, node->size), &hitVec2);
                     if(intersects)
                     {
                         if(hitNode)
                         {
-                            if(hitVec.dist(from) < hitDistance)
+                            if(hitVec2.dist(from) < hitDistance)
                             {
                                 hitNode = node;
+                                hitVec = hitVec2;
                                 hitDistance = hitVec.dist(from);
                             }
                         }
                         else
                         {
                             hitNode = node;
+                            hitVec = hitVec2;
                             hitDistance = hitVec.dist(from);
                         }
                     }
                 }
+            }
+            
+            
+            if(info)
+            {
+                info->node = hitNode;
+                info->position = hitVec;
+                info->distance = hitDistance;
+            }
+            
+            return hitNode;
+        }
+        
+        vi::scene::sceneNode *scene::trace(vi::common::rect const& rect, uint32_t layer, hitInfo *info)
+        {
+            std::vector<vi::scene::sceneNode *> objects;
+            std::vector<vi::scene::sceneNode *>::iterator iterator;
+            
+            vi::scene::sceneNode *hitNode = NULL;
+            vi::common::vector2 hitVec;
+            GLfloat hitDistance;
+            
+            quadtree->objectsInRect(rect, &objects);
+            for(iterator=objects.begin(); iterator!=objects.end(); iterator++)
+            {
+                vi::scene::sceneNode *node = *iterator;
+                if(layer == 0 || node->layer == layer)
+                {
+                    bool intersects = vi::common::rect(node->position, node->size).intersectsRect(rect);
+                    
+                    if(intersects)
+                    {
+                        if(hitNode)
+                        {
+                            if(node->position.dist(rect.origin) < hitDistance)
+                            {
+                                hitNode = node;
+                                hitVec = node->position;
+                                hitDistance = node->position.dist(rect.origin);
+                            }
+                        }
+                        else
+                        {
+                            hitNode = node;
+                            hitVec = node->position;
+                            hitDistance = node->position.dist(rect.origin);
+                        }
+                    }
+                }
+            }
+            
+            
+            if(info)
+            {
+                info->node = hitNode;
+                info->position = hitVec;
+                info->distance = hitDistance;
             }
             
             return hitNode;
