@@ -14,6 +14,7 @@ The goal of the engine is to be as easy to use as possible, without being too bl
 - Sprites (with and without atlas textures)
 - Custom polygon shapes
 - Quadtree based scene management
+- OpenGL ES debug marker support (iOS 5+)
 
 ##Getting started
 Starting a new project using Vinter is easy, you can find a full tutorial at <http://vinter2d.org/>

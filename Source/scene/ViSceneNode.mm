@@ -343,6 +343,12 @@ namespace vi
         }
         
         
+        bool sceneNode::isPhysicalBody()
+        {
+            return (shape != NULL);
+        }
+        
+        
         void sceneNode::resetForce()
         {
             if(body)
@@ -460,6 +466,66 @@ namespace vi
             
             if(body)
                 cpBodySetAngle(body, rotation);
+        }
+        
+        
+        
+        GLfloat sceneNode::getMass()
+        {
+            return mass;
+        }
+        
+        GLfloat sceneNode::getInertia()
+        {
+            if(initializedInertia)
+                return inertia;
+            
+            return suggestedInertia();
+        }
+        
+        GLfloat sceneNode::getElasiticity()
+        {
+            return elasticity;
+        }
+        
+        GLfloat sceneNode::getFriction()
+        {
+            return friction;
+        }
+        
+        vi::common::vector2 sceneNode::getSurfaceVelocitiy()
+        {
+            return  vi::common::vector2(surfaceVelocity.x, surfaceVelocity.y);
+        }
+        
+        uint32_t sceneNode::getGroup()
+        {
+            return group;
+        }
+        
+        
+        GLfloat sceneNode::getAngularVelocityLimit()
+        {
+            return angVelLimit;
+        }
+        
+        GLfloat sceneNode::getVelocityLimit()
+        {
+            return velLimit;
+        }
+        
+        GLfloat sceneNode::getAngularVelocity()
+        {
+            return body ? cpBodyGetAngVel(body) : 0.0;
+        }
+        
+        vi::common::vector2 sceneNode::getVelocity()
+        {
+            if(!body)
+                return vi::common::vector2();
+            
+            cpVect velocity = cpBodyGetVel(body);
+            return vi::common::vector2(velocity.x, velocity.y);
         }
 #endif
     }

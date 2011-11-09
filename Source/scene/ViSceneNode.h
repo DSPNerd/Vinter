@@ -134,6 +134,9 @@ namespace vi
             void makeStaticObject(vi::common::vector2 const& end);
             void disablePhysics();
             
+            bool isPhysicalBody();
+            
+            
             void setRotation(GLfloat rotation);
             
             void setMass(GLfloat mass);
@@ -143,12 +146,27 @@ namespace vi
             void setSurfaceVelocity(vi::common::vector2 const& velocity);
             void setGroup(uint32_t group);
             
+            
+            GLfloat getMass();
+            GLfloat getInertia();
+            GLfloat getElasiticity();
+            GLfloat getFriction();
+            vi::common::vector2 getSurfaceVelocitiy();
+            uint32_t getGroup();
+            
+            
             void resetForce();
             void applyForce(vi::common::vector2 const& force, vi::common::vector2 const& offset=vi::common::vector2());
             void applyImpulse(vi::common::vector2 const& impulse, vi::common::vector2 const& offset=vi::common::vector2());
             
             void restrictAngularVelocity(GLfloat aVel);
             void restrictVelocity(GLfloat velocity);
+            
+            GLfloat getAngularVelocityLimit();
+            GLfloat getVelocityLimit();
+            
+            GLfloat getAngularVelocity();
+            vi::common::vector2 getVelocity();
             
             void sleep();
             void activate();
