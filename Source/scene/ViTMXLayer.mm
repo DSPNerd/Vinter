@@ -85,17 +85,15 @@ namespace vi
             } while(gid == 0);
             
             tileset = node->tilesetContainingGid(gid);
-            spriteBatch = new vi::scene::spriteBatch(tileset->texture);
+            setTexture(tileset->texture);
             
             vi::common::vector2 textureSize = vi::common::vector2(tileset->texture->getWidth(), tileset->texture->getHeight());
             vi::common::vector2 tileSize = vi::common::vector2(node->getTileWidth(), node->getTileHeight());
             
             
-            addChild(spriteBatch);
             setSize(vi::common::vector2(width, height) * tileSize);
             
             i = 0;
-            
             vi::scene::tmxNodeOrientation orientation = node->getOrientation();
             int32_t origin = width * tileSize.x / 2;
             
@@ -110,7 +108,7 @@ namespace vi
                     {
                         gid -= tileset->firstGid;
                         
-                        vi::scene::sprite *sprite = spriteBatch->addSprite();
+                        vi::scene::sprite *sprite = addSprite();
                         vi::common::vector2 spritePos;
                         vi::common::vector2 texSize = vi::common::vector2(tileset->tileWidth, tileset->tileHeight);
                         vi::common::vector2 atlas = vi::common::vector2(gid % (uint32_t)(tileset->texture->getWidth() / texSize.x),
@@ -144,7 +142,6 @@ namespace vi
         
         tmxLayer::~tmxLayer()
         {
-            delete spriteBatch;
         }
         
         std::string tmxLayer::getName()

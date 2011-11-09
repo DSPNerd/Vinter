@@ -50,7 +50,7 @@ namespace vi
          *
          * A tmxLayer represents a single layer of a tmxNode, wrapping a sprite batch containing all the tiles of the layer.
          **/
-        class tmxLayer : public sceneNode
+        class tmxLayer : public spriteBatch
         {
         public:
             /**
@@ -76,8 +76,6 @@ namespace vi
             
             uint32_t width;
             uint32_t height;
-            
-            vi::scene::spriteBatch *spriteBatch;
         };
     }
     
