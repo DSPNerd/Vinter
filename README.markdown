@@ -9,6 +9,7 @@ The goal of the engine is to be as easy to use as possible, without being too bl
 - Loading of assets in a secondary thread
 - Support for TMX maps <http://mapeditor.org/>
 - Render to texture
+- Native Chipmunk support <http://chipmunk-physics.net/>
 - PVR texture support (compressed and uncompressed)
 - RGBA8888, RGBA4444, RGBA5551 and RGB565 texture formats
 - Sprites (with and without atlas textures)
@@ -21,6 +22,8 @@ Starting a new project using Vinter is easy, you can find a full tutorial at <ht
 
 ##Missing stuff
 There are no controls like buttons or text fields! And we won't add them. The cocoa text rendering system is one of the best text systems you can ever get. Use it and be happy about crisp and sharp texts instead of being unhappy with stupid bitmap fonts!
+
+Although there is support for phyical nodes via the Chipmunk wrapper, there are some missing setters and getters and no wrapper for joints and constraints.
 
 There are also many other things missing that prevent Vinter from being a feature complete game engine, or even graphic engine for that matter. We are working hard to add all this missing stuff, but since we have a real life too, any help is appreciated. So feel free to fork Vinter!
 
