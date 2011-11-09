@@ -6,6 +6,7 @@
 //  Unauthorized use is punishable by torture, mutilation, and vivisection.
 //
 
+#include <string>
 #import "ViViewProtocol.h"
 #import "ViMatrix4x4.h"
 #import "ViTexture.h"
@@ -69,6 +70,9 @@ namespace vi
              * @return Returns a non NULL value only if the camera renders into a texture and not into a view.
              **/
             vi::graphic::texture *getTexture();
+            
+            
+            std::string debugName;
             
         private:
             id<ViViewProtocol> view;

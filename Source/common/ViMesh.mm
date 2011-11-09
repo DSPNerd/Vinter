@@ -72,6 +72,8 @@ namespace vi
                 vertices[i].x += offset.x;
                 vertices[i].y += offset.y;
             }
+            
+            dirty = true;
         }
 		
 		void mesh::addVertex(float x, float y)
@@ -96,6 +98,8 @@ namespace vi
 			{
 				indices[indexCount-1] = vertexCount-1;
 			}
+            
+            dirty = true;
 		}
 		
 		void mesh::triangulate()
@@ -111,6 +115,8 @@ namespace vi
 				indices[i+1] = i / 3+1;
 				indices[i+2] = i / 3+2;
 			}
+            
+            dirty = true;
 		}
         
         
@@ -172,6 +178,8 @@ namespace vi
             
             vbo = vbo0;
             ivbo = ivbo0;
+            
+            dirty = true;
         }
         
         void mesh::updateVBO()
@@ -182,7 +190,9 @@ namespace vi
                 return;
             }
             
+            dirty = true;
             vboToggled = !vboToggled;
+            
             if(vboToggled)
             {
                 vbo = vbo1;

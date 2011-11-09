@@ -52,7 +52,7 @@ namespace vi
             void setAtlas(vi::common::vector2 const& begin, vi::common::vector2 const& size);
             
             virtual void visit(double timestep);
-        private:     
+        protected:     
             vi::common::vector2 atlasBegin;
             vi::common::vector2 atlasSize;
             
@@ -62,6 +62,7 @@ namespace vi
                 GLfloat atlasZ, atlasW;
             };
             
+        private:
             bool isUpsideDown;
             bool ownsMesh;
         };

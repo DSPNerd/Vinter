@@ -33,6 +33,8 @@ namespace vi
             tree    = NULL;
             parent  = NULL;
             
+            debugName = NULL;
+            
 #ifdef ViPhysicsChipmunk
             waitingForActivation = false;
             initializedInertia = false;
@@ -46,19 +48,24 @@ namespace vi
             surfaceVelocity = cpvzero;
             group = CP_NO_GROUP;
             
+            angVelLimit = (cpFloat)INFINITY;
+            velLimit = (cpFloat)INFINITY;
             
             mass = 1.0;
 #endif
         }
         
         sceneNode::~sceneNode()
-        {
+        {            
 #ifdef ViPhysicsChipmunk
             disablePhysics();
 #endif
             
             if(tree)
                 tree->removeObject(this);
+            
+            if(debugName && deleteDebugName)
+                delete debugName;
         }
         
         void sceneNode::visit(double timestep)
@@ -203,6 +210,16 @@ namespace vi
         }
         
         
+        void sceneNode::setDebugName(std::string *name, bool deleteAutomatically)
+        {
+            if(debugName && deleteDebugName)
+                delete debugName;
+            
+            debugName = name;
+            deleteDebugName = deleteAutomatically;
+        }
+        
+        
 #ifdef ViPhysicsChipmunk
         GLfloat sceneNode::suggestedInertia()
         {
@@ -251,6 +268,8 @@ namespace vi
             
             cpBodySetPos(body, cpv(position.x + (size.x * 0.5), position.y + (size.y * 0.5)));
             cpBodySetAngle(body, rotation);
+            cpBodySetAngVelLimit(body, angVelLimit);
+            cpBodySetVelLimit(body, velLimit);
             
             cpShapeSetFriction(shape, friction);
             cpShapeSetElasticity(shape, elasticity);
@@ -347,6 +366,23 @@ namespace vi
         }
         
         
+        void sceneNode::restrictAngularVelocity(GLfloat aVel)
+        {
+            if(body)
+                cpBodySetAngVelLimit(body, aVel);
+            
+            angVelLimit = aVel;
+        }
+        
+        void sceneNode::restrictVelocity(GLfloat velocity)
+        {
+            if(body)
+                cpBodySetVelLimit(body, velocity);
+            
+            velLimit = velocity;
+        }
+        
+        
         void sceneNode::sleep()
         {
             if(body && scene)
@@ -416,6 +452,14 @@ namespace vi
             
             if(shape)
                 cpShapeSetGroup(shape, (cpGroup)group);
+        }
+        
+        void sceneNode::setRotation(GLfloat trotation)
+        {
+            rotation = trotation;
+            
+            if(body)
+                cpBodySetAngle(body, rotation);
         }
 #endif
     }

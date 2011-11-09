@@ -16,6 +16,7 @@ namespace vi
     {
         class quadtree;
         class rect;
+        class vector2;
     }
     
     namespace graphic
@@ -27,6 +28,14 @@ namespace vi
     {
         class sceneNode;
         class camera;
+        
+        typedef struct
+        {
+            GLfloat distance;
+            vi::common::vector2 position;
+            vi::scene::sceneNode *node;
+        } hitInfo;
+        
         
         /**
          * @brief A scene manages scene nodes for rendering
@@ -62,6 +71,19 @@ namespace vi
              **/
             std::vector<vi::scene::camera *> getCameras();
             
+            /**
+             * Adds the given node as UI node
+             **/
+            void addUINode(vi::scene::sceneNode *node);
+            /**
+             * Removes the given UI node
+             **/
+            void removeUINode(vi::scene::sceneNode *node);
+            /**
+             * Deletes all UI nodes.
+             **/
+            void deleteAllUINodes();
+        
             
             /**
              * Adds the given scene node to the scene
@@ -81,9 +103,23 @@ namespace vi
              * Returns the nodes inside the given rectangle.
              **/
             std::vector<vi::scene::sceneNode *> *nodesInRect(vi::common::rect const& rect);
-        
+            /**
+             * Returns all nodes that should be rendered in screen space rather than in world space.
+             **/
+            std::vector<vi::scene::sceneNode *> *UINodes();
             
             void draw(vi::graphic::renderer *renderer, double timestep);
+            
+            
+            /**
+             * Sends a line trace from the starting position to the end position and returns the first hit scene node.
+             **/
+            vi::scene::sceneNode *trace(vi::common::vector2 const& from, vi::common::vector2 const& to, uint32_t layer, hitInfo *info=NULL);
+            /**
+             * Returns the first node that intersects with the given rectangle.
+             **/
+            vi::scene::sceneNode *trace(vi::common::rect const& rect, uint32_t layer, hitInfo *info=NULL);
+            
             
 #ifdef ViPhysicsChipmunk
             void setGravity(vi::common::vector2 const& gravity); 
@@ -95,9 +131,11 @@ namespace vi
             GLfloat getCollisionSlop();
 #endif
             
-        private:
+        private:            
             std::vector<vi::scene::camera *> *cameras;
             std::vector<vi::scene::sceneNode *>nodes;
+            std::vector<vi::scene::sceneNode *>uiNodes;
+
             vi::common::quadtree *quadtree;
             
 #ifdef ViPhysicsChipmunk

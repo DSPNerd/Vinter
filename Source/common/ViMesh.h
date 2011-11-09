@@ -99,6 +99,10 @@ namespace vi
              **/
             bool dynamic;
             /**
+             * True if the mesh is dirty and wants to be redrawn
+             **/
+            bool dirty;
+            /**
              * The handle to the current VBO
              **/
             GLuint vbo;

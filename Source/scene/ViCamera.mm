@@ -73,9 +73,23 @@ namespace vi
             {
                 [view bind];
                 frame.size = vi::common::vector2([view size].width/scaleFactor, [view size].height/scaleFactor);
+                
+#ifndef NDEBUG
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 5
+                if(glPushGroupMarkerEXT)
+                    glPushGroupMarkerEXT(0, debugName.size() > 0 ? debugName.c_str() : "camera");    
+#endif
+#endif
             }
             else
             {
+#ifndef NDEBUG
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 5
+                if(glPushGroupMarkerEXT)
+                    glPushGroupMarkerEXT(0, debugName.size() > 0 ? debugName.c_str() : "camera"); 
+#endif
+#endif
+                
                 glGetIntegerv(GL_FRAMEBUFFER_BINDING, &prevBuffer);		
                 glBindFramebuffer(GL_FRAMEBUFFER, framebuffer);
             }
@@ -91,6 +105,11 @@ namespace vi
         
         void camera::unbind()
         {
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 5
+            if(glPopGroupMarkerEXT)
+                glPopGroupMarkerEXT();
+#endif
+            
             if(view)
             {
                 [view unbind];

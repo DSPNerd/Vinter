@@ -6,6 +6,7 @@
 //  Unauthorized use is punishable by torture, mutilation, and vivisection.
 //
 
+#import <Foundation/Foundation.h>
 #import "ViRendererOSX.h"
 #import "ViQuadtree.h"
 #import "ViSceneNode.h"
@@ -41,16 +42,17 @@ namespace vi
         
         void rendererOSX::renderSceneWithCamera(vi::scene::scene *scene, vi::scene::camera *camera, double timestep)
         {
-            camera->bind();
+            camera->bind();            
             currentCamera = camera;
             
             std::vector<vi::scene::sceneNode *> *nodes = scene->nodesInRect(camera->frame);
-            this->renderNodeList(nodes, timestep);
+            this->renderNodeList(nodes, timestep, false);
+            this->renderNodeList(scene->UINodes(), timestep, true);
             
             camera->unbind();
         }
         
-        void rendererOSX::renderNodeList(std::vector<vi::scene::sceneNode *> *nodes, double timestep)
+        void rendererOSX::renderNodeList(std::vector<vi::scene::sceneNode *> *nodes, double timestep, bool uiNodes)
         {
             std::vector<vi::scene::sceneNode *>::iterator iterator;
             
@@ -61,28 +63,54 @@ namespace vi
                 if(node->noPass == currentCamera)
                     continue;
                 
+                
+                if(node->getSize().length() > kViEpsilonFloat)
+                {
+                    if(!vi::common::rect(node->getPosition(), node->getSize()).intersectsRect(currentCamera->frame) && !uiNodes)
+                        continue;
+                }
+
+#ifndef NDEBUG
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 5
+                if(glPushGroupMarkerEXT)
+                    glPushGroupMarkerEXT(0, node->debugName ? node->debugName->c_str() : "scene node");
+#endif
+#endif
+                
                 node->visit(timestep);
                 
                 this->setMaterial(node->material);
-                this->renderNode(node);
+                this->renderNode(node, uiNodes);
                 
                 if(node->hasChilds())
                 {
                     vi::common::vector2 nodePos = node->getPosition();
                     
                     translation += nodePos;
-                    this->renderNodeList(node->getChilds(), timestep);
+                    this->renderNodeList(node->getChilds(), timestep, uiNodes);
                     translation -= nodePos;
                 }
+                
+#ifndef NDEBUG
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 5
+                if(glPopGroupMarkerEXT)
+                    glPopGroupMarkerEXT();
+#endif
+#endif
             }
         }
         
-        void rendererOSX::renderNode(vi::scene::sceneNode *node)
+        void rendererOSX::renderNode(vi::scene::sceneNode *node, bool isUINode)
         {
             if(!node->mesh)
-                return; 
+                return;
             
-  
+            vi::common::matrix4x4 cameraMatrix = !isUINode ? currentCamera->viewMatrix : vi::common::matrix4x4();
+            
+            if(isUINode)
+                cameraMatrix.makeTranslate(vi::common::vector3(0.0, currentCamera->frame.size.y, 0.0));
+            
+            
             vi::common::matrix4x4 nodeMatrix = node->matrix;
             if(translation.length() >= kViEpsilonFloat)
             {
@@ -93,14 +121,14 @@ namespace vi
 				glUniformMatrix4fv(currentMaterial->shader->matProj, 1, GL_FALSE, currentCamera->projectionMatrix.matrix);
             
             if(currentMaterial->shader->matView != -1)
-                glUniformMatrix4fv(currentMaterial->shader->matView, 1, GL_FALSE, currentCamera->viewMatrix.matrix);
+                glUniformMatrix4fv(currentMaterial->shader->matView, 1, GL_FALSE, cameraMatrix.matrix);
 			
             if(currentMaterial->shader->matModel != -1)
                 glUniformMatrix4fv(currentMaterial->shader->matModel, 1, GL_FALSE, nodeMatrix.matrix);
             
             if(currentMaterial->shader->matProjViewModel != -1)
             {
-                vi::common::matrix4x4 matProjViewModel = currentCamera->projectionMatrix * currentCamera->viewMatrix * nodeMatrix;
+                vi::common::matrix4x4 matProjViewModel = currentCamera->projectionMatrix * cameraMatrix * nodeMatrix;
                 glUniformMatrix4fv(currentMaterial->shader->matProjViewModel, 1, GL_FALSE, matProjViewModel.matrix);
             }
             
@@ -112,7 +140,7 @@ namespace vi
                 
                 if(parameter.location == -1)
                     continue;
-            
+                
                 
                 switch(parameter.type)
                 {
@@ -143,7 +171,7 @@ namespace vi
             {
                 glBindBuffer(GL_ARRAY_BUFFER, 0);
                 
-                if(lastMesh != node->mesh)
+                if(lastMesh != node->mesh || node->mesh->dirty)
                 {
                     lastMesh = node->mesh;
                     
@@ -170,7 +198,7 @@ namespace vi
             }
             else
             {
-                if(lastMesh != node->mesh)
+                if(lastMesh != node->mesh || node->mesh->dirty)
                 {
                     glBindBuffer(GL_ARRAY_BUFFER, node->mesh->vbo);
                     
@@ -195,7 +223,7 @@ namespace vi
                 }
             }
             
-
+            
             if(node->mesh->ivbo == -1)
 			{
 				glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
@@ -203,7 +231,7 @@ namespace vi
 			}
             else
             {
-                if(lastMesh != node->mesh)
+                if(lastMesh != node->mesh || node->mesh->dirty)
                 {
                     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, node->mesh->ivbo);
                 }
@@ -212,7 +240,9 @@ namespace vi
 			}
             
             lastMesh = node->mesh;
+            lastMesh->dirty = false;
         }
+        
         
         
         void rendererOSX::setMaterial(vi::graphic::material *material)

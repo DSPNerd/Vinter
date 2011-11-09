@@ -92,22 +92,22 @@ namespace vi
         
         
 
-        float rect::left()
+        float rect::left() const
         {
             return origin.x;
         }
         
-        float rect::right()
+        float rect::right() const
         {
             return origin.x + size.x;
         }
         
-        float rect::top()
+        float rect::top() const
         {
             return origin.y;
         }
         
-        float rect::bottom()
+        float rect::bottom() const
         {
             return origin.y + size.y;
         }

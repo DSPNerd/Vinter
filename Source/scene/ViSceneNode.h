@@ -6,6 +6,7 @@
 //  Unauthorized use is punishable by torture, mutilation, and vivisection.
 //
 
+#include <string>
 #include <vector>
 #import "ViBase.h"
 #import "ViMesh.h"
@@ -64,6 +65,7 @@ namespace vi
         {
             friend class vi::common::quadtree;
             friend class vi::scene::scene;
+            friend class vi::graphic::renderer;
         public:
             /**
              * Constructor
@@ -124,10 +126,15 @@ namespace vi
              **/
             void removeChild(vi::scene::sceneNode *child);
             
+            
+            void setDebugName(std::string *name, bool deleteAutomatically=true);
+            
 #ifdef ViPhysicsChipmunk
             void enablePhysics(sceneNodePhysicType type=sceneNodePhysicTypeBox);
             void makeStaticObject(vi::common::vector2 const& end);
             void disablePhysics();
+            
+            void setRotation(GLfloat rotation);
             
             void setMass(GLfloat mass);
             void setInertia(GLfloat inertia);
@@ -139,6 +146,9 @@ namespace vi
             void resetForce();
             void applyForce(vi::common::vector2 const& force, vi::common::vector2 const& offset=vi::common::vector2());
             void applyImpulse(vi::common::vector2 const& impulse, vi::common::vector2 const& offset=vi::common::vector2());
+            
+            void restrictAngularVelocity(GLfloat aVel);
+            void restrictVelocity(GLfloat velocity);
             
             void sleep();
             void activate();
@@ -176,6 +186,7 @@ namespace vi
              **/
             vi::scene::camera *noPass;
             
+            std::string *debugName;
         protected:
             /**
              * The position of the scene node. If you change this directly, call update() to update the node within its tree.
@@ -195,6 +206,11 @@ namespace vi
              **/
             void update();
             
+            
+            vi::common::quadtree *tree;
+            vi::scene::scene *scene;
+            vi::scene::sceneNode *parent;
+            
         private:
 #ifdef ViPhysicsChipmunk
             cpBody  *body;
@@ -209,6 +225,8 @@ namespace vi
             cpFloat inertia;
             cpFloat elasticity;
             cpFloat friction;
+            cpFloat angVelLimit;
+            cpFloat velLimit;
             
             cpVect surfaceVelocity;
             uint32_t group;
@@ -216,12 +234,9 @@ namespace vi
             vi::common::vector2 staticEnd;
             sceneNodePhysicType physicType;
 #endif
-            
+           
+            bool deleteDebugName;
             bool knownDynamic;
-            
-            vi::common::quadtree *tree;
-            vi::scene::scene *scene;
-            vi::scene::sceneNode *parent;
             
             std::vector<vi::scene::sceneNode *> childs;
         };
