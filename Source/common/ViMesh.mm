@@ -17,15 +17,18 @@ namespace vi
             vbo = vbo0 = vbo1 = -1;
             ivbo = ivbo0 = ivbo1 = -1;
             
-            vboToggled = false;
-            dynamic = false;
-            ownsData = true;
+            vboToggled  = false;
+            dynamic     = false;
+            ownsData    = true;
             
-            vertexCount = tcount;
-			indexCount = indcount;
+            vertexCount = 0;
+			indexCount  = 0;
             
-            vertices = (vertex *)malloc(vertexCount * sizeof(vertex));
-			indices = (uint16_t *)malloc(indexCount * sizeof(uint16_t));
+            vertexCapacity = tcount;
+            indexCapacity  = indcount;
+            
+            vertices = (vertex *)malloc(vertexCapacity * sizeof(vertex));
+			indices  = (uint16_t *)malloc(indexCapacity * sizeof(uint16_t));
         }
         
         mesh::mesh(vertex *tvertices, uint16_t *tinidices, uint32_t tcount, uint32_t indcount)
@@ -33,12 +36,12 @@ namespace vi
             vbo = vbo0 = vbo1 = -1;
             ivbo = ivbo0 = ivbo1 = -1;
             
-            vboToggled = false;
-            dynamic = false;
-            ownsData = false;
+            vboToggled  = false;
+            dynamic     = false;
+            ownsData    = true;
             
-            vertexCount = tcount;
-			indexCount = indcount;
+            vertexCount = vertexCapacity = tcount;
+			indexCount = indexCapacity = indcount;
             
             vertices = tvertices;
 			indices = tinidices;
@@ -64,8 +67,40 @@ namespace vi
         }
         
         
+        void mesh::resizeVertices(int32_t appendVertices)
+        {
+            assert(ownsData);
+            
+            if(vertexCapacity > vertexCount + appendVertices)
+                return;
+            
+            vertex *tvertices = (vertex *)realloc(vertices, (vertexCount + appendVertices) * sizeof(vertex));
+            if(tvertices)
+            {
+                vertices = tvertices;
+                vertexCapacity = vertexCount + appendVertices;
+            }
+        }
         
-        void mesh::translate(vi::common::vector2 const&  offset)
+        void mesh::resizeIndices(int32_t appendIndices)
+        {
+            assert(ownsData);
+            
+            if(indexCapacity > indexCount + appendIndices)
+                return;
+            
+            uint16_t *tindicies = (uint16_t *)realloc(indices, (indexCount + appendIndices) * sizeof(vertex));
+            if(tindicies)
+            {
+                indices = tindicies;
+                indexCapacity = indexCount + appendIndices;
+            }
+        }
+        
+        
+        
+        
+        void mesh::translate(vi::common::vector2 const& offset)
         {
             for(uint32_t i=0; i<vertexCount; i++)
             {
@@ -76,6 +111,17 @@ namespace vi
             dirty = true;
         }
 		
+        void mesh::scale(vi::common::vector2 const& scale)
+        {
+            for(uint32_t i=0; i<vertexCount; i++)
+            {
+                vertices[i].x *= scale.x;
+                vertices[i].y *= scale.y;
+            }
+            
+            dirty = true;
+        }
+        
 		void mesh::addVertex(float x, float y)
 		{
             if(!ownsData)
@@ -102,22 +148,47 @@ namespace vi
             dirty = true;
 		}
 		
+        void mesh::addMesh(mesh *mesh, vi::common::vector2 const& translation, vi::common::vector2 const& scale)
+        {
+            resizeVertices(mesh->vertexCount);
+            resizeIndices(mesh->indexCount);
+            
+            for(uint32_t i=0; i<mesh->indexCount; i++)
+            {
+                indices[indexCount] = mesh->indices[i] + vertexCount;
+                indexCount ++;
+            }
+            
+            for(uint32_t i=0; i<mesh->vertexCount; i++)
+            {
+                vertices[vertexCount] = mesh->vertices[i];
+                vertices[vertexCount].x *= scale.x;
+                vertices[vertexCount].y *= scale.y;
+                vertices[vertexCount].x += translation.x;
+                vertices[vertexCount].y += translation.y;
+                
+                vertexCount ++;
+            }            
+            
+            dirty = true;
+        }
+        
 		void mesh::triangulate()
 		{
             if(vertexCount < 3 || !ownsData)
                 return;
             
-			indexCount = 3 * (vertexCount-2);
-			indices = (uint16_t *)realloc(indices, indexCount * sizeof(uint16_t));
-			for(int i=0; i<indexCount; i+=3)
+            resizeIndices((3 * (vertexCount - 2)) - indexCount);
+			for(uint32_t i=0; i<indexCount; i+=3)
 			{
-				indices[i] = 0;
-				indices[i+1] = i / 3+1;
-				indices[i+2] = i / 3+2;
+				indices[i+0] = 0;
+				indices[i+1] = i / 3 + 1;
+				indices[i+2] = i / 3 + 2;
 			}
             
             dirty = true;
 		}
+        
         
         
         void mesh::generateVBO(bool dyn)

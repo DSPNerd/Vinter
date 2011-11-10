@@ -64,6 +64,10 @@
 #define ViDegreeToRadian(degrees) (degrees) * M_PI / 180.0f
 
 
+#define ViDeprecated __attribute__((deprecated))
+#define ViDeprecatedLog() do{static bool logged=false; if(!logged){ViLog(@"%s is deprecated! You can and should remove all calls to it.", __PRETTY_FUNCTION__); logged=true;}}while(0)
+#define ViDeprecatedLogReplacement(replacement) do{static bool logged=false; if(!logged){ViLog(@"%s is deprecated! You can and should replace all calls to it with %@.", __PRETTY_FUNCTION__, replacement); logged=true;}}while(0)
+
 /**
  * The epsilon value for float comparison
  **/

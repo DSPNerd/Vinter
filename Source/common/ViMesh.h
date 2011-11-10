@@ -41,28 +41,34 @@ namespace vi
             mesh(uint32_t tcount=0, uint32_t indcount=0);
             /**
              * Constructor for a mesh that doesn't manage its own vertices and indices but uses the one provided to the constructor
+             * @remark Meshes created with this method aren't mutable!
              **/
             mesh(vertex *tvertices, uint16_t *tinidices, uint32_t tcount, uint32_t indcount);
             /**
              * Destructor
              * Automatically deletes the vertices and indices (if the mesh created them) and all vbos.
              **/
-            ~mesh();
+            virtual ~mesh();
+            
+            
             
             /**
              * Translates the mesh by the given offset.
              **/
             void translate(vi::common::vector2 const& offset);
+            void scale(vi::common::vector2 const& scale);
             
             /**
              * Adds a new vertex to te vertex list
-             * @remark This method fails if the meshs vertices and indices isn't managed by the mesh.
+             * @remark This method fails if the meshs vertices and indices aren't managed by the mesh.
              **/
 			void addVertex(float x, float y);
+            void addMesh(mesh *mesh, vi::common::vector2 const& translation=vi::common::vector2(), vi::common::vector2 const& scale=vi::common::vector2(1.0, 1.0));
             /**
              * Triangulates the mesh
              **/
 			void triangulate();
+            
             
             /**
              * Generates a new set of VBOs for the current mesh
@@ -75,6 +81,7 @@ namespace vi
              **/
             void updateVBO();
             
+            
             /**
              * The number of vertices
              **/
@@ -83,6 +90,7 @@ namespace vi
              * The number of indices
              **/
             uint32_t indexCount;
+            
             
             /**
              * Pointer to the vertex list.
@@ -112,11 +120,17 @@ namespace vi
             GLuint ivbo;
             
         private:
+            void resizeVertices(int32_t appendVertices);
+            void resizeIndices(int32_t appendIndices);
+            
             bool vboToggled;
             bool ownsData;
             
             GLuint vbo0, vbo1;
             GLuint ivbo0, ivbo1;
+            
+            uint32_t vertexCapacity;
+            uint32_t indexCapacity;
         };
     }
 }

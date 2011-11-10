@@ -43,6 +43,8 @@ namespace vi
 			mesh->indices[4] = 1;
 			mesh->indices[5] = 3;
             
+            mesh->vertexCount = 4;
+            mesh->indexCount = 6;
             mesh->generateVBO();
         }
         

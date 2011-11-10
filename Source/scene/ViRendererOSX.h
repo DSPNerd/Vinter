@@ -42,7 +42,9 @@ namespace vi
             
         private:
             void renderNodeList(std::vector<vi::scene::sceneNode *> *nodes, double timestep, bool uiNodes);
+            void renderBatchList(std::vector<vi::scene::sceneNode *> *nodes, double timestep, bool uiNodes, vi::scene::sceneNode *parent);
             void renderNode(vi::scene::sceneNode *node, bool isUINode);
+            void renderMesh(vi::common::mesh *mesh, bool isUIMesh, vi::common::matrix4x4 const& matrix);
             void setMaterial(vi::graphic::material *material);
             
             viUniformIv uniformIvFuncs[4];
@@ -53,8 +55,6 @@ namespace vi
             vi::graphic::material *currentMaterial;
             vi::common::vector3 translation;
             vi::common::mesh *lastMesh;
-            
-            vi::common::mesh *batchMesh;
         };
     }
 }

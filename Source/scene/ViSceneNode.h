@@ -42,7 +42,8 @@ namespace vi
              * Dynamic nodes are never clipped, just like node with no clip, but they also make less calls to the quadtree.
              * Use this for nodes that are often move across the tree to save performance.
              **/
-            sceneNodeFlagDynamic = 2
+            sceneNodeFlagDynamic = 2,
+            sceneNodeFlagConcatenateChildren = 4
         };
         
         typedef enum
@@ -82,15 +83,15 @@ namespace vi
             /**
              * Sets a new position
              **/
-            void setPosition(vi::common::vector2 const& point);
+            virtual void setPosition(vi::common::vector2 const& point);
             /**
              * Sets a new size
              **/
-            void setSize(vi::common::vector2 const& tsize);
+            virtual void setSize(vi::common::vector2 const& tsize);
             /**
              * Sets the flags of the node. Flags are represented as OR'ed bit field
              **/
-            void setFlags(uint32_t flags);
+            virtual void setFlags(uint32_t flags);
             
             
             /**

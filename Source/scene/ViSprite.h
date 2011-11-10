@@ -33,12 +33,15 @@ namespace vi
              **/
             sprite(vi::graphic::texture *texture, bool upsideDown=false);
             sprite(vi::graphic::texture *texture, vi::common::mesh *sharedMesh);
+            sprite(vi::graphic::texture *texture, vi::graphic::material *sharedMaterial);
+            sprite(vi::graphic::texture *texture, vi::common::mesh *sharedMesh, vi::graphic::material *sharedMaterial);
             
             /**
              * Destructor. Automatically deletes the material and in case that the sprite doesn't share a mesh, it also deletes the mes.
              **/
             virtual ~sprite();
             
+            virtual void setSize(vi::common::vector2 const& size);
             
             /**
              * Sets a new texture. The sprite will automatically update its atlas information according to the new texture when using this function.
@@ -51,7 +54,11 @@ namespace vi
              **/
             void setAtlas(vi::common::vector2 const& begin, vi::common::vector2 const& size);
             
+            void setWriteAtlasInformationIntoMesh();
+            void setWriteSizeInformationIntoMesh();
+            
             virtual void visit(double timestep);
+            
         protected:     
             vi::common::vector2 atlasBegin;
             vi::common::vector2 atlasSize;
@@ -63,8 +70,14 @@ namespace vi
             };
             
         private:
+            void createFromMeshAndMaterial(vi::graphic::texture *texture, vi::common::mesh *sharedMesh, vi::graphic::material *sharedMaterial);
+            
+            bool writeAtlasInfoIntoMesh;
+            bool writeSizeInformationIntoMesh;
+            
             bool isUpsideDown;
             bool ownsMesh;
+            bool ownsMaterial;
         };
     }
 }

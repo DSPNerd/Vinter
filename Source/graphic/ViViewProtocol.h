@@ -35,5 +35,7 @@
  **/
 - (vi::common::context *)context;
 
+- (CGFloat)contentScaleFactor;
+
 @end
 

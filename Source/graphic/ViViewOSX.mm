@@ -25,6 +25,11 @@
     return [self bounds].size;
 }
 
+- (CGFloat)contentScaleFactor
+{
+    return 1.0;
+}
+
 #pragma mark -
 #pragma mark Render events
 

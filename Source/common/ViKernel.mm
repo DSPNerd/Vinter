@@ -40,7 +40,21 @@ namespace vi
             _sharedKernel = this;
             
             if(scene)
+            {
                 this->pushScene(scene);
+                std::vector<vi::scene::camera *> cameras = scene->getCameras();
+                std::vector<vi::scene::camera *>::iterator iterator;
+                
+                for(iterator=cameras.begin(); iterator!=cameras.end(); iterator++)
+                {
+                    vi::scene::camera *camera = *iterator;
+                    if(camera->view)
+                    {
+                        scaleFactor = [camera->view contentScaleFactor];
+                        break;
+                    }
+                }
+            }
             
             if(!context)
             {

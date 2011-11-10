@@ -52,6 +52,62 @@ namespace vi
             camera->unbind();
         }
         
+        void rendererOSX::renderBatchList(std::vector<vi::scene::sceneNode *> *nodes, double timestep, bool uiNodes, vi::scene::sceneNode *parent)
+        {
+            vi::common::mesh *batchMesh = new vi::common::mesh((uint32_t)nodes->size() * 4, (uint32_t)nodes->size() * 6);
+            vi::common::vector2 tsize = parent->getSize();
+            
+            std::vector<vi::scene::sceneNode *>::iterator iterator;
+            
+            for(iterator=nodes->begin(); iterator!=nodes->end(); iterator++)
+            {
+                vi::scene::sceneNode *node = *iterator;
+                
+                if(node->noPass == currentCamera)
+                    continue;
+                
+                if(!uiNodes && node->getSize().length() > kViEpsilonFloat)
+                {
+                    if(!vi::common::rect(node->getPosition(), node->getSize()).intersectsRect(currentCamera->frame))
+                        continue;
+                }
+                
+                
+                
+                node->visit(timestep);
+                
+                vi::common::vector2 position = node->getPosition();
+                position.y = -position.y;
+                position.y += tsize.y - node->getSize().y;
+                
+                batchMesh->addMesh(node->mesh, position);
+                
+                
+                if(node->hasChilds())
+                {
+                    vi::graphic::material *material = currentMaterial;
+                    vi::common::vector2 nodePos = node->getPosition();
+                    
+                    translation += nodePos;
+                    
+                    if(node->getFlags() & vi::scene::sceneNodeFlagConcatenateChildren)
+                    {
+                        renderBatchList(node->getChilds(), timestep, uiNodes, node);
+                    }
+                    else
+                    {
+                        renderNodeList(node->getChilds(), timestep, uiNodes);
+                    }
+                    
+                    translation -= nodePos;
+                    setMaterial(material);
+                }
+            }
+            
+            renderMesh(batchMesh, uiNodes, parent->matrix);
+            delete batchMesh;
+        }
+        
         void rendererOSX::renderNodeList(std::vector<vi::scene::sceneNode *> *nodes, double timestep, bool uiNodes)
         {
             std::vector<vi::scene::sceneNode *>::iterator iterator;
@@ -85,9 +141,17 @@ namespace vi
                 if(node->hasChilds())
                 {
                     vi::common::vector2 nodePos = node->getPosition();
-                    
                     translation += nodePos;
-                    this->renderNodeList(node->getChilds(), timestep, uiNodes);
+                    
+                    if(node->getFlags() & vi::scene::sceneNodeFlagConcatenateChildren)
+                    {
+                        renderBatchList(node->getChilds(), timestep, uiNodes, node);
+                    }
+                    else
+                    {
+                        renderNodeList(node->getChilds(), timestep, uiNodes);
+                    }
+                    
                     translation -= nodePos;
                 }
                 
@@ -105,17 +169,21 @@ namespace vi
             if(!node->mesh)
                 return;
             
-            vi::common::matrix4x4 cameraMatrix = !isUINode ? currentCamera->viewMatrix : vi::common::matrix4x4();
+            renderMesh(node->mesh, isUINode, node->matrix);
+        }
+        
+        void rendererOSX::renderMesh(vi::common::mesh *mesh, bool isUIMesh, vi::common::matrix4x4 const& matrix)
+        {
+            vi::common::matrix4x4 cameraMatrix = !isUIMesh ? currentCamera->viewMatrix : vi::common::matrix4x4();
             
-            if(isUINode)
+            if(isUIMesh)
                 cameraMatrix.makeTranslate(vi::common::vector3(0.0, currentCamera->frame.size.y, 0.0));
             
             
-            vi::common::matrix4x4 nodeMatrix = node->matrix;
+            vi::common::matrix4x4 nodeMatrix = matrix;
             if(translation.length() >= kViEpsilonFloat)
-            {
                 nodeMatrix.translate(vi::common::vector3(translation.x, -translation.y, translation.z));
-            }
+            
             
             if(currentMaterial->shader->matProj != -1)
 				glUniformMatrix4fv(currentMaterial->shader->matProj, 1, GL_FALSE, currentCamera->projectionMatrix.matrix);
@@ -167,13 +235,13 @@ namespace vi
                 }
             }
             
-            if(node->mesh->vbo == -1)
+            if(mesh->vbo == -1)
             {
                 glBindBuffer(GL_ARRAY_BUFFER, 0);
                 
-                if(lastMesh != node->mesh || node->mesh->dirty)
+                if(lastMesh != mesh || mesh->dirty)
                 {
-                    lastMesh = node->mesh;
+                    lastMesh = mesh;
                     
                     if(currentMaterial->shader->position != -1)
                         glDisableVertexAttribArray(currentMaterial->shader->position);
@@ -186,21 +254,21 @@ namespace vi
                     if(currentMaterial->shader->position != -1)
                     {
                         glEnableVertexAttribArray(currentMaterial->shader->position);
-                        glVertexAttribPointer(currentMaterial->shader->position, 2, GL_FLOAT, 0, sizeof(vi::common::vertex), &node->mesh->vertices[0].x);
+                        glVertexAttribPointer(currentMaterial->shader->position, 2, GL_FLOAT, 0, sizeof(vi::common::vertex), &mesh->vertices[0].x);
                     }
                     
                     if(currentMaterial->shader->texcoord0 != -1)
                     {
                         glEnableVertexAttribArray(currentMaterial->shader->texcoord0);
-                        glVertexAttribPointer(currentMaterial->shader->texcoord0, 2, GL_FLOAT, 0, sizeof(vi::common::vertex), &node->mesh->vertices[0].u);
+                        glVertexAttribPointer(currentMaterial->shader->texcoord0, 2, GL_FLOAT, 0, sizeof(vi::common::vertex), &mesh->vertices[0].u);
                     }
                 }
             }
             else
             {
-                if(lastMesh != node->mesh || node->mesh->dirty)
+                if(lastMesh != mesh || mesh->dirty)
                 {
-                    glBindBuffer(GL_ARRAY_BUFFER, node->mesh->vbo);
+                    glBindBuffer(GL_ARRAY_BUFFER, mesh->vbo);
                     
                     if(currentMaterial->shader->position != -1)
                         glDisableVertexAttribArray(currentMaterial->shader->position);
@@ -224,22 +292,22 @@ namespace vi
             }
             
             
-            if(node->mesh->ivbo == -1)
+            if(mesh->ivbo == -1)
 			{
 				glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
-				glDrawElements(currentMaterial->drawMode, node->mesh->indexCount, GL_UNSIGNED_SHORT, node->mesh->indices);
+				glDrawElements(currentMaterial->drawMode, mesh->indexCount, GL_UNSIGNED_SHORT, mesh->indices);
 			}
             else
             {
-                if(lastMesh != node->mesh || node->mesh->dirty)
+                if(lastMesh != mesh || mesh->dirty)
                 {
-                    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, node->mesh->ivbo);
+                    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mesh->ivbo);
                 }
                 
-				glDrawElements(currentMaterial->drawMode, node->mesh->indexCount, GL_UNSIGNED_SHORT, 0);
+				glDrawElements(currentMaterial->drawMode, mesh->indexCount, GL_UNSIGNED_SHORT, 0);
 			}
             
-            lastMesh = node->mesh;
+            lastMesh = mesh;
             lastMesh->dirty = false;
         }
         
@@ -277,7 +345,6 @@ namespace vi
                             
                             glActiveTexture(GL_TEXTURE0 + i);
                             glBindTexture(GL_TEXTURE_2D, material->textures[i]->getTexture());
-                            //glUniform1i(material->texlocations[i], material->textures[i]->getTexture());
                         }
                     }
                 }

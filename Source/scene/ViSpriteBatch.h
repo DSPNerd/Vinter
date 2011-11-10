@@ -58,19 +58,13 @@ namespace vi
              * @remark This operation can be slow, so the sprite batch will only automatically call it once its about to appear on the screen again and its data has changed.
              * @remark If you update a sprite manually and miss the mesh generation, you have to call this function manually!
              **/
-            void generateMesh(bool generateVBO=true);
+            ViDeprecated void generateMesh(bool generateVBO=true);
             
             /**
              * If the batch is marked as dirty, this is, if you called addSprite(), setTexture() or removeSprite() in the previous frame, the
              * batch will automatically call generateMesh(true);
              **/
             virtual void visit(double timestep);
-            
-        private:
-            void calculateSize();
-            
-            bool dirty;
-            std::vector<vi::scene::sprite *>sprites;
         };
     }
 }

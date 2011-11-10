@@ -16,6 +16,11 @@
 
 namespace vi
 {
+    namespace common
+    {
+        class kernel;
+    }
+    
     namespace scene
     {
         /**
@@ -26,6 +31,7 @@ namespace vi
          **/
         class camera
         {
+            friend class vi::common::kernel;
         public:
             /**
              * Constructor
