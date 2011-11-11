@@ -108,6 +108,9 @@ namespace vi
              **/
             std::vector<vi::scene::sceneNode *> *UINodes();
             
+            /**
+             * Updates the physical space and tells the renderer to render the scene with all cameras added to the scene.
+             **/
             void draw(vi::graphic::renderer *renderer, double timestep);
             
             
@@ -122,12 +125,33 @@ namespace vi
             
             
 #ifdef ViPhysicsChipmunk
+            /**
+             * Sets the gravity of the scene
+             * @default 0.0 | 100.0
+             **/
             void setGravity(vi::common::vector2 const& gravity); 
+            /**
+             * Sets the damping of the scene
+             * @default 1.0
+             **/
             void setDamping(GLfloat damping);
+            /**
+             * Sets the collision slop of the physical space, this is the amount overlapping of nodes that is still allowed.
+             * @default 0.1
+             **/
             void setCollisionSlop(GLfloat slop);
             
+            /**
+             * Returns the current gravity
+             **/
             vi::common::vector2 getGravity();
+            /**
+             * Returns the current damping
+             **/
             GLfloat getDamping();
+            /**
+             * Returns teh collision slop.
+             **/
             GLfloat getCollisionSlop();
 #endif
             

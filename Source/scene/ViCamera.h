@@ -77,7 +77,10 @@ namespace vi
              **/
             vi::graphic::texture *getTexture();
             
-            
+            /**
+             * The name of the camera. This name is pushed as a OpenGL debug marker when the camera is bound, and popped when its unbound.
+             * @default "Camera"
+             **/
             std::string debugName;
             
         private:

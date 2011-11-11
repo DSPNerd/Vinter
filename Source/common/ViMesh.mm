@@ -432,11 +432,29 @@ namespace vi
         }
         
         
+        
         void meshRGBA::updateVertex(uint32_t index, float x, float y, float u, float v)
         {
+            if(!ownsData || index >= vertexCount)
+                return;
+            
+            vertex *tvertices = (vertex *)vertices;
+            
+            tvertices[index].x = x;
+            tvertices[index].y = y;
+            tvertices[index].u = u;
+            tvertices[index].v = v;
+            
+            dirty = true;
         }
+        
         void meshRGBA::updateIndex(uint32_t index, uint16_t newIndex)
         {
+            if(!ownsData || index >= indexCount)
+                return;
+            
+            indices[index] = newIndex;
+            dirty = true;
         }
         
         

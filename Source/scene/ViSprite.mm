@@ -128,7 +128,9 @@ namespace vi
         void sprite::visit(double timestep)
         {            
             sceneNode::visit(timestep);
-            matrix.scale(vi::common::vector3(size.x, size.y, 1.0f));
+            
+            if(!writeSizeInformationIntoMesh)
+                matrix.scale(vi::common::vector3(size.x, size.y, 1.0f));
         }
         
         

@@ -62,7 +62,13 @@ namespace vi
             uint32_t getLayerCount();
             tmxNodeOrientation getOrientation();
             
+            /**
+             * Returns the tile width in points
+             **/
             uint32_t getTileWidth();
+            /**
+             * Returns the tile height in points
+             **/
             uint32_t getTileHeight();
             
         private:

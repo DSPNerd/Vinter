@@ -85,13 +85,13 @@ namespace vi
 
 
 /** 
- * @mainpage Vinter2D API reference
+ * @mainpage Vinter API reference
  * <img src="http://vinter2d.org/stuff/logo.png" align="center" alt="Logo"/>
  * <div align="center"><a href="http://vinter2d.org">Project home</a></div>
  *
  * @section intro_sec Introduction
- * This is the Vinter2D API reference, it is generated based on Vinter2D 0.3.0.<br />
- * If you are new to Vinter2D, head over to the <a href="http://vinter2d.org/viki/">wiki</a> and read the tutorials or look into the example projects in the Vinter2D source directory.
+ * This is the Vinter API reference, it is generated based on Vinter 0.4.0.<br />
+ * If you are new to Vinter, head over to the <a href="http://vinter2d.org/viki/">wiki</a> and read the tutorials or look into the example projects in the Vinter source directory.
  * <br /><br />
  * @subpage changelog
  * <br /><br />
@@ -100,6 +100,21 @@ namespace vi
 
 /**
  * @page changelog Changelog
+ * <b>Version 0.4.0</b><br />
+ * Added a chipmunk wrapper for vi::scene::scene and vi::scene::sceneNode<br />
+ * Added tracing functions into the scene, vi::scene::scene::trace()<br />
+ * Added support to render nodes in UI space rathern than in world space<br />
+ * Added support for OpenGL debug markers (only in debug builds, vi::scene::sceneNode::setDebugName())<br />
+ * Added a flag for scene nodes that tells the renderer that it can batch the nodes child into one mesh for faster rendering<br />
+ * Added support for colored meshes via the vi::common::meshRGBA class<br />
+ * Added support for custom vertex attributes for shaders<br />
+ * Added support for particles via the vi::scene::particleEmitter and vi::scene::particle classes<br />
+ * Added a concrete particle subclass, vi::scene::baseParticle, that allows basic particle effects<br />
+ * Added new constructors for sprites to allow creation of sprites with a shared material<br />
+ * Added the possibility to directly write atlas information of sprites into the mehs<br />
+ * Added a new default shader for particles<br />
+ * Changed the behavior of adding custom material attributes (aka uniforms), instead of readding a new uniform the material now updates the old one.<br />
+ * Refactored the mesh class into one base class, vi::common::__mesh, and two concrete subclasses, vi::common::mesh (XY, UV vertices mesh) and vi::common::meshRGBA (XY, UV, RGBA vertices mesh).<br />
  * <b>Version 0.3.0</b><br />
  * Added multithreading support via the vi::common::context class<br />
  * Added the vi::common::dataPool class for storing assets.<br />

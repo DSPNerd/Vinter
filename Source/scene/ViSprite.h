@@ -32,8 +32,19 @@ namespace vi
              * @param upsideDown true if the sprite should be rendered upside down, otherwise false
              **/
             sprite(vi::graphic::texture *texture, bool upsideDown=false);
+            /**
+             * Constructor for a sprite with a shared mesh.
+             **/
             sprite(vi::graphic::texture *texture, vi::common::mesh *sharedMesh);
+            /**
+             * Constructor for a sprite with a shared material
+             * @remark The sprite information inside the material is always used if available.
+             **/
             sprite(vi::graphic::texture *texture, vi::graphic::material *sharedMaterial);
+            /**
+             * Constructor for a sprite with a shared mesh and material
+             * @remark The sprite information inside the material is always used if available.
+             **/
             sprite(vi::graphic::texture *texture, vi::common::mesh *sharedMesh, vi::graphic::material *sharedMaterial);
             
             /**
@@ -41,6 +52,10 @@ namespace vi
              **/
             virtual ~sprite();
             
+            /**
+             * Updates the size of the sprite
+             * @sa setWriteSizeInformationIntoMesh()
+             **/
             virtual void setSize(vi::common::vector2 const& size);
             
             /**
@@ -50,13 +65,21 @@ namespace vi
             void setTexture(vi::graphic::texture *texture);
             /**
              * Sets new atlas informations. The atlas information is used to render only a part of the texture, defined by begin and size.
-             * @remark Only valid for sprites that own their mesh (eg. every sprite created via sprite(vi::graphic::texture *texture, bool upsideDown))
              **/
             void setAtlas(vi::common::vector2 const& begin, vi::common::vector2 const& size);
             
+            /**
+             * Tells the sprite to write atlas information into the UV members of the mesh
+             **/
             void setWriteAtlasInformationIntoMesh();
+            /**
+             * Tells the sprite to write the size information into the mesh instead of using matrix scalation
+             **/
             void setWriteSizeInformationIntoMesh();
             
+            /**
+             * Prepares the matrix of the sprite for drawing
+             **/
             virtual void visit(double timestep);
             
         protected:     

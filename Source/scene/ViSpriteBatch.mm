@@ -32,12 +32,6 @@ namespace vi
             delete material;
         }
         
-        void spriteBatch::visit(double timestep)
-        {
-            vi::scene::sceneNode::visit(timestep);
-        }
-        
-        
         vi::scene::sprite *spriteBatch::addSprite()
         {
             vi::scene::sprite *sprite = new vi::scene::sprite(NULL, material);

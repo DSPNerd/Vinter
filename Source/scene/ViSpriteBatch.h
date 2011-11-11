@@ -22,6 +22,7 @@ namespace vi
          * A sprite batch should be used when you render a large amount of sprites sharing the same texture, the sprite batch
          * will automatically create one large mesh containing all sprites. Instead of adding each sprite to a scene, you just add the sprite batch
          * which will then automatically render the mesh.
+         * @remark Since Vinter 0.4.0, sprite batches use the direct optimization step done by the renderer to draw many smaller objects at once!
          **/
         class spriteBatch : public sceneNode
         {
@@ -34,6 +35,7 @@ namespace vi
              * Destructor.
              **/
             ~spriteBatch();
+            
             
             /**
              * Adds a new sprite to the sprite batch and returns it.
@@ -54,17 +56,9 @@ namespace vi
             void setTexture(vi::graphic::texture *texture);
             
             /**
-             * Regenerates the whole mesh and marks the batch as clean.
-             * @remark This operation can be slow, so the sprite batch will only automatically call it once its about to appear on the screen again and its data has changed.
-             * @remark If you update a sprite manually and miss the mesh generation, you have to call this function manually!
+             * Deprecated in Vinter 0.4.0
              **/
             ViDeprecated void generateMesh(bool generateVBO=true);
-            
-            /**
-             * If the batch is marked as dirty, this is, if you called addSprite(), setTexture() or removeSprite() in the previous frame, the
-             * batch will automatically call generateMesh(true);
-             **/
-            virtual void visit(double timestep);
         };
     }
 }

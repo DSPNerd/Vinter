@@ -483,7 +483,7 @@ namespace vi
             return suggestedInertia();
         }
         
-        GLfloat sceneNode::getElasiticity()
+        GLfloat sceneNode::getElasticity()
         {
             return elasticity;
         }

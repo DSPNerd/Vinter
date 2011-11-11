@@ -43,12 +43,21 @@ namespace vi
              * Use this for nodes that are often move across the tree to save performance.
              **/
             sceneNodeFlagDynamic = 2,
+            /**
+             * If this flag is set, the renderer is allowed to batch up all the childs of the node in order to speed up rendering
+             **/
             sceneNodeFlagConcatenateChildren = 4
         };
         
         typedef enum
         {
+            /**
+             * A rectangular physic shape
+             **/
             sceneNodePhysicTypeBox,
+            /**
+             * Type of a circle like physic shape
+             **/
             sceneNodePhysicTypeCircle
         } sceneNodePhysicType;
         
@@ -61,6 +70,9 @@ namespace vi
          * <br />
          * Scene nodes can also contain childs. A child is an object that is clipped together with its parent (so update the size of the parent if needed),
          * it will also be rendered relative to its parent by the renderer. Childs can also contain childs again.
+         * <br />
+         * Nodes can be registered as physical nodes since Vinter 0.4.0, this is done by wrapping a Chipmunk shape and body, 
+         * for more information please visit http://chipmunk-physics.net/
          **/
         class sceneNode
         {
@@ -127,52 +139,157 @@ namespace vi
              **/
             void removeChild(vi::scene::sceneNode *child);
             
-            
+            /**
+             * Sets a new debug name which is used as name for the OpenGL debug marker pushed when rendering the node.
+             * @param deleteAutomatically True if the node should delete the name on its own, otherwise false.
+             **/
             void setDebugName(std::string *name, bool deleteAutomatically=true);
             
 #ifdef ViPhysicsChipmunk
+            /**
+             * Registers the node as a physical node.
+             **/
             void enablePhysics(sceneNodePhysicType type=sceneNodePhysicTypeBox);
+            /**
+             * Adds the node as a static object into the scene
+             * @param end The end, in world coordinates, of the node. You can imagine the static body as a straight line that goes from the position of the node to this point
+             **/
             void makeStaticObject(vi::common::vector2 const& end);
+            /**
+             * Disables and removes the node from the physics calculation
+             **/
             void disablePhysics();
             
+            /**
+             * Returns true if the node is a physical node.
+             **/
             bool isPhysicalBody();
             
             
+            /**
+             * Sets a new rotation for the node
+             * @remark Use this instead of setting the rotation member directly for physical nodes
+             **/
             void setRotation(GLfloat rotation);
             
+            /**
+             * Sets the mass of the node
+             **/
             void setMass(GLfloat mass);
+            /**
+             * Sets a new moment of inertia
+             * @remark You should always set the suggestedInertia() which is calculated from the mass and the shape of the node.
+             **/
             void setInertia(GLfloat inertia);
+            /**
+             * Sets the given elasticity.
+             **/
             void setElasticity(GLfloat elasticity);
+            /**
+             * Sets the given friction
+             **/
             void setFriction(GLfloat friction);
+            /**
+             * Sets the surface velocity which is used when calculating friction.
+             **/
             void setSurfaceVelocity(vi::common::vector2 const& velocity);
+            /**
+             * Sets the collision group of the node. Nodes with the same collision group don't collide with each other, unless the group is 0
+             **/ 
             void setGroup(uint32_t group);
             
             
+            /**
+             * Returns the mass of the node.
+             **/
             GLfloat getMass();
+            /**
+             * Returnst the moment of inertia of the node
+             **/
             GLfloat getInertia();
-            GLfloat getElasiticity();
+            /**
+             * Returns the elasticity of the node
+             **/
+            GLfloat getElasticity();
+            /**
+             * Returns the friction of the node
+             **/
             GLfloat getFriction();
+            /**
+             * Returns the surface velocity of the node
+             **/
             vi::common::vector2 getSurfaceVelocitiy();
+            /**
+             * Returns the current collision group of the node
+             **/
             uint32_t getGroup();
             
             
+            /**
+             * Resets all current forces acting on the node.
+             * @remark Only works with physical nodes
+             **/
             void resetForce();
+            /**
+             * Applies the given force to the node, unlike impulses, a force is applied all the time to the node, much like a motor.
+             * @remark Only works with physical nodes
+             **/
             void applyForce(vi::common::vector2 const& force, vi::common::vector2 const& offset=vi::common::vector2());
+            /**
+             * Applies the given impulse to the node
+             * @remark Only works with physical nodes
+             **/
             void applyImpulse(vi::common::vector2 const& impulse, vi::common::vector2 const& offset=vi::common::vector2());
             
+            /**
+             * Restricts the angular velocity of the node
+             **/
             void restrictAngularVelocity(GLfloat aVel);
+            /**
+             * Restricts the angular velocity of the node
+             **/
             void restrictVelocity(GLfloat velocity);
             
+            /**
+             * Returns the angular velocity limit of the node
+             **/
             GLfloat getAngularVelocityLimit();
+            /**
+             * Returns the velocity limit of the node
+             **/
             GLfloat getVelocityLimit();
             
+            /**
+             * Returns the current angular velocity of the node.
+             * @remark Only works with physical nodes
+             **/
             GLfloat getAngularVelocity();
+            /**
+             * Returns the current velocity of the node.
+             * @remark Only works with physical nodes
+             **/
             vi::common::vector2 getVelocity();
             
+            /**
+             * Forces the node to fall asleep, useful when creating a level to initialize the node as sleeping
+             * @remark Only works with physical nodes
+             **/
             void sleep();
+            /**
+             * If the node is sleeping, invoking this method will wake it up.
+             * @remark Only works with physical nodes
+             **/
             void activate();
+            /**
+             * Returns true if the physical body of the node is sleeping.
+             * @remark Only works with physical nodes
+             **/
             bool isSleeping();
             
+            /**
+             * Returns the suggested moment of inertia for the node, based on its shape and mass.
+             * @remark You don't need to enable physics to call this function!
+             **/
             GLfloat suggestedInertia();
 #endif
             
@@ -205,7 +322,12 @@ namespace vi
              **/
             vi::scene::camera *noPass;
             
+            /**
+             * Name of the node, default NULL.
+             * @remark In debug builds this name is used to add OpenGL debug markers for easier debugging.
+             **/
             std::string *debugName;
+            
         protected:
             /**
              * The position of the scene node. If you change this directly, call update() to update the node within its tree.
@@ -225,9 +347,17 @@ namespace vi
              **/
             void update();
             
-            
+            /**
+             * The quadtree the scene node is currently inserted to, or NULL
+             **/
             vi::common::quadtree *tree;
+            /**
+             * The scene the node is associated with
+             **/
             vi::scene::scene *scene;
+            /**
+             * Parent node
+             **/
             vi::scene::sceneNode *parent;
             
         private:
