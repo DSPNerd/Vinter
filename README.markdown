@@ -9,6 +9,7 @@ The goal of the engine is to be as easy to use as possible, without being too bl
 - Loading of assets in a secondary thread
 - Support for TMX maps <http://mapeditor.org/>
 - Render to texture
+- Flexible particle system
 - Native Chipmunk support <http://chipmunk-physics.net/>
 - PVR texture support (compressed and uncompressed)
 - RGBA8888, RGBA4444, RGBA5551 and RGB565 texture formats

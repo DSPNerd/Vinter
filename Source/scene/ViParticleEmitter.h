@@ -26,19 +26,21 @@ namespace vi
             void emitParticle(vi::scene::particle *particle);
             void autoEmitParticle(vi::scene::particle *particle, uint32_t particlesPerFrame, uint32_t maxParticles);
             
+            void updateAutoEmitting(uint32_t particlesPerFrame, uint32_t maxParticles);
+            
+            
             virtual void visit(double timestep);
             
             bool orderFrontToBack;
             
         private:
-            bool particlePredicate(vi::scene::particle *particleA, vi::scene::particle *particleB);
-            
             vi::common::vector2 particleSize;
+            vi::common::meshRGBA *particleMesh;
             
             std::vector<vi::scene::particle *> particles;
             
-            double time;
             bool autocreateParticle;
+            
             vi::scene::particle *templateParticle;
             uint32_t particlesPerFrame;
             uint32_t maxParticles;

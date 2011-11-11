@@ -6,9 +6,6 @@
 //  Unauthorized use is punishable by torture, mutilation, and vivisection.
 //
 
-#include <tr1/functional>
-#include <algorithm>
-
 #import "ViContext.h"
 #import "ViParticleEmitter.h"
 
@@ -28,8 +25,21 @@ namespace vi
             
             mesh = new vi::common::meshRGBA(0, 0);
             
+            particleMesh = new vi::common::meshRGBA(4, 6);
+            particleMesh->addVertex(0.0, 1.0, 0.0, 0.0);
+            particleMesh->addVertex(1.0, 1.0, 1.0, 0.0);
+            particleMesh->addVertex(1.0, 0.0, 1.0, 1.0);
+            particleMesh->addVertex(0.0, 0.0, 0.0, 1.0);
+            
+            particleMesh->addIndex(0);
+            particleMesh->addIndex(3);
+            particleMesh->addIndex(1);
+            particleMesh->addIndex(2);
+            particleMesh->addIndex(1);
+            particleMesh->addIndex(3);
+            
+            
             templateParticle = NULL;
-            time = 0.0;
             
             orderFrontToBack    = true;
             autocreateParticle  = false;
@@ -40,6 +50,12 @@ namespace vi
         {
             delete material;
             delete mesh;
+            delete particleMesh;
+            
+            if(templateParticle)
+                delete templateParticle;
+            
+            
             
             std::vector<vi::scene::particle *>::iterator iterator;
             for(iterator=particles.begin(); iterator!=particles.end(); iterator++)
@@ -47,36 +63,25 @@ namespace vi
                 vi::scene::particle *particle = *iterator;
                 delete particle;
             }
-            
-            if(templateParticle)
-                delete templateParticle;
         }
         
         
         
         void particleEmitter::visit(double timestep)
         {
-            time += timestep;
             sceneNode::visit(timestep);
             
-            std::vector<vi::scene::particle *> livingParticles;
-            std::vector<vi::scene::particle *>::iterator iterator;
-            for(iterator=particles.begin(); iterator!=particles.end(); iterator++)
+            for(int32_t i=(int32_t)particles.size()-1; i>=0; i--)
             {
-                vi::scene::particle *particle = *iterator;
+                vi::scene::particle *particle = particles[i];
                 particle->visit(timestep);
                 
                 if(particle->lifespan <= 0.0)
                 {
                     delete particle;
-                    continue;
+                    particles.erase(particles.begin() + i);
                 }
-                
-                livingParticles.push_back(particle);
             }
-            
-            
-            particles = livingParticles;
             
             if(autocreateParticle && particles.size() < maxParticles)
             {
@@ -84,32 +89,86 @@ namespace vi
                 for(uint32_t i=0; i<spawnParticles; i++)
                 {
                     vi::scene::particle *particle = templateParticle->recreate();
-                    particle->time = time;
                     particle->visit(0.0);
                     
                     particles.push_back(particle);
                 }
             }
             
+            
+            // Generate the mesh...
             if(particles.size() > 0)
             {
-                std::sort(particles.begin(), particles.end(), std::tr1::bind(&particleEmitter::particlePredicate, this, std::tr1::placeholders::_1, std::tr1::placeholders::_2));
-                
                 mesh->vertexCount = 0;
                 mesh->indexCount = 0;
                 
-                std::vector<vi::scene::particle *>::iterator iterator;
-                for(iterator=particles.begin(); iterator!=particles.end(); iterator++)
+                vi::common::vertexRGBA *vertices = particleMesh->getVertices();                
+                
+                if(orderFrontToBack)
                 {
-                    vi::scene::particle *particle = *iterator;
-                    mesh->addMesh(particle->mesh, particle->position, particleSize * particle->scale);
+                    std::vector<vi::scene::particle *>::iterator iterator;
+                    for(iterator=particles.begin(); iterator!=particles.end(); iterator++)
+                    {
+                        vi::scene::particle *particle = *iterator;
+                        
+                        vertices[0].r = particle->color.r;
+                        vertices[0].g = particle->color.g;
+                        vertices[0].b = particle->color.b;
+                        vertices[0].a = particle->color.a;
+                        
+                        vertices[1].r = particle->color.r;
+                        vertices[1].g = particle->color.g;
+                        vertices[1].b = particle->color.b;
+                        vertices[1].a = particle->color.a;
+                        
+                        vertices[2].r = particle->color.r;
+                        vertices[2].g = particle->color.g;
+                        vertices[2].b = particle->color.b;
+                        vertices[2].a = particle->color.a;
+                        
+                        vertices[3].r = particle->color.r;
+                        vertices[3].g = particle->color.g;
+                        vertices[3].b = particle->color.b;
+                        vertices[3].a = particle->color.a;
+                        
+                        mesh->addMesh(particleMesh, particle->position, particleSize * particle->scale);
+                    }
+                }
+                else
+                {
+                    std::vector<vi::scene::particle *>::reverse_iterator iterator;
+                    for(iterator=particles.rbegin(); iterator!=particles.rend(); iterator++)
+                    {
+                        vi::scene::particle *particle = *iterator;
+                        
+                        vertices[0].r = particle->color.r;
+                        vertices[0].g = particle->color.g;
+                        vertices[0].b = particle->color.b;
+                        vertices[0].a = particle->color.a;
+                        
+                        vertices[1].r = particle->color.r;
+                        vertices[1].g = particle->color.g;
+                        vertices[1].b = particle->color.b;
+                        vertices[1].a = particle->color.a;
+                        
+                        vertices[2].r = particle->color.r;
+                        vertices[2].g = particle->color.g;
+                        vertices[2].b = particle->color.b;
+                        vertices[2].a = particle->color.a;
+                        
+                        vertices[3].r = particle->color.r;
+                        vertices[3].g = particle->color.g;
+                        vertices[3].b = particle->color.b;
+                        vertices[3].a = particle->color.a;
+                        
+                        mesh->addMesh(particleMesh, particle->position, particleSize * particle->scale);
+                    }
                 }
             }
         }
         
         void particleEmitter::emitParticle(vi::scene::particle *particle)
         {
-            particle->time = time;
             particles.push_back(particle);
         }
         
@@ -125,10 +184,10 @@ namespace vi
             maxParticles = tmaxParticles;
         }
         
-        
-        bool particleEmitter::particlePredicate(particle *particleA, particle *particleB)
+        void particleEmitter::updateAutoEmitting(uint32_t tparticlesPerFrame, uint32_t tmaxParticles)
         {
-            return (orderFrontToBack) ? particleA->time < particleB->time : particleA->time > particleB->time;
+            particlesPerFrame = tparticlesPerFrame;
+            maxParticles = tmaxParticles;
         }
     }
 }

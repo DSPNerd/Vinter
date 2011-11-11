@@ -15,11 +15,8 @@ namespace vi
 {
     namespace scene
     {
-        class particleEmitter;
-        
         class particle
         {
-        friend class particleEmitter;
         public:
             particle();
             virtual ~particle();
@@ -33,12 +30,6 @@ namespace vi
             
             vi::common::vector2 position;
             vi::graphic::color  color;
-            
-        protected:
-            vi::common::meshRGBA *mesh;
-            
-        private:
-            double time;
         };
         
         
@@ -80,7 +71,6 @@ namespace vi
             
             virtual particle *recreate();
             virtual void visit(double timestep);
-            
             
         private:
             GLfloat scaleChange;

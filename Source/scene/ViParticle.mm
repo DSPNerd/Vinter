@@ -14,29 +14,14 @@ namespace vi
     {
         particle::particle()
         {
-            mesh = new vi::common::meshRGBA(4, 6);
-            mesh->addVertex(0.0, 1.0, 0.0, 0.0);
-            mesh->addVertex(1.0, 1.0, 1.0, 0.0);
-            mesh->addVertex(1.0, 0.0, 1.0, 1.0);
-            mesh->addVertex(0.0, 0.0, 0.0, 1.0);
-            
-            mesh->addIndex(0);
-            mesh->addIndex(3);
-            mesh->addIndex(1);
-            mesh->addIndex(2);
-            mesh->addIndex(1);
-            mesh->addIndex(3);
-            
             lifespan = 1.0;
             scale = 1.0;
         }
         
         particle::~particle()
         {
-            delete mesh;
         }
-        
-        
+
         particle *particle::recreate()
         {
             return new particle();
@@ -45,27 +30,6 @@ namespace vi
         void particle::visit(double timestep)
         {
             lifespan -= timestep;
-            
-            vi::common::vertexRGBA *vertices = mesh->getVertices();
-            vertices[0].r = color.r;
-            vertices[0].g = color.g;
-            vertices[0].b = color.b;
-            vertices[0].a = color.a;
-            
-            vertices[1].r = color.r;
-            vertices[1].g = color.g;
-            vertices[1].b = color.b;
-            vertices[1].a = color.a;
-            
-            vertices[2].r = color.r;
-            vertices[2].g = color.g;
-            vertices[2].b = color.b;
-            vertices[2].a = color.a;
-            
-            vertices[3].r = color.r;
-            vertices[3].g = color.g;
-            vertices[3].b = color.b;
-            vertices[3].a = color.a;
         }
         
         
