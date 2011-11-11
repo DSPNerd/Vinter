@@ -172,7 +172,7 @@ namespace vi
             renderMesh(node->mesh, isUINode, node->matrix);
         }
         
-        void rendererOSX::renderMesh(vi::common::mesh *mesh, bool isUIMesh, vi::common::matrix4x4 const& matrix)
+        void rendererOSX::renderMesh(vi::common::__mesh *mesh, bool isUIMesh, vi::common::matrix4x4 const& matrix)
         {
             vi::common::matrix4x4 cameraMatrix = !isUIMesh ? currentCamera->viewMatrix : vi::common::matrix4x4();
             
@@ -201,39 +201,52 @@ namespace vi
             }
             
             
-            std::vector<vi::graphic::materialParameter>::iterator iterator;
-            for(iterator=currentMaterial->parameter.begin(); iterator!=currentMaterial->parameter.end(); iterator++)
-            {
-                vi::graphic::materialParameter parameter = *iterator;
-                
-                if(parameter.location == -1)
-                    continue;
-                
-                
-                switch(parameter.type)
+            do {
+                std::vector<vi::graphic::materialParameter>::iterator iterator;
+                for(iterator=currentMaterial->parameter.begin(); iterator!=currentMaterial->parameter.end(); iterator++)
                 {
-                    case vi::graphic::materialParameterTypeInt:
+                    vi::graphic::materialParameter parameter = *iterator;
+                    
+                    switch(parameter.type)
                     {
-                        uniformIvFuncs[parameter.count - 1](parameter.location, parameter.size, (const GLint *)parameter.data);
+                        case vi::graphic::materialParameterTypeInt:
+                        {
+                            uniformIvFuncs[parameter.count - 1](parameter.location, parameter.size, (const GLint *)parameter.data);
+                        }
+                            break;
+                            
+                        case vi::graphic::materialParameterTypeFloat:
+                        {
+                            uniformFvFuncs[parameter.count - 1](parameter.location, parameter.size, (const GLfloat *)parameter.data);
+                        }
+                            break;
+                            
+                        case vi::graphic::materialParameterTypeMatrix:
+                        {
+                            uniformMatrixFvFuncs[parameter.count - 2](parameter.location, parameter.size, GL_FALSE, (const GLfloat *)parameter.data);
+                        }
+                            break;
+                            
+                        default:
+                            break;
                     }
-                        break;
-                        
-                    case vi::graphic::materialParameterTypeFloat:
-                    {
-                        uniformFvFuncs[parameter.count - 1](parameter.location, parameter.size, (const GLfloat *)parameter.data);
-                    }
-                        break;
-                        
-                    case vi::graphic::materialParameterTypeMatrix:
-                    {
-                        uniformMatrixFvFuncs[parameter.count - 2](parameter.location, parameter.size, GL_FALSE, (const GLfloat *)parameter.data);
-                    }
-                        break;
-                        
-                    default:
-                        break;
                 }
             }
+            while(0);
+            
+            do {
+                std::vector<vi::graphic::vertexAttribute>::iterator iterator;
+                for(iterator=currentMaterial->attributes.begin(); iterator!=currentMaterial->attributes.end(); iterator++)
+                {
+                    vi::graphic::vertexAttribute attribute = *iterator;
+                    
+                    glEnableVertexAttribArray(attribute.location);
+                    glVertexAttribPointer(attribute.location, attribute.size, attribute.type, 0, attribute.stride, attribute.data);
+                }
+            } 
+            while(0);
+            
+            
             
             if(mesh->vbo == -1)
             {
@@ -249,18 +262,37 @@ namespace vi
                     if(currentMaterial->shader->texcoord0 != -1)
                         glDisableVertexAttribArray(currentMaterial->shader->texcoord0);
                     
+                    if(currentMaterial->shader->color != -1)
+                        glDisableVertexAttribArray(currentMaterial->shader->color);
                     
                     
-                    if(currentMaterial->shader->position != -1)
+                    
+                    if(mesh->features & vi::common::vertexFeaturesXYUV)
                     {
-                        glEnableVertexAttribArray(currentMaterial->shader->position);
-                        glVertexAttribPointer(currentMaterial->shader->position, 2, GL_FLOAT, 0, sizeof(vi::common::vertex), &mesh->vertices[0].x);
+                        vi::common::vertex *vertices = (vi::common::vertex *)mesh->vertices;
+                        
+                        if(currentMaterial->shader->position != -1)
+                        {
+                            glEnableVertexAttribArray(currentMaterial->shader->position);
+                            glVertexAttribPointer(currentMaterial->shader->position, 2, GL_FLOAT, 0, (GLsizei)mesh->vertexSize, &vertices[0].x);
+                        }
+                        
+                        if(currentMaterial->shader->texcoord0 != -1)
+                        {
+                            glEnableVertexAttribArray(currentMaterial->shader->texcoord0);
+                            glVertexAttribPointer(currentMaterial->shader->texcoord0, 2, GL_FLOAT, 0, (GLsizei)mesh->vertexSize, &vertices[0].u);
+                        }
                     }
                     
-                    if(currentMaterial->shader->texcoord0 != -1)
+                    if(mesh->features & vi::common::vertexFeaturesRGBA)
                     {
-                        glEnableVertexAttribArray(currentMaterial->shader->texcoord0);
-                        glVertexAttribPointer(currentMaterial->shader->texcoord0, 2, GL_FLOAT, 0, sizeof(vi::common::vertex), &mesh->vertices[0].u);
+                        vi::common::vertexRGBA *vertices = (vi::common::vertexRGBA *)mesh->vertices;
+                        
+                        if(currentMaterial->shader->color != -1)
+                        {
+                            glEnableVertexAttribArray(currentMaterial->shader->color);
+                            glVertexAttribPointer(currentMaterial->shader->color, 4, GL_FLOAT, 0, (GLsizei)mesh->vertexSize, &vertices[0].r);
+                        }
                     }
                 }
             }
@@ -276,17 +308,40 @@ namespace vi
                     if(currentMaterial->shader->texcoord0 != -1)
                         glDisableVertexAttribArray(currentMaterial->shader->texcoord0);
                     
+                    if(currentMaterial->shader->color != -1)
+                        glDisableVertexAttribArray(currentMaterial->shader->color);
                     
-                    if(currentMaterial->shader->position != -1)
+                    
+                    
+                    int offset = 0;
+                    if(mesh->features & vi::common::vertexFeaturesXYUV)
                     {
-                        glEnableVertexAttribArray(currentMaterial->shader->position);
-                        glVertexAttribPointer(currentMaterial->shader->position, 2, GL_FLOAT, 0, sizeof(vi::common::vertex), (const void *)0);
+                        if(currentMaterial->shader->position != -1)
+                        {
+                            glEnableVertexAttribArray(currentMaterial->shader->position);
+                            glVertexAttribPointer(currentMaterial->shader->position, 2, GL_FLOAT, 0, (GLsizei)mesh->vertexSize, (const void *)offset);
+                        }
+                        
+                        offset += 2 * sizeof(float);
+                        
+                        if(currentMaterial->shader->texcoord0 != -1)
+                        {
+                            glEnableVertexAttribArray(currentMaterial->shader->texcoord0);
+                            glVertexAttribPointer(currentMaterial->shader->texcoord0, 2, GL_FLOAT, 0, (GLsizei)mesh->vertexSize, (const void *)offset);
+                        }
+                        
+                        offset += 2 * sizeof(float);
                     }
                     
-                    if(currentMaterial->shader->texcoord0 != -1)
+                    if(mesh->features & vi::common::vertexFeaturesRGBA)
                     {
-                        glEnableVertexAttribArray(currentMaterial->shader->texcoord0);
-                        glVertexAttribPointer(currentMaterial->shader->texcoord0, 2, GL_FLOAT, 0, sizeof(vi::common::vertex), (const void *)8);
+                        if(currentMaterial->shader->color != -1)
+                        {
+                            glEnableVertexAttribArray(currentMaterial->shader->color);
+                            glVertexAttribPointer(currentMaterial->shader->color, 4, GL_FLOAT, 0, (GLsizei)mesh->vertexSize, (const void *)offset);
+                        }
+                        
+                        offset += 4 * sizeof(float);
                     }
                 }
             }
@@ -306,6 +361,18 @@ namespace vi
                 
 				glDrawElements(currentMaterial->drawMode, mesh->indexCount, GL_UNSIGNED_SHORT, 0);
 			}
+            
+            
+            do {
+                std::vector<vi::graphic::vertexAttribute>::iterator iterator;
+                for(iterator=currentMaterial->attributes.begin(); iterator!=currentMaterial->attributes.end(); iterator++)
+                {
+                    vi::graphic::vertexAttribute attribute = *iterator;
+                    
+                    glDisableVertexAttribArray(attribute.location);
+                }
+            } 
+            while(0);
             
             lastMesh = mesh;
             lastMesh->dirty = false;

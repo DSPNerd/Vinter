@@ -45,6 +45,19 @@ namespace vi
             color operator* (color const& other);
             color operator/ (color const& other);
             
+            
+            color operator+= (GLfloat other);
+            color operator-= (GLfloat other);
+            color operator*= (GLfloat other);
+            color operator/= (GLfloat other);
+            
+            color operator+ (GLfloat other);
+            color operator- (GLfloat other);
+            color operator* (GLfloat other);
+            color operator/ (GLfloat other);
+            
+            
+            
             /**
              * Interpolates between the color 1 and color 2.
              **/
@@ -53,7 +66,7 @@ namespace vi
              * Converts the color to an grayscale representation.
              **/
             void grayscale();
-            
+
             struct
             {
                 /**
@@ -73,9 +86,6 @@ namespace vi
                  **/
                 GLfloat a;
             };
-            
-        private:
-            void validateColor();
         };
     }
 }

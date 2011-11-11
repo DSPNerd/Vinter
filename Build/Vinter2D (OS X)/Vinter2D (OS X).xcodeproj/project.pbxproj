@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		E9009195143EC911005C78B8 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9A6ED5A140FB91F000CA08E /* Cocoa.framework */; };
 		E9009257143F0881005C78B8 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E96FABAD140FBE0400789448 /* OpenGL.framework */; };
+		E90BB0BB146DA04F0095403F /* ViParticle.h in Headers */ = {isa = PBXBuildFile; fileRef = E90BB0B7146DA04F0095403F /* ViParticle.h */; };
+		E90BB0BC146DA04F0095403F /* ViParticle.mm in Sources */ = {isa = PBXBuildFile; fileRef = E90BB0B8146DA04F0095403F /* ViParticle.mm */; };
+		E90BB0BD146DA04F0095403F /* ViParticle.mm in Sources */ = {isa = PBXBuildFile; fileRef = E90BB0B8146DA04F0095403F /* ViParticle.mm */; };
+		E90BB0BE146DA04F0095403F /* ViParticleEmitter.h in Headers */ = {isa = PBXBuildFile; fileRef = E90BB0B9146DA04F0095403F /* ViParticleEmitter.h */; };
+		E90BB0BF146DA04F0095403F /* ViParticleEmitter.mm in Sources */ = {isa = PBXBuildFile; fileRef = E90BB0BA146DA04F0095403F /* ViParticleEmitter.mm */; };
+		E90BB0C0146DA04F0095403F /* ViParticleEmitter.mm in Sources */ = {isa = PBXBuildFile; fileRef = E90BB0BA146DA04F0095403F /* ViParticleEmitter.mm */; };
 		E933B823141B925C00950978 /* Brick_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = E933B821141B925B00950978 /* Brick_normal.png */; };
 		E933B824141B925C00950978 /* Brick.png in Resources */ = {isa = PBXBuildFile; fileRef = E933B822141B925B00950978 /* Brick.png */; };
 		E9470BBD1450E3FC0016C5F5 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E9470BBC1450E3FC0016C5F5 /* libz.dylib */; };
@@ -217,6 +223,10 @@
 		E900927C143F090D005C78B8 /* Framework (OS X)-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Framework (OS X)-Prefix.pch"; sourceTree = "<group>"; };
 		E900927D143F090D005C78B8 /* Vinter2D (OS X)-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Vinter2D (OS X)-Info.plist"; sourceTree = "<group>"; };
 		E900927E143F090D005C78B8 /* Vinter2D (OS X)-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Vinter2D (OS X)-Prefix.pch"; sourceTree = "<group>"; };
+		E90BB0B7146DA04F0095403F /* ViParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViParticle.h; sourceTree = "<group>"; };
+		E90BB0B8146DA04F0095403F /* ViParticle.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViParticle.mm; sourceTree = "<group>"; };
+		E90BB0B9146DA04F0095403F /* ViParticleEmitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViParticleEmitter.h; sourceTree = "<group>"; };
+		E90BB0BA146DA04F0095403F /* ViParticleEmitter.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViParticleEmitter.mm; sourceTree = "<group>"; };
 		E933B821141B925B00950978 /* Brick_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Brick_normal.png; sourceTree = "<group>"; };
 		E933B822141B925B00950978 /* Brick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Brick.png; sourceTree = "<group>"; };
 		E9470BBC1450E3FC0016C5F5 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -652,6 +662,10 @@
 			children = (
 				E9DD19E6146B103B00C2A4B3 /* ViCamera.h */,
 				E9DD19E7146B103B00C2A4B3 /* ViCamera.mm */,
+				E90BB0B7146DA04F0095403F /* ViParticle.h */,
+				E90BB0B8146DA04F0095403F /* ViParticle.mm */,
+				E90BB0B9146DA04F0095403F /* ViParticleEmitter.h */,
+				E90BB0BA146DA04F0095403F /* ViParticleEmitter.mm */,
 				E9DD19E8146B103B00C2A4B3 /* ViRenderer.h */,
 				E9DD19E9146B103B00C2A4B3 /* ViRendererOSX.h */,
 				E9DD19EA146B103B00C2A4B3 /* ViRendererOSX.mm */,
@@ -745,6 +759,8 @@
 				E9DD1AB1146B103B00C2A4B3 /* ViTMXLayer.h in Headers */,
 				E9DD1AB4146B103B00C2A4B3 /* ViTMXNode.h in Headers */,
 				E9DD1AB9146B103B00C2A4B3 /* Vinter.h in Headers */,
+				E90BB0BB146DA04F0095403F /* ViParticle.h in Headers */,
+				E90BB0BE146DA04F0095403F /* ViParticleEmitter.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -903,6 +919,8 @@
 				E9DD1AB0146B103B00C2A4B3 /* ViSpriteFactory.mm in Sources */,
 				E9DD1AB3146B103B00C2A4B3 /* ViTMXLayer.mm in Sources */,
 				E9DD1AB6146B103B00C2A4B3 /* ViTMXNode.mm in Sources */,
+				E90BB0BD146DA04F0095403F /* ViParticle.mm in Sources */,
+				E90BB0C0146DA04F0095403F /* ViParticleEmitter.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -974,6 +992,8 @@
 				E9DD1AAF146B103B00C2A4B3 /* ViSpriteFactory.mm in Sources */,
 				E9DD1AB2146B103B00C2A4B3 /* ViTMXLayer.mm in Sources */,
 				E9DD1AB5146B103B00C2A4B3 /* ViTMXNode.mm in Sources */,
+				E90BB0BC146DA04F0095403F /* ViParticle.mm in Sources */,
+				E90BB0BF146DA04F0095403F /* ViParticleEmitter.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

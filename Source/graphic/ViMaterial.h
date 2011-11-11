@@ -23,8 +23,8 @@ namespace vi
          **/
         typedef enum
         {
-            materialParameterTypeInt /** <Specifies an integer type**/,
-            materialParameterTypeFloat /** <Specifies an floating point type**/,
+            materialParameterTypeInt, /** <Specifies an integer type**/
+            materialParameterTypeFloat, /** <Specifies an floating point type**/
             materialParameterTypeMatrix /** <Specifies an floating point matrix type**/
         } materialParameterType;
         
@@ -65,6 +65,18 @@ namespace vi
             uint32_t size;
         };
         
+        class vertexAttribute
+        {
+        public:
+            std::string name;
+            GLuint location;
+            
+            void *data;
+            GLenum type;
+            GLuint size;
+            GLsizei stride;
+        };
+        
         
         /**
          * @brief Class that represents a rendering material
@@ -87,6 +99,7 @@ namespace vi
              * @return True if the parameter could be created, otherwise false (this might be the case if there was no such uniform variable in the shader)
              **/
             bool addParameter(std::string const& name, void *data, materialParameterType type, uint32_t count, uint32_t size);
+            bool addAttribute(std::string const& name, void *data, GLenum type, uint32_t size, uint32_t stride);
 
             
             /**
@@ -134,7 +147,7 @@ namespace vi
              * List of custom shader variables
              **/
             std::vector<materialParameter> parameter;
-            
+            std::vector<vertexAttribute> attributes;
             
             /**
              * The shader object that should be used together with the material

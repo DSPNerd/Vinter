@@ -21,7 +21,8 @@ namespace vi
         {
             defaultShaderTexture /** <Texture shader**/,
             defaultShaderShape /** <Shape shader**/,
-            defaultShaderSprite /** <Sprite shader**/
+            defaultShaderSprite /** <Sprite shader**/,
+            defaultShaderParticle
         } defaultShader;
         
         /**
@@ -95,6 +96,8 @@ namespace vi
              * @remark The shader will automatically get the location if you add a variable with the name vertTexcoord1 into your shader.
              **/
             GLuint texcoord1;
+            
+            GLuint color;
             
         private:
             bool create(NSString *vertexPath, NSString *fragmentPath);

@@ -26,6 +26,9 @@
     
     vi::input::responder *responder;
     vi::common::objCBridge bridge;
+    
+    vi::scene::baseParticleEffect effect;
+    vi::scene::particleEmitter *emitter;
 }
 
 @end

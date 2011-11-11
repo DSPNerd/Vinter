@@ -32,6 +32,8 @@
 #include "chipmunk.h"
 #endif
 
+#include <cstdlib>
+
 /**
  * @defgroup ViBase Base stuff
  * @{
@@ -63,6 +65,7 @@
  **/
 #define ViDegreeToRadian(degrees) (degrees) * M_PI / 180.0f
 
+#define ViRandom(value) (((((float)rand()) / RAND_MAX) * value) - value * 0.5)
 
 #define ViDeprecated __attribute__((deprecated))
 #define ViDeprecatedLog() do{static bool logged=false; if(!logged){ViLog(@"%s is deprecated! You can and should remove all calls to it.", __PRETTY_FUNCTION__); logged=true;}}while(0)
@@ -87,4 +90,3 @@
 /**
  * @}
  **/
-

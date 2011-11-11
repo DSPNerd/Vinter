@@ -25,6 +25,7 @@ namespace vi
             if(!trenderer)
                 throw "Trying to create a kernel instance without providing a renderer which is an illegal configuration!";
             
+            srand((unsigned int)time(NULL));
             scenes = new std::vector<vi::scene::scene *>();
             
             ownsContext = false;

@@ -174,6 +174,23 @@
     });
     
     
+    effect.lifespan = 3.0;
+    effect.randomLifespan = 2.0;
+    effect.speed = vi::common::vector2(0.0, 120.0);
+    effect.targetColor = vi::graphic::color(1.0, 1.0, 1.0, 0.0);
+    effect.targetScale = 0.4;
+    effect.randomTargetScale = 0.01;
+    
+    vi::scene::baseParticle *particle = new vi::scene::baseParticle(&effect);
+    
+    vi::graphic::texture *texture = new vi::graphic::texture("Particle.png");
+    emitter = new vi::scene::particleEmitter(texture);
+    emitter->setPosition(vi::common::vector2(0.0, 0.0));
+    emitter->autoEmitParticle(particle, 2, 800);
+    
+    scene->addNode(emitter);
+    
+    
     bridge = vi::common::objCBridge(self, @selector(handleEvent:));
     
     responder = new vi::input::responder();

@@ -31,6 +31,8 @@
 #import "ViShape.h"
 #import "ViTMXNode.h"
 #import "ViTMXLayer.h"
+#import "ViParticleEmitter.h"
+#import "ViParticle.h"
 
 #import "ViTexture.h"
 #import "ViTexturePVR.h"

@@ -18,8 +18,6 @@ namespace vi
             g = _g;
             b = _b;
             a = _a;
-            
-            validateColor();
         }
         
         color::color(color const& other)
@@ -72,7 +70,6 @@ namespace vi
             b += other.b;
             a += other.a;
 
-            validateColor();
             return *this;
         }
         
@@ -83,7 +80,6 @@ namespace vi
             b -= other.b;
             a -= other.a;
             
-            validateColor();
             return *this;
         }
         
@@ -94,7 +90,6 @@ namespace vi
             b *= other.b;
             a *= other.a;
             
-            validateColor();
             return *this;
         }
         
@@ -105,7 +100,6 @@ namespace vi
             b /= other.b;
             a /= other.a;
             
-            validateColor();
             return *this;
         }
         
@@ -120,7 +114,6 @@ namespace vi
             result.b += other.b;
             result.a += other.a;
             
-            result.validateColor();
             return result;
         }
         
@@ -133,7 +126,6 @@ namespace vi
             result.b -= other.b;
             result.a -= other.a;
             
-            result.validateColor();
             return result;
         }
         
@@ -146,7 +138,6 @@ namespace vi
             result.b *= other.b;
             result.a *= other.a;
             
-            result.validateColor();
             return result;
         }
         
@@ -159,10 +150,99 @@ namespace vi
             result.b /= other.b;
             result.a /= other.a;
             
-            result.validateColor();
             return result;
         }
         
+        
+        
+        color color::operator+= (GLfloat other)
+        {
+            r += other;
+            g += other;
+            b += other;
+            a += other;
+            
+            return *this;
+        }
+        
+        color color::operator-= (GLfloat other)
+        {
+            r -= other;
+            g -= other;
+            b -= other;
+            a -= other;
+            
+            return *this;
+        }
+        
+        color color::operator*= (GLfloat other)
+        {
+            r *= other;
+            g *= other;
+            b *= other;
+            a *= other;
+            
+            return *this;
+        }
+        
+        color color::operator/= (GLfloat other)
+        {
+            r /= other;
+            g /= other;
+            b /= other;
+            a /= other;
+            
+            return *this;
+        }
+        
+        
+        color color::operator+ (GLfloat other)
+        {
+            color result(*this);
+            
+            result.r += other;
+            result.g += other;
+            result.b += other;
+            result.a += other;
+            
+            return result;
+        }
+        
+        color color::operator- (GLfloat other)
+        {
+            color result(*this);
+            
+            result.r -= other;
+            result.g -= other;
+            result.b -= other;
+            result.a -= other;
+            
+            return result;
+        }
+        
+        color color::operator* (GLfloat other)
+        {
+            color result(*this);
+            
+            result.r *= other;
+            result.g *= other;
+            result.b *= other;
+            result.a *= other;
+            
+            return result;
+        }
+        
+        color color::operator/ (GLfloat other)
+        {
+            color result(*this);
+            
+            result.r /= other;
+            result.g /= other;
+            result.b /= other;
+            result.a /= other;
+            
+            return result;
+        }      
         
         
         
@@ -180,21 +260,6 @@ namespace vi
         {
             float grayscale = (0.2125f * r) + (0.7154f * g) + (0.0721f * b);
             r = g = b = grayscale;
-        }
-        
-        
-        
-        void color::validateColor()
-        {
-            r = MIN(r, 1.0f);
-            g = MIN(g, 1.0f);
-            b = MIN(b, 1.0f);
-            a = MIN(a, 1.0f);
-            
-            r = MAX(r, 0.0f);
-            g = MAX(g, 0.0f);
-            b = MAX(b, 0.0f);
-            a = MAX(a, 0.0f);
         }
     }
 }

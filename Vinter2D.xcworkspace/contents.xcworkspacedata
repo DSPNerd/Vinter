@@ -10,6 +10,9 @@
       <FileRef
          location = "group:Examples/Physics/Physics.xcodeproj">
       </FileRef>
+      <FileRef
+         location = "group:Examples/Particles/Particles.xcodeproj">
+      </FileRef>
    </Group>
    <FileRef
       location = "group:Build/Vinter2D (iOS)/Vinter2D (iOS).xcodeproj">

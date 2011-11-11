@@ -74,35 +74,17 @@ namespace vi
             if(!sharedMesh)
             {
                 sharedMesh = new vi::common::mesh(4, 6);
-                sharedMesh->vertices[0].x = 0.0;
-                sharedMesh->vertices[0].y = 1.0;
-                sharedMesh->vertices[0].u = 0.0;
-                sharedMesh->vertices[0].v = 0.0;
+                sharedMesh->addVertex(0.0, 1.0, 0.0, 0.0);
+                sharedMesh->addVertex(1.0, 1.0, 1.0, 0.0);
+                sharedMesh->addVertex(1.0, 0.0, 1.0, 1.0);
+                sharedMesh->addVertex(0.0, 0.0, 0.0, 1.0);
                 
-                sharedMesh->vertices[1].x = 1.0;
-                sharedMesh->vertices[1].y = 1.0;
-                sharedMesh->vertices[1].u = 1.0;
-                sharedMesh->vertices[1].v = 0.0;
-                
-                sharedMesh->vertices[2].x = 1.0;
-                sharedMesh->vertices[2].y = 0.0;
-                sharedMesh->vertices[2].u = 1.0;
-                sharedMesh->vertices[2].v = 1.0;
-                
-                sharedMesh->vertices[3].x = 0.0;
-                sharedMesh->vertices[3].y = 0.0;
-                sharedMesh->vertices[3].u = 0.0;
-                sharedMesh->vertices[3].v = 1.0;
-                
-                sharedMesh->indices[0] = 0;
-                sharedMesh->indices[1] = 3;
-                sharedMesh->indices[2] = 1;
-                sharedMesh->indices[3] = 2;
-                sharedMesh->indices[4] = 1;
-                sharedMesh->indices[5] = 3;
-                
-                sharedMesh->vertexCount = 4;
-                sharedMesh->indexCount  = 6;
+                sharedMesh->addIndex(0);
+                sharedMesh->addIndex(3);
+                sharedMesh->addIndex(1);
+                sharedMesh->addIndex(2);
+                sharedMesh->addIndex(1);
+                sharedMesh->addIndex(3);
                 
                 ownsMesh = true;
             }
@@ -126,18 +108,20 @@ namespace vi
         {
             sceneNode::setSize(tsize);
             if(mesh && ownsMesh && writeSizeInformationIntoMesh)
-            {
-                mesh->vertices[0].x = 0.0;
-                mesh->vertices[0].y = size.y;
+            {                
+                vi::common::vertex *vertices = ((vi::common::mesh *)mesh)->getVertices();
                 
-                mesh->vertices[1].x = size.x;
-                mesh->vertices[1].y = size.y;
+                vertices[0].x = 0.0;
+                vertices[0].y = size.y;
                 
-                mesh->vertices[2].x = size.x;
-                mesh->vertices[2].y = 0.0;
+                vertices[1].x = size.x;
+                vertices[1].y = size.y;
                 
-                mesh->vertices[3].x = 0.0;
-                mesh->vertices[3].y = 0.0;
+                vertices[2].x = size.x;
+                vertices[2].y = 0.0;
+                
+                vertices[3].x = 0.0;
+                vertices[3].y = 0.0;
             }
         }
         
@@ -186,17 +170,19 @@ namespace vi
                     CGFloat endU = (begin.x + size.x) / texture->getWidth();
                     CGFloat endV = (begin.y + size.y) / texture->getHeight();
                     
-                    mesh->vertices[0].u = atlasX;
-                    mesh->vertices[0].v = atlasY;
+                    vi::common::vertex *vertices = ((vi::common::mesh *)mesh)->getVertices();
                     
-                    mesh->vertices[1].u = endU;
-                    mesh->vertices[1].v = atlasY;
+                    vertices[0].u = atlasX;
+                    vertices[0].v = atlasY;
                     
-                    mesh->vertices[2].u = endU;
-                    mesh->vertices[2].v = endV;
+                    vertices[1].u = endU;
+                    vertices[1].v = atlasY;
                     
-                    mesh->vertices[3].u = atlasX;
-                    mesh->vertices[3].v = endV;
+                    vertices[2].u = endU;
+                    vertices[2].v = endV;
+                    
+                    vertices[3].u = atlasX;
+                    vertices[3].v = endV;
                 }
             }
             

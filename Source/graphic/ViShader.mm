@@ -36,6 +36,10 @@ namespace vi
                     generateShaderFromPaths("/Vinter.bundle/Shaders/ViSpriteShader.vsh", "/Vinter.bundle/Shaders/ViSpriteShader.fsh");
                     break;
                     
+                case defaultShaderParticle:
+                    generateShaderFromPaths("/Vinter.bundle/Shaders/ViParticleShader.vsh", "/Vinter.bundle/Shaders/ViParticleShader.fsh");
+                    break;
+                    
                 default:
                     throw "Unknown default shader!";
                     break;
@@ -100,6 +104,7 @@ namespace vi
             position = glGetAttribLocation(program, "vertPos");
             texcoord0 = glGetAttribLocation(program, "vertTexcoord0");
             texcoord1 = glGetAttribLocation(program, "vertTexcoord1");
+            color = glGetAttribLocation(program, "vertColor");
         }
         
         

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E90BB0CD146DA0810095403F /* ViParticle.mm in Sources */ = {isa = PBXBuildFile; fileRef = E90BB0CA146DA0810095403F /* ViParticle.mm */; };
+		E90BB0CE146DA0810095403F /* ViParticleEmitter.mm in Sources */ = {isa = PBXBuildFile; fileRef = E90BB0CC146DA0810095403F /* ViParticleEmitter.mm */; };
 		E99FD05E14505AD400C33CD3 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E99FD05D14505AD400C33CD3 /* Cocoa.framework */; };
 		E99FD08314505F1700C33CD3 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = E99FD07C14505F1700C33CD3 /* AppDelegate.mm */; };
 		E99FD08414505F1700C33CD3 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = E99FD07E14505F1700C33CD3 /* MainMenu.xib */; };
@@ -84,6 +86,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E90BB0C9146DA0810095403F /* ViParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViParticle.h; sourceTree = "<group>"; };
+		E90BB0CA146DA0810095403F /* ViParticle.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViParticle.mm; sourceTree = "<group>"; };
+		E90BB0CB146DA0810095403F /* ViParticleEmitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViParticleEmitter.h; sourceTree = "<group>"; };
+		E90BB0CC146DA0810095403F /* ViParticleEmitter.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViParticleEmitter.mm; sourceTree = "<group>"; };
 		E99FD05914505AD400C33CD3 /* TMXMaps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TMXMaps.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E99FD05D14505AD400C33CD3 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		E99FD06014505AD400C33CD3 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -415,6 +421,10 @@
 			children = (
 				E99FD0CF14505F5C00C33CD3 /* ViCamera.h */,
 				E99FD0D014505F5C00C33CD3 /* ViCamera.mm */,
+				E90BB0C9146DA0810095403F /* ViParticle.h */,
+				E90BB0CA146DA0810095403F /* ViParticle.mm */,
+				E90BB0CB146DA0810095403F /* ViParticleEmitter.h */,
+				E90BB0CC146DA0810095403F /* ViParticleEmitter.mm */,
 				E99FD0D114505F5C00C33CD3 /* ViRenderer.h */,
 				E99FD0D214505F5C00C33CD3 /* ViRendererOSX.h */,
 				E99FD0D314505F5C00C33CD3 /* ViRendererOSX.mm */,
@@ -664,6 +674,8 @@
 				E9DD17BC146B0A9600C2A4B3 /* cpSpatialIndex.c in Sources */,
 				E9DD17BD146B0A9600C2A4B3 /* cpSweep1D.c in Sources */,
 				E9DD17BE146B0A9600C2A4B3 /* cpVect.c in Sources */,
+				E90BB0CD146DA0810095403F /* ViParticle.mm in Sources */,
+				E90BB0CE146DA0810095403F /* ViParticleEmitter.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

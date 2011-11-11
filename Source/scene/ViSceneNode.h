@@ -189,7 +189,7 @@ namespace vi
             /**
              * The mesh of the node. Default value is NULL
              **/
-            vi::common::mesh *mesh;
+            vi::common::__mesh *mesh;
             /**
              * The material of the node. Default value is NULL
              **/

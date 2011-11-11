@@ -1,0 +1,753 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E91F0ECB146C055F00503058 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E91F0ECA146C055F00503058 /* Cocoa.framework */; };
+		E91F0EF0146C05BE00503058 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = E91F0EE9146C05BE00503058 /* AppDelegate.mm */; };
+		E91F0EF1146C05BE00503058 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = E91F0EEB146C05BE00503058 /* MainMenu.xib */; };
+		E91F0EF2146C05BE00503058 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E91F0EED146C05BE00503058 /* main.m */; };
+		E91F0F7C146C05F300503058 /* chipmunk.c in Sources */ = {isa = PBXBuildFile; fileRef = E91F0F11146C05F200503058 /* chipmunk.c */; };
+		E91F0F7D146C05F300503058 /* cpConstraint.c in Sources */ = {isa = PBXBuildFile; fileRef = E91F0F13146C05F200503058 /* cpConstraint.c */; };
+		E91F0F7E146C05F300503058 /* cpDampedRotarySpring.c in Sources */ = {isa = PBXBuildFile; fileRef = E91F0F14146C05F200503058 /* cpDampedRotarySpring.c */; };
+		E91F0F7F146C05F300503058 /* cpDampedSpring.c in Sources */ = {isa = PBXBuildFile; fileRef = E91F0F15146C05F200503058 /* cpDampedSpring.c */; };
+		E91F0F80146C05F300503058 /* cpGearJoint.c in Sources */ = {isa = PBXBuildFile; fileRef = E91F0F16146C05F200503058 /* cpGearJoint.c */; };
+		E91F0F81146C05F300503058 /* cpGrooveJoint.c in Sources */ = {isa = PBXBuildFile; fileRef = E91F0F17146C05F200503058 /* cpGrooveJoint.c */; };
+		E91F0F82146C05F300503058 /* cpPinJoint.c in Sources */ = {isa = PBXBuildFile; fileRef = E91F0F18146C05F200503058 /* cpPinJoint.c */; };
+		E91F0F83146C05F300503058 /* cpPivotJoint.c in Sources */ = {isa = PBXBuildFile; fileRef = E91F0F19146C05F200503058 /* cpPivotJoint.c */; };
+		E91F0F84146C05F300503058 /* cpRatchetJoint.c in Sources */ = {isa = PBXBuildFile; fileRef = E91F0F1A146C05F200503058 /* cpRatchetJoint.c */; };
+		E91F0F85146C05F300503058 /* cpRotaryLimitJoint.c in Sources */ = {isa = PBXBuildFile; fileRef = E91F0F1B146C05F200503058 /* cpRotaryLimitJoint.c */; };
+		E91F0F86146C05F300503058 /* cpSimpleMotor.c in Sources */ = {isa = PBXBuildFile; fileRef = E91F0F1C146C05F200503058 /* cpSimpleMotor.c */; };
+		E91F0F87146C05F300503058 /* cpSlideJoint.c in Sources */ = {isa = PBXBuildFile; fileRef = E91F0F1D146C05F200503058 /* cpSlideJoint.c */; };
+		E91F0F88146C05F300503058 /* cpArbiter.c in Sources */ = {isa = PBXBuildFile; fileRef = E91F0F1E146C05F200503058 /* cpArbiter.c */; };
+		E91F0F89146C05F300503058 /* cpArray.c in Sources */ = {isa = PBXBuildFile; fileRef = E91F0F1F146C05F200503058 /* cpArray.c */; };
+		E91F0F8A146C05F300503058 /* cpBB.c in Sources */ = {isa = PBXBuildFile; fileRef = E91F0F20146C05F200503058 /* cpBB.c */; };
+		E91F0F8B146C05F300503058 /* cpBBTree.c in Sources */ = {isa = PBXBuildFile; fileRef = E91F0F21146C05F200503058 /* cpBBTree.c */; };
+		E91F0F8C146C05F300503058 /* cpBody.c in Sources */ = {isa = PBXBuildFile; fileRef = E91F0F22146C05F200503058 /* cpBody.c */; };
+		E91F0F8D146C05F300503058 /* cpCollision.c in Sources */ = {isa = PBXBuildFile; fileRef = E91F0F23146C05F200503058 /* cpCollision.c */; };
+		E91F0F8E146C05F300503058 /* cpHashSet.c in Sources */ = {isa = PBXBuildFile; fileRef = E91F0F24146C05F200503058 /* cpHashSet.c */; };
+		E91F0F8F146C05F300503058 /* cpPolyShape.c in Sources */ = {isa = PBXBuildFile; fileRef = E91F0F25146C05F200503058 /* cpPolyShape.c */; };
+		E91F0F90146C05F300503058 /* cpShape.c in Sources */ = {isa = PBXBuildFile; fileRef = E91F0F26146C05F200503058 /* cpShape.c */; };
+		E91F0F91146C05F300503058 /* cpSpace.c in Sources */ = {isa = PBXBuildFile; fileRef = E91F0F27146C05F200503058 /* cpSpace.c */; };
+		E91F0F92146C05F300503058 /* cpSpaceComponent.c in Sources */ = {isa = PBXBuildFile; fileRef = E91F0F28146C05F200503058 /* cpSpaceComponent.c */; };
+		E91F0F93146C05F300503058 /* cpSpaceHash.c in Sources */ = {isa = PBXBuildFile; fileRef = E91F0F29146C05F200503058 /* cpSpaceHash.c */; };
+		E91F0F94146C05F300503058 /* cpSpaceQuery.c in Sources */ = {isa = PBXBuildFile; fileRef = E91F0F2A146C05F200503058 /* cpSpaceQuery.c */; };
+		E91F0F95146C05F300503058 /* cpSpaceStep.c in Sources */ = {isa = PBXBuildFile; fileRef = E91F0F2B146C05F200503058 /* cpSpaceStep.c */; };
+		E91F0F96146C05F300503058 /* cpSpatialIndex.c in Sources */ = {isa = PBXBuildFile; fileRef = E91F0F2C146C05F200503058 /* cpSpatialIndex.c */; };
+		E91F0F97146C05F300503058 /* cpSweep1D.c in Sources */ = {isa = PBXBuildFile; fileRef = E91F0F2D146C05F200503058 /* cpSweep1D.c */; };
+		E91F0F98146C05F300503058 /* cpVect.c in Sources */ = {isa = PBXBuildFile; fileRef = E91F0F2E146C05F200503058 /* cpVect.c */; };
+		E91F0F99146C05F300503058 /* ViAsset.mm in Sources */ = {isa = PBXBuildFile; fileRef = E91F0F33146C05F200503058 /* ViAsset.mm */; };
+		E91F0F9A146C05F300503058 /* ViBridge.mm in Sources */ = {isa = PBXBuildFile; fileRef = E91F0F36146C05F200503058 /* ViBridge.mm */; };
+		E91F0F9B146C05F300503058 /* ViContext.mm in Sources */ = {isa = PBXBuildFile; fileRef = E91F0F38146C05F200503058 /* ViContext.mm */; };
+		E91F0F9C146C05F300503058 /* ViDataPool.mm in Sources */ = {isa = PBXBuildFile; fileRef = E91F0F3A146C05F200503058 /* ViDataPool.mm */; };
+		E91F0F9D146C05F300503058 /* ViKernel.mm in Sources */ = {isa = PBXBuildFile; fileRef = E91F0F3C146C05F200503058 /* ViKernel.mm */; };
+		E91F0F9E146C05F300503058 /* ViLine.mm in Sources */ = {isa = PBXBuildFile; fileRef = E91F0F3E146C05F200503058 /* ViLine.mm */; };
+		E91F0F9F146C05F300503058 /* ViMatrix4x4.mm in Sources */ = {isa = PBXBuildFile; fileRef = E91F0F40146C05F200503058 /* ViMatrix4x4.mm */; };
+		E91F0FA0146C05F300503058 /* ViMesh.mm in Sources */ = {isa = PBXBuildFile; fileRef = E91F0F42146C05F200503058 /* ViMesh.mm */; };
+		E91F0FA1146C05F300503058 /* ViQuadtree.mm in Sources */ = {isa = PBXBuildFile; fileRef = E91F0F44146C05F200503058 /* ViQuadtree.mm */; };
+		E91F0FA2146C05F300503058 /* ViRect.mm in Sources */ = {isa = PBXBuildFile; fileRef = E91F0F46146C05F200503058 /* ViRect.mm */; };
+		E91F0FA3146C05F300503058 /* ViTriangulate.mm in Sources */ = {isa = PBXBuildFile; fileRef = E91F0F48146C05F200503058 /* ViTriangulate.mm */; };
+		E91F0FA4146C05F300503058 /* ViVector2.mm in Sources */ = {isa = PBXBuildFile; fileRef = E91F0F4A146C05F200503058 /* ViVector2.mm */; };
+		E91F0FA5146C05F300503058 /* ViVector3.mm in Sources */ = {isa = PBXBuildFile; fileRef = E91F0F4C146C05F200503058 /* ViVector3.mm */; };
+		E91F0FA6146C05F300503058 /* ViXML.mm in Sources */ = {isa = PBXBuildFile; fileRef = E91F0F4E146C05F200503058 /* ViXML.mm */; };
+		E91F0FA7146C05F300503058 /* ViColor.mm in Sources */ = {isa = PBXBuildFile; fileRef = E91F0F51146C05F200503058 /* ViColor.mm */; };
+		E91F0FA8146C05F300503058 /* ViMaterial.mm in Sources */ = {isa = PBXBuildFile; fileRef = E91F0F53146C05F200503058 /* ViMaterial.mm */; };
+		E91F0FA9146C05F300503058 /* ViShader.mm in Sources */ = {isa = PBXBuildFile; fileRef = E91F0F55146C05F200503058 /* ViShader.mm */; };
+		E91F0FAA146C05F300503058 /* ViTexture.mm in Sources */ = {isa = PBXBuildFile; fileRef = E91F0F57146C05F200503058 /* ViTexture.mm */; };
+		E91F0FAB146C05F300503058 /* ViTexturePVR.mm in Sources */ = {isa = PBXBuildFile; fileRef = E91F0F59146C05F200503058 /* ViTexturePVR.mm */; };
+		E91F0FAC146C05F300503058 /* ViViewiOS.mm in Sources */ = {isa = PBXBuildFile; fileRef = E91F0F5B146C05F200503058 /* ViViewiOS.mm */; };
+		E91F0FAD146C05F300503058 /* ViViewOSX.mm in Sources */ = {isa = PBXBuildFile; fileRef = E91F0F5D146C05F200503058 /* ViViewOSX.mm */; };
+		E91F0FAE146C05F300503058 /* ViEvent.mm in Sources */ = {isa = PBXBuildFile; fileRef = E91F0F61146C05F200503058 /* ViEvent.mm */; };
+		E91F0FAF146C05F300503058 /* ViResponder.mm in Sources */ = {isa = PBXBuildFile; fileRef = E91F0F63146C05F200503058 /* ViResponder.mm */; };
+		E91F0FB0146C05F300503058 /* ViCamera.mm in Sources */ = {isa = PBXBuildFile; fileRef = E91F0F66146C05F200503058 /* ViCamera.mm */; };
+		E91F0FB1146C05F300503058 /* ViRendererOSX.mm in Sources */ = {isa = PBXBuildFile; fileRef = E91F0F69146C05F200503058 /* ViRendererOSX.mm */; };
+		E91F0FB2146C05F300503058 /* ViScene.mm in Sources */ = {isa = PBXBuildFile; fileRef = E91F0F6B146C05F200503058 /* ViScene.mm */; };
+		E91F0FB3146C05F300503058 /* ViSceneNode.mm in Sources */ = {isa = PBXBuildFile; fileRef = E91F0F6D146C05F200503058 /* ViSceneNode.mm */; };
+		E91F0FB4146C05F300503058 /* ViShape.mm in Sources */ = {isa = PBXBuildFile; fileRef = E91F0F6F146C05F200503058 /* ViShape.mm */; };
+		E91F0FB5146C05F300503058 /* ViSprite.mm in Sources */ = {isa = PBXBuildFile; fileRef = E91F0F71146C05F200503058 /* ViSprite.mm */; };
+		E91F0FB6146C05F300503058 /* ViSpriteBatch.mm in Sources */ = {isa = PBXBuildFile; fileRef = E91F0F73146C05F200503058 /* ViSpriteBatch.mm */; };
+		E91F0FB7146C05F300503058 /* ViSpriteFactory.mm in Sources */ = {isa = PBXBuildFile; fileRef = E91F0F75146C05F200503058 /* ViSpriteFactory.mm */; };
+		E91F0FB8146C05F300503058 /* ViTMXLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = E91F0F77146C05F200503058 /* ViTMXLayer.mm */; };
+		E91F0FB9146C05F300503058 /* ViTMXNode.mm in Sources */ = {isa = PBXBuildFile; fileRef = E91F0F79146C05F200503058 /* ViTMXNode.mm */; };
+		E91F0FBA146C05F300503058 /* Vinter.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E91F0F7A146C05F200503058 /* Vinter.bundle */; };
+		E91F0FBC146C060100503058 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E91F0FBB146C060100503058 /* OpenGL.framework */; };
+		E91F0FBE146C060D00503058 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E91F0FBD146C060D00503058 /* libz.dylib */; };
+		E91F0FC1146C084600503058 /* ViParticleEmitter.mm in Sources */ = {isa = PBXBuildFile; fileRef = E91F0FC0146C084600503058 /* ViParticleEmitter.mm */; };
+		E91F0FC4146C08B800503058 /* ViParticle.mm in Sources */ = {isa = PBXBuildFile; fileRef = E91F0FC3146C08B800503058 /* ViParticle.mm */; };
+		E951BAE4146C96DE0045B30B /* Particle.png in Resources */ = {isa = PBXBuildFile; fileRef = E951BAE3146C96DE0045B30B /* Particle.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		E91F0EC6146C055F00503058 /* Particles.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Particles.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E91F0ECA146C055F00503058 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		E91F0ECD146C055F00503058 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		E91F0ECE146C055F00503058 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		E91F0ECF146C055F00503058 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		E91F0EE8146C05BE00503058 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		E91F0EE9146C05BE00503058 /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
+		E91F0EEB146C05BE00503058 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
+		E91F0EED146C05BE00503058 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		E91F0EEE146C05BE00503058 /* Particles-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Particles-Info.plist"; sourceTree = "<group>"; };
+		E91F0EEF146C05BE00503058 /* Particles-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Particles-Prefix.pch"; sourceTree = "<group>"; };
+		E91F0EF7146C05F200503058 /* chipmunk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = chipmunk.h; sourceTree = "<group>"; };
+		E91F0EF8146C05F200503058 /* chipmunk_ffi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = chipmunk_ffi.h; sourceTree = "<group>"; };
+		E91F0EF9146C05F200503058 /* chipmunk_private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = chipmunk_private.h; sourceTree = "<group>"; };
+		E91F0EFA146C05F200503058 /* chipmunk_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = chipmunk_types.h; sourceTree = "<group>"; };
+		E91F0EFB146C05F200503058 /* chipmunk_unsafe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = chipmunk_unsafe.h; sourceTree = "<group>"; };
+		E91F0EFD146C05F200503058 /* cpConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpConstraint.h; sourceTree = "<group>"; };
+		E91F0EFE146C05F200503058 /* cpDampedRotarySpring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpDampedRotarySpring.h; sourceTree = "<group>"; };
+		E91F0EFF146C05F200503058 /* cpDampedSpring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpDampedSpring.h; sourceTree = "<group>"; };
+		E91F0F00146C05F200503058 /* cpGearJoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpGearJoint.h; sourceTree = "<group>"; };
+		E91F0F01146C05F200503058 /* cpGrooveJoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpGrooveJoint.h; sourceTree = "<group>"; };
+		E91F0F02146C05F200503058 /* cpPinJoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpPinJoint.h; sourceTree = "<group>"; };
+		E91F0F03146C05F200503058 /* cpPivotJoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpPivotJoint.h; sourceTree = "<group>"; };
+		E91F0F04146C05F200503058 /* cpRatchetJoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpRatchetJoint.h; sourceTree = "<group>"; };
+		E91F0F05146C05F200503058 /* cpRotaryLimitJoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpRotaryLimitJoint.h; sourceTree = "<group>"; };
+		E91F0F06146C05F200503058 /* cpSimpleMotor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpSimpleMotor.h; sourceTree = "<group>"; };
+		E91F0F07146C05F200503058 /* cpSlideJoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpSlideJoint.h; sourceTree = "<group>"; };
+		E91F0F08146C05F200503058 /* util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = util.h; sourceTree = "<group>"; };
+		E91F0F09146C05F200503058 /* cpArbiter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpArbiter.h; sourceTree = "<group>"; };
+		E91F0F0A146C05F200503058 /* cpBB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpBB.h; sourceTree = "<group>"; };
+		E91F0F0B146C05F200503058 /* cpBody.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpBody.h; sourceTree = "<group>"; };
+		E91F0F0C146C05F200503058 /* cpPolyShape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpPolyShape.h; sourceTree = "<group>"; };
+		E91F0F0D146C05F200503058 /* cpShape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpShape.h; sourceTree = "<group>"; };
+		E91F0F0E146C05F200503058 /* cpSpace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpSpace.h; sourceTree = "<group>"; };
+		E91F0F0F146C05F200503058 /* cpSpatialIndex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpSpatialIndex.h; sourceTree = "<group>"; };
+		E91F0F10146C05F200503058 /* cpVect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpVect.h; sourceTree = "<group>"; };
+		E91F0F11146C05F200503058 /* chipmunk.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = chipmunk.c; sourceTree = "<group>"; };
+		E91F0F13146C05F200503058 /* cpConstraint.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpConstraint.c; sourceTree = "<group>"; };
+		E91F0F14146C05F200503058 /* cpDampedRotarySpring.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpDampedRotarySpring.c; sourceTree = "<group>"; };
+		E91F0F15146C05F200503058 /* cpDampedSpring.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpDampedSpring.c; sourceTree = "<group>"; };
+		E91F0F16146C05F200503058 /* cpGearJoint.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpGearJoint.c; sourceTree = "<group>"; };
+		E91F0F17146C05F200503058 /* cpGrooveJoint.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpGrooveJoint.c; sourceTree = "<group>"; };
+		E91F0F18146C05F200503058 /* cpPinJoint.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpPinJoint.c; sourceTree = "<group>"; };
+		E91F0F19146C05F200503058 /* cpPivotJoint.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpPivotJoint.c; sourceTree = "<group>"; };
+		E91F0F1A146C05F200503058 /* cpRatchetJoint.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpRatchetJoint.c; sourceTree = "<group>"; };
+		E91F0F1B146C05F200503058 /* cpRotaryLimitJoint.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpRotaryLimitJoint.c; sourceTree = "<group>"; };
+		E91F0F1C146C05F200503058 /* cpSimpleMotor.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpSimpleMotor.c; sourceTree = "<group>"; };
+		E91F0F1D146C05F200503058 /* cpSlideJoint.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpSlideJoint.c; sourceTree = "<group>"; };
+		E91F0F1E146C05F200503058 /* cpArbiter.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpArbiter.c; sourceTree = "<group>"; };
+		E91F0F1F146C05F200503058 /* cpArray.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpArray.c; sourceTree = "<group>"; };
+		E91F0F20146C05F200503058 /* cpBB.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpBB.c; sourceTree = "<group>"; };
+		E91F0F21146C05F200503058 /* cpBBTree.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpBBTree.c; sourceTree = "<group>"; };
+		E91F0F22146C05F200503058 /* cpBody.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpBody.c; sourceTree = "<group>"; };
+		E91F0F23146C05F200503058 /* cpCollision.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpCollision.c; sourceTree = "<group>"; };
+		E91F0F24146C05F200503058 /* cpHashSet.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpHashSet.c; sourceTree = "<group>"; };
+		E91F0F25146C05F200503058 /* cpPolyShape.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpPolyShape.c; sourceTree = "<group>"; };
+		E91F0F26146C05F200503058 /* cpShape.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpShape.c; sourceTree = "<group>"; };
+		E91F0F27146C05F200503058 /* cpSpace.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpSpace.c; sourceTree = "<group>"; };
+		E91F0F28146C05F200503058 /* cpSpaceComponent.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpSpaceComponent.c; sourceTree = "<group>"; };
+		E91F0F29146C05F200503058 /* cpSpaceHash.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpSpaceHash.c; sourceTree = "<group>"; };
+		E91F0F2A146C05F200503058 /* cpSpaceQuery.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpSpaceQuery.c; sourceTree = "<group>"; };
+		E91F0F2B146C05F200503058 /* cpSpaceStep.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpSpaceStep.c; sourceTree = "<group>"; };
+		E91F0F2C146C05F200503058 /* cpSpatialIndex.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpSpatialIndex.c; sourceTree = "<group>"; };
+		E91F0F2D146C05F200503058 /* cpSweep1D.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpSweep1D.c; sourceTree = "<group>"; };
+		E91F0F2E146C05F200503058 /* cpVect.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpVect.c; sourceTree = "<group>"; };
+		E91F0F2F146C05F200503058 /* prime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = prime.h; sourceTree = "<group>"; };
+		E91F0F32146C05F200503058 /* ViAsset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViAsset.h; sourceTree = "<group>"; };
+		E91F0F33146C05F200503058 /* ViAsset.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViAsset.mm; sourceTree = "<group>"; };
+		E91F0F34146C05F200503058 /* ViBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViBase.h; sourceTree = "<group>"; };
+		E91F0F35146C05F200503058 /* ViBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViBridge.h; sourceTree = "<group>"; };
+		E91F0F36146C05F200503058 /* ViBridge.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViBridge.mm; sourceTree = "<group>"; };
+		E91F0F37146C05F200503058 /* ViContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViContext.h; sourceTree = "<group>"; };
+		E91F0F38146C05F200503058 /* ViContext.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViContext.mm; sourceTree = "<group>"; };
+		E91F0F39146C05F200503058 /* ViDataPool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViDataPool.h; sourceTree = "<group>"; };
+		E91F0F3A146C05F200503058 /* ViDataPool.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViDataPool.mm; sourceTree = "<group>"; };
+		E91F0F3B146C05F200503058 /* ViKernel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViKernel.h; sourceTree = "<group>"; };
+		E91F0F3C146C05F200503058 /* ViKernel.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViKernel.mm; sourceTree = "<group>"; };
+		E91F0F3D146C05F200503058 /* ViLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViLine.h; sourceTree = "<group>"; };
+		E91F0F3E146C05F200503058 /* ViLine.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViLine.mm; sourceTree = "<group>"; };
+		E91F0F3F146C05F200503058 /* ViMatrix4x4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViMatrix4x4.h; sourceTree = "<group>"; };
+		E91F0F40146C05F200503058 /* ViMatrix4x4.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViMatrix4x4.mm; sourceTree = "<group>"; };
+		E91F0F41146C05F200503058 /* ViMesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViMesh.h; sourceTree = "<group>"; };
+		E91F0F42146C05F200503058 /* ViMesh.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViMesh.mm; sourceTree = "<group>"; };
+		E91F0F43146C05F200503058 /* ViQuadtree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViQuadtree.h; sourceTree = "<group>"; };
+		E91F0F44146C05F200503058 /* ViQuadtree.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViQuadtree.mm; sourceTree = "<group>"; };
+		E91F0F45146C05F200503058 /* ViRect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViRect.h; sourceTree = "<group>"; };
+		E91F0F46146C05F200503058 /* ViRect.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViRect.mm; sourceTree = "<group>"; };
+		E91F0F47146C05F200503058 /* ViTriangulate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViTriangulate.h; sourceTree = "<group>"; };
+		E91F0F48146C05F200503058 /* ViTriangulate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViTriangulate.mm; sourceTree = "<group>"; };
+		E91F0F49146C05F200503058 /* ViVector2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViVector2.h; sourceTree = "<group>"; };
+		E91F0F4A146C05F200503058 /* ViVector2.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViVector2.mm; sourceTree = "<group>"; };
+		E91F0F4B146C05F200503058 /* ViVector3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViVector3.h; sourceTree = "<group>"; };
+		E91F0F4C146C05F200503058 /* ViVector3.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViVector3.mm; sourceTree = "<group>"; };
+		E91F0F4D146C05F200503058 /* ViXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViXML.h; sourceTree = "<group>"; };
+		E91F0F4E146C05F200503058 /* ViXML.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViXML.mm; sourceTree = "<group>"; };
+		E91F0F50146C05F200503058 /* ViColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViColor.h; sourceTree = "<group>"; };
+		E91F0F51146C05F200503058 /* ViColor.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViColor.mm; sourceTree = "<group>"; };
+		E91F0F52146C05F200503058 /* ViMaterial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViMaterial.h; sourceTree = "<group>"; };
+		E91F0F53146C05F200503058 /* ViMaterial.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViMaterial.mm; sourceTree = "<group>"; };
+		E91F0F54146C05F200503058 /* ViShader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViShader.h; sourceTree = "<group>"; };
+		E91F0F55146C05F200503058 /* ViShader.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViShader.mm; sourceTree = "<group>"; };
+		E91F0F56146C05F200503058 /* ViTexture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViTexture.h; sourceTree = "<group>"; };
+		E91F0F57146C05F200503058 /* ViTexture.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViTexture.mm; sourceTree = "<group>"; };
+		E91F0F58146C05F200503058 /* ViTexturePVR.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViTexturePVR.h; sourceTree = "<group>"; };
+		E91F0F59146C05F200503058 /* ViTexturePVR.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViTexturePVR.mm; sourceTree = "<group>"; };
+		E91F0F5A146C05F200503058 /* ViViewiOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViViewiOS.h; sourceTree = "<group>"; };
+		E91F0F5B146C05F200503058 /* ViViewiOS.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViViewiOS.mm; sourceTree = "<group>"; };
+		E91F0F5C146C05F200503058 /* ViViewOSX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViViewOSX.h; sourceTree = "<group>"; };
+		E91F0F5D146C05F200503058 /* ViViewOSX.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViViewOSX.mm; sourceTree = "<group>"; };
+		E91F0F5E146C05F200503058 /* ViViewProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViViewProtocol.h; sourceTree = "<group>"; };
+		E91F0F60146C05F200503058 /* ViEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViEvent.h; sourceTree = "<group>"; };
+		E91F0F61146C05F200503058 /* ViEvent.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViEvent.mm; sourceTree = "<group>"; };
+		E91F0F62146C05F200503058 /* ViResponder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViResponder.h; sourceTree = "<group>"; };
+		E91F0F63146C05F200503058 /* ViResponder.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViResponder.mm; sourceTree = "<group>"; };
+		E91F0F65146C05F200503058 /* ViCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViCamera.h; sourceTree = "<group>"; };
+		E91F0F66146C05F200503058 /* ViCamera.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViCamera.mm; sourceTree = "<group>"; };
+		E91F0F67146C05F200503058 /* ViRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViRenderer.h; sourceTree = "<group>"; };
+		E91F0F68146C05F200503058 /* ViRendererOSX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViRendererOSX.h; sourceTree = "<group>"; };
+		E91F0F69146C05F200503058 /* ViRendererOSX.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViRendererOSX.mm; sourceTree = "<group>"; };
+		E91F0F6A146C05F200503058 /* ViScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViScene.h; sourceTree = "<group>"; };
+		E91F0F6B146C05F200503058 /* ViScene.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViScene.mm; sourceTree = "<group>"; };
+		E91F0F6C146C05F200503058 /* ViSceneNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViSceneNode.h; sourceTree = "<group>"; };
+		E91F0F6D146C05F200503058 /* ViSceneNode.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViSceneNode.mm; sourceTree = "<group>"; };
+		E91F0F6E146C05F200503058 /* ViShape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViShape.h; sourceTree = "<group>"; };
+		E91F0F6F146C05F200503058 /* ViShape.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViShape.mm; sourceTree = "<group>"; };
+		E91F0F70146C05F200503058 /* ViSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViSprite.h; sourceTree = "<group>"; };
+		E91F0F71146C05F200503058 /* ViSprite.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViSprite.mm; sourceTree = "<group>"; };
+		E91F0F72146C05F200503058 /* ViSpriteBatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViSpriteBatch.h; sourceTree = "<group>"; };
+		E91F0F73146C05F200503058 /* ViSpriteBatch.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViSpriteBatch.mm; sourceTree = "<group>"; };
+		E91F0F74146C05F200503058 /* ViSpriteFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViSpriteFactory.h; sourceTree = "<group>"; };
+		E91F0F75146C05F200503058 /* ViSpriteFactory.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViSpriteFactory.mm; sourceTree = "<group>"; };
+		E91F0F76146C05F200503058 /* ViTMXLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViTMXLayer.h; sourceTree = "<group>"; };
+		E91F0F77146C05F200503058 /* ViTMXLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViTMXLayer.mm; sourceTree = "<group>"; };
+		E91F0F78146C05F200503058 /* ViTMXNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViTMXNode.h; sourceTree = "<group>"; };
+		E91F0F79146C05F200503058 /* ViTMXNode.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViTMXNode.mm; sourceTree = "<group>"; };
+		E91F0F7A146C05F200503058 /* Vinter.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Vinter.bundle; sourceTree = "<group>"; };
+		E91F0F7B146C05F200503058 /* Vinter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vinter.h; sourceTree = "<group>"; };
+		E91F0FBB146C060100503058 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		E91F0FBD146C060D00503058 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		E91F0FBF146C084600503058 /* ViParticleEmitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViParticleEmitter.h; sourceTree = "<group>"; };
+		E91F0FC0146C084600503058 /* ViParticleEmitter.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViParticleEmitter.mm; sourceTree = "<group>"; };
+		E91F0FC2146C08B800503058 /* ViParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViParticle.h; sourceTree = "<group>"; };
+		E91F0FC3146C08B800503058 /* ViParticle.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViParticle.mm; sourceTree = "<group>"; };
+		E951BAE3146C96DE0045B30B /* Particle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Particle.png; path = ../../../Resources/Particle.png; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E91F0EC3146C055F00503058 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E91F0FBE146C060D00503058 /* libz.dylib in Frameworks */,
+				E91F0FBC146C060100503058 /* OpenGL.framework in Frameworks */,
+				E91F0ECB146C055F00503058 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E91F0EBB146C055E00503058 = {
+			isa = PBXGroup;
+			children = (
+				E91F0EF4146C05F200503058 /* Dependencies */,
+				E91F0F30146C05F200503058 /* Source */,
+				E91F0EE7146C05BE00503058 /* Classes */,
+				E91F0EEA146C05BE00503058 /* Resources */,
+				E91F0EEC146C05BE00503058 /* Supporting files */,
+				E91F0EC9146C055F00503058 /* Frameworks */,
+				E91F0EC7146C055F00503058 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E91F0EC7146C055F00503058 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E91F0EC6146C055F00503058 /* Particles.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E91F0EC9146C055F00503058 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E91F0FBD146C060D00503058 /* libz.dylib */,
+				E91F0FBB146C060100503058 /* OpenGL.framework */,
+				E91F0ECA146C055F00503058 /* Cocoa.framework */,
+				E91F0ECC146C055F00503058 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E91F0ECC146C055F00503058 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E91F0ECD146C055F00503058 /* AppKit.framework */,
+				E91F0ECE146C055F00503058 /* CoreData.framework */,
+				E91F0ECF146C055F00503058 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		E91F0EE7146C05BE00503058 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				E91F0EE8146C05BE00503058 /* AppDelegate.h */,
+				E91F0EE9146C05BE00503058 /* AppDelegate.mm */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		E91F0EEA146C05BE00503058 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E951BAE3146C96DE0045B30B /* Particle.png */,
+				E91F0EEB146C05BE00503058 /* MainMenu.xib */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		E91F0EEC146C05BE00503058 /* Supporting files */ = {
+			isa = PBXGroup;
+			children = (
+				E91F0EED146C05BE00503058 /* main.m */,
+				E91F0EEE146C05BE00503058 /* Particles-Info.plist */,
+				E91F0EEF146C05BE00503058 /* Particles-Prefix.pch */,
+			);
+			path = "Supporting files";
+			sourceTree = "<group>";
+		};
+		E91F0EF4146C05F200503058 /* Dependencies */ = {
+			isa = PBXGroup;
+			children = (
+				E91F0EF5146C05F200503058 /* Chipmunk */,
+			);
+			name = Dependencies;
+			path = ../../Dependencies;
+			sourceTree = "<group>";
+		};
+		E91F0EF5146C05F200503058 /* Chipmunk */ = {
+			isa = PBXGroup;
+			children = (
+				E91F0EF6146C05F200503058 /* chipmunk */,
+				E91F0F11146C05F200503058 /* chipmunk.c */,
+				E91F0F12146C05F200503058 /* constraints */,
+				E91F0F1E146C05F200503058 /* cpArbiter.c */,
+				E91F0F1F146C05F200503058 /* cpArray.c */,
+				E91F0F20146C05F200503058 /* cpBB.c */,
+				E91F0F21146C05F200503058 /* cpBBTree.c */,
+				E91F0F22146C05F200503058 /* cpBody.c */,
+				E91F0F23146C05F200503058 /* cpCollision.c */,
+				E91F0F24146C05F200503058 /* cpHashSet.c */,
+				E91F0F25146C05F200503058 /* cpPolyShape.c */,
+				E91F0F26146C05F200503058 /* cpShape.c */,
+				E91F0F27146C05F200503058 /* cpSpace.c */,
+				E91F0F28146C05F200503058 /* cpSpaceComponent.c */,
+				E91F0F29146C05F200503058 /* cpSpaceHash.c */,
+				E91F0F2A146C05F200503058 /* cpSpaceQuery.c */,
+				E91F0F2B146C05F200503058 /* cpSpaceStep.c */,
+				E91F0F2C146C05F200503058 /* cpSpatialIndex.c */,
+				E91F0F2D146C05F200503058 /* cpSweep1D.c */,
+				E91F0F2E146C05F200503058 /* cpVect.c */,
+				E91F0F2F146C05F200503058 /* prime.h */,
+			);
+			path = Chipmunk;
+			sourceTree = "<group>";
+		};
+		E91F0EF6146C05F200503058 /* chipmunk */ = {
+			isa = PBXGroup;
+			children = (
+				E91F0EF7146C05F200503058 /* chipmunk.h */,
+				E91F0EF8146C05F200503058 /* chipmunk_ffi.h */,
+				E91F0EF9146C05F200503058 /* chipmunk_private.h */,
+				E91F0EFA146C05F200503058 /* chipmunk_types.h */,
+				E91F0EFB146C05F200503058 /* chipmunk_unsafe.h */,
+				E91F0EFC146C05F200503058 /* constraints */,
+				E91F0F09146C05F200503058 /* cpArbiter.h */,
+				E91F0F0A146C05F200503058 /* cpBB.h */,
+				E91F0F0B146C05F200503058 /* cpBody.h */,
+				E91F0F0C146C05F200503058 /* cpPolyShape.h */,
+				E91F0F0D146C05F200503058 /* cpShape.h */,
+				E91F0F0E146C05F200503058 /* cpSpace.h */,
+				E91F0F0F146C05F200503058 /* cpSpatialIndex.h */,
+				E91F0F10146C05F200503058 /* cpVect.h */,
+			);
+			path = chipmunk;
+			sourceTree = "<group>";
+		};
+		E91F0EFC146C05F200503058 /* constraints */ = {
+			isa = PBXGroup;
+			children = (
+				E91F0EFD146C05F200503058 /* cpConstraint.h */,
+				E91F0EFE146C05F200503058 /* cpDampedRotarySpring.h */,
+				E91F0EFF146C05F200503058 /* cpDampedSpring.h */,
+				E91F0F00146C05F200503058 /* cpGearJoint.h */,
+				E91F0F01146C05F200503058 /* cpGrooveJoint.h */,
+				E91F0F02146C05F200503058 /* cpPinJoint.h */,
+				E91F0F03146C05F200503058 /* cpPivotJoint.h */,
+				E91F0F04146C05F200503058 /* cpRatchetJoint.h */,
+				E91F0F05146C05F200503058 /* cpRotaryLimitJoint.h */,
+				E91F0F06146C05F200503058 /* cpSimpleMotor.h */,
+				E91F0F07146C05F200503058 /* cpSlideJoint.h */,
+				E91F0F08146C05F200503058 /* util.h */,
+			);
+			path = constraints;
+			sourceTree = "<group>";
+		};
+		E91F0F12146C05F200503058 /* constraints */ = {
+			isa = PBXGroup;
+			children = (
+				E91F0F13146C05F200503058 /* cpConstraint.c */,
+				E91F0F14146C05F200503058 /* cpDampedRotarySpring.c */,
+				E91F0F15146C05F200503058 /* cpDampedSpring.c */,
+				E91F0F16146C05F200503058 /* cpGearJoint.c */,
+				E91F0F17146C05F200503058 /* cpGrooveJoint.c */,
+				E91F0F18146C05F200503058 /* cpPinJoint.c */,
+				E91F0F19146C05F200503058 /* cpPivotJoint.c */,
+				E91F0F1A146C05F200503058 /* cpRatchetJoint.c */,
+				E91F0F1B146C05F200503058 /* cpRotaryLimitJoint.c */,
+				E91F0F1C146C05F200503058 /* cpSimpleMotor.c */,
+				E91F0F1D146C05F200503058 /* cpSlideJoint.c */,
+			);
+			path = constraints;
+			sourceTree = "<group>";
+		};
+		E91F0F30146C05F200503058 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				E91F0F31146C05F200503058 /* common */,
+				E91F0F4F146C05F200503058 /* graphic */,
+				E91F0F5F146C05F200503058 /* input */,
+				E91F0F64146C05F200503058 /* scene */,
+				E91F0F7A146C05F200503058 /* Vinter.bundle */,
+				E91F0F7B146C05F200503058 /* Vinter.h */,
+			);
+			name = Source;
+			path = ../../Source;
+			sourceTree = "<group>";
+		};
+		E91F0F31146C05F200503058 /* common */ = {
+			isa = PBXGroup;
+			children = (
+				E91F0F32146C05F200503058 /* ViAsset.h */,
+				E91F0F33146C05F200503058 /* ViAsset.mm */,
+				E91F0F34146C05F200503058 /* ViBase.h */,
+				E91F0F35146C05F200503058 /* ViBridge.h */,
+				E91F0F36146C05F200503058 /* ViBridge.mm */,
+				E91F0F37146C05F200503058 /* ViContext.h */,
+				E91F0F38146C05F200503058 /* ViContext.mm */,
+				E91F0F39146C05F200503058 /* ViDataPool.h */,
+				E91F0F3A146C05F200503058 /* ViDataPool.mm */,
+				E91F0F3B146C05F200503058 /* ViKernel.h */,
+				E91F0F3C146C05F200503058 /* ViKernel.mm */,
+				E91F0F3D146C05F200503058 /* ViLine.h */,
+				E91F0F3E146C05F200503058 /* ViLine.mm */,
+				E91F0F3F146C05F200503058 /* ViMatrix4x4.h */,
+				E91F0F40146C05F200503058 /* ViMatrix4x4.mm */,
+				E91F0F41146C05F200503058 /* ViMesh.h */,
+				E91F0F42146C05F200503058 /* ViMesh.mm */,
+				E91F0F43146C05F200503058 /* ViQuadtree.h */,
+				E91F0F44146C05F200503058 /* ViQuadtree.mm */,
+				E91F0F45146C05F200503058 /* ViRect.h */,
+				E91F0F46146C05F200503058 /* ViRect.mm */,
+				E91F0F47146C05F200503058 /* ViTriangulate.h */,
+				E91F0F48146C05F200503058 /* ViTriangulate.mm */,
+				E91F0F49146C05F200503058 /* ViVector2.h */,
+				E91F0F4A146C05F200503058 /* ViVector2.mm */,
+				E91F0F4B146C05F200503058 /* ViVector3.h */,
+				E91F0F4C146C05F200503058 /* ViVector3.mm */,
+				E91F0F4D146C05F200503058 /* ViXML.h */,
+				E91F0F4E146C05F200503058 /* ViXML.mm */,
+			);
+			path = common;
+			sourceTree = "<group>";
+		};
+		E91F0F4F146C05F200503058 /* graphic */ = {
+			isa = PBXGroup;
+			children = (
+				E91F0F50146C05F200503058 /* ViColor.h */,
+				E91F0F51146C05F200503058 /* ViColor.mm */,
+				E91F0F52146C05F200503058 /* ViMaterial.h */,
+				E91F0F53146C05F200503058 /* ViMaterial.mm */,
+				E91F0F54146C05F200503058 /* ViShader.h */,
+				E91F0F55146C05F200503058 /* ViShader.mm */,
+				E91F0F56146C05F200503058 /* ViTexture.h */,
+				E91F0F57146C05F200503058 /* ViTexture.mm */,
+				E91F0F58146C05F200503058 /* ViTexturePVR.h */,
+				E91F0F59146C05F200503058 /* ViTexturePVR.mm */,
+				E91F0F5A146C05F200503058 /* ViViewiOS.h */,
+				E91F0F5B146C05F200503058 /* ViViewiOS.mm */,
+				E91F0F5C146C05F200503058 /* ViViewOSX.h */,
+				E91F0F5D146C05F200503058 /* ViViewOSX.mm */,
+				E91F0F5E146C05F200503058 /* ViViewProtocol.h */,
+			);
+			path = graphic;
+			sourceTree = "<group>";
+		};
+		E91F0F5F146C05F200503058 /* input */ = {
+			isa = PBXGroup;
+			children = (
+				E91F0F60146C05F200503058 /* ViEvent.h */,
+				E91F0F61146C05F200503058 /* ViEvent.mm */,
+				E91F0F62146C05F200503058 /* ViResponder.h */,
+				E91F0F63146C05F200503058 /* ViResponder.mm */,
+			);
+			path = input;
+			sourceTree = "<group>";
+		};
+		E91F0F64146C05F200503058 /* scene */ = {
+			isa = PBXGroup;
+			children = (
+				E91F0F65146C05F200503058 /* ViCamera.h */,
+				E91F0F66146C05F200503058 /* ViCamera.mm */,
+				E91F0FC2146C08B800503058 /* ViParticle.h */,
+				E91F0FC3146C08B800503058 /* ViParticle.mm */,
+				E91F0FBF146C084600503058 /* ViParticleEmitter.h */,
+				E91F0FC0146C084600503058 /* ViParticleEmitter.mm */,
+				E91F0F67146C05F200503058 /* ViRenderer.h */,
+				E91F0F68146C05F200503058 /* ViRendererOSX.h */,
+				E91F0F69146C05F200503058 /* ViRendererOSX.mm */,
+				E91F0F6A146C05F200503058 /* ViScene.h */,
+				E91F0F6B146C05F200503058 /* ViScene.mm */,
+				E91F0F6C146C05F200503058 /* ViSceneNode.h */,
+				E91F0F6D146C05F200503058 /* ViSceneNode.mm */,
+				E91F0F6E146C05F200503058 /* ViShape.h */,
+				E91F0F6F146C05F200503058 /* ViShape.mm */,
+				E91F0F70146C05F200503058 /* ViSprite.h */,
+				E91F0F71146C05F200503058 /* ViSprite.mm */,
+				E91F0F72146C05F200503058 /* ViSpriteBatch.h */,
+				E91F0F73146C05F200503058 /* ViSpriteBatch.mm */,
+				E91F0F74146C05F200503058 /* ViSpriteFactory.h */,
+				E91F0F75146C05F200503058 /* ViSpriteFactory.mm */,
+				E91F0F76146C05F200503058 /* ViTMXLayer.h */,
+				E91F0F77146C05F200503058 /* ViTMXLayer.mm */,
+				E91F0F78146C05F200503058 /* ViTMXNode.h */,
+				E91F0F79146C05F200503058 /* ViTMXNode.mm */,
+			);
+			path = scene;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E91F0EC5146C055F00503058 /* Particles */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E91F0EE4146C055F00503058 /* Build configuration list for PBXNativeTarget "Particles" */;
+			buildPhases = (
+				E91F0EC2146C055F00503058 /* Sources */,
+				E91F0EC3146C055F00503058 /* Frameworks */,
+				E91F0EC4146C055F00503058 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Particles;
+			productName = Particles;
+			productReference = E91F0EC6146C055F00503058 /* Particles.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E91F0EBD146C055E00503058 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = E91F0EC0146C055E00503058 /* Build configuration list for PBXProject "Particles" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = E91F0EBB146C055E00503058;
+			productRefGroup = E91F0EC7146C055F00503058 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E91F0EC5146C055F00503058 /* Particles */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E91F0EC4146C055F00503058 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E91F0EF1146C05BE00503058 /* MainMenu.xib in Resources */,
+				E91F0FBA146C05F300503058 /* Vinter.bundle in Resources */,
+				E951BAE4146C96DE0045B30B /* Particle.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E91F0EC2146C055F00503058 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E91F0EF0146C05BE00503058 /* AppDelegate.mm in Sources */,
+				E91F0EF2146C05BE00503058 /* main.m in Sources */,
+				E91F0F7C146C05F300503058 /* chipmunk.c in Sources */,
+				E91F0F7D146C05F300503058 /* cpConstraint.c in Sources */,
+				E91F0F7E146C05F300503058 /* cpDampedRotarySpring.c in Sources */,
+				E91F0F7F146C05F300503058 /* cpDampedSpring.c in Sources */,
+				E91F0F80146C05F300503058 /* cpGearJoint.c in Sources */,
+				E91F0F81146C05F300503058 /* cpGrooveJoint.c in Sources */,
+				E91F0F82146C05F300503058 /* cpPinJoint.c in Sources */,
+				E91F0F83146C05F300503058 /* cpPivotJoint.c in Sources */,
+				E91F0F84146C05F300503058 /* cpRatchetJoint.c in Sources */,
+				E91F0F85146C05F300503058 /* cpRotaryLimitJoint.c in Sources */,
+				E91F0F86146C05F300503058 /* cpSimpleMotor.c in Sources */,
+				E91F0F87146C05F300503058 /* cpSlideJoint.c in Sources */,
+				E91F0F88146C05F300503058 /* cpArbiter.c in Sources */,
+				E91F0F89146C05F300503058 /* cpArray.c in Sources */,
+				E91F0F8A146C05F300503058 /* cpBB.c in Sources */,
+				E91F0F8B146C05F300503058 /* cpBBTree.c in Sources */,
+				E91F0F8C146C05F300503058 /* cpBody.c in Sources */,
+				E91F0F8D146C05F300503058 /* cpCollision.c in Sources */,
+				E91F0F8E146C05F300503058 /* cpHashSet.c in Sources */,
+				E91F0F8F146C05F300503058 /* cpPolyShape.c in Sources */,
+				E91F0F90146C05F300503058 /* cpShape.c in Sources */,
+				E91F0F91146C05F300503058 /* cpSpace.c in Sources */,
+				E91F0F92146C05F300503058 /* cpSpaceComponent.c in Sources */,
+				E91F0F93146C05F300503058 /* cpSpaceHash.c in Sources */,
+				E91F0F94146C05F300503058 /* cpSpaceQuery.c in Sources */,
+				E91F0F95146C05F300503058 /* cpSpaceStep.c in Sources */,
+				E91F0F96146C05F300503058 /* cpSpatialIndex.c in Sources */,
+				E91F0F97146C05F300503058 /* cpSweep1D.c in Sources */,
+				E91F0F98146C05F300503058 /* cpVect.c in Sources */,
+				E91F0F99146C05F300503058 /* ViAsset.mm in Sources */,
+				E91F0F9A146C05F300503058 /* ViBridge.mm in Sources */,
+				E91F0F9B146C05F300503058 /* ViContext.mm in Sources */,
+				E91F0F9C146C05F300503058 /* ViDataPool.mm in Sources */,
+				E91F0F9D146C05F300503058 /* ViKernel.mm in Sources */,
+				E91F0F9E146C05F300503058 /* ViLine.mm in Sources */,
+				E91F0F9F146C05F300503058 /* ViMatrix4x4.mm in Sources */,
+				E91F0FA0146C05F300503058 /* ViMesh.mm in Sources */,
+				E91F0FA1146C05F300503058 /* ViQuadtree.mm in Sources */,
+				E91F0FA2146C05F300503058 /* ViRect.mm in Sources */,
+				E91F0FA3146C05F300503058 /* ViTriangulate.mm in Sources */,
+				E91F0FA4146C05F300503058 /* ViVector2.mm in Sources */,
+				E91F0FA5146C05F300503058 /* ViVector3.mm in Sources */,
+				E91F0FA6146C05F300503058 /* ViXML.mm in Sources */,
+				E91F0FA7146C05F300503058 /* ViColor.mm in Sources */,
+				E91F0FA8146C05F300503058 /* ViMaterial.mm in Sources */,
+				E91F0FA9146C05F300503058 /* ViShader.mm in Sources */,
+				E91F0FAA146C05F300503058 /* ViTexture.mm in Sources */,
+				E91F0FAB146C05F300503058 /* ViTexturePVR.mm in Sources */,
+				E91F0FAC146C05F300503058 /* ViViewiOS.mm in Sources */,
+				E91F0FAD146C05F300503058 /* ViViewOSX.mm in Sources */,
+				E91F0FAE146C05F300503058 /* ViEvent.mm in Sources */,
+				E91F0FAF146C05F300503058 /* ViResponder.mm in Sources */,
+				E91F0FB0146C05F300503058 /* ViCamera.mm in Sources */,
+				E91F0FB1146C05F300503058 /* ViRendererOSX.mm in Sources */,
+				E91F0FB2146C05F300503058 /* ViScene.mm in Sources */,
+				E91F0FB3146C05F300503058 /* ViSceneNode.mm in Sources */,
+				E91F0FB4146C05F300503058 /* ViShape.mm in Sources */,
+				E91F0FB5146C05F300503058 /* ViSprite.mm in Sources */,
+				E91F0FB6146C05F300503058 /* ViSpriteBatch.mm in Sources */,
+				E91F0FB7146C05F300503058 /* ViSpriteFactory.mm in Sources */,
+				E91F0FB8146C05F300503058 /* ViTMXLayer.mm in Sources */,
+				E91F0FB9146C05F300503058 /* ViTMXNode.mm in Sources */,
+				E91F0FC1146C084600503058 /* ViParticleEmitter.mm in Sources */,
+				E91F0FC4146C08B800503058 /* ViParticle.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		E91F0EE2146C055F00503058 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		E91F0EE3146C055F00503058 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		E91F0EE5146C055F00503058 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Supporting files/Particles-Prefix.pch";
+				INFOPLIST_FILE = "Supporting files/Particles-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		E91F0EE6146C055F00503058 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Supporting files/Particles-Prefix.pch";
+				INFOPLIST_FILE = "Supporting files/Particles-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E91F0EC0146C055E00503058 /* Build configuration list for PBXProject "Particles" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E91F0EE2146C055F00503058 /* Debug */,
+				E91F0EE3146C055F00503058 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E91F0EE4146C055F00503058 /* Build configuration list for PBXNativeTarget "Particles" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E91F0EE5146C055F00503058 /* Debug */,
+				E91F0EE6146C055F00503058 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E91F0EBD146C055E00503058 /* Project object */;
+}

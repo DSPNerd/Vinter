@@ -39,15 +39,17 @@ namespace vi
         
 		void shape::addVertex(float x, float y)
 		{
-			mesh->addVertex(x, y);
+			mesh->addVertex(x, y, 0, 0);
 		}
 		
 		void shape::generateMesh()
 		{
+            vi::common::vertex *vertices = ((vi::common::mesh *)mesh)->getVertices();
 			std::vector<vi::common::vector2> outline;
+            
 			for(int i=0; i<mesh->vertexCount; i++)
 			{
-				outline.push_back(vi::common::vector2(mesh->vertices[i].x, mesh->vertices[i].y));
+				outline.push_back(vi::common::vector2(vertices[i].x, vertices[i].y));
 			}
 			
 			std::vector<vi::common::vector2> result;
@@ -58,11 +60,13 @@ namespace vi
             
 			mesh->vertices = (vi::common::vertex *)realloc(mesh->vertices, mesh->vertexCount * sizeof(vi::common::vertex));
 			mesh->indices = (unsigned short *)realloc(mesh->indices, mesh->indexCount * sizeof(unsigned short));
-			
-			for(int i = 0; i < mesh->vertexCount; i++)
+		
+            
+            
+			for(int i=0; i<mesh->vertexCount; i++)
 			{
-				mesh->vertices[i].x = result[i].x;
-				mesh->vertices[i].y = result[i].y;
+                vertices[i].x = result[i].x;
+				vertices[i].y = result[i].y;
 				mesh->indices[i] = i;
 			}
 			
