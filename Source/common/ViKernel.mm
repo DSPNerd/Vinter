@@ -136,6 +136,7 @@ namespace vi
             
 #ifdef __MAC_OS_X_VERSION_MAX_ALLOWED
             timer = [NSTimer scheduledTimerWithTimeInterval:1.0/maxFPS target:bridge selector:@selector(parameter0Action) userInfo:nil repeats:YES];
+            [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
 #endif
         }
         
