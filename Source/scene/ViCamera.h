@@ -70,7 +70,7 @@ namespace vi
             /**
              * The clear color. The default is a light blueish color.
              **/
-            vi::graphic::color clearColor;
+            vi::common::color clearColor;
             /**
              * The texture object which the camera renders into.
              * @return Returns a non NULL value only if the camera renders into a texture and not into a view.

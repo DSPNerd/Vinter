@@ -12,8 +12,7 @@
 
 - (void)handleRenderEvent:(vi::input::event *)event
 {
-    NSString *mode = editMode ? @"Edit mode!" : @"Normal mode!";
-    [fpsLabel setText:[NSString stringWithFormat:@"FPS: %.2f %@\nRotate!", 1/kernel->timestep, mode]];
+    [fpsLabel setText:[NSString stringWithFormat:@"FPS: %.2f", 1/kernel->timestep]];
     
     if(sprite)
         sprite->rotation += ViDegreeToRadian(15.0f * kernel->timestep);
@@ -21,84 +20,17 @@
 
 - (void)handleTouchEvent:(vi::input::event *)event
 {
-    if(editMode)
+    if(event->type & vi::input::eventTypeTouchMoved)
     {
-        static vi::scene::shape *shape = NULL;
-        static vi::common::vector2 lastpoint;
-        static vi::common::vector2 minpos;
-        static vi::common::vector2 maxpos;
+        UITouch *touch = [event->touches anyObject];
         
-        vi::common::vector2 touchPos = [[event->touches anyObject] locationInView:event->view];
+        vi::common::vector2 posThen = vi::common::vector2([touch previousLocationInView:event->view]);
+        vi::common::vector2 posNow = vi::common::vector2([touch locationInView:event->view]);
         
-        if(event->type & vi::input::eventTypeTouchUp || event->type == vi::input::eventTypeTouchCancelled)
-        {
-            if(shape)
-            {
-                vi::common::vector2 size = vi::common::vector2(maxpos.x-minpos.x, maxpos.y-minpos.y);
-                shape->setSize(size);
-                shape->setPosition(vi::common::vector2(minpos.x, minpos.y));
-                shape->mesh->translate(vi::common::vector2(-minpos.x, minpos.y+size.y));
-                shape->setFlags(0);
-                shape->generateMesh();
-                
-                shape->material->drawMode = GL_TRIANGLES;
-            }
-            
-            shape = NULL;
-            return;
-        }
-        
-        vi::common::vector2 temppoint(touchPos.x+camera->frame.origin.x, touchPos.y+camera->frame.origin.y);
-        if(!shape)
-        {
-            lastpoint = temppoint;
-            minpos = lastpoint;
-            maxpos = lastpoint;
-            
-            shape = new vi::scene::shape();
-            shape->material->shader = (vi::graphic::shader *)dataPool->assetForName("shapeShader");
-            
-            scene->addNode(shape);
-            shape->addVertex(lastpoint.x, -lastpoint.y);
-            
-            return;
-        }
-        
-        vi::common::vector2 diff = lastpoint - temppoint;
-        if(diff.length() > 5.0)
-        {
-            lastpoint = temppoint;
-            shape->addVertex(lastpoint.x, -lastpoint.y);
-            
-            if(lastpoint.x < minpos.x)
-                minpos.x = lastpoint.x;
-            
-            if(lastpoint.x > maxpos.x)
-                maxpos.x = lastpoint.x;
-            
-            if(lastpoint.y < minpos.y)
-                minpos.y = lastpoint.y;
-            
-            if(lastpoint.y > maxpos.y)
-                maxpos.y = lastpoint.y;
-        }
-    }
-    else
-    {
-        if(event->type & vi::input::eventTypeTouchMoved)
-        {
-            UITouch *touch = [event->touches anyObject];
-            
-            vi::common::vector2 posThen = vi::common::vector2([touch previousLocationInView:event->view]);
-            vi::common::vector2 posNow = vi::common::vector2([touch locationInView:event->view]);
-            
-            vi::common::vector2 diff = posNow - posThen;
-            camera->frame.origin -= diff;
-        }
+        vi::common::vector2 diff = posNow - posThen;
+        camera->frame.origin -= diff;
     }
 }
-
-
 
 
 - (void)handleEvent:(vi::input::event *)event
@@ -129,7 +61,6 @@
     camera = new vi::scene::camera(renderView);
     scene  = new vi::scene::scene(camera);
     kernel = new vi::common::kernel(scene, renderer, [renderView context]);
-    
     kernel->startRendering(30);
     
     dataPool = new vi::common::dataPool();
@@ -146,22 +77,20 @@
         // the resources this context creates with the main context, we have to create a shared context by passing another context as the shared context.
         // -------------------------
         __block vi::graphic::texturePVR *texture;
-        __block vi::graphic::shader *shapeShader;
         
         vi::common::context *context = new vi::common::context([renderView context]); 
         context->activateContext();
         
         // Create texture and shaders
         texture = new vi::graphic::texturePVR("BrickC.pvr");
-        shapeShader = new vi::graphic::shader(vi::graphic::defaultShaderShape);
         
         // Its also possible to create sprites or other scene nodes in a background thread
         // However, please note that you can only add them to a scene on the main thread!
         sprite = new vi::scene::sprite(texture);
         sprite->mesh->generateVBO();
-        sprite->layer = 2;
         
         delete context;
+
         
         dispatch_async(dispatch_get_main_queue(), ^{
             // Add the sprite to the scene on the main thread.
@@ -169,35 +98,15 @@
             
             // Also add the assets to the data pool on the main thread
             dataPool->setAsset(texture, "brickTexture");
-            dataPool->setAsset(shapeShader, "shapeShader");
         });
     });
-    
-    
-    effect.lifespan = 3.0;
-    effect.randomLifespan = 2.0;
-    effect.speed = vi::common::vector2(0.0, 120.0);
-    effect.targetColor = vi::graphic::color(1.0, 1.0, 1.0, 0.0);
-    effect.targetScale = 0.4;
-    effect.randomTargetScale = 0.01;
-    
-    vi::scene::baseParticle *particle = new vi::scene::baseParticle(&effect);
-    
-    vi::graphic::texture *texture = new vi::graphic::texture("Particle.png");
-    emitter = new vi::scene::particleEmitter(texture);
-    emitter->setPosition(vi::common::vector2(0.0, 0.0));
-    emitter->autoEmitParticle(particle, 2, 800);
-    
-    scene->addNode(emitter);
     
     
     bridge = vi::common::objCBridge(self, @selector(handleEvent:));
     
     responder = new vi::input::responder();
     responder->callback = std::tr1::bind(&vi::common::objCBridge::parameter1Action<vi::input::event *>, &bridge, std::tr1::placeholders::_1);
-    responder->touchDown = true;
     responder->touchMoved = true;
-    responder->touchUp = true;
     responder->willDrawScene = true;
 }
 
@@ -219,7 +128,6 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    editMode = UIInterfaceOrientationIsLandscape(interfaceOrientation);
     return YES;
 }
 

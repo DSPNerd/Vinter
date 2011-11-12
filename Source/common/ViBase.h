@@ -65,6 +65,9 @@
  **/
 #define ViDegreeToRadian(degrees) (degrees) * M_PI / 180.0f
 
+/**
+ * Returns a random floating point value in the range of -value * 0.5 to value * 0.5
+ **/
 #define ViRandom(value) (((((float)rand()) / RAND_MAX) * value) - value * 0.5)
 
 #define ViDeprecated __attribute__((deprecated))

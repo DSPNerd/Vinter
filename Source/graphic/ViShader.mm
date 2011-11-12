@@ -28,10 +28,6 @@ namespace vi
                     generateShaderFromPaths("/Vinter.bundle/Shaders/ViTextureShader.vsh", "/Vinter.bundle/Shaders/ViTextureShader.fsh");
                     break;
                     
-                case defaultShaderShape:
-                    generateShaderFromPaths("/Vinter.bundle/Shaders/ViShapeShader.vsh", "/Vinter.bundle/Shaders/ViShapeShader.fsh");
-                    break;
-                    
                 case defaultShaderSprite:
                     generateShaderFromPaths("/Vinter.bundle/Shaders/ViSpriteShader.vsh", "/Vinter.bundle/Shaders/ViSpriteShader.fsh");
                     break;

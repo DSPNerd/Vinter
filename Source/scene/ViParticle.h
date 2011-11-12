@@ -55,7 +55,7 @@ namespace vi
             /**
              * The color of the particle.
              **/
-            vi::graphic::color  color;
+            vi::common::color  color;
         };
         
         
@@ -63,7 +63,9 @@ namespace vi
         /**
          * @brief Capsulates boundary informations for a baseParticle
          *
-         * A baseParticleEffect contains information used by baseParticles to initialize themself.
+         * A baseParticleEffect contains information used by baseParticles to initialize theirself. Every property also has a random countpart, setting this
+         * allows the particle to add a random value not higher than the random property / 2 and not lower then -random property / 2 to the actual property. 
+         * baseParticles use rand() to generate the random values.
          **/
         class baseParticleEffect
         {
@@ -105,21 +107,21 @@ namespace vi
             /**
              * The start color
              **/
-            vi::graphic::color color;
-            vi::graphic::color randomColor;
+            vi::common::color color;
+            vi::common::color randomColor;
             
             /**
              * The target color
              **/
-            vi::graphic::color targetColor;
-            vi::graphic::color randomTargetColor;
+            vi::common::color targetColor;
+            vi::common::color randomTargetColor;
         };
         
         /**
          * @brief Particle with some basic logic
          *
          * A base particle uses a baseParticleEffect instance to initialize itself. Unlike a normal particle, a baseParticle has the ability to change itself
-         * over its lifetime.
+         * over its lifetime, allowing it to be used in basic effects like smoke, fire, etc.
          **/
         class baseParticle : public particle
         {
@@ -131,7 +133,7 @@ namespace vi
             
         private:
             GLfloat scaleChange;
-            vi::graphic::color colorChange;
+            vi::common::color colorChange;
             
             vi::common::vector2 speed;
             vi::common::vector2 speedChange;

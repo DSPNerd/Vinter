@@ -7,89 +7,209 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E90BB0CD146DA0810095403F /* ViParticle.mm in Sources */ = {isa = PBXBuildFile; fileRef = E90BB0CA146DA0810095403F /* ViParticle.mm */; };
-		E90BB0CE146DA0810095403F /* ViParticleEmitter.mm in Sources */ = {isa = PBXBuildFile; fileRef = E90BB0CC146DA0810095403F /* ViParticleEmitter.mm */; };
+		E90BB3D8146E616F0095403F /* chipmunk.c in Sources */ = {isa = PBXBuildFile; fileRef = E90BB36D146E616F0095403F /* chipmunk.c */; };
+		E90BB3D9146E616F0095403F /* cpConstraint.c in Sources */ = {isa = PBXBuildFile; fileRef = E90BB36F146E616F0095403F /* cpConstraint.c */; };
+		E90BB3DA146E616F0095403F /* cpDampedRotarySpring.c in Sources */ = {isa = PBXBuildFile; fileRef = E90BB370146E616F0095403F /* cpDampedRotarySpring.c */; };
+		E90BB3DB146E616F0095403F /* cpDampedSpring.c in Sources */ = {isa = PBXBuildFile; fileRef = E90BB371146E616F0095403F /* cpDampedSpring.c */; };
+		E90BB3DC146E616F0095403F /* cpGearJoint.c in Sources */ = {isa = PBXBuildFile; fileRef = E90BB372146E616F0095403F /* cpGearJoint.c */; };
+		E90BB3DD146E616F0095403F /* cpGrooveJoint.c in Sources */ = {isa = PBXBuildFile; fileRef = E90BB373146E616F0095403F /* cpGrooveJoint.c */; };
+		E90BB3DE146E616F0095403F /* cpPinJoint.c in Sources */ = {isa = PBXBuildFile; fileRef = E90BB374146E616F0095403F /* cpPinJoint.c */; };
+		E90BB3DF146E616F0095403F /* cpPivotJoint.c in Sources */ = {isa = PBXBuildFile; fileRef = E90BB375146E616F0095403F /* cpPivotJoint.c */; };
+		E90BB3E0146E616F0095403F /* cpRatchetJoint.c in Sources */ = {isa = PBXBuildFile; fileRef = E90BB376146E616F0095403F /* cpRatchetJoint.c */; };
+		E90BB3E1146E616F0095403F /* cpRotaryLimitJoint.c in Sources */ = {isa = PBXBuildFile; fileRef = E90BB377146E616F0095403F /* cpRotaryLimitJoint.c */; };
+		E90BB3E2146E616F0095403F /* cpSimpleMotor.c in Sources */ = {isa = PBXBuildFile; fileRef = E90BB378146E616F0095403F /* cpSimpleMotor.c */; };
+		E90BB3E3146E616F0095403F /* cpSlideJoint.c in Sources */ = {isa = PBXBuildFile; fileRef = E90BB379146E616F0095403F /* cpSlideJoint.c */; };
+		E90BB3E4146E616F0095403F /* cpArbiter.c in Sources */ = {isa = PBXBuildFile; fileRef = E90BB37A146E616F0095403F /* cpArbiter.c */; };
+		E90BB3E5146E616F0095403F /* cpArray.c in Sources */ = {isa = PBXBuildFile; fileRef = E90BB37B146E616F0095403F /* cpArray.c */; };
+		E90BB3E6146E616F0095403F /* cpBB.c in Sources */ = {isa = PBXBuildFile; fileRef = E90BB37C146E616F0095403F /* cpBB.c */; };
+		E90BB3E7146E616F0095403F /* cpBBTree.c in Sources */ = {isa = PBXBuildFile; fileRef = E90BB37D146E616F0095403F /* cpBBTree.c */; };
+		E90BB3E8146E616F0095403F /* cpBody.c in Sources */ = {isa = PBXBuildFile; fileRef = E90BB37E146E616F0095403F /* cpBody.c */; };
+		E90BB3E9146E616F0095403F /* cpCollision.c in Sources */ = {isa = PBXBuildFile; fileRef = E90BB37F146E616F0095403F /* cpCollision.c */; };
+		E90BB3EA146E616F0095403F /* cpHashSet.c in Sources */ = {isa = PBXBuildFile; fileRef = E90BB380146E616F0095403F /* cpHashSet.c */; };
+		E90BB3EB146E616F0095403F /* cpPolyShape.c in Sources */ = {isa = PBXBuildFile; fileRef = E90BB381146E616F0095403F /* cpPolyShape.c */; };
+		E90BB3EC146E616F0095403F /* cpShape.c in Sources */ = {isa = PBXBuildFile; fileRef = E90BB382146E616F0095403F /* cpShape.c */; };
+		E90BB3ED146E616F0095403F /* cpSpace.c in Sources */ = {isa = PBXBuildFile; fileRef = E90BB383146E616F0095403F /* cpSpace.c */; };
+		E90BB3EE146E616F0095403F /* cpSpaceComponent.c in Sources */ = {isa = PBXBuildFile; fileRef = E90BB384146E616F0095403F /* cpSpaceComponent.c */; };
+		E90BB3EF146E616F0095403F /* cpSpaceHash.c in Sources */ = {isa = PBXBuildFile; fileRef = E90BB385146E616F0095403F /* cpSpaceHash.c */; };
+		E90BB3F0146E616F0095403F /* cpSpaceQuery.c in Sources */ = {isa = PBXBuildFile; fileRef = E90BB386146E616F0095403F /* cpSpaceQuery.c */; };
+		E90BB3F1146E616F0095403F /* cpSpaceStep.c in Sources */ = {isa = PBXBuildFile; fileRef = E90BB387146E616F0095403F /* cpSpaceStep.c */; };
+		E90BB3F2146E616F0095403F /* cpSpatialIndex.c in Sources */ = {isa = PBXBuildFile; fileRef = E90BB388146E616F0095403F /* cpSpatialIndex.c */; };
+		E90BB3F3146E616F0095403F /* cpSweep1D.c in Sources */ = {isa = PBXBuildFile; fileRef = E90BB389146E616F0095403F /* cpSweep1D.c */; };
+		E90BB3F4146E616F0095403F /* cpVect.c in Sources */ = {isa = PBXBuildFile; fileRef = E90BB38A146E616F0095403F /* cpVect.c */; };
+		E90BB3F5146E616F0095403F /* ViAsset.mm in Sources */ = {isa = PBXBuildFile; fileRef = E90BB38F146E616F0095403F /* ViAsset.mm */; };
+		E90BB3F6146E616F0095403F /* ViBridge.mm in Sources */ = {isa = PBXBuildFile; fileRef = E90BB392146E616F0095403F /* ViBridge.mm */; };
+		E90BB3F7146E616F0095403F /* ViColor.mm in Sources */ = {isa = PBXBuildFile; fileRef = E90BB394146E616F0095403F /* ViColor.mm */; };
+		E90BB3F8146E616F0095403F /* ViContext.mm in Sources */ = {isa = PBXBuildFile; fileRef = E90BB396146E616F0095403F /* ViContext.mm */; };
+		E90BB3F9146E616F0095403F /* ViDataPool.mm in Sources */ = {isa = PBXBuildFile; fileRef = E90BB398146E616F0095403F /* ViDataPool.mm */; };
+		E90BB3FA146E616F0095403F /* ViKernel.mm in Sources */ = {isa = PBXBuildFile; fileRef = E90BB39A146E616F0095403F /* ViKernel.mm */; };
+		E90BB3FB146E616F0095403F /* ViLine.mm in Sources */ = {isa = PBXBuildFile; fileRef = E90BB39C146E616F0095403F /* ViLine.mm */; };
+		E90BB3FC146E616F0095403F /* ViMatrix4x4.mm in Sources */ = {isa = PBXBuildFile; fileRef = E90BB39E146E616F0095403F /* ViMatrix4x4.mm */; };
+		E90BB3FD146E616F0095403F /* ViMesh.mm in Sources */ = {isa = PBXBuildFile; fileRef = E90BB3A0146E616F0095403F /* ViMesh.mm */; };
+		E90BB3FE146E616F0095403F /* ViQuadtree.mm in Sources */ = {isa = PBXBuildFile; fileRef = E90BB3A2146E616F0095403F /* ViQuadtree.mm */; };
+		E90BB3FF146E616F0095403F /* ViRect.mm in Sources */ = {isa = PBXBuildFile; fileRef = E90BB3A4146E616F0095403F /* ViRect.mm */; };
+		E90BB400146E616F0095403F /* ViVector2.mm in Sources */ = {isa = PBXBuildFile; fileRef = E90BB3A6146E616F0095403F /* ViVector2.mm */; };
+		E90BB401146E616F0095403F /* ViVector3.mm in Sources */ = {isa = PBXBuildFile; fileRef = E90BB3A8146E616F0095403F /* ViVector3.mm */; };
+		E90BB402146E616F0095403F /* ViXML.mm in Sources */ = {isa = PBXBuildFile; fileRef = E90BB3AA146E616F0095403F /* ViXML.mm */; };
+		E90BB403146E616F0095403F /* ViMaterial.mm in Sources */ = {isa = PBXBuildFile; fileRef = E90BB3AD146E616F0095403F /* ViMaterial.mm */; };
+		E90BB404146E616F0095403F /* ViRendererOSX.mm in Sources */ = {isa = PBXBuildFile; fileRef = E90BB3B0146E616F0095403F /* ViRendererOSX.mm */; };
+		E90BB405146E616F0095403F /* ViShader.mm in Sources */ = {isa = PBXBuildFile; fileRef = E90BB3B2146E616F0095403F /* ViShader.mm */; };
+		E90BB406146E616F0095403F /* ViTexture.mm in Sources */ = {isa = PBXBuildFile; fileRef = E90BB3B4146E616F0095403F /* ViTexture.mm */; };
+		E90BB407146E616F0095403F /* ViTexturePVR.mm in Sources */ = {isa = PBXBuildFile; fileRef = E90BB3B6146E616F0095403F /* ViTexturePVR.mm */; };
+		E90BB408146E616F0095403F /* ViViewiOS.mm in Sources */ = {isa = PBXBuildFile; fileRef = E90BB3B8146E616F0095403F /* ViViewiOS.mm */; };
+		E90BB409146E616F0095403F /* ViViewOSX.mm in Sources */ = {isa = PBXBuildFile; fileRef = E90BB3BA146E616F0095403F /* ViViewOSX.mm */; };
+		E90BB40A146E616F0095403F /* ViEvent.mm in Sources */ = {isa = PBXBuildFile; fileRef = E90BB3BE146E616F0095403F /* ViEvent.mm */; };
+		E90BB40B146E616F0095403F /* ViResponder.mm in Sources */ = {isa = PBXBuildFile; fileRef = E90BB3C0146E616F0095403F /* ViResponder.mm */; };
+		E90BB40C146E616F0095403F /* ViCamera.mm in Sources */ = {isa = PBXBuildFile; fileRef = E90BB3C3146E616F0095403F /* ViCamera.mm */; };
+		E90BB40D146E616F0095403F /* ViParticle.mm in Sources */ = {isa = PBXBuildFile; fileRef = E90BB3C5146E616F0095403F /* ViParticle.mm */; };
+		E90BB40E146E616F0095403F /* ViParticleEmitter.mm in Sources */ = {isa = PBXBuildFile; fileRef = E90BB3C7146E616F0095403F /* ViParticleEmitter.mm */; };
+		E90BB40F146E616F0095403F /* ViScene.mm in Sources */ = {isa = PBXBuildFile; fileRef = E90BB3C9146E616F0095403F /* ViScene.mm */; };
+		E90BB410146E616F0095403F /* ViSceneNode.mm in Sources */ = {isa = PBXBuildFile; fileRef = E90BB3CB146E616F0095403F /* ViSceneNode.mm */; };
+		E90BB411146E616F0095403F /* ViSprite.mm in Sources */ = {isa = PBXBuildFile; fileRef = E90BB3CD146E616F0095403F /* ViSprite.mm */; };
+		E90BB412146E616F0095403F /* ViSpriteBatch.mm in Sources */ = {isa = PBXBuildFile; fileRef = E90BB3CF146E616F0095403F /* ViSpriteBatch.mm */; };
+		E90BB413146E616F0095403F /* ViSpriteFactory.mm in Sources */ = {isa = PBXBuildFile; fileRef = E90BB3D1146E616F0095403F /* ViSpriteFactory.mm */; };
+		E90BB414146E616F0095403F /* ViTMXLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = E90BB3D3146E616F0095403F /* ViTMXLayer.mm */; };
+		E90BB415146E616F0095403F /* ViTMXNode.mm in Sources */ = {isa = PBXBuildFile; fileRef = E90BB3D5146E616F0095403F /* ViTMXNode.mm */; };
+		E90BB416146E616F0095403F /* Vinter.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E90BB3D6146E616F0095403F /* Vinter.bundle */; };
 		E99FD05E14505AD400C33CD3 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E99FD05D14505AD400C33CD3 /* Cocoa.framework */; };
 		E99FD08314505F1700C33CD3 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = E99FD07C14505F1700C33CD3 /* AppDelegate.mm */; };
 		E99FD08414505F1700C33CD3 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = E99FD07E14505F1700C33CD3 /* MainMenu.xib */; };
 		E99FD08514505F1700C33CD3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E99FD08014505F1700C33CD3 /* main.m */; };
-		E99FD0FB14505F5C00C33CD3 /* ViAsset.mm in Sources */ = {isa = PBXBuildFile; fileRef = E99FD0A014505F5C00C33CD3 /* ViAsset.mm */; };
-		E99FD0FC14505F5C00C33CD3 /* ViBridge.mm in Sources */ = {isa = PBXBuildFile; fileRef = E99FD0A314505F5C00C33CD3 /* ViBridge.mm */; };
-		E99FD0FD14505F5C00C33CD3 /* ViContext.mm in Sources */ = {isa = PBXBuildFile; fileRef = E99FD0A514505F5C00C33CD3 /* ViContext.mm */; };
-		E99FD0FE14505F5C00C33CD3 /* ViDataPool.mm in Sources */ = {isa = PBXBuildFile; fileRef = E99FD0A714505F5C00C33CD3 /* ViDataPool.mm */; };
-		E99FD0FF14505F5C00C33CD3 /* ViKernel.mm in Sources */ = {isa = PBXBuildFile; fileRef = E99FD0A914505F5C00C33CD3 /* ViKernel.mm */; };
-		E99FD10014505F5C00C33CD3 /* ViMatrix4x4.mm in Sources */ = {isa = PBXBuildFile; fileRef = E99FD0AB14505F5C00C33CD3 /* ViMatrix4x4.mm */; };
-		E99FD10114505F5C00C33CD3 /* ViMesh.mm in Sources */ = {isa = PBXBuildFile; fileRef = E99FD0AD14505F5C00C33CD3 /* ViMesh.mm */; };
-		E99FD10214505F5C00C33CD3 /* ViQuadtree.mm in Sources */ = {isa = PBXBuildFile; fileRef = E99FD0AF14505F5C00C33CD3 /* ViQuadtree.mm */; };
-		E99FD10314505F5C00C33CD3 /* ViRect.mm in Sources */ = {isa = PBXBuildFile; fileRef = E99FD0B114505F5C00C33CD3 /* ViRect.mm */; };
-		E99FD10414505F5C00C33CD3 /* ViTriangulate.mm in Sources */ = {isa = PBXBuildFile; fileRef = E99FD0B314505F5C00C33CD3 /* ViTriangulate.mm */; };
-		E99FD10514505F5C00C33CD3 /* ViVector2.mm in Sources */ = {isa = PBXBuildFile; fileRef = E99FD0B514505F5C00C33CD3 /* ViVector2.mm */; };
-		E99FD10614505F5C00C33CD3 /* ViVector3.mm in Sources */ = {isa = PBXBuildFile; fileRef = E99FD0B714505F5C00C33CD3 /* ViVector3.mm */; };
-		E99FD10714505F5C00C33CD3 /* ViColor.mm in Sources */ = {isa = PBXBuildFile; fileRef = E99FD0BB14505F5C00C33CD3 /* ViColor.mm */; };
-		E99FD10814505F5C00C33CD3 /* ViMaterial.mm in Sources */ = {isa = PBXBuildFile; fileRef = E99FD0BD14505F5C00C33CD3 /* ViMaterial.mm */; };
-		E99FD10914505F5C00C33CD3 /* ViShader.mm in Sources */ = {isa = PBXBuildFile; fileRef = E99FD0BF14505F5C00C33CD3 /* ViShader.mm */; };
-		E99FD10A14505F5C00C33CD3 /* ViTexture.mm in Sources */ = {isa = PBXBuildFile; fileRef = E99FD0C114505F5C00C33CD3 /* ViTexture.mm */; };
-		E99FD10B14505F5C00C33CD3 /* ViTexturePVR.mm in Sources */ = {isa = PBXBuildFile; fileRef = E99FD0C314505F5C00C33CD3 /* ViTexturePVR.mm */; };
-		E99FD10C14505F5C00C33CD3 /* ViViewiOS.mm in Sources */ = {isa = PBXBuildFile; fileRef = E99FD0C514505F5C00C33CD3 /* ViViewiOS.mm */; };
-		E99FD10D14505F5C00C33CD3 /* ViViewOSX.mm in Sources */ = {isa = PBXBuildFile; fileRef = E99FD0C714505F5C00C33CD3 /* ViViewOSX.mm */; };
-		E99FD10E14505F5C00C33CD3 /* ViEvent.mm in Sources */ = {isa = PBXBuildFile; fileRef = E99FD0CB14505F5C00C33CD3 /* ViEvent.mm */; };
-		E99FD10F14505F5C00C33CD3 /* ViResponder.mm in Sources */ = {isa = PBXBuildFile; fileRef = E99FD0CD14505F5C00C33CD3 /* ViResponder.mm */; };
-		E99FD11014505F5C00C33CD3 /* ViCamera.mm in Sources */ = {isa = PBXBuildFile; fileRef = E99FD0D014505F5C00C33CD3 /* ViCamera.mm */; };
-		E99FD11114505F5C00C33CD3 /* ViRendererOSX.mm in Sources */ = {isa = PBXBuildFile; fileRef = E99FD0D314505F5C00C33CD3 /* ViRendererOSX.mm */; };
-		E99FD11214505F5C00C33CD3 /* ViScene.mm in Sources */ = {isa = PBXBuildFile; fileRef = E99FD0D514505F5C00C33CD3 /* ViScene.mm */; };
-		E99FD11314505F5C00C33CD3 /* ViSceneNode.mm in Sources */ = {isa = PBXBuildFile; fileRef = E99FD0D714505F5C00C33CD3 /* ViSceneNode.mm */; };
-		E99FD11414505F5C00C33CD3 /* ViShape.mm in Sources */ = {isa = PBXBuildFile; fileRef = E99FD0D914505F5C00C33CD3 /* ViShape.mm */; };
-		E99FD11514505F5C00C33CD3 /* ViSprite.mm in Sources */ = {isa = PBXBuildFile; fileRef = E99FD0DB14505F5C00C33CD3 /* ViSprite.mm */; };
-		E99FD11614505F5C00C33CD3 /* ViSpriteFactory.mm in Sources */ = {isa = PBXBuildFile; fileRef = E99FD0DD14505F5C00C33CD3 /* ViSpriteFactory.mm */; };
 		E99FD12014505F7300C33CD3 /* Logox512.icns in Resources */ = {isa = PBXBuildFile; fileRef = E99FD11F14505F7300C33CD3 /* Logox512.icns */; };
 		E99FD12A14505FEA00C33CD3 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E99FD12914505FEA00C33CD3 /* OpenGL.framework */; };
-		E99FD1541450615400C33CD3 /* ViXML.mm in Sources */ = {isa = PBXBuildFile; fileRef = E99FD1531450615400C33CD3 /* ViXML.mm */; };
-		E99FD157145075E900C33CD3 /* ViTMXNode.mm in Sources */ = {isa = PBXBuildFile; fileRef = E99FD156145075E900C33CD3 /* ViTMXNode.mm */; };
-		E99FD15A1450778100C33CD3 /* ViTMXLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = E99FD1591450778100C33CD3 /* ViTMXLayer.mm */; };
 		E99FD1601450AB1800C33CD3 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E99FD15F1450AB1800C33CD3 /* libz.dylib */; };
 		E9B5D88514511E7A00A05F5E /* IsometricMap.tmx in Resources */ = {isa = PBXBuildFile; fileRef = E9B5D88114511E7A00A05F5E /* IsometricMap.tmx */; };
 		E9B5D88614511E7A00A05F5E /* IsometricTexture.png in Resources */ = {isa = PBXBuildFile; fileRef = E9B5D88214511E7A00A05F5E /* IsometricTexture.png */; };
 		E9B5D88714511E7A00A05F5E /* OrthogonalMap.tmx in Resources */ = {isa = PBXBuildFile; fileRef = E9B5D88314511E7A00A05F5E /* OrthogonalMap.tmx */; };
 		E9B5D88814511E7A00A05F5E /* OrthogonalTexture.png in Resources */ = {isa = PBXBuildFile; fileRef = E9B5D88414511E7A00A05F5E /* OrthogonalTexture.png */; };
-		E9B5D89714528EC600A05F5E /* Vinter.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E9B5D89614528EC600A05F5E /* Vinter.bundle */; };
-		E9DD17A2146B0A9600C2A4B3 /* chipmunk.c in Sources */ = {isa = PBXBuildFile; fileRef = E9DD1783146B0A9600C2A4B3 /* chipmunk.c */; };
-		E9DD17A3146B0A9600C2A4B3 /* cpConstraint.c in Sources */ = {isa = PBXBuildFile; fileRef = E9DD1785146B0A9600C2A4B3 /* cpConstraint.c */; };
-		E9DD17A4146B0A9600C2A4B3 /* cpDampedRotarySpring.c in Sources */ = {isa = PBXBuildFile; fileRef = E9DD1786146B0A9600C2A4B3 /* cpDampedRotarySpring.c */; };
-		E9DD17A5146B0A9600C2A4B3 /* cpDampedSpring.c in Sources */ = {isa = PBXBuildFile; fileRef = E9DD1787146B0A9600C2A4B3 /* cpDampedSpring.c */; };
-		E9DD17A6146B0A9600C2A4B3 /* cpGearJoint.c in Sources */ = {isa = PBXBuildFile; fileRef = E9DD1788146B0A9600C2A4B3 /* cpGearJoint.c */; };
-		E9DD17A7146B0A9600C2A4B3 /* cpGrooveJoint.c in Sources */ = {isa = PBXBuildFile; fileRef = E9DD1789146B0A9600C2A4B3 /* cpGrooveJoint.c */; };
-		E9DD17A8146B0A9600C2A4B3 /* cpPinJoint.c in Sources */ = {isa = PBXBuildFile; fileRef = E9DD178A146B0A9600C2A4B3 /* cpPinJoint.c */; };
-		E9DD17A9146B0A9600C2A4B3 /* cpPivotJoint.c in Sources */ = {isa = PBXBuildFile; fileRef = E9DD178B146B0A9600C2A4B3 /* cpPivotJoint.c */; };
-		E9DD17AA146B0A9600C2A4B3 /* cpRatchetJoint.c in Sources */ = {isa = PBXBuildFile; fileRef = E9DD178C146B0A9600C2A4B3 /* cpRatchetJoint.c */; };
-		E9DD17AB146B0A9600C2A4B3 /* cpRotaryLimitJoint.c in Sources */ = {isa = PBXBuildFile; fileRef = E9DD178D146B0A9600C2A4B3 /* cpRotaryLimitJoint.c */; };
-		E9DD17AC146B0A9600C2A4B3 /* cpSimpleMotor.c in Sources */ = {isa = PBXBuildFile; fileRef = E9DD178E146B0A9600C2A4B3 /* cpSimpleMotor.c */; };
-		E9DD17AD146B0A9600C2A4B3 /* cpSlideJoint.c in Sources */ = {isa = PBXBuildFile; fileRef = E9DD178F146B0A9600C2A4B3 /* cpSlideJoint.c */; };
-		E9DD17AE146B0A9600C2A4B3 /* cpArbiter.c in Sources */ = {isa = PBXBuildFile; fileRef = E9DD1790146B0A9600C2A4B3 /* cpArbiter.c */; };
-		E9DD17AF146B0A9600C2A4B3 /* cpArray.c in Sources */ = {isa = PBXBuildFile; fileRef = E9DD1791146B0A9600C2A4B3 /* cpArray.c */; };
-		E9DD17B0146B0A9600C2A4B3 /* cpBB.c in Sources */ = {isa = PBXBuildFile; fileRef = E9DD1792146B0A9600C2A4B3 /* cpBB.c */; };
-		E9DD17B1146B0A9600C2A4B3 /* cpBBTree.c in Sources */ = {isa = PBXBuildFile; fileRef = E9DD1793146B0A9600C2A4B3 /* cpBBTree.c */; };
-		E9DD17B2146B0A9600C2A4B3 /* cpBody.c in Sources */ = {isa = PBXBuildFile; fileRef = E9DD1794146B0A9600C2A4B3 /* cpBody.c */; };
-		E9DD17B3146B0A9600C2A4B3 /* cpCollision.c in Sources */ = {isa = PBXBuildFile; fileRef = E9DD1795146B0A9600C2A4B3 /* cpCollision.c */; };
-		E9DD17B4146B0A9600C2A4B3 /* cpHashSet.c in Sources */ = {isa = PBXBuildFile; fileRef = E9DD1796146B0A9600C2A4B3 /* cpHashSet.c */; };
-		E9DD17B5146B0A9600C2A4B3 /* cpPolyShape.c in Sources */ = {isa = PBXBuildFile; fileRef = E9DD1797146B0A9600C2A4B3 /* cpPolyShape.c */; };
-		E9DD17B6146B0A9600C2A4B3 /* cpShape.c in Sources */ = {isa = PBXBuildFile; fileRef = E9DD1798146B0A9600C2A4B3 /* cpShape.c */; };
-		E9DD17B7146B0A9600C2A4B3 /* cpSpace.c in Sources */ = {isa = PBXBuildFile; fileRef = E9DD1799146B0A9600C2A4B3 /* cpSpace.c */; };
-		E9DD17B8146B0A9600C2A4B3 /* cpSpaceComponent.c in Sources */ = {isa = PBXBuildFile; fileRef = E9DD179A146B0A9600C2A4B3 /* cpSpaceComponent.c */; };
-		E9DD17B9146B0A9600C2A4B3 /* cpSpaceHash.c in Sources */ = {isa = PBXBuildFile; fileRef = E9DD179B146B0A9600C2A4B3 /* cpSpaceHash.c */; };
-		E9DD17BA146B0A9600C2A4B3 /* cpSpaceQuery.c in Sources */ = {isa = PBXBuildFile; fileRef = E9DD179C146B0A9600C2A4B3 /* cpSpaceQuery.c */; };
-		E9DD17BB146B0A9600C2A4B3 /* cpSpaceStep.c in Sources */ = {isa = PBXBuildFile; fileRef = E9DD179D146B0A9600C2A4B3 /* cpSpaceStep.c */; };
-		E9DD17BC146B0A9600C2A4B3 /* cpSpatialIndex.c in Sources */ = {isa = PBXBuildFile; fileRef = E9DD179E146B0A9600C2A4B3 /* cpSpatialIndex.c */; };
-		E9DD17BD146B0A9600C2A4B3 /* cpSweep1D.c in Sources */ = {isa = PBXBuildFile; fileRef = E9DD179F146B0A9600C2A4B3 /* cpSweep1D.c */; };
-		E9DD17BE146B0A9600C2A4B3 /* cpVect.c in Sources */ = {isa = PBXBuildFile; fileRef = E9DD17A0146B0A9600C2A4B3 /* cpVect.c */; };
-		E9E342D31459597E004C9462 /* ViLine.mm in Sources */ = {isa = PBXBuildFile; fileRef = E9E342D21459597E004C9462 /* ViLine.mm */; };
-		E9E8ED621450C33E0066D9DB /* ViSpriteBatch.mm in Sources */ = {isa = PBXBuildFile; fileRef = E9E8ED611450C33E0066D9DB /* ViSpriteBatch.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		E90BB0C9146DA0810095403F /* ViParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViParticle.h; sourceTree = "<group>"; };
-		E90BB0CA146DA0810095403F /* ViParticle.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViParticle.mm; sourceTree = "<group>"; };
-		E90BB0CB146DA0810095403F /* ViParticleEmitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViParticleEmitter.h; sourceTree = "<group>"; };
-		E90BB0CC146DA0810095403F /* ViParticleEmitter.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViParticleEmitter.mm; sourceTree = "<group>"; };
+		E90BB353146E616F0095403F /* chipmunk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = chipmunk.h; sourceTree = "<group>"; };
+		E90BB354146E616F0095403F /* chipmunk_ffi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = chipmunk_ffi.h; sourceTree = "<group>"; };
+		E90BB355146E616F0095403F /* chipmunk_private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = chipmunk_private.h; sourceTree = "<group>"; };
+		E90BB356146E616F0095403F /* chipmunk_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = chipmunk_types.h; sourceTree = "<group>"; };
+		E90BB357146E616F0095403F /* chipmunk_unsafe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = chipmunk_unsafe.h; sourceTree = "<group>"; };
+		E90BB359146E616F0095403F /* cpConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpConstraint.h; sourceTree = "<group>"; };
+		E90BB35A146E616F0095403F /* cpDampedRotarySpring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpDampedRotarySpring.h; sourceTree = "<group>"; };
+		E90BB35B146E616F0095403F /* cpDampedSpring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpDampedSpring.h; sourceTree = "<group>"; };
+		E90BB35C146E616F0095403F /* cpGearJoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpGearJoint.h; sourceTree = "<group>"; };
+		E90BB35D146E616F0095403F /* cpGrooveJoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpGrooveJoint.h; sourceTree = "<group>"; };
+		E90BB35E146E616F0095403F /* cpPinJoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpPinJoint.h; sourceTree = "<group>"; };
+		E90BB35F146E616F0095403F /* cpPivotJoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpPivotJoint.h; sourceTree = "<group>"; };
+		E90BB360146E616F0095403F /* cpRatchetJoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpRatchetJoint.h; sourceTree = "<group>"; };
+		E90BB361146E616F0095403F /* cpRotaryLimitJoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpRotaryLimitJoint.h; sourceTree = "<group>"; };
+		E90BB362146E616F0095403F /* cpSimpleMotor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpSimpleMotor.h; sourceTree = "<group>"; };
+		E90BB363146E616F0095403F /* cpSlideJoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpSlideJoint.h; sourceTree = "<group>"; };
+		E90BB364146E616F0095403F /* util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = util.h; sourceTree = "<group>"; };
+		E90BB365146E616F0095403F /* cpArbiter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpArbiter.h; sourceTree = "<group>"; };
+		E90BB366146E616F0095403F /* cpBB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpBB.h; sourceTree = "<group>"; };
+		E90BB367146E616F0095403F /* cpBody.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpBody.h; sourceTree = "<group>"; };
+		E90BB368146E616F0095403F /* cpPolyShape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpPolyShape.h; sourceTree = "<group>"; };
+		E90BB369146E616F0095403F /* cpShape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpShape.h; sourceTree = "<group>"; };
+		E90BB36A146E616F0095403F /* cpSpace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpSpace.h; sourceTree = "<group>"; };
+		E90BB36B146E616F0095403F /* cpSpatialIndex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpSpatialIndex.h; sourceTree = "<group>"; };
+		E90BB36C146E616F0095403F /* cpVect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpVect.h; sourceTree = "<group>"; };
+		E90BB36D146E616F0095403F /* chipmunk.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = chipmunk.c; sourceTree = "<group>"; };
+		E90BB36F146E616F0095403F /* cpConstraint.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpConstraint.c; sourceTree = "<group>"; };
+		E90BB370146E616F0095403F /* cpDampedRotarySpring.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpDampedRotarySpring.c; sourceTree = "<group>"; };
+		E90BB371146E616F0095403F /* cpDampedSpring.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpDampedSpring.c; sourceTree = "<group>"; };
+		E90BB372146E616F0095403F /* cpGearJoint.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpGearJoint.c; sourceTree = "<group>"; };
+		E90BB373146E616F0095403F /* cpGrooveJoint.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpGrooveJoint.c; sourceTree = "<group>"; };
+		E90BB374146E616F0095403F /* cpPinJoint.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpPinJoint.c; sourceTree = "<group>"; };
+		E90BB375146E616F0095403F /* cpPivotJoint.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpPivotJoint.c; sourceTree = "<group>"; };
+		E90BB376146E616F0095403F /* cpRatchetJoint.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpRatchetJoint.c; sourceTree = "<group>"; };
+		E90BB377146E616F0095403F /* cpRotaryLimitJoint.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpRotaryLimitJoint.c; sourceTree = "<group>"; };
+		E90BB378146E616F0095403F /* cpSimpleMotor.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpSimpleMotor.c; sourceTree = "<group>"; };
+		E90BB379146E616F0095403F /* cpSlideJoint.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpSlideJoint.c; sourceTree = "<group>"; };
+		E90BB37A146E616F0095403F /* cpArbiter.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpArbiter.c; sourceTree = "<group>"; };
+		E90BB37B146E616F0095403F /* cpArray.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpArray.c; sourceTree = "<group>"; };
+		E90BB37C146E616F0095403F /* cpBB.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpBB.c; sourceTree = "<group>"; };
+		E90BB37D146E616F0095403F /* cpBBTree.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpBBTree.c; sourceTree = "<group>"; };
+		E90BB37E146E616F0095403F /* cpBody.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpBody.c; sourceTree = "<group>"; };
+		E90BB37F146E616F0095403F /* cpCollision.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpCollision.c; sourceTree = "<group>"; };
+		E90BB380146E616F0095403F /* cpHashSet.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpHashSet.c; sourceTree = "<group>"; };
+		E90BB381146E616F0095403F /* cpPolyShape.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpPolyShape.c; sourceTree = "<group>"; };
+		E90BB382146E616F0095403F /* cpShape.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpShape.c; sourceTree = "<group>"; };
+		E90BB383146E616F0095403F /* cpSpace.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpSpace.c; sourceTree = "<group>"; };
+		E90BB384146E616F0095403F /* cpSpaceComponent.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpSpaceComponent.c; sourceTree = "<group>"; };
+		E90BB385146E616F0095403F /* cpSpaceHash.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpSpaceHash.c; sourceTree = "<group>"; };
+		E90BB386146E616F0095403F /* cpSpaceQuery.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpSpaceQuery.c; sourceTree = "<group>"; };
+		E90BB387146E616F0095403F /* cpSpaceStep.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpSpaceStep.c; sourceTree = "<group>"; };
+		E90BB388146E616F0095403F /* cpSpatialIndex.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpSpatialIndex.c; sourceTree = "<group>"; };
+		E90BB389146E616F0095403F /* cpSweep1D.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpSweep1D.c; sourceTree = "<group>"; };
+		E90BB38A146E616F0095403F /* cpVect.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpVect.c; sourceTree = "<group>"; };
+		E90BB38B146E616F0095403F /* prime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = prime.h; sourceTree = "<group>"; };
+		E90BB38E146E616F0095403F /* ViAsset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViAsset.h; sourceTree = "<group>"; };
+		E90BB38F146E616F0095403F /* ViAsset.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViAsset.mm; sourceTree = "<group>"; };
+		E90BB390146E616F0095403F /* ViBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViBase.h; sourceTree = "<group>"; };
+		E90BB391146E616F0095403F /* ViBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViBridge.h; sourceTree = "<group>"; };
+		E90BB392146E616F0095403F /* ViBridge.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViBridge.mm; sourceTree = "<group>"; };
+		E90BB393146E616F0095403F /* ViColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViColor.h; sourceTree = "<group>"; };
+		E90BB394146E616F0095403F /* ViColor.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViColor.mm; sourceTree = "<group>"; };
+		E90BB395146E616F0095403F /* ViContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViContext.h; sourceTree = "<group>"; };
+		E90BB396146E616F0095403F /* ViContext.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViContext.mm; sourceTree = "<group>"; };
+		E90BB397146E616F0095403F /* ViDataPool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViDataPool.h; sourceTree = "<group>"; };
+		E90BB398146E616F0095403F /* ViDataPool.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViDataPool.mm; sourceTree = "<group>"; };
+		E90BB399146E616F0095403F /* ViKernel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViKernel.h; sourceTree = "<group>"; };
+		E90BB39A146E616F0095403F /* ViKernel.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViKernel.mm; sourceTree = "<group>"; };
+		E90BB39B146E616F0095403F /* ViLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViLine.h; sourceTree = "<group>"; };
+		E90BB39C146E616F0095403F /* ViLine.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViLine.mm; sourceTree = "<group>"; };
+		E90BB39D146E616F0095403F /* ViMatrix4x4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViMatrix4x4.h; sourceTree = "<group>"; };
+		E90BB39E146E616F0095403F /* ViMatrix4x4.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViMatrix4x4.mm; sourceTree = "<group>"; };
+		E90BB39F146E616F0095403F /* ViMesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViMesh.h; sourceTree = "<group>"; };
+		E90BB3A0146E616F0095403F /* ViMesh.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViMesh.mm; sourceTree = "<group>"; };
+		E90BB3A1146E616F0095403F /* ViQuadtree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViQuadtree.h; sourceTree = "<group>"; };
+		E90BB3A2146E616F0095403F /* ViQuadtree.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViQuadtree.mm; sourceTree = "<group>"; };
+		E90BB3A3146E616F0095403F /* ViRect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViRect.h; sourceTree = "<group>"; };
+		E90BB3A4146E616F0095403F /* ViRect.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViRect.mm; sourceTree = "<group>"; };
+		E90BB3A5146E616F0095403F /* ViVector2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViVector2.h; sourceTree = "<group>"; };
+		E90BB3A6146E616F0095403F /* ViVector2.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViVector2.mm; sourceTree = "<group>"; };
+		E90BB3A7146E616F0095403F /* ViVector3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViVector3.h; sourceTree = "<group>"; };
+		E90BB3A8146E616F0095403F /* ViVector3.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViVector3.mm; sourceTree = "<group>"; };
+		E90BB3A9146E616F0095403F /* ViXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViXML.h; sourceTree = "<group>"; };
+		E90BB3AA146E616F0095403F /* ViXML.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViXML.mm; sourceTree = "<group>"; };
+		E90BB3AC146E616F0095403F /* ViMaterial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViMaterial.h; sourceTree = "<group>"; };
+		E90BB3AD146E616F0095403F /* ViMaterial.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViMaterial.mm; sourceTree = "<group>"; };
+		E90BB3AE146E616F0095403F /* ViRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViRenderer.h; sourceTree = "<group>"; };
+		E90BB3AF146E616F0095403F /* ViRendererOSX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViRendererOSX.h; sourceTree = "<group>"; };
+		E90BB3B0146E616F0095403F /* ViRendererOSX.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViRendererOSX.mm; sourceTree = "<group>"; };
+		E90BB3B1146E616F0095403F /* ViShader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViShader.h; sourceTree = "<group>"; };
+		E90BB3B2146E616F0095403F /* ViShader.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViShader.mm; sourceTree = "<group>"; };
+		E90BB3B3146E616F0095403F /* ViTexture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViTexture.h; sourceTree = "<group>"; };
+		E90BB3B4146E616F0095403F /* ViTexture.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViTexture.mm; sourceTree = "<group>"; };
+		E90BB3B5146E616F0095403F /* ViTexturePVR.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViTexturePVR.h; sourceTree = "<group>"; };
+		E90BB3B6146E616F0095403F /* ViTexturePVR.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViTexturePVR.mm; sourceTree = "<group>"; };
+		E90BB3B7146E616F0095403F /* ViViewiOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViViewiOS.h; sourceTree = "<group>"; };
+		E90BB3B8146E616F0095403F /* ViViewiOS.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViViewiOS.mm; sourceTree = "<group>"; };
+		E90BB3B9146E616F0095403F /* ViViewOSX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViViewOSX.h; sourceTree = "<group>"; };
+		E90BB3BA146E616F0095403F /* ViViewOSX.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViViewOSX.mm; sourceTree = "<group>"; };
+		E90BB3BB146E616F0095403F /* ViViewProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViViewProtocol.h; sourceTree = "<group>"; };
+		E90BB3BD146E616F0095403F /* ViEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViEvent.h; sourceTree = "<group>"; };
+		E90BB3BE146E616F0095403F /* ViEvent.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViEvent.mm; sourceTree = "<group>"; };
+		E90BB3BF146E616F0095403F /* ViResponder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViResponder.h; sourceTree = "<group>"; };
+		E90BB3C0146E616F0095403F /* ViResponder.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViResponder.mm; sourceTree = "<group>"; };
+		E90BB3C2146E616F0095403F /* ViCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViCamera.h; sourceTree = "<group>"; };
+		E90BB3C3146E616F0095403F /* ViCamera.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViCamera.mm; sourceTree = "<group>"; };
+		E90BB3C4146E616F0095403F /* ViParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViParticle.h; sourceTree = "<group>"; };
+		E90BB3C5146E616F0095403F /* ViParticle.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViParticle.mm; sourceTree = "<group>"; };
+		E90BB3C6146E616F0095403F /* ViParticleEmitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViParticleEmitter.h; sourceTree = "<group>"; };
+		E90BB3C7146E616F0095403F /* ViParticleEmitter.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViParticleEmitter.mm; sourceTree = "<group>"; };
+		E90BB3C8146E616F0095403F /* ViScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViScene.h; sourceTree = "<group>"; };
+		E90BB3C9146E616F0095403F /* ViScene.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViScene.mm; sourceTree = "<group>"; };
+		E90BB3CA146E616F0095403F /* ViSceneNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViSceneNode.h; sourceTree = "<group>"; };
+		E90BB3CB146E616F0095403F /* ViSceneNode.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViSceneNode.mm; sourceTree = "<group>"; };
+		E90BB3CC146E616F0095403F /* ViSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViSprite.h; sourceTree = "<group>"; };
+		E90BB3CD146E616F0095403F /* ViSprite.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViSprite.mm; sourceTree = "<group>"; };
+		E90BB3CE146E616F0095403F /* ViSpriteBatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViSpriteBatch.h; sourceTree = "<group>"; };
+		E90BB3CF146E616F0095403F /* ViSpriteBatch.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViSpriteBatch.mm; sourceTree = "<group>"; };
+		E90BB3D0146E616F0095403F /* ViSpriteFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViSpriteFactory.h; sourceTree = "<group>"; };
+		E90BB3D1146E616F0095403F /* ViSpriteFactory.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViSpriteFactory.mm; sourceTree = "<group>"; };
+		E90BB3D2146E616F0095403F /* ViTMXLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViTMXLayer.h; sourceTree = "<group>"; };
+		E90BB3D3146E616F0095403F /* ViTMXLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViTMXLayer.mm; sourceTree = "<group>"; };
+		E90BB3D4146E616F0095403F /* ViTMXNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViTMXNode.h; sourceTree = "<group>"; };
+		E90BB3D5146E616F0095403F /* ViTMXNode.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViTMXNode.mm; sourceTree = "<group>"; };
+		E90BB3D6146E616F0095403F /* Vinter.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Vinter.bundle; sourceTree = "<group>"; };
+		E90BB3D7146E616F0095403F /* Vinter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vinter.h; sourceTree = "<group>"; };
 		E99FD05914505AD400C33CD3 /* TMXMaps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TMXMaps.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E99FD05D14505AD400C33CD3 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		E99FD06014505AD400C33CD3 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -101,139 +221,13 @@
 		E99FD08014505F1700C33CD3 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E99FD08114505F1700C33CD3 /* TMXMaps-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "TMXMaps-Info.plist"; sourceTree = "<group>"; };
 		E99FD08214505F1700C33CD3 /* TMXMaps-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TMXMaps-Prefix.pch"; sourceTree = "<group>"; };
-		E99FD09F14505F5C00C33CD3 /* ViAsset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViAsset.h; sourceTree = "<group>"; };
-		E99FD0A014505F5C00C33CD3 /* ViAsset.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViAsset.mm; sourceTree = "<group>"; };
-		E99FD0A114505F5C00C33CD3 /* ViBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViBase.h; sourceTree = "<group>"; };
-		E99FD0A214505F5C00C33CD3 /* ViBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViBridge.h; sourceTree = "<group>"; };
-		E99FD0A314505F5C00C33CD3 /* ViBridge.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViBridge.mm; sourceTree = "<group>"; };
-		E99FD0A414505F5C00C33CD3 /* ViContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViContext.h; sourceTree = "<group>"; };
-		E99FD0A514505F5C00C33CD3 /* ViContext.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViContext.mm; sourceTree = "<group>"; };
-		E99FD0A614505F5C00C33CD3 /* ViDataPool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViDataPool.h; sourceTree = "<group>"; };
-		E99FD0A714505F5C00C33CD3 /* ViDataPool.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViDataPool.mm; sourceTree = "<group>"; };
-		E99FD0A814505F5C00C33CD3 /* ViKernel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViKernel.h; sourceTree = "<group>"; };
-		E99FD0A914505F5C00C33CD3 /* ViKernel.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViKernel.mm; sourceTree = "<group>"; };
-		E99FD0AA14505F5C00C33CD3 /* ViMatrix4x4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViMatrix4x4.h; sourceTree = "<group>"; };
-		E99FD0AB14505F5C00C33CD3 /* ViMatrix4x4.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViMatrix4x4.mm; sourceTree = "<group>"; };
-		E99FD0AC14505F5C00C33CD3 /* ViMesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViMesh.h; sourceTree = "<group>"; };
-		E99FD0AD14505F5C00C33CD3 /* ViMesh.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViMesh.mm; sourceTree = "<group>"; };
-		E99FD0AE14505F5C00C33CD3 /* ViQuadtree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViQuadtree.h; sourceTree = "<group>"; };
-		E99FD0AF14505F5C00C33CD3 /* ViQuadtree.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViQuadtree.mm; sourceTree = "<group>"; };
-		E99FD0B014505F5C00C33CD3 /* ViRect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViRect.h; sourceTree = "<group>"; };
-		E99FD0B114505F5C00C33CD3 /* ViRect.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViRect.mm; sourceTree = "<group>"; };
-		E99FD0B214505F5C00C33CD3 /* ViTriangulate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViTriangulate.h; sourceTree = "<group>"; };
-		E99FD0B314505F5C00C33CD3 /* ViTriangulate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViTriangulate.mm; sourceTree = "<group>"; };
-		E99FD0B414505F5C00C33CD3 /* ViVector2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViVector2.h; sourceTree = "<group>"; };
-		E99FD0B514505F5C00C33CD3 /* ViVector2.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViVector2.mm; sourceTree = "<group>"; };
-		E99FD0B614505F5C00C33CD3 /* ViVector3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViVector3.h; sourceTree = "<group>"; };
-		E99FD0B714505F5C00C33CD3 /* ViVector3.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViVector3.mm; sourceTree = "<group>"; };
-		E99FD0BA14505F5C00C33CD3 /* ViColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViColor.h; sourceTree = "<group>"; };
-		E99FD0BB14505F5C00C33CD3 /* ViColor.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViColor.mm; sourceTree = "<group>"; };
-		E99FD0BC14505F5C00C33CD3 /* ViMaterial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViMaterial.h; sourceTree = "<group>"; };
-		E99FD0BD14505F5C00C33CD3 /* ViMaterial.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViMaterial.mm; sourceTree = "<group>"; };
-		E99FD0BE14505F5C00C33CD3 /* ViShader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViShader.h; sourceTree = "<group>"; };
-		E99FD0BF14505F5C00C33CD3 /* ViShader.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViShader.mm; sourceTree = "<group>"; };
-		E99FD0C014505F5C00C33CD3 /* ViTexture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViTexture.h; sourceTree = "<group>"; };
-		E99FD0C114505F5C00C33CD3 /* ViTexture.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViTexture.mm; sourceTree = "<group>"; };
-		E99FD0C214505F5C00C33CD3 /* ViTexturePVR.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViTexturePVR.h; sourceTree = "<group>"; };
-		E99FD0C314505F5C00C33CD3 /* ViTexturePVR.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViTexturePVR.mm; sourceTree = "<group>"; };
-		E99FD0C414505F5C00C33CD3 /* ViViewiOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViViewiOS.h; sourceTree = "<group>"; };
-		E99FD0C514505F5C00C33CD3 /* ViViewiOS.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViViewiOS.mm; sourceTree = "<group>"; };
-		E99FD0C614505F5C00C33CD3 /* ViViewOSX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViViewOSX.h; sourceTree = "<group>"; };
-		E99FD0C714505F5C00C33CD3 /* ViViewOSX.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViViewOSX.mm; sourceTree = "<group>"; };
-		E99FD0C814505F5C00C33CD3 /* ViViewProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViViewProtocol.h; sourceTree = "<group>"; };
-		E99FD0CA14505F5C00C33CD3 /* ViEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViEvent.h; sourceTree = "<group>"; };
-		E99FD0CB14505F5C00C33CD3 /* ViEvent.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViEvent.mm; sourceTree = "<group>"; };
-		E99FD0CC14505F5C00C33CD3 /* ViResponder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViResponder.h; sourceTree = "<group>"; };
-		E99FD0CD14505F5C00C33CD3 /* ViResponder.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViResponder.mm; sourceTree = "<group>"; };
-		E99FD0CF14505F5C00C33CD3 /* ViCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViCamera.h; sourceTree = "<group>"; };
-		E99FD0D014505F5C00C33CD3 /* ViCamera.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViCamera.mm; sourceTree = "<group>"; };
-		E99FD0D114505F5C00C33CD3 /* ViRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViRenderer.h; sourceTree = "<group>"; };
-		E99FD0D214505F5C00C33CD3 /* ViRendererOSX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViRendererOSX.h; sourceTree = "<group>"; };
-		E99FD0D314505F5C00C33CD3 /* ViRendererOSX.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViRendererOSX.mm; sourceTree = "<group>"; };
-		E99FD0D414505F5C00C33CD3 /* ViScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViScene.h; sourceTree = "<group>"; };
-		E99FD0D514505F5C00C33CD3 /* ViScene.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViScene.mm; sourceTree = "<group>"; };
-		E99FD0D614505F5C00C33CD3 /* ViSceneNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViSceneNode.h; sourceTree = "<group>"; };
-		E99FD0D714505F5C00C33CD3 /* ViSceneNode.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViSceneNode.mm; sourceTree = "<group>"; };
-		E99FD0D814505F5C00C33CD3 /* ViShape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViShape.h; sourceTree = "<group>"; };
-		E99FD0D914505F5C00C33CD3 /* ViShape.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViShape.mm; sourceTree = "<group>"; };
-		E99FD0DA14505F5C00C33CD3 /* ViSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViSprite.h; sourceTree = "<group>"; };
-		E99FD0DB14505F5C00C33CD3 /* ViSprite.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViSprite.mm; sourceTree = "<group>"; };
-		E99FD0DC14505F5C00C33CD3 /* ViSpriteFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViSpriteFactory.h; sourceTree = "<group>"; };
-		E99FD0DD14505F5C00C33CD3 /* ViSpriteFactory.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViSpriteFactory.mm; sourceTree = "<group>"; };
-		E99FD0E714505F5C00C33CD3 /* Vinter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vinter.h; sourceTree = "<group>"; };
-		E99FD11F14505F7300C33CD3 /* Logox512.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Logox512.icns; sourceTree = "<group>"; };
+		E99FD11F14505F7300C33CD3 /* Logox512.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = Logox512.icns; path = ../../../Resources/Logox512.icns; sourceTree = "<group>"; };
 		E99FD12914505FEA00C33CD3 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
-		E99FD1521450615400C33CD3 /* ViXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViXML.h; sourceTree = "<group>"; };
-		E99FD1531450615400C33CD3 /* ViXML.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViXML.mm; sourceTree = "<group>"; };
-		E99FD155145075E900C33CD3 /* ViTMXNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViTMXNode.h; sourceTree = "<group>"; };
-		E99FD156145075E900C33CD3 /* ViTMXNode.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViTMXNode.mm; sourceTree = "<group>"; };
-		E99FD1581450778100C33CD3 /* ViTMXLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViTMXLayer.h; sourceTree = "<group>"; };
-		E99FD1591450778100C33CD3 /* ViTMXLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViTMXLayer.mm; sourceTree = "<group>"; };
 		E99FD15F1450AB1800C33CD3 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
-		E9B5D88114511E7A00A05F5E /* IsometricMap.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = IsometricMap.tmx; sourceTree = "<group>"; };
-		E9B5D88214511E7A00A05F5E /* IsometricTexture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IsometricTexture.png; sourceTree = "<group>"; };
-		E9B5D88314511E7A00A05F5E /* OrthogonalMap.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = OrthogonalMap.tmx; sourceTree = "<group>"; };
-		E9B5D88414511E7A00A05F5E /* OrthogonalTexture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OrthogonalTexture.png; sourceTree = "<group>"; };
-		E9B5D89614528EC600A05F5E /* Vinter.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Vinter.bundle; sourceTree = "<group>"; };
-		E9DD1769146B0A9600C2A4B3 /* chipmunk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = chipmunk.h; sourceTree = "<group>"; };
-		E9DD176A146B0A9600C2A4B3 /* chipmunk_ffi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = chipmunk_ffi.h; sourceTree = "<group>"; };
-		E9DD176B146B0A9600C2A4B3 /* chipmunk_private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = chipmunk_private.h; sourceTree = "<group>"; };
-		E9DD176C146B0A9600C2A4B3 /* chipmunk_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = chipmunk_types.h; sourceTree = "<group>"; };
-		E9DD176D146B0A9600C2A4B3 /* chipmunk_unsafe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = chipmunk_unsafe.h; sourceTree = "<group>"; };
-		E9DD176F146B0A9600C2A4B3 /* cpConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpConstraint.h; sourceTree = "<group>"; };
-		E9DD1770146B0A9600C2A4B3 /* cpDampedRotarySpring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpDampedRotarySpring.h; sourceTree = "<group>"; };
-		E9DD1771146B0A9600C2A4B3 /* cpDampedSpring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpDampedSpring.h; sourceTree = "<group>"; };
-		E9DD1772146B0A9600C2A4B3 /* cpGearJoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpGearJoint.h; sourceTree = "<group>"; };
-		E9DD1773146B0A9600C2A4B3 /* cpGrooveJoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpGrooveJoint.h; sourceTree = "<group>"; };
-		E9DD1774146B0A9600C2A4B3 /* cpPinJoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpPinJoint.h; sourceTree = "<group>"; };
-		E9DD1775146B0A9600C2A4B3 /* cpPivotJoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpPivotJoint.h; sourceTree = "<group>"; };
-		E9DD1776146B0A9600C2A4B3 /* cpRatchetJoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpRatchetJoint.h; sourceTree = "<group>"; };
-		E9DD1777146B0A9600C2A4B3 /* cpRotaryLimitJoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpRotaryLimitJoint.h; sourceTree = "<group>"; };
-		E9DD1778146B0A9600C2A4B3 /* cpSimpleMotor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpSimpleMotor.h; sourceTree = "<group>"; };
-		E9DD1779146B0A9600C2A4B3 /* cpSlideJoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpSlideJoint.h; sourceTree = "<group>"; };
-		E9DD177A146B0A9600C2A4B3 /* util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = util.h; sourceTree = "<group>"; };
-		E9DD177B146B0A9600C2A4B3 /* cpArbiter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpArbiter.h; sourceTree = "<group>"; };
-		E9DD177C146B0A9600C2A4B3 /* cpBB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpBB.h; sourceTree = "<group>"; };
-		E9DD177D146B0A9600C2A4B3 /* cpBody.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpBody.h; sourceTree = "<group>"; };
-		E9DD177E146B0A9600C2A4B3 /* cpPolyShape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpPolyShape.h; sourceTree = "<group>"; };
-		E9DD177F146B0A9600C2A4B3 /* cpShape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpShape.h; sourceTree = "<group>"; };
-		E9DD1780146B0A9600C2A4B3 /* cpSpace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpSpace.h; sourceTree = "<group>"; };
-		E9DD1781146B0A9600C2A4B3 /* cpSpatialIndex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpSpatialIndex.h; sourceTree = "<group>"; };
-		E9DD1782146B0A9600C2A4B3 /* cpVect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpVect.h; sourceTree = "<group>"; };
-		E9DD1783146B0A9600C2A4B3 /* chipmunk.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = chipmunk.c; sourceTree = "<group>"; };
-		E9DD1785146B0A9600C2A4B3 /* cpConstraint.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpConstraint.c; sourceTree = "<group>"; };
-		E9DD1786146B0A9600C2A4B3 /* cpDampedRotarySpring.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpDampedRotarySpring.c; sourceTree = "<group>"; };
-		E9DD1787146B0A9600C2A4B3 /* cpDampedSpring.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpDampedSpring.c; sourceTree = "<group>"; };
-		E9DD1788146B0A9600C2A4B3 /* cpGearJoint.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpGearJoint.c; sourceTree = "<group>"; };
-		E9DD1789146B0A9600C2A4B3 /* cpGrooveJoint.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpGrooveJoint.c; sourceTree = "<group>"; };
-		E9DD178A146B0A9600C2A4B3 /* cpPinJoint.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpPinJoint.c; sourceTree = "<group>"; };
-		E9DD178B146B0A9600C2A4B3 /* cpPivotJoint.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpPivotJoint.c; sourceTree = "<group>"; };
-		E9DD178C146B0A9600C2A4B3 /* cpRatchetJoint.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpRatchetJoint.c; sourceTree = "<group>"; };
-		E9DD178D146B0A9600C2A4B3 /* cpRotaryLimitJoint.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpRotaryLimitJoint.c; sourceTree = "<group>"; };
-		E9DD178E146B0A9600C2A4B3 /* cpSimpleMotor.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpSimpleMotor.c; sourceTree = "<group>"; };
-		E9DD178F146B0A9600C2A4B3 /* cpSlideJoint.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpSlideJoint.c; sourceTree = "<group>"; };
-		E9DD1790146B0A9600C2A4B3 /* cpArbiter.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpArbiter.c; sourceTree = "<group>"; };
-		E9DD1791146B0A9600C2A4B3 /* cpArray.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpArray.c; sourceTree = "<group>"; };
-		E9DD1792146B0A9600C2A4B3 /* cpBB.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpBB.c; sourceTree = "<group>"; };
-		E9DD1793146B0A9600C2A4B3 /* cpBBTree.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpBBTree.c; sourceTree = "<group>"; };
-		E9DD1794146B0A9600C2A4B3 /* cpBody.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpBody.c; sourceTree = "<group>"; };
-		E9DD1795146B0A9600C2A4B3 /* cpCollision.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpCollision.c; sourceTree = "<group>"; };
-		E9DD1796146B0A9600C2A4B3 /* cpHashSet.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpHashSet.c; sourceTree = "<group>"; };
-		E9DD1797146B0A9600C2A4B3 /* cpPolyShape.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpPolyShape.c; sourceTree = "<group>"; };
-		E9DD1798146B0A9600C2A4B3 /* cpShape.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpShape.c; sourceTree = "<group>"; };
-		E9DD1799146B0A9600C2A4B3 /* cpSpace.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpSpace.c; sourceTree = "<group>"; };
-		E9DD179A146B0A9600C2A4B3 /* cpSpaceComponent.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpSpaceComponent.c; sourceTree = "<group>"; };
-		E9DD179B146B0A9600C2A4B3 /* cpSpaceHash.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpSpaceHash.c; sourceTree = "<group>"; };
-		E9DD179C146B0A9600C2A4B3 /* cpSpaceQuery.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpSpaceQuery.c; sourceTree = "<group>"; };
-		E9DD179D146B0A9600C2A4B3 /* cpSpaceStep.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpSpaceStep.c; sourceTree = "<group>"; };
-		E9DD179E146B0A9600C2A4B3 /* cpSpatialIndex.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpSpatialIndex.c; sourceTree = "<group>"; };
-		E9DD179F146B0A9600C2A4B3 /* cpSweep1D.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpSweep1D.c; sourceTree = "<group>"; };
-		E9DD17A0146B0A9600C2A4B3 /* cpVect.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpVect.c; sourceTree = "<group>"; };
-		E9DD17A1146B0A9600C2A4B3 /* prime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = prime.h; sourceTree = "<group>"; };
-		E9E342D11459597E004C9462 /* ViLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViLine.h; sourceTree = "<group>"; };
-		E9E342D21459597E004C9462 /* ViLine.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViLine.mm; sourceTree = "<group>"; };
-		E9E8ED601450C33E0066D9DB /* ViSpriteBatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViSpriteBatch.h; sourceTree = "<group>"; };
-		E9E8ED611450C33E0066D9DB /* ViSpriteBatch.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViSpriteBatch.mm; sourceTree = "<group>"; };
+		E9B5D88114511E7A00A05F5E /* IsometricMap.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = IsometricMap.tmx; path = ../../../Resources/IsometricMap.tmx; sourceTree = "<group>"; };
+		E9B5D88214511E7A00A05F5E /* IsometricTexture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = IsometricTexture.png; path = ../../../Resources/IsometricTexture.png; sourceTree = "<group>"; };
+		E9B5D88314511E7A00A05F5E /* OrthogonalMap.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = OrthogonalMap.tmx; path = ../../../Resources/OrthogonalMap.tmx; sourceTree = "<group>"; };
+		E9B5D88414511E7A00A05F5E /* OrthogonalTexture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = OrthogonalTexture.png; path = ../../../Resources/OrthogonalTexture.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -250,12 +244,217 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E90BB350146E616F0095403F /* Dependencies */ = {
+			isa = PBXGroup;
+			children = (
+				E90BB351146E616F0095403F /* Chipmunk */,
+			);
+			name = Dependencies;
+			path = ../../Dependencies;
+			sourceTree = "<group>";
+		};
+		E90BB351146E616F0095403F /* Chipmunk */ = {
+			isa = PBXGroup;
+			children = (
+				E90BB352146E616F0095403F /* chipmunk */,
+				E90BB36D146E616F0095403F /* chipmunk.c */,
+				E90BB36E146E616F0095403F /* constraints */,
+				E90BB37A146E616F0095403F /* cpArbiter.c */,
+				E90BB37B146E616F0095403F /* cpArray.c */,
+				E90BB37C146E616F0095403F /* cpBB.c */,
+				E90BB37D146E616F0095403F /* cpBBTree.c */,
+				E90BB37E146E616F0095403F /* cpBody.c */,
+				E90BB37F146E616F0095403F /* cpCollision.c */,
+				E90BB380146E616F0095403F /* cpHashSet.c */,
+				E90BB381146E616F0095403F /* cpPolyShape.c */,
+				E90BB382146E616F0095403F /* cpShape.c */,
+				E90BB383146E616F0095403F /* cpSpace.c */,
+				E90BB384146E616F0095403F /* cpSpaceComponent.c */,
+				E90BB385146E616F0095403F /* cpSpaceHash.c */,
+				E90BB386146E616F0095403F /* cpSpaceQuery.c */,
+				E90BB387146E616F0095403F /* cpSpaceStep.c */,
+				E90BB388146E616F0095403F /* cpSpatialIndex.c */,
+				E90BB389146E616F0095403F /* cpSweep1D.c */,
+				E90BB38A146E616F0095403F /* cpVect.c */,
+				E90BB38B146E616F0095403F /* prime.h */,
+			);
+			path = Chipmunk;
+			sourceTree = "<group>";
+		};
+		E90BB352146E616F0095403F /* chipmunk */ = {
+			isa = PBXGroup;
+			children = (
+				E90BB353146E616F0095403F /* chipmunk.h */,
+				E90BB354146E616F0095403F /* chipmunk_ffi.h */,
+				E90BB355146E616F0095403F /* chipmunk_private.h */,
+				E90BB356146E616F0095403F /* chipmunk_types.h */,
+				E90BB357146E616F0095403F /* chipmunk_unsafe.h */,
+				E90BB358146E616F0095403F /* constraints */,
+				E90BB365146E616F0095403F /* cpArbiter.h */,
+				E90BB366146E616F0095403F /* cpBB.h */,
+				E90BB367146E616F0095403F /* cpBody.h */,
+				E90BB368146E616F0095403F /* cpPolyShape.h */,
+				E90BB369146E616F0095403F /* cpShape.h */,
+				E90BB36A146E616F0095403F /* cpSpace.h */,
+				E90BB36B146E616F0095403F /* cpSpatialIndex.h */,
+				E90BB36C146E616F0095403F /* cpVect.h */,
+			);
+			path = chipmunk;
+			sourceTree = "<group>";
+		};
+		E90BB358146E616F0095403F /* constraints */ = {
+			isa = PBXGroup;
+			children = (
+				E90BB359146E616F0095403F /* cpConstraint.h */,
+				E90BB35A146E616F0095403F /* cpDampedRotarySpring.h */,
+				E90BB35B146E616F0095403F /* cpDampedSpring.h */,
+				E90BB35C146E616F0095403F /* cpGearJoint.h */,
+				E90BB35D146E616F0095403F /* cpGrooveJoint.h */,
+				E90BB35E146E616F0095403F /* cpPinJoint.h */,
+				E90BB35F146E616F0095403F /* cpPivotJoint.h */,
+				E90BB360146E616F0095403F /* cpRatchetJoint.h */,
+				E90BB361146E616F0095403F /* cpRotaryLimitJoint.h */,
+				E90BB362146E616F0095403F /* cpSimpleMotor.h */,
+				E90BB363146E616F0095403F /* cpSlideJoint.h */,
+				E90BB364146E616F0095403F /* util.h */,
+			);
+			path = constraints;
+			sourceTree = "<group>";
+		};
+		E90BB36E146E616F0095403F /* constraints */ = {
+			isa = PBXGroup;
+			children = (
+				E90BB36F146E616F0095403F /* cpConstraint.c */,
+				E90BB370146E616F0095403F /* cpDampedRotarySpring.c */,
+				E90BB371146E616F0095403F /* cpDampedSpring.c */,
+				E90BB372146E616F0095403F /* cpGearJoint.c */,
+				E90BB373146E616F0095403F /* cpGrooveJoint.c */,
+				E90BB374146E616F0095403F /* cpPinJoint.c */,
+				E90BB375146E616F0095403F /* cpPivotJoint.c */,
+				E90BB376146E616F0095403F /* cpRatchetJoint.c */,
+				E90BB377146E616F0095403F /* cpRotaryLimitJoint.c */,
+				E90BB378146E616F0095403F /* cpSimpleMotor.c */,
+				E90BB379146E616F0095403F /* cpSlideJoint.c */,
+			);
+			path = constraints;
+			sourceTree = "<group>";
+		};
+		E90BB38C146E616F0095403F /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				E90BB38D146E616F0095403F /* common */,
+				E90BB3AB146E616F0095403F /* graphic */,
+				E90BB3BC146E616F0095403F /* input */,
+				E90BB3C1146E616F0095403F /* scene */,
+				E90BB3D6146E616F0095403F /* Vinter.bundle */,
+				E90BB3D7146E616F0095403F /* Vinter.h */,
+			);
+			name = Source;
+			path = ../../Source;
+			sourceTree = "<group>";
+		};
+		E90BB38D146E616F0095403F /* common */ = {
+			isa = PBXGroup;
+			children = (
+				E90BB38E146E616F0095403F /* ViAsset.h */,
+				E90BB38F146E616F0095403F /* ViAsset.mm */,
+				E90BB390146E616F0095403F /* ViBase.h */,
+				E90BB391146E616F0095403F /* ViBridge.h */,
+				E90BB392146E616F0095403F /* ViBridge.mm */,
+				E90BB393146E616F0095403F /* ViColor.h */,
+				E90BB394146E616F0095403F /* ViColor.mm */,
+				E90BB395146E616F0095403F /* ViContext.h */,
+				E90BB396146E616F0095403F /* ViContext.mm */,
+				E90BB397146E616F0095403F /* ViDataPool.h */,
+				E90BB398146E616F0095403F /* ViDataPool.mm */,
+				E90BB399146E616F0095403F /* ViKernel.h */,
+				E90BB39A146E616F0095403F /* ViKernel.mm */,
+				E90BB39B146E616F0095403F /* ViLine.h */,
+				E90BB39C146E616F0095403F /* ViLine.mm */,
+				E90BB39D146E616F0095403F /* ViMatrix4x4.h */,
+				E90BB39E146E616F0095403F /* ViMatrix4x4.mm */,
+				E90BB39F146E616F0095403F /* ViMesh.h */,
+				E90BB3A0146E616F0095403F /* ViMesh.mm */,
+				E90BB3A1146E616F0095403F /* ViQuadtree.h */,
+				E90BB3A2146E616F0095403F /* ViQuadtree.mm */,
+				E90BB3A3146E616F0095403F /* ViRect.h */,
+				E90BB3A4146E616F0095403F /* ViRect.mm */,
+				E90BB3A5146E616F0095403F /* ViVector2.h */,
+				E90BB3A6146E616F0095403F /* ViVector2.mm */,
+				E90BB3A7146E616F0095403F /* ViVector3.h */,
+				E90BB3A8146E616F0095403F /* ViVector3.mm */,
+				E90BB3A9146E616F0095403F /* ViXML.h */,
+				E90BB3AA146E616F0095403F /* ViXML.mm */,
+			);
+			path = common;
+			sourceTree = "<group>";
+		};
+		E90BB3AB146E616F0095403F /* graphic */ = {
+			isa = PBXGroup;
+			children = (
+				E90BB3AC146E616F0095403F /* ViMaterial.h */,
+				E90BB3AD146E616F0095403F /* ViMaterial.mm */,
+				E90BB3AE146E616F0095403F /* ViRenderer.h */,
+				E90BB3AF146E616F0095403F /* ViRendererOSX.h */,
+				E90BB3B0146E616F0095403F /* ViRendererOSX.mm */,
+				E90BB3B1146E616F0095403F /* ViShader.h */,
+				E90BB3B2146E616F0095403F /* ViShader.mm */,
+				E90BB3B3146E616F0095403F /* ViTexture.h */,
+				E90BB3B4146E616F0095403F /* ViTexture.mm */,
+				E90BB3B5146E616F0095403F /* ViTexturePVR.h */,
+				E90BB3B6146E616F0095403F /* ViTexturePVR.mm */,
+				E90BB3B7146E616F0095403F /* ViViewiOS.h */,
+				E90BB3B8146E616F0095403F /* ViViewiOS.mm */,
+				E90BB3B9146E616F0095403F /* ViViewOSX.h */,
+				E90BB3BA146E616F0095403F /* ViViewOSX.mm */,
+				E90BB3BB146E616F0095403F /* ViViewProtocol.h */,
+			);
+			path = graphic;
+			sourceTree = "<group>";
+		};
+		E90BB3BC146E616F0095403F /* input */ = {
+			isa = PBXGroup;
+			children = (
+				E90BB3BD146E616F0095403F /* ViEvent.h */,
+				E90BB3BE146E616F0095403F /* ViEvent.mm */,
+				E90BB3BF146E616F0095403F /* ViResponder.h */,
+				E90BB3C0146E616F0095403F /* ViResponder.mm */,
+			);
+			path = input;
+			sourceTree = "<group>";
+		};
+		E90BB3C1146E616F0095403F /* scene */ = {
+			isa = PBXGroup;
+			children = (
+				E90BB3C2146E616F0095403F /* ViCamera.h */,
+				E90BB3C3146E616F0095403F /* ViCamera.mm */,
+				E90BB3C4146E616F0095403F /* ViParticle.h */,
+				E90BB3C5146E616F0095403F /* ViParticle.mm */,
+				E90BB3C6146E616F0095403F /* ViParticleEmitter.h */,
+				E90BB3C7146E616F0095403F /* ViParticleEmitter.mm */,
+				E90BB3C8146E616F0095403F /* ViScene.h */,
+				E90BB3C9146E616F0095403F /* ViScene.mm */,
+				E90BB3CA146E616F0095403F /* ViSceneNode.h */,
+				E90BB3CB146E616F0095403F /* ViSceneNode.mm */,
+				E90BB3CC146E616F0095403F /* ViSprite.h */,
+				E90BB3CD146E616F0095403F /* ViSprite.mm */,
+				E90BB3CE146E616F0095403F /* ViSpriteBatch.h */,
+				E90BB3CF146E616F0095403F /* ViSpriteBatch.mm */,
+				E90BB3D0146E616F0095403F /* ViSpriteFactory.h */,
+				E90BB3D1146E616F0095403F /* ViSpriteFactory.mm */,
+				E90BB3D2146E616F0095403F /* ViTMXLayer.h */,
+				E90BB3D3146E616F0095403F /* ViTMXLayer.mm */,
+				E90BB3D4146E616F0095403F /* ViTMXNode.h */,
+				E90BB3D5146E616F0095403F /* ViTMXNode.mm */,
+			);
+			path = scene;
+			sourceTree = "<group>";
+		};
 		E99FD04E14505AD000C33CD3 = {
 			isa = PBXGroup;
 			children = (
-				E9DD1766146B0A9600C2A4B3 /* Dependencies */,
-				E99FD08714505F5C00C33CD3 /* Resources */,
-				E99FD09D14505F5C00C33CD3 /* Source */,
+				E90BB350146E616F0095403F /* Dependencies */,
+				E90BB38C146E616F0095403F /* Source */,
 				E99FD07A14505F1700C33CD3 /* Classes */,
 				E99FD07D14505F1700C33CD3 /* Resources */,
 				E99FD07F14505F1700C33CD3 /* Supporting Files */,
@@ -305,6 +504,11 @@
 		E99FD07D14505F1700C33CD3 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E9B5D88114511E7A00A05F5E /* IsometricMap.tmx */,
+				E9B5D88214511E7A00A05F5E /* IsometricTexture.png */,
+				E9B5D88314511E7A00A05F5E /* OrthogonalMap.tmx */,
+				E9B5D88414511E7A00A05F5E /* OrthogonalTexture.png */,
+				E99FD11F14505F7300C33CD3 /* Logox512.icns */,
 				E99FD07E14505F1700C33CD3 /* MainMenu.xib */,
 			);
 			path = Resources;
@@ -318,229 +522,6 @@
 				E99FD08214505F1700C33CD3 /* TMXMaps-Prefix.pch */,
 			);
 			path = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		E99FD08714505F5C00C33CD3 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				E9B5D88114511E7A00A05F5E /* IsometricMap.tmx */,
-				E9B5D88214511E7A00A05F5E /* IsometricTexture.png */,
-				E9B5D88314511E7A00A05F5E /* OrthogonalMap.tmx */,
-				E9B5D88414511E7A00A05F5E /* OrthogonalTexture.png */,
-				E99FD11F14505F7300C33CD3 /* Logox512.icns */,
-			);
-			name = Resources;
-			path = ../../Resources;
-			sourceTree = "<group>";
-		};
-		E99FD09D14505F5C00C33CD3 /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				E99FD09E14505F5C00C33CD3 /* common */,
-				E99FD0B914505F5C00C33CD3 /* graphic */,
-				E99FD0C914505F5C00C33CD3 /* input */,
-				E99FD0CE14505F5C00C33CD3 /* scene */,
-				E9B5D89614528EC600A05F5E /* Vinter.bundle */,
-				E99FD0E714505F5C00C33CD3 /* Vinter.h */,
-			);
-			name = Source;
-			path = ../../Source;
-			sourceTree = "<group>";
-		};
-		E99FD09E14505F5C00C33CD3 /* common */ = {
-			isa = PBXGroup;
-			children = (
-				E99FD09F14505F5C00C33CD3 /* ViAsset.h */,
-				E99FD0A014505F5C00C33CD3 /* ViAsset.mm */,
-				E99FD0A114505F5C00C33CD3 /* ViBase.h */,
-				E99FD0A214505F5C00C33CD3 /* ViBridge.h */,
-				E99FD0A314505F5C00C33CD3 /* ViBridge.mm */,
-				E99FD0A414505F5C00C33CD3 /* ViContext.h */,
-				E99FD0A514505F5C00C33CD3 /* ViContext.mm */,
-				E99FD0A614505F5C00C33CD3 /* ViDataPool.h */,
-				E99FD0A714505F5C00C33CD3 /* ViDataPool.mm */,
-				E99FD0A814505F5C00C33CD3 /* ViKernel.h */,
-				E99FD0A914505F5C00C33CD3 /* ViKernel.mm */,
-				E9E342D11459597E004C9462 /* ViLine.h */,
-				E9E342D21459597E004C9462 /* ViLine.mm */,
-				E99FD0AA14505F5C00C33CD3 /* ViMatrix4x4.h */,
-				E99FD0AB14505F5C00C33CD3 /* ViMatrix4x4.mm */,
-				E99FD0AC14505F5C00C33CD3 /* ViMesh.h */,
-				E99FD0AD14505F5C00C33CD3 /* ViMesh.mm */,
-				E99FD0AE14505F5C00C33CD3 /* ViQuadtree.h */,
-				E99FD0AF14505F5C00C33CD3 /* ViQuadtree.mm */,
-				E99FD0B014505F5C00C33CD3 /* ViRect.h */,
-				E99FD0B114505F5C00C33CD3 /* ViRect.mm */,
-				E99FD0B214505F5C00C33CD3 /* ViTriangulate.h */,
-				E99FD0B314505F5C00C33CD3 /* ViTriangulate.mm */,
-				E99FD0B414505F5C00C33CD3 /* ViVector2.h */,
-				E99FD0B514505F5C00C33CD3 /* ViVector2.mm */,
-				E99FD0B614505F5C00C33CD3 /* ViVector3.h */,
-				E99FD0B714505F5C00C33CD3 /* ViVector3.mm */,
-				E99FD1521450615400C33CD3 /* ViXML.h */,
-				E99FD1531450615400C33CD3 /* ViXML.mm */,
-			);
-			path = common;
-			sourceTree = "<group>";
-		};
-		E99FD0B914505F5C00C33CD3 /* graphic */ = {
-			isa = PBXGroup;
-			children = (
-				E99FD0BA14505F5C00C33CD3 /* ViColor.h */,
-				E99FD0BB14505F5C00C33CD3 /* ViColor.mm */,
-				E99FD0BC14505F5C00C33CD3 /* ViMaterial.h */,
-				E99FD0BD14505F5C00C33CD3 /* ViMaterial.mm */,
-				E99FD0BE14505F5C00C33CD3 /* ViShader.h */,
-				E99FD0BF14505F5C00C33CD3 /* ViShader.mm */,
-				E99FD0C014505F5C00C33CD3 /* ViTexture.h */,
-				E99FD0C114505F5C00C33CD3 /* ViTexture.mm */,
-				E99FD0C214505F5C00C33CD3 /* ViTexturePVR.h */,
-				E99FD0C314505F5C00C33CD3 /* ViTexturePVR.mm */,
-				E99FD0C414505F5C00C33CD3 /* ViViewiOS.h */,
-				E99FD0C514505F5C00C33CD3 /* ViViewiOS.mm */,
-				E99FD0C614505F5C00C33CD3 /* ViViewOSX.h */,
-				E99FD0C714505F5C00C33CD3 /* ViViewOSX.mm */,
-				E99FD0C814505F5C00C33CD3 /* ViViewProtocol.h */,
-			);
-			path = graphic;
-			sourceTree = "<group>";
-		};
-		E99FD0C914505F5C00C33CD3 /* input */ = {
-			isa = PBXGroup;
-			children = (
-				E99FD0CA14505F5C00C33CD3 /* ViEvent.h */,
-				E99FD0CB14505F5C00C33CD3 /* ViEvent.mm */,
-				E99FD0CC14505F5C00C33CD3 /* ViResponder.h */,
-				E99FD0CD14505F5C00C33CD3 /* ViResponder.mm */,
-			);
-			path = input;
-			sourceTree = "<group>";
-		};
-		E99FD0CE14505F5C00C33CD3 /* scene */ = {
-			isa = PBXGroup;
-			children = (
-				E99FD0CF14505F5C00C33CD3 /* ViCamera.h */,
-				E99FD0D014505F5C00C33CD3 /* ViCamera.mm */,
-				E90BB0C9146DA0810095403F /* ViParticle.h */,
-				E90BB0CA146DA0810095403F /* ViParticle.mm */,
-				E90BB0CB146DA0810095403F /* ViParticleEmitter.h */,
-				E90BB0CC146DA0810095403F /* ViParticleEmitter.mm */,
-				E99FD0D114505F5C00C33CD3 /* ViRenderer.h */,
-				E99FD0D214505F5C00C33CD3 /* ViRendererOSX.h */,
-				E99FD0D314505F5C00C33CD3 /* ViRendererOSX.mm */,
-				E99FD0D414505F5C00C33CD3 /* ViScene.h */,
-				E99FD0D514505F5C00C33CD3 /* ViScene.mm */,
-				E99FD0D614505F5C00C33CD3 /* ViSceneNode.h */,
-				E99FD0D714505F5C00C33CD3 /* ViSceneNode.mm */,
-				E99FD0D814505F5C00C33CD3 /* ViShape.h */,
-				E99FD0D914505F5C00C33CD3 /* ViShape.mm */,
-				E99FD0DA14505F5C00C33CD3 /* ViSprite.h */,
-				E99FD0DB14505F5C00C33CD3 /* ViSprite.mm */,
-				E9E8ED601450C33E0066D9DB /* ViSpriteBatch.h */,
-				E9E8ED611450C33E0066D9DB /* ViSpriteBatch.mm */,
-				E99FD0DC14505F5C00C33CD3 /* ViSpriteFactory.h */,
-				E99FD0DD14505F5C00C33CD3 /* ViSpriteFactory.mm */,
-				E99FD1581450778100C33CD3 /* ViTMXLayer.h */,
-				E99FD1591450778100C33CD3 /* ViTMXLayer.mm */,
-				E99FD155145075E900C33CD3 /* ViTMXNode.h */,
-				E99FD156145075E900C33CD3 /* ViTMXNode.mm */,
-			);
-			path = scene;
-			sourceTree = "<group>";
-		};
-		E9DD1766146B0A9600C2A4B3 /* Dependencies */ = {
-			isa = PBXGroup;
-			children = (
-				E9DD1767146B0A9600C2A4B3 /* Chipmunk */,
-			);
-			name = Dependencies;
-			path = ../../Dependencies;
-			sourceTree = "<group>";
-		};
-		E9DD1767146B0A9600C2A4B3 /* Chipmunk */ = {
-			isa = PBXGroup;
-			children = (
-				E9DD1768146B0A9600C2A4B3 /* chipmunk */,
-				E9DD1783146B0A9600C2A4B3 /* chipmunk.c */,
-				E9DD1784146B0A9600C2A4B3 /* constraints */,
-				E9DD1790146B0A9600C2A4B3 /* cpArbiter.c */,
-				E9DD1791146B0A9600C2A4B3 /* cpArray.c */,
-				E9DD1792146B0A9600C2A4B3 /* cpBB.c */,
-				E9DD1793146B0A9600C2A4B3 /* cpBBTree.c */,
-				E9DD1794146B0A9600C2A4B3 /* cpBody.c */,
-				E9DD1795146B0A9600C2A4B3 /* cpCollision.c */,
-				E9DD1796146B0A9600C2A4B3 /* cpHashSet.c */,
-				E9DD1797146B0A9600C2A4B3 /* cpPolyShape.c */,
-				E9DD1798146B0A9600C2A4B3 /* cpShape.c */,
-				E9DD1799146B0A9600C2A4B3 /* cpSpace.c */,
-				E9DD179A146B0A9600C2A4B3 /* cpSpaceComponent.c */,
-				E9DD179B146B0A9600C2A4B3 /* cpSpaceHash.c */,
-				E9DD179C146B0A9600C2A4B3 /* cpSpaceQuery.c */,
-				E9DD179D146B0A9600C2A4B3 /* cpSpaceStep.c */,
-				E9DD179E146B0A9600C2A4B3 /* cpSpatialIndex.c */,
-				E9DD179F146B0A9600C2A4B3 /* cpSweep1D.c */,
-				E9DD17A0146B0A9600C2A4B3 /* cpVect.c */,
-				E9DD17A1146B0A9600C2A4B3 /* prime.h */,
-			);
-			path = Chipmunk;
-			sourceTree = "<group>";
-		};
-		E9DD1768146B0A9600C2A4B3 /* chipmunk */ = {
-			isa = PBXGroup;
-			children = (
-				E9DD1769146B0A9600C2A4B3 /* chipmunk.h */,
-				E9DD176A146B0A9600C2A4B3 /* chipmunk_ffi.h */,
-				E9DD176B146B0A9600C2A4B3 /* chipmunk_private.h */,
-				E9DD176C146B0A9600C2A4B3 /* chipmunk_types.h */,
-				E9DD176D146B0A9600C2A4B3 /* chipmunk_unsafe.h */,
-				E9DD176E146B0A9600C2A4B3 /* constraints */,
-				E9DD177B146B0A9600C2A4B3 /* cpArbiter.h */,
-				E9DD177C146B0A9600C2A4B3 /* cpBB.h */,
-				E9DD177D146B0A9600C2A4B3 /* cpBody.h */,
-				E9DD177E146B0A9600C2A4B3 /* cpPolyShape.h */,
-				E9DD177F146B0A9600C2A4B3 /* cpShape.h */,
-				E9DD1780146B0A9600C2A4B3 /* cpSpace.h */,
-				E9DD1781146B0A9600C2A4B3 /* cpSpatialIndex.h */,
-				E9DD1782146B0A9600C2A4B3 /* cpVect.h */,
-			);
-			path = chipmunk;
-			sourceTree = "<group>";
-		};
-		E9DD176E146B0A9600C2A4B3 /* constraints */ = {
-			isa = PBXGroup;
-			children = (
-				E9DD176F146B0A9600C2A4B3 /* cpConstraint.h */,
-				E9DD1770146B0A9600C2A4B3 /* cpDampedRotarySpring.h */,
-				E9DD1771146B0A9600C2A4B3 /* cpDampedSpring.h */,
-				E9DD1772146B0A9600C2A4B3 /* cpGearJoint.h */,
-				E9DD1773146B0A9600C2A4B3 /* cpGrooveJoint.h */,
-				E9DD1774146B0A9600C2A4B3 /* cpPinJoint.h */,
-				E9DD1775146B0A9600C2A4B3 /* cpPivotJoint.h */,
-				E9DD1776146B0A9600C2A4B3 /* cpRatchetJoint.h */,
-				E9DD1777146B0A9600C2A4B3 /* cpRotaryLimitJoint.h */,
-				E9DD1778146B0A9600C2A4B3 /* cpSimpleMotor.h */,
-				E9DD1779146B0A9600C2A4B3 /* cpSlideJoint.h */,
-				E9DD177A146B0A9600C2A4B3 /* util.h */,
-			);
-			path = constraints;
-			sourceTree = "<group>";
-		};
-		E9DD1784146B0A9600C2A4B3 /* constraints */ = {
-			isa = PBXGroup;
-			children = (
-				E9DD1785146B0A9600C2A4B3 /* cpConstraint.c */,
-				E9DD1786146B0A9600C2A4B3 /* cpDampedRotarySpring.c */,
-				E9DD1787146B0A9600C2A4B3 /* cpDampedSpring.c */,
-				E9DD1788146B0A9600C2A4B3 /* cpGearJoint.c */,
-				E9DD1789146B0A9600C2A4B3 /* cpGrooveJoint.c */,
-				E9DD178A146B0A9600C2A4B3 /* cpPinJoint.c */,
-				E9DD178B146B0A9600C2A4B3 /* cpPivotJoint.c */,
-				E9DD178C146B0A9600C2A4B3 /* cpRatchetJoint.c */,
-				E9DD178D146B0A9600C2A4B3 /* cpRotaryLimitJoint.c */,
-				E9DD178E146B0A9600C2A4B3 /* cpSimpleMotor.c */,
-				E9DD178F146B0A9600C2A4B3 /* cpSlideJoint.c */,
-			);
-			path = constraints;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -599,7 +580,7 @@
 				E9B5D88614511E7A00A05F5E /* IsometricTexture.png in Resources */,
 				E9B5D88714511E7A00A05F5E /* OrthogonalMap.tmx in Resources */,
 				E9B5D88814511E7A00A05F5E /* OrthogonalTexture.png in Resources */,
-				E9B5D89714528EC600A05F5E /* Vinter.bundle in Resources */,
+				E90BB416146E616F0095403F /* Vinter.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -612,70 +593,68 @@
 			files = (
 				E99FD08314505F1700C33CD3 /* AppDelegate.mm in Sources */,
 				E99FD08514505F1700C33CD3 /* main.m in Sources */,
-				E99FD0FB14505F5C00C33CD3 /* ViAsset.mm in Sources */,
-				E99FD0FC14505F5C00C33CD3 /* ViBridge.mm in Sources */,
-				E99FD0FD14505F5C00C33CD3 /* ViContext.mm in Sources */,
-				E99FD0FE14505F5C00C33CD3 /* ViDataPool.mm in Sources */,
-				E99FD0FF14505F5C00C33CD3 /* ViKernel.mm in Sources */,
-				E99FD10014505F5C00C33CD3 /* ViMatrix4x4.mm in Sources */,
-				E99FD10114505F5C00C33CD3 /* ViMesh.mm in Sources */,
-				E99FD10214505F5C00C33CD3 /* ViQuadtree.mm in Sources */,
-				E99FD10314505F5C00C33CD3 /* ViRect.mm in Sources */,
-				E99FD10414505F5C00C33CD3 /* ViTriangulate.mm in Sources */,
-				E99FD10514505F5C00C33CD3 /* ViVector2.mm in Sources */,
-				E99FD10614505F5C00C33CD3 /* ViVector3.mm in Sources */,
-				E99FD10714505F5C00C33CD3 /* ViColor.mm in Sources */,
-				E99FD10814505F5C00C33CD3 /* ViMaterial.mm in Sources */,
-				E99FD10914505F5C00C33CD3 /* ViShader.mm in Sources */,
-				E99FD10A14505F5C00C33CD3 /* ViTexture.mm in Sources */,
-				E99FD10B14505F5C00C33CD3 /* ViTexturePVR.mm in Sources */,
-				E99FD10C14505F5C00C33CD3 /* ViViewiOS.mm in Sources */,
-				E99FD10D14505F5C00C33CD3 /* ViViewOSX.mm in Sources */,
-				E99FD10E14505F5C00C33CD3 /* ViEvent.mm in Sources */,
-				E99FD10F14505F5C00C33CD3 /* ViResponder.mm in Sources */,
-				E99FD11014505F5C00C33CD3 /* ViCamera.mm in Sources */,
-				E99FD11114505F5C00C33CD3 /* ViRendererOSX.mm in Sources */,
-				E99FD11214505F5C00C33CD3 /* ViScene.mm in Sources */,
-				E99FD11314505F5C00C33CD3 /* ViSceneNode.mm in Sources */,
-				E99FD11414505F5C00C33CD3 /* ViShape.mm in Sources */,
-				E99FD11514505F5C00C33CD3 /* ViSprite.mm in Sources */,
-				E99FD11614505F5C00C33CD3 /* ViSpriteFactory.mm in Sources */,
-				E99FD1541450615400C33CD3 /* ViXML.mm in Sources */,
-				E99FD157145075E900C33CD3 /* ViTMXNode.mm in Sources */,
-				E99FD15A1450778100C33CD3 /* ViTMXLayer.mm in Sources */,
-				E9E8ED621450C33E0066D9DB /* ViSpriteBatch.mm in Sources */,
-				E9E342D31459597E004C9462 /* ViLine.mm in Sources */,
-				E9DD17A2146B0A9600C2A4B3 /* chipmunk.c in Sources */,
-				E9DD17A3146B0A9600C2A4B3 /* cpConstraint.c in Sources */,
-				E9DD17A4146B0A9600C2A4B3 /* cpDampedRotarySpring.c in Sources */,
-				E9DD17A5146B0A9600C2A4B3 /* cpDampedSpring.c in Sources */,
-				E9DD17A6146B0A9600C2A4B3 /* cpGearJoint.c in Sources */,
-				E9DD17A7146B0A9600C2A4B3 /* cpGrooveJoint.c in Sources */,
-				E9DD17A8146B0A9600C2A4B3 /* cpPinJoint.c in Sources */,
-				E9DD17A9146B0A9600C2A4B3 /* cpPivotJoint.c in Sources */,
-				E9DD17AA146B0A9600C2A4B3 /* cpRatchetJoint.c in Sources */,
-				E9DD17AB146B0A9600C2A4B3 /* cpRotaryLimitJoint.c in Sources */,
-				E9DD17AC146B0A9600C2A4B3 /* cpSimpleMotor.c in Sources */,
-				E9DD17AD146B0A9600C2A4B3 /* cpSlideJoint.c in Sources */,
-				E9DD17AE146B0A9600C2A4B3 /* cpArbiter.c in Sources */,
-				E9DD17AF146B0A9600C2A4B3 /* cpArray.c in Sources */,
-				E9DD17B0146B0A9600C2A4B3 /* cpBB.c in Sources */,
-				E9DD17B1146B0A9600C2A4B3 /* cpBBTree.c in Sources */,
-				E9DD17B2146B0A9600C2A4B3 /* cpBody.c in Sources */,
-				E9DD17B3146B0A9600C2A4B3 /* cpCollision.c in Sources */,
-				E9DD17B4146B0A9600C2A4B3 /* cpHashSet.c in Sources */,
-				E9DD17B5146B0A9600C2A4B3 /* cpPolyShape.c in Sources */,
-				E9DD17B6146B0A9600C2A4B3 /* cpShape.c in Sources */,
-				E9DD17B7146B0A9600C2A4B3 /* cpSpace.c in Sources */,
-				E9DD17B8146B0A9600C2A4B3 /* cpSpaceComponent.c in Sources */,
-				E9DD17B9146B0A9600C2A4B3 /* cpSpaceHash.c in Sources */,
-				E9DD17BA146B0A9600C2A4B3 /* cpSpaceQuery.c in Sources */,
-				E9DD17BB146B0A9600C2A4B3 /* cpSpaceStep.c in Sources */,
-				E9DD17BC146B0A9600C2A4B3 /* cpSpatialIndex.c in Sources */,
-				E9DD17BD146B0A9600C2A4B3 /* cpSweep1D.c in Sources */,
-				E9DD17BE146B0A9600C2A4B3 /* cpVect.c in Sources */,
-				E90BB0CD146DA0810095403F /* ViParticle.mm in Sources */,
-				E90BB0CE146DA0810095403F /* ViParticleEmitter.mm in Sources */,
+				E90BB3D8146E616F0095403F /* chipmunk.c in Sources */,
+				E90BB3D9146E616F0095403F /* cpConstraint.c in Sources */,
+				E90BB3DA146E616F0095403F /* cpDampedRotarySpring.c in Sources */,
+				E90BB3DB146E616F0095403F /* cpDampedSpring.c in Sources */,
+				E90BB3DC146E616F0095403F /* cpGearJoint.c in Sources */,
+				E90BB3DD146E616F0095403F /* cpGrooveJoint.c in Sources */,
+				E90BB3DE146E616F0095403F /* cpPinJoint.c in Sources */,
+				E90BB3DF146E616F0095403F /* cpPivotJoint.c in Sources */,
+				E90BB3E0146E616F0095403F /* cpRatchetJoint.c in Sources */,
+				E90BB3E1146E616F0095403F /* cpRotaryLimitJoint.c in Sources */,
+				E90BB3E2146E616F0095403F /* cpSimpleMotor.c in Sources */,
+				E90BB3E3146E616F0095403F /* cpSlideJoint.c in Sources */,
+				E90BB3E4146E616F0095403F /* cpArbiter.c in Sources */,
+				E90BB3E5146E616F0095403F /* cpArray.c in Sources */,
+				E90BB3E6146E616F0095403F /* cpBB.c in Sources */,
+				E90BB3E7146E616F0095403F /* cpBBTree.c in Sources */,
+				E90BB3E8146E616F0095403F /* cpBody.c in Sources */,
+				E90BB3E9146E616F0095403F /* cpCollision.c in Sources */,
+				E90BB3EA146E616F0095403F /* cpHashSet.c in Sources */,
+				E90BB3EB146E616F0095403F /* cpPolyShape.c in Sources */,
+				E90BB3EC146E616F0095403F /* cpShape.c in Sources */,
+				E90BB3ED146E616F0095403F /* cpSpace.c in Sources */,
+				E90BB3EE146E616F0095403F /* cpSpaceComponent.c in Sources */,
+				E90BB3EF146E616F0095403F /* cpSpaceHash.c in Sources */,
+				E90BB3F0146E616F0095403F /* cpSpaceQuery.c in Sources */,
+				E90BB3F1146E616F0095403F /* cpSpaceStep.c in Sources */,
+				E90BB3F2146E616F0095403F /* cpSpatialIndex.c in Sources */,
+				E90BB3F3146E616F0095403F /* cpSweep1D.c in Sources */,
+				E90BB3F4146E616F0095403F /* cpVect.c in Sources */,
+				E90BB3F5146E616F0095403F /* ViAsset.mm in Sources */,
+				E90BB3F6146E616F0095403F /* ViBridge.mm in Sources */,
+				E90BB3F7146E616F0095403F /* ViColor.mm in Sources */,
+				E90BB3F8146E616F0095403F /* ViContext.mm in Sources */,
+				E90BB3F9146E616F0095403F /* ViDataPool.mm in Sources */,
+				E90BB3FA146E616F0095403F /* ViKernel.mm in Sources */,
+				E90BB3FB146E616F0095403F /* ViLine.mm in Sources */,
+				E90BB3FC146E616F0095403F /* ViMatrix4x4.mm in Sources */,
+				E90BB3FD146E616F0095403F /* ViMesh.mm in Sources */,
+				E90BB3FE146E616F0095403F /* ViQuadtree.mm in Sources */,
+				E90BB3FF146E616F0095403F /* ViRect.mm in Sources */,
+				E90BB400146E616F0095403F /* ViVector2.mm in Sources */,
+				E90BB401146E616F0095403F /* ViVector3.mm in Sources */,
+				E90BB402146E616F0095403F /* ViXML.mm in Sources */,
+				E90BB403146E616F0095403F /* ViMaterial.mm in Sources */,
+				E90BB404146E616F0095403F /* ViRendererOSX.mm in Sources */,
+				E90BB405146E616F0095403F /* ViShader.mm in Sources */,
+				E90BB406146E616F0095403F /* ViTexture.mm in Sources */,
+				E90BB407146E616F0095403F /* ViTexturePVR.mm in Sources */,
+				E90BB408146E616F0095403F /* ViViewiOS.mm in Sources */,
+				E90BB409146E616F0095403F /* ViViewOSX.mm in Sources */,
+				E90BB40A146E616F0095403F /* ViEvent.mm in Sources */,
+				E90BB40B146E616F0095403F /* ViResponder.mm in Sources */,
+				E90BB40C146E616F0095403F /* ViCamera.mm in Sources */,
+				E90BB40D146E616F0095403F /* ViParticle.mm in Sources */,
+				E90BB40E146E616F0095403F /* ViParticleEmitter.mm in Sources */,
+				E90BB40F146E616F0095403F /* ViScene.mm in Sources */,
+				E90BB410146E616F0095403F /* ViSceneNode.mm in Sources */,
+				E90BB411146E616F0095403F /* ViSprite.mm in Sources */,
+				E90BB412146E616F0095403F /* ViSpriteBatch.mm in Sources */,
+				E90BB413146E616F0095403F /* ViSpriteFactory.mm in Sources */,
+				E90BB414146E616F0095403F /* ViTMXLayer.mm in Sources */,
+				E90BB415146E616F0095403F /* ViTMXNode.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

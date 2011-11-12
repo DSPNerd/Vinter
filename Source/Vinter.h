@@ -28,7 +28,6 @@
 #import "ViSprite.h"
 #import "ViSpriteFactory.h"
 #import "ViSpriteBatch.h"
-#import "ViShape.h"
 #import "ViTMXNode.h"
 #import "ViTMXLayer.h"
 #import "ViParticleEmitter.h"
@@ -111,10 +110,15 @@ namespace vi
  * Added support for particles via the vi::scene::particleEmitter and vi::scene::particle classes<br />
  * Added a concrete particle subclass, vi::scene::baseParticle, that allows basic particle effects<br />
  * Added new constructors for sprites to allow creation of sprites with a shared material<br />
- * Added the possibility to directly write atlas information of sprites into the mehs<br />
+ * Added the possibility to directly write atlas information of sprites into the mesh<br />
  * Added a new default shader for particles<br />
  * Changed the behavior of adding custom material attributes (aka uniforms), instead of readding a new uniform the material now updates the old one.<br />
  * Refactored the mesh class into one base class, vi::common::__mesh, and two concrete subclasses, vi::common::mesh (XY, UV vertices mesh) and vi::common::meshRGBA (XY, UV, RGBA vertices mesh).<br />
+ * Moved the color class from the graphic to the common namespace (you can do a quick search&replace to update your code!)<br />
+ * Moved the renderer and rendererOSX files physically from the scene folder to the graphic folder, no namespace change.<br />
+ * Removed the ViTriangulate and ViShape classes<br />
+ * <br />
+ * <br />
  * <b>Version 0.3.0</b><br />
  * Added multithreading support via the vi::common::context class<br />
  * Added the vi::common::dataPool class for storing assets.<br />
@@ -126,7 +130,7 @@ namespace vi
  * Added custom meshes (vertices, indices) via the vi::common::mesh class<br />
  * Added a dynamic flag for scene nodes<br />
  * Extended and rewrote parts of the documentation<br />
- * Extended the vi::graphic::color class.<br />
+ * Extended the vi::common::color class.<br />
  * Changed the vi::common::matrix4x4 class to use much faster NEON optimized matrix multiplication.<br />
  * Changed the Sprite class to allow setting a atlas for shared meshes.<br />
  * Changed the rotation of scene nodes so that the node now rotates around the center of itself.<br />

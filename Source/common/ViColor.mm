@@ -10,7 +10,7 @@
 
 namespace vi
 {
-    namespace graphic
+    namespace common
     {
         color::color(GLfloat _r, GLfloat _g, GLfloat _b, GLfloat _a)
         {

@@ -29,8 +29,8 @@
     
     effect.targetSpeed = vi::common::vector2(0.0, 80.0);
 
-    effect.color = vi::graphic::color(0.647, 0.006, 0.180, 1.0);
-    effect.targetColor = vi::graphic::color(0.035, 0.044, 0.647, 1.0);
+    effect.color = vi::common::color(0.647, 0.006, 0.180, 1.0);
+    effect.targetColor = vi::common::color(0.035, 0.044, 0.647, 1.0);
     
     
     

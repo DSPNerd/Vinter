@@ -99,6 +99,9 @@ namespace vi
              * @return True if the parameter could be created, otherwise false (this might be the case if there was no such uniform variable in the shader)
              **/
             bool addParameter(std::string const& name, void *data, materialParameterType type, uint32_t count, uint32_t size);
+            /**
+             * Adds a new vertex attribute
+             **/
             bool addAttribute(std::string const& name, void *data, GLenum type, uint32_t size, uint32_t stride);
 
             
@@ -147,6 +150,9 @@ namespace vi
              * List of custom shader variables
              **/
             std::vector<materialParameter> parameter;
+            /**
+             * List of custom vertex attributes
+             **/
             std::vector<vertexAttribute> attributes;
             
             /**

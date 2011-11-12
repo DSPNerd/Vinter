@@ -14,8 +14,6 @@
     IBOutlet ViViewiOS *renderView;
     IBOutlet UILabel *fpsLabel;
     
-    BOOL editMode;
-    
     vi::common::kernel *kernel;
     vi::scene::camera *camera;
     vi::scene::scene *scene;
@@ -26,9 +24,6 @@
     
     vi::input::responder *responder;
     vi::common::objCBridge bridge;
-    
-    vi::scene::baseParticleEffect effect;
-    vi::scene::particleEmitter *emitter;
 }
 
 @end

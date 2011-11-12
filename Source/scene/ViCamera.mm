@@ -16,7 +16,7 @@ namespace vi
     {
         camera::camera(id<ViViewProtocol> tview, vi::common::vector2 const& size)
         {
-            clearColor = vi::graphic::color(0.5, 0.8, 1.0, 1.0);
+            clearColor = vi::common::color(0.5, 0.8, 1.0, 1.0);
             view = tview;
             texture = NULL;
                     

@@ -20,7 +20,6 @@ namespace vi
         typedef enum
         {
             defaultShaderTexture /** <Texture shader**/,
-            defaultShaderShape /** <Shape shader**/,
             defaultShaderSprite /** <Sprite shader**/,
             defaultShaderParticle
         } defaultShader;
@@ -97,6 +96,10 @@ namespace vi
              **/
             GLuint texcoord1;
             
+            /**
+             * The color vertex attribute
+             * @remark The shader will automatically get the location if you add a vertex attribute with the name vertColor into your shader.
+             **/
             GLuint color;
             
         private:

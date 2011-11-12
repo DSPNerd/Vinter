@@ -10,7 +10,7 @@
 
 namespace vi
 {
-    namespace graphic
+    namespace common
     {
         /**
          * @brief RGBA color class

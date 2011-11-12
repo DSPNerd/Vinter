@@ -37,8 +37,8 @@ namespace vi
         
         baseParticleEffect::baseParticleEffect()
         {
-            color = vi::graphic::color(1.0, 1.0, 1.0, 1.0);
-            targetColor = vi::graphic::color(1.0, 1.0, 1.0, 1.0);
+            color = vi::common::color(1.0, 1.0, 1.0, 1.0);
+            targetColor = vi::common::color(1.0, 1.0, 1.0, 1.0);
             
             lifespan = 1.0;
             randomLifespan = 0.0;
@@ -61,8 +61,8 @@ namespace vi
             scale       = effect->scale + ViRandom(effect->randomScale);
             scaleChange = ((effect->targetScale + ViRandom(effect->randomTargetScale)) - scale) / lifespan;
             
-            color       = effect->color + vi::graphic::color(ViRandom(effect->randomColor.r), ViRandom(effect->randomColor.g), ViRandom(effect->randomColor.b), ViRandom(effect->randomColor.a));
-            colorChange = ((effect->targetColor + vi::graphic::color(ViRandom(effect->randomTargetColor.r), ViRandom(effect->randomTargetColor.g), ViRandom(effect->randomTargetColor.b), ViRandom(effect->randomTargetColor.a))) - color) / lifespan;
+            color       = effect->color + vi::common::color(ViRandom(effect->randomColor.r), ViRandom(effect->randomColor.g), ViRandom(effect->randomColor.b), ViRandom(effect->randomColor.a));
+            colorChange = ((effect->targetColor + vi::common::color(ViRandom(effect->randomTargetColor.r), ViRandom(effect->randomTargetColor.g), ViRandom(effect->randomTargetColor.b), ViRandom(effect->randomTargetColor.a))) - color) / lifespan;
             
             speed       = effect->speed + vi::common::vector2(ViRandom(effect->randomSpeed.x), ViRandom(effect->randomSpeed.y));
             speedChange = ((effect->targetSpeed + vi::common::vector2(ViRandom(effect->randomTargetSpeed.x), ViRandom(effect->randomTargetSpeed.y))) - speed) / lifespan;
@@ -80,7 +80,7 @@ namespace vi
             speed       += speedChange * timestep;
             position    += speed * timestep;
             scale       += scaleChange * timestep;
-            color       += colorChange * vi::graphic::color(timestep, timestep, timestep, timestep);
+            color       += colorChange * vi::common::color(timestep, timestep, timestep, timestep);
             
             particle::visit(timestep);
         }
