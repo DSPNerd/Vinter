@@ -7,6 +7,7 @@ The goal of the engine is to be as easy to use as possible, without being too bl
 - Shader based rendering
 - OpenGL ES 2.0 rendering, OpenGL 2.0 rendering (GSlang 1.20) and OpenGL 3.2 rendering (GSlang 1.50, only on Mac OS X 10.7)
 - Loading of assets in arbitrary background threads
+- Tweening support similar to UIKits animation system
 - Support for TMX maps <http://mapeditor.org/>
 - Render to texture
 - Flexible particle system
