@@ -94,12 +94,25 @@ namespace vi
 
             /**
              * Sets a new position
+             * @remark Animatable
              **/
             virtual void setPosition(vi::common::vector2 const& point);
             /**
              * Sets a new size
+             * @remark Animatable
              **/
             virtual void setSize(vi::common::vector2 const& tsize);
+            /**
+             * Sets a new scale
+             * @remark Animatable
+             **/
+            virtual void setScale(vi::common::vector2 const& tscale);
+            /**
+             * Sets a new rotation for the node
+             * @remark Use this instead of setting the rotation member directly for physical nodes
+             * @remark Animatable
+             **/
+            void setRotation(GLfloat rotation);
             /**
              * Sets the flags of the node. Flags are represented as OR'ed bit field
              **/
@@ -114,6 +127,10 @@ namespace vi
              * Returns the size of the node
              **/
             vi::common::vector2 getSize();
+            /**
+             * Returns the scale of the node
+             **/
+            vi::common::vector2 getScale();
             /**
              * Returns the flags of the node. Flags are represented as OR'ed bit field
              **/
@@ -165,12 +182,6 @@ namespace vi
              **/
             bool isPhysicalBody();
             
-            
-            /**
-             * Sets a new rotation for the node
-             * @remark Use this instead of setting the rotation member directly for physical nodes
-             **/
-            void setRotation(GLfloat rotation);
             
             /**
              * Sets the mass of the node
@@ -337,6 +348,7 @@ namespace vi
              * The size of the scene node. If you change this directly, call update() to update the node within its tree.
              **/
             vi::common::vector2 size;
+            vi::common::vector2 scale;
             /**
              * The bitfield of flags of the scene node. If you change this directly, call update() to update the node within its tree.
              **/
@@ -383,11 +395,20 @@ namespace vi
             vi::common::vector2 staticEnd;
             sceneNodePhysicType physicType;
 #endif
+            
+            vi::common::vector2 temporaryPosition;
+            vi::common::vector2 temporarySize;
+            vi::common::vector2 temporaryScale;
+            GLfloat temporaryRotation;
            
             bool deleteDebugName;
             bool knownDynamic;
             
             std::vector<vi::scene::sceneNode *> childs;
+            
+            void forceSetPosition(vi::common::vector2 const& position);
+            void forceSetSize(vi::common::vector2 const& size);
+            void forceSetRotation(GLfloat rotation);
         };
     }
 }

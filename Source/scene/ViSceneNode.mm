@@ -11,6 +11,7 @@
 #import "ViScene.h"
 #import "ViRenderer.h"
 #import "ViVector3.h"
+#import "ViAnimationServer.h"
 
 namespace vi
 {
@@ -18,10 +19,11 @@ namespace vi
     {
         sceneNode::sceneNode(vi::common::vector2 const& pos, vi::common::vector2 const& tsize, uint32_t tlayer)
         {
-            position    = pos;
-            size        = tsize;
+            position    = temporaryPosition = pos;
+            size        = temporarySize = tsize;
+            scale       = temporaryScale = vi::common::vector2(1.0, 1.0);
             layer       = tlayer;
-            rotation    = 0.0;
+            rotation    = temporaryRotation = 0.0;
             
             flags = 0;
 
@@ -98,6 +100,8 @@ namespace vi
                 
                 matrix *= rotationMatrix;
             }
+            
+            matrix.scale(vi::common::vector3(scale.x, scale.y, 1.0));
         }
         
         
@@ -111,7 +115,23 @@ namespace vi
         {
             if(position != point)
             {
+                if(scene)
+                {
+                    vi::animation::animationStack *stack = scene->getAnimationServer()->topStack();
+                    if(stack)
+                    {
+                        vi::animation::basicAnimation<vi::common::vector2> *animation = new vi::animation::basicAnimation<vi::common::vector2>();
+                        animation->setValues(temporaryPosition, point);
+                        animation->setApplyCallback(std::tr1::bind(&vi::scene::sceneNode::forceSetPosition, this, std::tr1::placeholders::_1));
+                        
+                        stack->addAnimation(animation);
+                        temporaryPosition = point;
+                        return;
+                    }
+                }
+                
                 position = point;
+                temporaryPosition = point;
                 update();
                 
 #ifdef ViPhysicsChipmunk
@@ -120,7 +140,6 @@ namespace vi
 #endif
             }
         }
-        
         
         vi::common::vector2 sceneNode::getSize()
         {
@@ -131,7 +150,24 @@ namespace vi
         {
             if(size != tsize)
             {
+                if(scene)
+                {
+                    vi::animation::animationStack *stack = scene->getAnimationServer()->topStack();
+                    if(stack)
+                    {
+                        vi::animation::basicAnimation<vi::common::vector2> *animation = new vi::animation::basicAnimation<vi::common::vector2>();
+                        animation->setValues(temporarySize, tsize);
+                        animation->setApplyCallback(std::tr1::bind(&vi::scene::sceneNode::forceSetSize, this, std::tr1::placeholders::_1));
+                        
+                        stack->addAnimation(animation);
+                        temporarySize = tsize;
+                        return;
+                    }
+                }
+                
                 size = tsize;
+                temporarySize = tsize;
+                
                 update();
                 
 #ifdef ViPhysicsChipmunk
@@ -139,6 +175,97 @@ namespace vi
                     enablePhysics(physicType); // Re-enable physics to update the size changes
 #endif
             }
+        }
+        
+        void sceneNode::setScale(vi::common::vector2 const& tscale)
+        {
+            if(scale != tscale)
+            {
+                if(scene)
+                {
+                    vi::animation::animationStack *stack = scene->getAnimationServer()->topStack();
+                    if(stack)
+                    {
+                        vi::animation::basicAnimation<vi::common::vector2> *animation = new vi::animation::basicAnimation<vi::common::vector2>();
+                        animation->setValues(temporaryScale, tscale);
+                        animation->setApplyProperty(&scale);
+                        
+                        stack->addAnimation(animation);
+                        temporaryScale = tscale;
+                        return;
+                    }
+                }
+                
+                scale = tscale;
+                temporaryScale = tscale;
+            }
+        }
+        
+        vi::common::vector2 sceneNode::getScale()
+        {
+            return scale;
+        }
+        
+        
+        void sceneNode::setRotation(GLfloat trotation)
+        {
+            if(scene)
+            {
+                vi::animation::animationStack *stack = scene->getAnimationServer()->topStack();
+                if(stack)
+                {
+                    vi::animation::basicAnimation<GLfloat> *animation = new vi::animation::basicAnimation<GLfloat>();
+                    animation->setValues(temporaryRotation, trotation);
+                    animation->setApplyCallback(std::tr1::bind(&vi::scene::sceneNode::forceSetRotation, this, std::tr1::placeholders::_1));
+                    
+                    stack->addAnimation(animation);
+                    temporaryRotation = trotation;
+                    return;
+                }
+            }
+            
+            
+            rotation = trotation;
+            temporaryRotation = trotation;
+            
+#ifdef ViPhysicsChipmunk
+            if(body)
+                cpBodySetAngle(body, rotation);
+#endif
+        }
+        
+        
+        
+        void sceneNode::forceSetPosition(vi::common::vector2 const& point)
+        {
+            position = point;
+            update();
+            
+#ifdef ViPhysicsChipmunk
+            if(body)
+                cpBodySetPos(body, cpv(position.x, position.y));
+#endif
+        }
+        
+        void sceneNode::forceSetSize(vi::common::vector2 const& tsize)
+        {
+            size = tsize;
+            update();
+            
+#ifdef ViPhysicsChipmunk
+            if(body)
+                enablePhysics(physicType); // Re-enable physics to update the size changes
+#endif
+        }
+        
+        void sceneNode::forceSetRotation(GLfloat trotation)
+        {
+            rotation = trotation;
+            
+#ifdef ViPhysicsChipmunk
+            if(body)
+                cpBodySetAngle(body, rotation);
+#endif
         }
         
 
@@ -459,15 +586,6 @@ namespace vi
             if(shape)
                 cpShapeSetGroup(shape, (cpGroup)group);
         }
-        
-        void sceneNode::setRotation(GLfloat trotation)
-        {
-            rotation = trotation;
-            
-            if(body)
-                cpBodySetAngle(body, rotation);
-        }
-        
         
         
         GLfloat sceneNode::getMass()

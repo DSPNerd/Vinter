@@ -9,6 +9,7 @@
 #include <vector>
 #import "ViBase.h"
 #import "ViVector2.h"
+#import "ViAnimationServer.h"
 
 namespace vi
 {
@@ -56,6 +57,9 @@ namespace vi
              * If you want to delete the objects inside the scene along with the scene, call deleteAllNodes() first.
              **/
             ~scene();
+            
+            vi::animation::animationServer *getAnimationServer();
+            
             
             /**
              * Adds the given camera to the render list.
@@ -159,7 +163,8 @@ namespace vi
             std::vector<vi::scene::camera *> *cameras;
             std::vector<vi::scene::sceneNode *>nodes;
             std::vector<vi::scene::sceneNode *>uiNodes;
-
+            
+            vi::animation::animationServer *animationServer;
             vi::common::quadtree *quadtree;
             
 #ifdef ViPhysicsChipmunk

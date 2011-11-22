@@ -27,6 +27,7 @@ namespace vi
             vi::common::rect rect = vi::common::rect(minX, minY, maxX-minX, maxY-minY);
             quadtree = new vi::common::quadtree(rect, subdivisions);
             cameras  = new std::vector<vi::scene::camera *>();
+            animationServer = new vi::animation::animationServer();
             
             addCamera(camera);
             
@@ -44,12 +45,21 @@ namespace vi
             cpSpaceFree(space);
 #endif
             
+            delete animationServer;
             delete cameras;
             delete quadtree;
         }
         
+        
+        vi::animation::animationServer *scene::getAnimationServer()
+        {
+            return animationServer;
+        }
+        
         void scene::draw(vi::graphic::renderer *renderer, double timestep)
         {
+            animationServer->run(timestep);
+            
 #ifdef ViPhysicsChipmunk
             static double physicsstep = 1.0 / 60.0;
             
@@ -294,7 +304,7 @@ namespace vi
             
             vi::scene::sceneNode *hitNode = NULL;
             vi::common::vector2 hitVec;
-            GLfloat hitDistance;
+            GLfloat hitDistance = 0.0;
             
             quadtree->objectsInRect(rect, &objects);
             for(iterator=objects.begin(); iterator!=objects.end(); iterator++)

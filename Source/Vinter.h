@@ -33,6 +33,10 @@
 #import "ViParticleEmitter.h"
 #import "ViParticle.h"
 
+#import "ViAnimation.h"
+#import "ViAnimationStack.h"
+#import "ViAnimationServer.h"
+
 #import "ViTexture.h"
 #import "ViTexturePVR.h"
 #import "ViColor.h"

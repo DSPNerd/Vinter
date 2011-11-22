@@ -43,7 +43,6 @@
     [context->getNativeContext() flushBuffer];
 }
 
-
 - (void)setAllowsCoreProfile:(BOOL)allows
 {
     if(allowsCoreProfile != allows)

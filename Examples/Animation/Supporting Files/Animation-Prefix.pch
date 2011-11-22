@@ -1,0 +1,9 @@
+//
+// Prefix header for all source files of the 'Animation' target in the 'Animation' project
+//
+
+#ifdef __OBJC__
+    #import <Cocoa/Cocoa.h>
+#endif
+
+#define ViNoPhysics // We don't need physic support here!

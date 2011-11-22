@@ -142,6 +142,15 @@ namespace vi
                 return result;
             }
             
+            inline vector2 operator- ()
+            {
+                vector2 result(*this);
+                result.x = -result.x;
+                result.y = -result.y;
+                
+                return result;
+            }
+            
             inline vector2 operator- (float other)
             {
                 vector2 result(*this);

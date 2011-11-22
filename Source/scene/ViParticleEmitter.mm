@@ -66,6 +66,11 @@ namespace vi
         }
         
         
+        void particleEmitter::setTexture(vi::graphic::texture *texture)
+        {
+            material->textures[0] = texture;
+        }
+        
         
         void particleEmitter::visit(double timestep)
         {

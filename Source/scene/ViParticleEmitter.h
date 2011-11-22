@@ -35,6 +35,12 @@ namespace vi
             virtual ~particleEmitter();
             
             /**
+             * Sets a new texture
+             * @remark The texture is applied the next frame for all particles, even particles emitted before the texture was changed.
+             **/
+            void setTexture(vi::graphic::texture *texture);
+            
+            /**
              * Adds the given particle to the emitter.
              **/
             virtual void emitParticle(vi::scene::particle *particle);

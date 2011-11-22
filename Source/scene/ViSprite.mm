@@ -58,6 +58,7 @@ namespace vi
             ownsMesh     = false;
             
             writeAtlasInfoIntoMesh = false;
+            writeSizeInformationIntoMesh = false;
             isUpsideDown = false;
             
             if(!sharedMaterial)
