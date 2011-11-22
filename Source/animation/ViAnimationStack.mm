@@ -21,6 +21,7 @@ namespace vi
             lastPath = new vi::animation::animationPath();
             lastPath->animationDelay = 0.0;
             lastPath->animationDuration = 1.0;
+            lastPath->updateValues = false;
             lastPath->curve = animationCurveLinearTweening;
             animations.push_back(lastPath);
             
@@ -28,6 +29,8 @@ namespace vi
             
             autoreverse = false;
             waitForOtherAnimations = false;
+            firstRun = true;
+            
             repeatCount = 0;
             direction = 1;
         }
@@ -49,6 +52,9 @@ namespace vi
                     
                     tanimation->setDuration(path->animationDuration);
                     tanimation->setAnimationCurve(path->curve);
+                    
+                    if(path->updateValues && !firstRun)
+                        tanimation->updateValues();
                 }
                 
                 state = animationStackStateWaiting;
@@ -97,13 +103,14 @@ namespace vi
             {
                 animationIterator += direction;
                 state = animationStackStateBuilding;
+                accumulatedTime = 0.0;
                 
-                if((direction == 1 && animations.begin() + animationIterator == animations.end()) || (direction == -1 && animationIterator == -1))
+                if((direction == 1 && animationIterator == animations.size()) || (direction == -1 && animationIterator == -1))
                 {
                     if(repeatCount > 0)
                     {
+                        firstRun = false;
                         accumulatedTime = 0.0;
-                        state = animationStackStateBuilding;
                         animationIterator = 0;
                         
                         if(autoreverse && direction == 1)
@@ -147,7 +154,8 @@ namespace vi
         {
             animationPath *path = new vi::animation::animationPath();
             path->animationDuration = lastPath->animationDuration;
-            path->animationDelay = lastPath->animationDuration;
+            path->animationDelay = lastPath->animationDelay;
+            path->updateValues = lastPath->updateValues;
             path->curve = lastPath->curve;
             
             animations.push_back(path);
@@ -171,6 +179,10 @@ namespace vi
             lastPath->curve = tcurve;
         }
         
+        void animationStack::setUpdateValues(bool updateValues)
+        {
+            lastPath->updateValues = updateValues;
+        }
         
         void animationStack::setAutoreverses(bool tautoreverse)
         {

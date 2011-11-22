@@ -47,6 +47,7 @@ namespace vi
             virtual void setDuration(double tduration) {duration = tduration;}
             
             virtual void reverse() {};
+            virtual void updateValues() {}
             virtual void apply(double time) {}
             
         protected:
@@ -90,6 +91,17 @@ namespace vi
             {
                 duration = tduration;
                 change = (endValue - startValue);
+            }
+            
+            virtual void updateValues()
+            {
+                if(applyPtr)
+                {
+                    T currentValue = *applyPtr;
+                    
+                    startValue = currentValue;
+                    endValue = startValue + change;
+                }
             }
             
             virtual void reverse()

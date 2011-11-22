@@ -32,6 +32,7 @@ namespace vi
         {
             std::vector<vi::animation::animation *> animations;
             
+            bool updateValues;
             double animationDelay;
             double animationDuration;
             animationCurve curve;
@@ -52,6 +53,7 @@ namespace vi
             void setAnimationDuration(double duration);
             void setAnimationCurve(animationCurve curve);
             void setAutoreverses(bool autoreverse);
+            void setUpdateValues(bool updateValues);
             void setWaitForOtherAnimations(bool waitForOtherAnimations);
             void setRepeatCount(uint32_t repeatCount);
             
@@ -59,6 +61,7 @@ namespace vi
             animationStackState state;
             double accumulatedTime;
             
+            bool firstRun;
             bool autoreverse;
             bool waitForOtherAnimations;
             uint32_t repeatCount;

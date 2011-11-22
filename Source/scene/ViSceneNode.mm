@@ -113,7 +113,7 @@ namespace vi
         
         void sceneNode::setPosition(vi::common::vector2 const& point)
         {
-            if(position != point)
+            if(temporaryPosition != point)
             {
                 if(scene)
                 {
@@ -123,6 +123,7 @@ namespace vi
                         vi::animation::basicAnimation<vi::common::vector2> *animation = new vi::animation::basicAnimation<vi::common::vector2>();
                         animation->setValues(temporaryPosition, point);
                         animation->setApplyCallback(std::tr1::bind(&vi::scene::sceneNode::forceSetPosition, this, std::tr1::placeholders::_1));
+                        animation->setApplyProperty(&temporaryPosition);
                         
                         stack->addAnimation(animation);
                         temporaryPosition = point;
@@ -148,7 +149,7 @@ namespace vi
         
         void sceneNode::setSize(vi::common::vector2 const& tsize)
         {
-            if(size != tsize)
+            if(temporarySize != tsize)
             {
                 if(scene)
                 {
@@ -158,6 +159,7 @@ namespace vi
                         vi::animation::basicAnimation<vi::common::vector2> *animation = new vi::animation::basicAnimation<vi::common::vector2>();
                         animation->setValues(temporarySize, tsize);
                         animation->setApplyCallback(std::tr1::bind(&vi::scene::sceneNode::forceSetSize, this, std::tr1::placeholders::_1));
+                        animation->setApplyProperty(&temporarySize);
                         
                         stack->addAnimation(animation);
                         temporarySize = tsize;
@@ -179,7 +181,7 @@ namespace vi
         
         void sceneNode::setScale(vi::common::vector2 const& tscale)
         {
-            if(scale != tscale)
+            if(temporaryScale != tscale)
             {
                 if(scene)
                 {
@@ -217,6 +219,7 @@ namespace vi
                     vi::animation::basicAnimation<GLfloat> *animation = new vi::animation::basicAnimation<GLfloat>();
                     animation->setValues(temporaryRotation, trotation);
                     animation->setApplyCallback(std::tr1::bind(&vi::scene::sceneNode::forceSetRotation, this, std::tr1::placeholders::_1));
+                    animation->setApplyProperty(&temporaryRotation);
                     
                     stack->addAnimation(animation);
                     temporaryRotation = trotation;
