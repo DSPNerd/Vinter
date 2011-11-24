@@ -6,8 +6,8 @@
 //  Unauthorized use is punishable by torture, mutilation, and vivisection.
 //
 
+#include <string>
 #include <vector>
-#include <stack>
 #import "ViAnimation.h"
 
 #define ViAnimationRepeatIndefinitely UINT32_MAX
@@ -21,29 +21,22 @@ namespace vi
             animationStackStateBuilding,
             animationStackStateWaiting,
             animationStackStateRunning,
-            animationStackStateEnded
+            animationStackStateEnded,
+            animationStackStateStopped
         } animationStackState;
         
         class animationServer;
         class animationPath;
-        
-        
-        struct animationPath
-        {
-            std::vector<vi::animation::animation *> animations;
-            
-            bool updateValues;
-            double animationDelay;
-            double animationDuration;
-            animationCurve curve;
-        };
+        struct animationPath;
 
         class animationStack
         {
             friend class animationServer;
             friend class animationPath;
         public:
-            animationStack();
+            animationStack(std::string const& animationID="");
+            ~animationStack();
+            
             
             void run(double timestep);
             void addAnimation(vi::animation::animation *animation);
@@ -57,7 +50,13 @@ namespace vi
             void setWaitForOtherAnimations(bool waitForOtherAnimations);
             void setRepeatCount(uint32_t repeatCount);
             
+            void stop();
+            
+            std::string getIdentifier();
+            animationStackState getState();
+            
         private:
+            std::string identifier;
             animationStackState state;
             double accumulatedTime;
             

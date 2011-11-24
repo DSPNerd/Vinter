@@ -8,6 +8,7 @@
 
 #include <stack>
 #include <vector>
+#include <string>
 
 #import "ViAnimation.h"
 #import "ViAnimationStack.h"
@@ -19,13 +20,17 @@ namespace vi
         class animationServer
         {
         public:
+            ~animationServer();
+            
             void run(double timestep);
             
-            animationStack *beginAnimation();
-            animationPath *beginAnimationPath();
             
+            animationStack *beginAnimation(std::string const& animationID = "");
             animationStack *topStack();
+            animationStack *animationWithIdentifier(std::string const& animationID);
+            
             void commitAnimation();
+            void stopAnimationWithIdentifier(std::string const& animationID);
             
         private:
             std::vector<animationStack *> committedAnimations;

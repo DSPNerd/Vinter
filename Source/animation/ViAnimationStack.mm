@@ -13,7 +13,28 @@ namespace vi
 {
     namespace animation
     {        
-        animationStack::animationStack()
+        struct animationPath
+        {
+            ~animationPath()
+            {
+                std::vector<vi::animation::animation *>::iterator iterator;
+                for(iterator=animations.begin(); iterator!=animations.end(); iterator++)
+                {
+                    vi::animation::animation *tanimation = *iterator;
+                    delete tanimation;
+                }
+            }
+            
+            std::vector<vi::animation::animation *> animations;
+            
+            bool updateValues;
+            double animationDelay;
+            double animationDuration;
+            animationCurve curve;
+        };
+        
+        
+        animationStack::animationStack(std::string const& animationID) : identifier(animationID)
         {
             state = animationStackStateBuilding;
             accumulatedTime = 0.0;
@@ -35,10 +56,21 @@ namespace vi
             direction = 1;
         }
         
+        animationStack::~animationStack()
+        {
+            std::vector<vi::animation::animationPath *>::iterator iterator;
+            for(iterator=animations.begin(); iterator!=animations.end(); iterator++)
+            {
+                vi::animation::animationPath *path = *iterator;
+                delete path;
+            }
+        }
+        
+        
         
         void animationStack::run(double timestep)
         {
-            if(state == animationStackStateEnded)
+            if(state == animationStackStateEnded || state == animationStackStateStopped)
                 return;
             
             if(state == animationStackStateBuilding)
@@ -70,8 +102,13 @@ namespace vi
                     
                     if(accumulatedTime >= path->animationDelay)
                     {
+                        double overflow = (accumulatedTime + timestep) - path->animationDuration;
+                        
                         accumulatedTime = 0.0;
                         state = animationStackStateRunning;
+                        
+                        if(overflow > kViEpsilonFloat)
+                            run(overflow);
                     }
                     
                     return;
@@ -141,7 +178,31 @@ namespace vi
                     
                     state = animationStackStateEnded;
                 }
+                else
+                {
+                    if(overflow > kViEpsilonFloat)
+                        run(overflow);
+                }
             }
+        }
+        
+        void animationStack::stop()
+        {
+            if(state == animationStackStateEnded)
+                return;
+            
+            state = animationStackStateStopped;
+        }
+        
+        
+        animationStackState animationStack::getState()
+        {
+            return state;
+        }
+        
+        std::string animationStack::getIdentifier()
+        {
+            return identifier;
         }
         
         
