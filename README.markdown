@@ -18,13 +18,9 @@ The goal of the engine is to be as easy to use as possible, without being too bl
 - Quadtree based scene management
 - OpenGL ES debug marker support (iOS 5+)
 
-##Getting started
-Starting a new project using Vinter is easy, you can find a full tutorial at <http://vinter2d.org/>
+##Demo Videos
+- [Animations](http://www.youtube.com/watch?v=FeQbEP_Mpng "Demonstrating the animation system")
+- [Particles](http://www.youtube.com/watch?v=8xYYvCu-DDM "Demonstrating the particle system")
 
 ##Missing stuff
-There are no controls like buttons or text fields! And we won't add them. The cocoa text rendering system is one of the best text systems you can ever get. Use it and be happy about crisp and sharp texts instead of being unhappy with stupid bitmap fonts!
-
 Although there is support for physical nodes via the Chipmunk wrapper, there are some missing setters and getters and no wrapper for joints and constraints.
-
-##Known issues
-- The default shaders won't compile under OpenGL 3.2 as they are made for GSlang 1.20
