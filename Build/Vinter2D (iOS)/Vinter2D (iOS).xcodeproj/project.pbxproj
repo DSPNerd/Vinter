@@ -219,13 +219,16 @@
 		E9DD1909146B101300C2A4B3 /* cpVect.c in Sources */ = {isa = PBXBuildFile; fileRef = E9DD186A146B101300C2A4B3 /* cpVect.c */; };
 		E9DD190A146B101300C2A4B3 /* cpVect.c in Sources */ = {isa = PBXBuildFile; fileRef = E9DD186A146B101300C2A4B3 /* cpVect.c */; };
 		E9DD190B146B101300C2A4B3 /* prime.h in Headers */ = {isa = PBXBuildFile; fileRef = E9DD186B146B101300C2A4B3 /* prime.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E9EBC9FD147BAB2E000B810F /* ViAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = E9EBC9F8147BAB2E000B810F /* ViAnimation.h */; };
-		E9EBC9FE147BAB2E000B810F /* ViAnimationServer.h in Headers */ = {isa = PBXBuildFile; fileRef = E9EBC9F9147BAB2E000B810F /* ViAnimationServer.h */; };
+		E9EBC9FD147BAB2E000B810F /* ViAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = E9EBC9F8147BAB2E000B810F /* ViAnimation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E9EBC9FE147BAB2E000B810F /* ViAnimationServer.h in Headers */ = {isa = PBXBuildFile; fileRef = E9EBC9F9147BAB2E000B810F /* ViAnimationServer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E9EBC9FF147BAB2E000B810F /* ViAnimationServer.mm in Sources */ = {isa = PBXBuildFile; fileRef = E9EBC9FA147BAB2E000B810F /* ViAnimationServer.mm */; };
 		E9EBCA00147BAB2E000B810F /* ViAnimationServer.mm in Sources */ = {isa = PBXBuildFile; fileRef = E9EBC9FA147BAB2E000B810F /* ViAnimationServer.mm */; };
-		E9EBCA01147BAB2E000B810F /* ViAnimationStack.h in Headers */ = {isa = PBXBuildFile; fileRef = E9EBC9FB147BAB2E000B810F /* ViAnimationStack.h */; };
+		E9EBCA01147BAB2E000B810F /* ViAnimationStack.h in Headers */ = {isa = PBXBuildFile; fileRef = E9EBC9FB147BAB2E000B810F /* ViAnimationStack.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E9EBCA02147BAB2E000B810F /* ViAnimationStack.mm in Sources */ = {isa = PBXBuildFile; fileRef = E9EBC9FC147BAB2E000B810F /* ViAnimationStack.mm */; };
 		E9EBCA03147BAB2E000B810F /* ViAnimationStack.mm in Sources */ = {isa = PBXBuildFile; fileRef = E9EBC9FC147BAB2E000B810F /* ViAnimationStack.mm */; };
+		E9F91816147FC1D300ABAAE7 /* ViConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = E9F91814147FC1D300ABAAE7 /* ViConstraint.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E9F91817147FC1D400ABAAE7 /* ViConstraint.mm in Sources */ = {isa = PBXBuildFile; fileRef = E9F91815147FC1D300ABAAE7 /* ViConstraint.mm */; };
+		E9F91818147FC1D400ABAAE7 /* ViConstraint.mm in Sources */ = {isa = PBXBuildFile; fileRef = E9F91815147FC1D300ABAAE7 /* ViConstraint.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -385,6 +388,8 @@
 		E9EBC9FA147BAB2E000B810F /* ViAnimationServer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViAnimationServer.mm; sourceTree = "<group>"; };
 		E9EBC9FB147BAB2E000B810F /* ViAnimationStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViAnimationStack.h; sourceTree = "<group>"; };
 		E9EBC9FC147BAB2E000B810F /* ViAnimationStack.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViAnimationStack.mm; sourceTree = "<group>"; };
+		E9F91814147FC1D300ABAAE7 /* ViConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViConstraint.h; sourceTree = "<group>"; };
+		E9F91815147FC1D300ABAAE7 /* ViConstraint.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViConstraint.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -442,6 +447,8 @@
 				E90BB41D146E61870095403F /* ViBridge.mm */,
 				E90BB41E146E61870095403F /* ViColor.h */,
 				E90BB41F146E61870095403F /* ViColor.mm */,
+				E9F91814147FC1D300ABAAE7 /* ViConstraint.h */,
+				E9F91815147FC1D300ABAAE7 /* ViConstraint.mm */,
 				E90BB420146E61870095403F /* ViContext.h */,
 				E90BB421146E61870095403F /* ViContext.mm */,
 				E90BB422146E61870095403F /* ViDataPool.h */,
@@ -753,6 +760,10 @@
 				E90BB4C3146E61870095403F /* ViTMXLayer.h in Headers */,
 				E90BB4C6146E61870095403F /* ViTMXNode.h in Headers */,
 				E90BB4CA146E61870095403F /* Vinter.h in Headers */,
+				E9EBC9FD147BAB2E000B810F /* ViAnimation.h in Headers */,
+				E9EBC9FE147BAB2E000B810F /* ViAnimationServer.h in Headers */,
+				E9EBCA01147BAB2E000B810F /* ViAnimationStack.h in Headers */,
+				E9F91816147FC1D300ABAAE7 /* ViConstraint.h in Headers */,
 				E9DD18B8146B101300C2A4B3 /* chipmunk.h in Headers */,
 				E9DD18B9146B101300C2A4B3 /* chipmunk_ffi.h in Headers */,
 				E9DD18BA146B101300C2A4B3 /* chipmunk_private.h in Headers */,
@@ -779,9 +790,6 @@
 				E9DD18CF146B101300C2A4B3 /* cpSpatialIndex.h in Headers */,
 				E9DD18D0146B101300C2A4B3 /* cpVect.h in Headers */,
 				E9DD190B146B101300C2A4B3 /* prime.h in Headers */,
-				E9EBC9FD147BAB2E000B810F /* ViAnimation.h in Headers */,
-				E9EBC9FE147BAB2E000B810F /* ViAnimationServer.h in Headers */,
-				E9EBCA01147BAB2E000B810F /* ViAnimationStack.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -937,6 +945,7 @@
 				E90BB4C8146E61870095403F /* ViTMXNode.mm in Sources */,
 				E9EBCA00147BAB2E000B810F /* ViAnimationServer.mm in Sources */,
 				E9EBCA03147BAB2E000B810F /* ViAnimationStack.mm in Sources */,
+				E9F91818147FC1D400ABAAE7 /* ViConstraint.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1011,6 +1020,7 @@
 				E90BB4C7146E61870095403F /* ViTMXNode.mm in Sources */,
 				E9EBC9FF147BAB2E000B810F /* ViAnimationServer.mm in Sources */,
 				E9EBCA02147BAB2E000B810F /* ViAnimationStack.mm in Sources */,
+				E9F91817147FC1D400ABAAE7 /* ViConstraint.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -78,6 +78,9 @@
 		E9D61F8F14530D8400CA134B /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = E9D61F8814530D8400CA134B /* AppDelegate.mm */; };
 		E9D61F9014530D8400CA134B /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9D61F8A14530D8400CA134B /* MainMenu.xib */; };
 		E9D61F9114530D8400CA134B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E9D61F8C14530D8400CA134B /* main.m */; };
+		E9F917C0147F05E100ABAAE7 /* ViAnimationServer.mm in Sources */ = {isa = PBXBuildFile; fileRef = E9F917BD147F05E100ABAAE7 /* ViAnimationServer.mm */; };
+		E9F917C1147F05E100ABAAE7 /* ViAnimationStack.mm in Sources */ = {isa = PBXBuildFile; fileRef = E9F917BF147F05E100ABAAE7 /* ViAnimationStack.mm */; };
+		E9F917C5147F0A6000ABAAE7 /* ViConstraint.mm in Sources */ = {isa = PBXBuildFile; fileRef = E9F917C4147F0A6000ABAAE7 /* ViConstraint.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -222,6 +225,13 @@
 		E9D61F8C14530D8400CA134B /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E9D61F8D14530D8400CA134B /* Physics-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Physics-Info.plist"; sourceTree = "<group>"; };
 		E9D61F8E14530D8400CA134B /* Physics-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Physics-Prefix.pch"; sourceTree = "<group>"; };
+		E9F917BB147F05E100ABAAE7 /* ViAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViAnimation.h; sourceTree = "<group>"; };
+		E9F917BC147F05E100ABAAE7 /* ViAnimationServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViAnimationServer.h; sourceTree = "<group>"; };
+		E9F917BD147F05E100ABAAE7 /* ViAnimationServer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViAnimationServer.mm; sourceTree = "<group>"; };
+		E9F917BE147F05E100ABAAE7 /* ViAnimationStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViAnimationStack.h; sourceTree = "<group>"; };
+		E9F917BF147F05E100ABAAE7 /* ViAnimationStack.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViAnimationStack.mm; sourceTree = "<group>"; };
+		E9F917C3147F0A6000ABAAE7 /* ViConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViConstraint.h; sourceTree = "<group>"; };
+		E9F917C4147F0A6000ABAAE7 /* ViConstraint.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViConstraint.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -336,6 +346,7 @@
 		E90BB2C5146E615D0095403F /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				E9F917BA147F05E100ABAAE7 /* animation */,
 				E90BB2C6146E615D0095403F /* common */,
 				E90BB2E4146E615D0095403F /* graphic */,
 				E90BB2F5146E615D0095403F /* input */,
@@ -357,6 +368,8 @@
 				E90BB2CB146E615D0095403F /* ViBridge.mm */,
 				E90BB2CC146E615D0095403F /* ViColor.h */,
 				E90BB2CD146E615D0095403F /* ViColor.mm */,
+				E9F917C3147F0A6000ABAAE7 /* ViConstraint.h */,
+				E9F917C4147F0A6000ABAAE7 /* ViConstraint.mm */,
 				E90BB2CE146E615D0095403F /* ViContext.h */,
 				E90BB2CF146E615D0095403F /* ViContext.mm */,
 				E90BB2D0146E615D0095403F /* ViDataPool.h */,
@@ -515,6 +528,18 @@
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		E9F917BA147F05E100ABAAE7 /* animation */ = {
+			isa = PBXGroup;
+			children = (
+				E9F917BB147F05E100ABAAE7 /* ViAnimation.h */,
+				E9F917BC147F05E100ABAAE7 /* ViAnimationServer.h */,
+				E9F917BD147F05E100ABAAE7 /* ViAnimationServer.mm */,
+				E9F917BE147F05E100ABAAE7 /* ViAnimationStack.h */,
+				E9F917BF147F05E100ABAAE7 /* ViAnimationStack.mm */,
+			);
+			path = animation;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -643,6 +668,9 @@
 				E90BB34C146E615D0095403F /* ViSpriteFactory.mm in Sources */,
 				E90BB34D146E615D0095403F /* ViTMXLayer.mm in Sources */,
 				E90BB34E146E615D0095403F /* ViTMXNode.mm in Sources */,
+				E9F917C0147F05E100ABAAE7 /* ViAnimationServer.mm in Sources */,
+				E9F917C1147F05E100ABAAE7 /* ViAnimationStack.mm in Sources */,
+				E9F917C5147F0A6000ABAAE7 /* ViConstraint.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

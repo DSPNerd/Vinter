@@ -96,6 +96,11 @@ namespace vi
             cpSpaceSetCollisionSlop(space, slop);
         }
         
+        void scene::enableSpatialHash(GLfloat dimension, uint32_t count)
+        {
+            cpSpaceUseSpatialHash(space, dimension, count);
+        }
+        
         
         vi::common::vector2 scene::getGravity()
         {

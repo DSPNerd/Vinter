@@ -20,6 +20,7 @@
 #import "ViLine.h"
 #import "ViMatrix4x4.h"
 #import "ViQuadtree.h"
+#import "ViConstraint.h"
 
 #import "ViKernel.h"
 #import "ViContext.h"

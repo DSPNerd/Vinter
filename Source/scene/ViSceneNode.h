@@ -302,6 +302,9 @@ namespace vi
              * @remark You don't need to enable physics to call this function!
              **/
             GLfloat suggestedInertia();
+            
+            cpBody *getCPBody();
+            cpShape *getCPShape();
 #endif
             
             /**

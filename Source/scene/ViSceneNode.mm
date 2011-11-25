@@ -395,7 +395,7 @@ namespace vi
                 }
             }
             
-            
+            cpBodySetUserData(body, this);
             cpBodySetPos(body, cpv(position.x + (size.x * 0.5), position.y + (size.y * 0.5)));
             cpBodySetAngle(body, rotation);
             cpBodySetAngVelLimit(body, angVelLimit);
@@ -647,6 +647,17 @@ namespace vi
             
             cpVect velocity = cpBodyGetVel(body);
             return vi::common::vector2(velocity.x, velocity.y);
+        }
+        
+        
+        cpBody *sceneNode::getCPBody()
+        {
+            return body;
+        }
+        
+        cpShape *sceneNode::getCPShape()
+        {
+            return shape;
         }
 #endif
     }

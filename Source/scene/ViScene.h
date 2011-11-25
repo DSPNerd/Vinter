@@ -145,6 +145,8 @@ namespace vi
              **/
             void setCollisionSlop(GLfloat slop);
             
+            void enableSpatialHash(GLfloat dimension, uint32_t count);
+            
             /**
              * Returns the current gravity
              **/
