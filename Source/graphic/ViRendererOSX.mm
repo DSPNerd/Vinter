@@ -172,7 +172,7 @@ namespace vi
             renderMesh(node->mesh, isUINode, node->matrix);
         }
         
-        void rendererOSX::renderMesh(vi::common::__mesh *mesh, bool isUIMesh, vi::common::matrix4x4 const& matrix)
+        void rendererOSX::renderMesh(vi::common::mesh *mesh, bool isUIMesh, vi::common::matrix4x4 const& matrix)
         {
             vi::common::matrix4x4 cameraMatrix = !isUIMesh ? currentCamera->viewMatrix : vi::common::matrix4x4();
             
@@ -266,33 +266,23 @@ namespace vi
                         glDisableVertexAttribArray(currentMaterial->shader->color);
                     
                     
-                    
-                    if(mesh->features & vi::common::vertexFeaturesXYUV)
+                    vi::common::vertex *vertices = mesh->getVertices();
+                    if(currentMaterial->shader->position != -1)
                     {
-                        vi::common::vertex *vertices = (vi::common::vertex *)mesh->vertices;
-                        
-                        if(currentMaterial->shader->position != -1)
-                        {
-                            glEnableVertexAttribArray(currentMaterial->shader->position);
-                            glVertexAttribPointer(currentMaterial->shader->position, 2, GL_FLOAT, 0, (GLsizei)mesh->vertexSize, &vertices[0].x);
-                        }
-                        
-                        if(currentMaterial->shader->texcoord0 != -1)
-                        {
-                            glEnableVertexAttribArray(currentMaterial->shader->texcoord0);
-                            glVertexAttribPointer(currentMaterial->shader->texcoord0, 2, GL_FLOAT, 0, (GLsizei)mesh->vertexSize, &vertices[0].u);
-                        }
+                        glEnableVertexAttribArray(currentMaterial->shader->position);
+                        glVertexAttribPointer(currentMaterial->shader->position, 2, GL_FLOAT, 0, sizeof(vi::common::vertex), &vertices[0].x);
                     }
                     
-                    if(mesh->features & vi::common::vertexFeaturesRGBA)
+                    if(currentMaterial->shader->texcoord0 != -1)
                     {
-                        vi::common::vertexRGBA *vertices = (vi::common::vertexRGBA *)mesh->vertices;
-                        
-                        if(currentMaterial->shader->color != -1)
-                        {
-                            glEnableVertexAttribArray(currentMaterial->shader->color);
-                            glVertexAttribPointer(currentMaterial->shader->color, 4, GL_FLOAT, 0, (GLsizei)mesh->vertexSize, &vertices[0].r);
-                        }
+                        glEnableVertexAttribArray(currentMaterial->shader->texcoord0);
+                        glVertexAttribPointer(currentMaterial->shader->texcoord0, 2, GL_FLOAT, 0, sizeof(vi::common::vertex), &vertices[0].u);
+                    }
+                    
+                    if(currentMaterial->shader->color != -1)
+                    {
+                        glEnableVertexAttribArray(currentMaterial->shader->color);
+                        glVertexAttribPointer(currentMaterial->shader->color, 4, GL_FLOAT, 0, sizeof(vi::common::vertex), &vertices[0].r);
                     }
                 }
             }
@@ -313,35 +303,23 @@ namespace vi
                     
                     
                     
-                    int offset = 0;
-                    if(mesh->features & vi::common::vertexFeaturesXYUV)
+                    
+                    if(currentMaterial->shader->position != -1)
                     {
-                        if(currentMaterial->shader->position != -1)
-                        {
-                            glEnableVertexAttribArray(currentMaterial->shader->position);
-                            glVertexAttribPointer(currentMaterial->shader->position, 2, GL_FLOAT, 0, (GLsizei)mesh->vertexSize, (const void *)offset);
-                        }
-                        
-                        offset += 2 * sizeof(float);
-                        
-                        if(currentMaterial->shader->texcoord0 != -1)
-                        {
-                            glEnableVertexAttribArray(currentMaterial->shader->texcoord0);
-                            glVertexAttribPointer(currentMaterial->shader->texcoord0, 2, GL_FLOAT, 0, (GLsizei)mesh->vertexSize, (const void *)offset);
-                        }
-                        
-                        offset += 2 * sizeof(float);
+                        glEnableVertexAttribArray(currentMaterial->shader->position);
+                        glVertexAttribPointer(currentMaterial->shader->position, 2, GL_FLOAT, 0, sizeof(vi::common::vertex), (const void *)0);
                     }
                     
-                    if(mesh->features & vi::common::vertexFeaturesRGBA)
+                    if(currentMaterial->shader->texcoord0 != -1)
                     {
-                        if(currentMaterial->shader->color != -1)
-                        {
-                            glEnableVertexAttribArray(currentMaterial->shader->color);
-                            glVertexAttribPointer(currentMaterial->shader->color, 4, GL_FLOAT, 0, (GLsizei)mesh->vertexSize, (const void *)offset);
-                        }
-                        
-                        offset += 4 * sizeof(float);
+                        glEnableVertexAttribArray(currentMaterial->shader->texcoord0);
+                        glVertexAttribPointer(currentMaterial->shader->texcoord0, 2, GL_FLOAT, 0, sizeof(vi::common::vertex), (const void *)8);
+                    }
+                    
+                    if(currentMaterial->shader->color != -1)
+                    {
+                        glEnableVertexAttribArray(currentMaterial->shader->color);
+                        glVertexAttribPointer(currentMaterial->shader->color, 4, GL_FLOAT, 0, sizeof(vi::common::vertex), (const void *)16);
                     }
                 }
             }
@@ -350,7 +328,7 @@ namespace vi
             if(mesh->ivbo == -1)
 			{
 				glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
-				glDrawElements(currentMaterial->drawMode, mesh->indexCount, GL_UNSIGNED_SHORT, mesh->indices);
+				glDrawElements(currentMaterial->drawMode, mesh->indexCount, GL_UNSIGNED_SHORT, mesh->getIndices());
 			}
             else
             {

@@ -106,6 +106,7 @@ namespace vi
  * @page changelog Changelog
  * <b>Version 0.4.0</b><br />
  * Added a chipmunk wrapper for vi::scene::scene and vi::scene::sceneNode<br />
+ * Added support for animations<br />
  * Added tracing functions into the scene, vi::scene::scene::trace()<br />
  * Added support to render nodes in UI space rathern than in world space<br />
  * Added support for OpenGL debug markers (only in debug builds, vi::scene::sceneNode::setDebugName())<br />
@@ -118,7 +119,7 @@ namespace vi
  * Added the possibility to directly write atlas information of sprites into the mesh<br />
  * Added a new default shader for particles<br />
  * Changed the behavior of adding custom material attributes (aka uniforms), instead of readding a new uniform the material now updates the old one.<br />
- * Refactored the mesh class into one base class, vi::common::__mesh, and two concrete subclasses, vi::common::mesh (XY, UV vertices mesh) and vi::common::meshRGBA (XY, UV, RGBA vertices mesh).<br />
+ * Refactored the mesh class so that it supports vertex colors.<br />
  * Moved the color class from the graphic to the common namespace (you can do a quick search&replace to update your code!)<br />
  * Moved the renderer and rendererOSX files physically from the scene folder to the graphic folder, no namespace change.<br />
  * Removed the ViTriangulate and ViShape classes<br />

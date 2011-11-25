@@ -1,9 +1,9 @@
 //
 //  ViConstraint.mm
-//  Physics
+//  Vinter
 //
-//  Created by Sidney Just on 25.11.11.
-//  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 by Nils Daumann and Sidney Just. All rights reserved.
+//  Unauthorized use is punishable by torture, mutilation, and vivisection.
 //
 
 #import "ViConstraint.h"

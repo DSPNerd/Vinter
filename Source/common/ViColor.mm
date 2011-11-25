@@ -62,6 +62,17 @@ namespace vi
             return *this;
         }
         
+        color color::operator- ()
+        {
+            color result(*this);
+            
+            result.r = -result.r;
+            result.g = -result.g;
+            result.b = -result.b;
+            result.a = -result.a;
+            
+            return result;
+        }
         
         color color::operator+= (color const& other)
         {

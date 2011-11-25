@@ -69,7 +69,7 @@ namespace vi
             
         private:
             vi::common::vector2 particleSize;
-            vi::common::meshRGBA *particleMesh;
+            vi::common::mesh *particleMesh;
             
             std::vector<vi::scene::particle *> particles;
             

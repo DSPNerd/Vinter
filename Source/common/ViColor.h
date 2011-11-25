@@ -34,6 +34,7 @@ namespace vi
             bool operator!= (color const& other);
             
             color operator= (color const& other);
+            color operator- ();
             
             color operator+= (color const& other);
             color operator-= (color const& other);

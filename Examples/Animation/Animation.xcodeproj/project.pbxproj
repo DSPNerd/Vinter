@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E910E564147974D800EAEB3D /* ViAnimationServer.mm in Sources */ = {isa = PBXBuildFile; fileRef = E910E563147974D800EAEB3D /* ViAnimationServer.mm */; };
+		E92047BB147FD1200093789B /* Logox512.icns in Resources */ = {isa = PBXBuildFile; fileRef = E92047BA147FD1200093789B /* Logox512.icns */; };
 		E9790005147939AC00D67A73 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = E979FFFE147939AC00D67A73 /* AppDelegate.mm */; };
 		E9790006147939AC00D67A73 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9790000147939AC00D67A73 /* MainMenu.xib */; };
 		E9790008147939AC00D67A73 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E9790004147939AC00D67A73 /* main.m */; };
@@ -51,11 +52,13 @@
 		E9EBC9F4147B8FD0000B810F /* Brick.png in Resources */ = {isa = PBXBuildFile; fileRef = E9EBC9F3147B8FD0000B810F /* Brick.png */; };
 		E9EBC9F6147B93E4000B810F /* Clock.png in Resources */ = {isa = PBXBuildFile; fileRef = E9EBC9F5147B93E4000B810F /* Clock.png */; };
 		E9F659C614798F2D00AC2099 /* ViAnimationStack.mm in Sources */ = {isa = PBXBuildFile; fileRef = E9F659C514798F2D00AC2099 /* ViAnimationStack.mm */; };
+		E9F9182F147FC4B300ABAAE7 /* ViConstraint.mm in Sources */ = {isa = PBXBuildFile; fileRef = E9F9182E147FC4B300ABAAE7 /* ViConstraint.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		E910E562147974D800EAEB3D /* ViAnimationServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViAnimationServer.h; sourceTree = "<group>"; };
 		E910E563147974D800EAEB3D /* ViAnimationServer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViAnimationServer.mm; sourceTree = "<group>"; };
+		E92047BA147FD1200093789B /* Logox512.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = Logox512.icns; path = ../../../Resources/Logox512.icns; sourceTree = "<group>"; };
 		E9790000147939AC00D67A73 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
 		E9790002147939AC00D67A73 /* Animation-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Animation-Info.plist"; sourceTree = "<group>"; };
 		E9790003147939AC00D67A73 /* Animation-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Animation-Prefix.pch"; sourceTree = "<group>"; };
@@ -142,6 +145,8 @@
 		E9EBC9F5147B93E4000B810F /* Clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Clock.png; path = ../../../Resources/Clock.png; sourceTree = "<group>"; };
 		E9F659C414798F2D00AC2099 /* ViAnimationStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViAnimationStack.h; sourceTree = "<group>"; };
 		E9F659C514798F2D00AC2099 /* ViAnimationStack.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViAnimationStack.mm; sourceTree = "<group>"; };
+		E9F9182D147FC4B300ABAAE7 /* ViConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViConstraint.h; sourceTree = "<group>"; };
+		E9F9182E147FC4B300ABAAE7 /* ViConstraint.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViConstraint.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,6 +198,8 @@
 				E979001314793AE300D67A73 /* ViBridge.mm */,
 				E979001414793AE300D67A73 /* ViColor.h */,
 				E979001514793AE300D67A73 /* ViColor.mm */,
+				E9F9182D147FC4B300ABAAE7 /* ViConstraint.h */,
+				E9F9182E147FC4B300ABAAE7 /* ViConstraint.mm */,
 				E979001614793AE300D67A73 /* ViContext.h */,
 				E979001714793AE300D67A73 /* ViContext.mm */,
 				E979001814793AE300D67A73 /* ViDataPool.h */,
@@ -334,6 +341,7 @@
 		E979FFFF147939AC00D67A73 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E92047BA147FD1200093789B /* Logox512.icns */,
 				E9EBC9F3147B8FD0000B810F /* Brick.png */,
 				E9EBC9F5147B93E4000B810F /* Clock.png */,
 				E9790000147939AC00D67A73 /* MainMenu.xib */,
@@ -395,6 +403,7 @@
 				E979007A14793AE300D67A73 /* Vinter.bundle in Resources */,
 				E9EBC9F4147B8FD0000B810F /* Brick.png in Resources */,
 				E9EBC9F6147B93E4000B810F /* Clock.png in Resources */,
+				E92047BB147FD1200093789B /* Logox512.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -442,6 +451,7 @@
 				E979007914793AE300D67A73 /* ViTMXNode.mm in Sources */,
 				E910E564147974D800EAEB3D /* ViAnimationServer.mm in Sources */,
 				E9F659C614798F2D00AC2099 /* ViAnimationStack.mm in Sources */,
+				E9F9182F147FC4B300ABAAE7 /* ViConstraint.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

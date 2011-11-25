@@ -23,9 +23,9 @@ namespace vi
             material->blendSource = GL_ONE;
             material->blendDestination = GL_ONE_MINUS_SRC_ALPHA;
             
-            mesh = new vi::common::meshRGBA(0, 0);
+            mesh = new vi::common::mesh(0, 0);
             
-            particleMesh = new vi::common::meshRGBA(4, 6);
+            particleMesh = new vi::common::mesh(4, 6);
             particleMesh->addVertex(0.0, 1.0, 0.0, 0.0);
             particleMesh->addVertex(1.0, 1.0, 1.0, 0.0);
             particleMesh->addVertex(1.0, 0.0, 1.0, 1.0);
@@ -107,8 +107,6 @@ namespace vi
                 mesh->vertexCount = 0;
                 mesh->indexCount = 0;
                 
-                vi::common::vertexRGBA *vertices = particleMesh->getVertices();                
-                
                 if(orderFrontToBack)
                 {
                     std::vector<vi::scene::particle *>::iterator iterator;
@@ -116,25 +114,10 @@ namespace vi
                     {
                         vi::scene::particle *particle = *iterator;
                         
-                        vertices[0].r = particle->color.r;
-                        vertices[0].g = particle->color.g;
-                        vertices[0].b = particle->color.b;
-                        vertices[0].a = particle->color.a;
-                        
-                        vertices[1].r = particle->color.r;
-                        vertices[1].g = particle->color.g;
-                        vertices[1].b = particle->color.b;
-                        vertices[1].a = particle->color.a;
-                        
-                        vertices[2].r = particle->color.r;
-                        vertices[2].g = particle->color.g;
-                        vertices[2].b = particle->color.b;
-                        vertices[2].a = particle->color.a;
-                        
-                        vertices[3].r = particle->color.r;
-                        vertices[3].g = particle->color.g;
-                        vertices[3].b = particle->color.b;
-                        vertices[3].a = particle->color.a;
+                        particleMesh->updateColor(0, particle->color);
+                        particleMesh->updateColor(1, particle->color);
+                        particleMesh->updateColor(2, particle->color);
+                        particleMesh->updateColor(3, particle->color);
                         
                         mesh->addMesh(particleMesh, particle->position, particleSize * particle->scale);
                     }
@@ -146,25 +129,10 @@ namespace vi
                     {
                         vi::scene::particle *particle = *iterator;
                         
-                        vertices[0].r = particle->color.r;
-                        vertices[0].g = particle->color.g;
-                        vertices[0].b = particle->color.b;
-                        vertices[0].a = particle->color.a;
-                        
-                        vertices[1].r = particle->color.r;
-                        vertices[1].g = particle->color.g;
-                        vertices[1].b = particle->color.b;
-                        vertices[1].a = particle->color.a;
-                        
-                        vertices[2].r = particle->color.r;
-                        vertices[2].g = particle->color.g;
-                        vertices[2].b = particle->color.b;
-                        vertices[2].a = particle->color.a;
-                        
-                        vertices[3].r = particle->color.r;
-                        vertices[3].g = particle->color.g;
-                        vertices[3].b = particle->color.b;
-                        vertices[3].a = particle->color.a;
+                        particleMesh->updateColor(0, particle->color);
+                        particleMesh->updateColor(1, particle->color);
+                        particleMesh->updateColor(2, particle->color);
+                        particleMesh->updateColor(3, particle->color);
                         
                         mesh->addMesh(particleMesh, particle->position, particleSize * particle->scale);
                     }
