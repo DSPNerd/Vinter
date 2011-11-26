@@ -106,28 +106,33 @@
 
 - (void)keyDown:(NSEvent *)theEvent
 {
-    vi::input::event(theEvent, vi::input::eventTypeKeyboard | vi::input::eventTypeKeyDown);
+    vi::event::keyboardEvent event = vi::event::keyboardEvent(theEvent, vi::event::keyboardEventTypeDown);
+    event.raise();
 }
 
 - (void)keyUp:(NSEvent *)theEvent
 {
-    vi::input::event(theEvent, vi::input::eventTypeKeyboard | vi::input::eventTypeKeyUp);
+    vi::event::keyboardEvent event = vi::event::keyboardEvent(theEvent, vi::event::keyboardEventTypeUp);
+    event.raise();
 }
 
 
 - (void)mouseDown:(NSEvent *)theEvent
 {
-    vi::input::event(theEvent, vi::input::eventTypeMouse | vi::input::eventTypeMouseDown);
+    vi::event::mouseEvent event = vi::event::mouseEvent(theEvent, vi::event::mouseEventTypeDown);
+    event.raise();
 }
 
 - (void)mouseDragged:(NSEvent *)theEvent
 {
-    vi::input::event(theEvent, vi::input::eventTypeMouse | vi::input::eventTypeMouseDragged);
+    vi::event::mouseEvent event = vi::event::mouseEvent(theEvent, vi::event::mouseEventTypeDragged);
+    event.raise();
 }
 
 - (void)mouseUp:(NSEvent *)theEvent
 {
-    vi::input::event(theEvent, vi::input::eventTypeMouse | vi::input::eventTypeMouseUp);
+    vi::event::mouseEvent event = vi::event::mouseEvent(theEvent, vi::event::mouseEventTypeUp);
+    event.raise();
 }
 
 @end

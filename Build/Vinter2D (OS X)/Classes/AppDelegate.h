@@ -24,7 +24,8 @@
     vi::common::dataPool *dataPool;
     vi::scene::sprite *sprite;
     
-    vi::input::responder *responder;
+    vi::event::eventListener listener;
+    vi::event::input input;
     vi::common::objCBridge bridge;
 }
 @end

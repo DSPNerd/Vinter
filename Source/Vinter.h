@@ -44,7 +44,8 @@
 #import "ViMesh.h"
 
 #import "ViEvent.h"
-#import "ViResponder.h"
+#import "ViEventListener.h"
+#import "ViInput.h"
 #import "ViBridge.h"
 
 #import "ViRenderer.h"

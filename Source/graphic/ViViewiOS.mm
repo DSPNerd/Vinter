@@ -181,24 +181,28 @@
     return YES;
 }
 
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)theEvent
 {
-    vi::input::event(event, vi::input::eventTypeTouch | vi::input::eventTypeTouchDown, self);
+    vi::event::touchEvent event = vi::event::touchEvent(vi::event::touchEventTypeBegan, theEvent, self);
+    event.raise();
 }
 
-- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)theEvent
 {
-    vi::input::event(event, vi::input::eventTypeTouch | vi::input::eventTypeTouchMoved, self);
+    vi::event::touchEvent event = vi::event::touchEvent(vi::event::touchEventTypeMoved, theEvent, self);
+    event.raise();
 }
 
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)theEvent
 {
-    vi::input::event(event, vi::input::eventTypeTouch | vi::input::eventTypeTouchUp, self);
+    vi::event::touchEvent event = vi::event::touchEvent(vi::event::touchEventTypeEnded, theEvent, self);
+    event.raise();
 }
 
-- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
+- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)theEvent
 {
-    vi::input::event(event, vi::input::eventTypeTouch | vi::input::eventTypeTouchCancelled, self);
+    vi::event::touchEvent event = vi::event::touchEvent(vi::event::touchEventTypeCancelled, theEvent, self);
+    event.raise();
 }
 
 @end

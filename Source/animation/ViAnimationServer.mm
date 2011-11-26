@@ -7,6 +7,7 @@
 //
 
 #import "ViAnimationServer.h"
+#import "ViEvent.h"
 
 namespace vi
 {
@@ -41,6 +42,9 @@ namespace vi
                 
                 if(stack->state == animationStackStateEnded || stack->state == animationStackStateStopped)
                 {
+                    vi::event::animationEvent event = vi::event::animationEvent(vi::event::animationEventTypeDidEnd, stack);
+                    event.raise();
+                    
                     committedAnimations.erase(committedAnimations.begin() + i);
                     delete stack;
                     
@@ -51,8 +55,27 @@ namespace vi
                 if(stack->waitForOtherAnimations && hasRunningAnimation)
                     continue;
                 
+                animationStackState previousState = stack->state;
+                
+                if(previousState == animationStackStateBuilding)
+                {
+                    vi::event::animationEvent event = vi::event::animationEvent(vi::event::animationEventTypeWillBegin, stack);
+                    event.raise();
+                }
+                
                 stack->run(timestep);
                 hasRunningAnimation = true;
+                
+                if(previousState == animationStackStateBuilding)
+                {
+                    vi::event::animationEvent event = vi::event::animationEvent(vi::event::animationEventTypeDidBegin, stack);
+                    event.raise();
+                }
+                else if(previousState == animationStackStateRunning && stack->state == animationStackStateBuilding)
+                {
+                    vi::event::animationEvent event = vi::event::animationEvent(vi::event::animationEventTypeWillRepeat, stack);
+                    event.raise();
+                }
             }
         }
         

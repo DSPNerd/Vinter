@@ -10,17 +10,20 @@
 
 @implementation ViewController
 
-- (void)handleRenderEvent:(vi::input::event *)event
+- (void)handleRenderEvent:(vi::event::renderEvent *)event
 {
-    [fpsLabel setText:[NSString stringWithFormat:@"FPS: %.2f", 1/kernel->timestep]];
-    
-    if(sprite)
-        sprite->rotation += ViDegreeToRadian(15.0f * kernel->timestep);
+    if(event->subtype == vi::event::renderEventTypeDidDrawScene)
+    {
+        [fpsLabel setText:[NSString stringWithFormat:@"FPS: %.2f", 1.0 / event->timestep]];
+        
+        if(sprite)
+            sprite->rotation += ViDegreeToRadian(15.0f * event->timestep);
+    }
 }
 
-- (void)handleTouchEvent:(vi::input::event *)event
+- (void)handleTouchEvent:(vi::event::touchEvent *)event
 {
-    if(event->type & vi::input::eventTypeTouchMoved)
+    if(event->type & vi::event::touchEventTypeMoved)
     {
         UITouch *touch = [event->touches anyObject];
         
@@ -33,16 +36,15 @@
 }
 
 
-- (void)handleEvent:(vi::input::event *)event
+- (void)handleEvent:(vi::event::event *)event
 {
-    if(event->type & vi::input::eventTypeTouch)
+    if(event->type & vi::event::eventTypeRenderer)
     {
-        [self handleTouchEvent:event];
+        [self handleRenderEvent:(vi::event::renderEvent *)event];
     }
-    
-    if(event->type & vi::input::eventTypeRender)
+    else if(event->type & vi::event::eventTypeTouch)
     {
-        [self handleRenderEvent:event];
+        [self handleTouchEvent:(vi::event::touchEvent *)event];
     }
 }
 
@@ -103,11 +105,8 @@
     
     
     bridge = vi::common::objCBridge(self, @selector(handleEvent:));
-    
-    responder = new vi::input::responder();
-    responder->callback = std::tr1::bind(&vi::common::objCBridge::parameter1Action<vi::input::event *>, &bridge, std::tr1::placeholders::_1);
-    responder->touchMoved = true;
-    responder->willDrawScene = true;
+    listener.eventPredicate = vi::event::eventTypeTouch | vi::event::eventTypeRenderer;
+    listener.eventCallback = std::tr1::bind(&vi::common::objCBridge::parameter1Action<vi::event::event *>, &bridge, std::tr1::placeholders::_1);
 }
 
 
@@ -120,7 +119,6 @@
     delete kernel;
     delete scene;
     delete camera;
-    delete responder;
     delete dataPool;
     
     [super viewDidUnload];

@@ -98,15 +98,16 @@ namespace vi
         
         void kernel::drawScene()
         {
+            vi::event::renderEvent event = vi::event::renderEvent(vi::event::renderEventTypeWillBeginRendering, NULL, this);
+            event.timestep = timestep;
+            event.raise();
+            
             if(scenes->size() > 0 && renderer != NULL)
             {
-                vi::input::event(this, vi::input::eventTypeRender | vi::input::eventTypeRenderWillDraw);
-                
                 vi::scene::scene *scene = scenes->back();
                 scene->draw(renderer, timestep);
-                
-                vi::input::event(this, vi::input::eventTypeRender | vi::input::eventTypeRenderDidDraw);
             }
+            
             
             double currentTime = [NSDate timeIntervalSinceReferenceDate];
             
@@ -114,6 +115,10 @@ namespace vi
                 timestep = currentTime - lastDraw;
                 
             lastDraw = currentTime;
+            
+            event = vi::event::renderEvent(vi::event::renderEventTypeDidFinishRendering, NULL, this);
+            event.timestep = timestep;
+            event.raise();
         }
         
         void kernel::startRendering(uint32_t maxFPS)

@@ -14,11 +14,50 @@
 #import "ViCamera.h"
 #import "ViSceneNode.h"
 #import "ViRenderer.h"
+#import "ViEvent.h"
 
 namespace vi
 {
     namespace scene
     {
+#ifdef ViPhysicsChipmunk
+        int collisionBeginCallback(cpArbiter *arb, cpSpace *space, void *data);
+        int collisionPreSolveCallback(cpArbiter *arb, cpSpace *space, void *data);
+        void collisionPostSolveCallback(cpArbiter *arb, cpSpace *space, void *data);
+        void collisionSeparateCallback(cpArbiter *arb, cpSpace *space, void *data);
+        
+        
+        int collisionBeginCallback(cpArbiter *arb, cpSpace *space, void *data)
+        {
+            vi::event::physicEvent event = vi::event::physicEvent(vi::event::physicEventTypeCollisionBegan, (vi::scene::scene *)data, arb);
+            event.raise();
+            
+            return event.returnValue;
+        }
+        
+        int collisionPreSolveCallback(cpArbiter *arb, cpSpace *space, void *data)
+        {
+            vi::event::physicEvent event = vi::event::physicEvent(vi::event::physicEventTypeCollisionWillSolve, (vi::scene::scene *)data, arb);
+            event.raise();
+            
+            return event.returnValue;
+        }
+        
+        void collisionPostSolveCallback(cpArbiter *arb, cpSpace *space, void *data)
+        {
+            vi::event::physicEvent event = vi::event::physicEvent(vi::event::physicEventTypeCollisionDidSolve, (vi::scene::scene *)data, arb);
+            event.raise();
+        }
+        
+        void collisionSeparateCallback(cpArbiter *arb, cpSpace *space, void *data)
+        {
+            vi::event::physicEvent event = vi::event::physicEvent(vi::event::physicEventTypeCollisionSeperate, (vi::scene::scene *)data, arb);
+            event.raise();
+        }
+#endif
+        
+        
+        
         scene::scene(vi::scene::camera *camera, float minX, float minY, float maxX, float maxY, uint32_t subdivisions)
         {
             assert(maxX > minX);
@@ -36,6 +75,7 @@ namespace vi
             
             space = cpSpaceNew();
             setGravity(vi::common::vector2(0.0, 100.0));
+            cpSpaceSetDefaultCollisionHandler(space, collisionBeginCallback, collisionPreSolveCallback, collisionPostSolveCallback, collisionSeparateCallback, this);
 #endif
         }
         
@@ -58,6 +98,10 @@ namespace vi
         
         void scene::draw(vi::graphic::renderer *renderer, double timestep)
         {
+            vi::event::renderEvent event = vi::event::renderEvent(vi::event::renderEventTypeWillDrawScene, this);
+            event.timestep = timestep;
+            event.raise();
+            
             animationServer->run(timestep);
             
 #ifdef ViPhysicsChipmunk
@@ -77,6 +121,10 @@ namespace vi
                 vi::scene::camera *camera = *iterator;
                 renderer->renderSceneWithCamera(this, camera, timestep);
             }
+            
+            event = vi::event::renderEvent(vi::event::renderEventTypeDidDrawScene, this);
+            event.timestep = timestep;
+            event.raise();
         }
         
         
