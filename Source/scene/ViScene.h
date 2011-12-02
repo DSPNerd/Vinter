@@ -30,10 +30,22 @@ namespace vi
         class sceneNode;
         class camera;
         
+        /**
+         * Structure holding information about hits of the scenes tracing functionality
+         **/
         typedef struct
         {
+            /**
+             * The distance between the hit object and the starting point of the trace
+             **/
             GLfloat distance;
+            /**
+             * The position, in world spcae, where the trace hit
+             **/
             vi::common::vector2 position;
+            /**
+             * The node that was hit by the trace
+             **/
             vi::scene::sceneNode *node;
         } hitInfo;
         
@@ -58,6 +70,10 @@ namespace vi
              **/
             ~scene();
             
+            /**
+             * Returns the scenes animation server.
+             * @remark The animation server is bound to the engines framerate and most likely the one you want to use if you want to animate things.
+             **/
             vi::animation::animationServer *getAnimationServer();
             
             
@@ -131,20 +147,25 @@ namespace vi
 #ifdef ViPhysicsChipmunk
             /**
              * Sets the gravity of the scene
-             * @default 0.0 | 100.0
+             * Default 0.0 | 100.0
              **/
             void setGravity(vi::common::vector2 const& gravity); 
             /**
              * Sets the damping of the scene
-             * @default 1.0
+             * Default 1.0
              **/
             void setDamping(GLfloat damping);
             /**
              * Sets the collision slop of the physical space, this is the amount overlapping of nodes that is still allowed.
-             * @default 0.1
+             * Default 0.1
              **/
             void setCollisionSlop(GLfloat slop);
             
+            /**
+             * Enables spatial hashing for the physic scene.
+             * Spatial hashing can speed up the collision detection and resolving if you have a scene with many equally sized nodes.
+             * @remark Visit http://chipmunk-physics.net/release/ChipmunkLatest-Docs/#cpSpace-SpatialHash for more information about how to tune this
+             **/
             void enableSpatialHash(GLfloat dimension, uint32_t count);
             
             /**

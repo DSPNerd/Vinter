@@ -22,6 +22,7 @@
  * Must return the size of the buffers
  **/
 - (CGSize)size;
+
 /**
  * Must bind the frame buffer.
  **/

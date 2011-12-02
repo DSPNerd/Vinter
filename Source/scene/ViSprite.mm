@@ -9,27 +9,29 @@
 #import "ViSprite.h"
 #import "ViVector3.h"
 #import "ViContext.h"
+#import "ViScene.h"
+#import "ViAnimationServer.h"
 
 namespace vi
 {
     namespace scene
     {
-        sprite::sprite(vi::graphic::texture *texture, bool upsideDown)
+        sprite::sprite(vi::graphic::texture *texture, bool upsideDown) : tempColor(1.0, 1.0, 1.0, 1.0)
         {
             createFromMeshAndMaterial(texture, NULL, NULL);
         }
         
-        sprite::sprite(vi::graphic::texture *texture, vi::common::mesh *sharedMesh)
+        sprite::sprite(vi::graphic::texture *texture, vi::common::mesh *sharedMesh) : tempColor(1.0, 1.0, 1.0, 1.0)
         {
             createFromMeshAndMaterial(texture, sharedMesh, NULL);
         }
         
-        sprite::sprite(vi::graphic::texture *texture, vi::graphic::material *sharedMaterial)
+        sprite::sprite(vi::graphic::texture *texture, vi::graphic::material *sharedMaterial) : tempColor(1.0, 1.0, 1.0, 1.0)
         {
             createFromMeshAndMaterial(texture, NULL, sharedMaterial);
         }
         
-        sprite::sprite(vi::graphic::texture *texture, vi::common::mesh *sharedMesh, vi::graphic::material *sharedMaterial)
+        sprite::sprite(vi::graphic::texture *texture, vi::common::mesh *sharedMesh, vi::graphic::material *sharedMaterial) : tempColor(1.0, 1.0, 1.0, 1.0)
         {
             createFromMeshAndMaterial(texture, sharedMesh, sharedMaterial);
         }
@@ -108,6 +110,7 @@ namespace vi
         void sprite::setSize(vi::common::vector2 const& tsize)
         {
             sceneNode::setSize(tsize);
+            
             if(mesh && ownsMesh && writeSizeInformationIntoMesh)
             {                
                 vi::common::vertex *vertices = ((vi::common::mesh *)mesh)->getVertices();
@@ -190,6 +193,34 @@ namespace vi
             }
             
             this->setSize(size);
+        }
+        
+        void sprite::setColor(vi::common::color const& color)
+        {
+            if(mesh && ownsMesh && scene)
+            {
+                vi::animation::animationStack *stack = scene->getAnimationServer()->topStack();
+                if(stack)
+                {
+                    vi::animation::basicAnimation<vi::common::color> *animation = new vi::animation::basicAnimation<vi::common::color>();
+                    
+                    animation->setValues(tempColor, color);
+                    animation->setApplyCallback(std::tr1::bind(&vi::scene::sprite::forceSetColor, this, std::tr1::placeholders::_1));
+                    animation->setApplyProperty(&tempColor);
+                    
+                    stack->addAnimation(animation);
+                    tempColor = color;
+                    return;
+                }
+            }
+        }
+        
+        void sprite::forceSetColor(vi::common::color const& color)
+        {
+            mesh->updateColor(0, color);
+            mesh->updateColor(1, color);
+            mesh->updateColor(2, color);
+            mesh->updateColor(3, color);
         }
         
         void sprite::setWriteAtlasInformationIntoMesh()

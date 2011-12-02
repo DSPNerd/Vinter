@@ -91,8 +91,10 @@ namespace vi
                 }
                 else
                 {
-                    downKeys --;
-                    [accumulatedString replaceCharactersInRange:[accumulatedString rangeOfString:characters] withString:@""];
+                    NSRange range = [accumulatedString rangeOfString:characters];
+                    
+                    if(range.location != NSNotFound)
+                        [accumulatedString replaceCharactersInRange:range withString:@""];
  
                     
                     std::vector<uint16_t>::iterator iterator;
@@ -105,6 +107,8 @@ namespace vi
                             break;
                         }
                     }
+                    
+                    downKeys --;
                 }
             }
             

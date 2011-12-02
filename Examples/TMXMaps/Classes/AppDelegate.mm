@@ -36,18 +36,21 @@
 
 
 
-- (void)handleEvent:(vi::input::event *)event
+- (void)handleEvent:(vi::event::renderEvent *)event
 {
-    [window setTitle:[NSString stringWithFormat:@"TMXMaps (%.0f FPS)", 1.0/kernel->timestep]];
-    
-    vi::common::vector2 pos = camera->frame.origin;
-    vi::common::vector2 accel = vi::common::vector2(80 * (vi::input::event::isKeyPressed(2) - vi::input::event::isKeyPressed(0)), 
-                                                    80 * (vi::input::event::isKeyPressed(1) - vi::input::event::isKeyPressed(13)));
-    
-    pos.x += round(accel.x * kernel->timestep);
-    pos.y += round(accel.y * kernel->timestep);
-    
-	camera->frame.origin = pos;
+    if(event->subtype == vi::event::renderEventTypeWillDrawScene)
+    {
+        [window setTitle:[NSString stringWithFormat:@"TMXMaps (%.0f FPS)", 1.0 / event->timestep]];
+        
+        vi::common::vector2 pos = camera->frame.origin;
+        vi::common::vector2 accel = vi::common::vector2(80 * (input.isKeyDown("d") - input.isKeyDown("a")), 
+                                                        80 * (input.isKeyDown("s") - input.isKeyDown("w")));
+        
+        pos.x += round(accel.x * event->timestep);
+        pos.y += round(accel.y * event->timestep);
+        
+        camera->frame.origin = pos;
+    }
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
@@ -61,10 +64,8 @@
     [self loadOrthogonalMapAction:self];
     
     bridge = vi::common::objCBridge(self, @selector(handleEvent:));
-    
-    responder = new vi::input::responder();
-    responder->callback = std::tr1::bind(&vi::common::objCBridge::parameter1Action<vi::input::event *>, &bridge, std::tr1::placeholders::_1);
-    responder->willDrawScene = true;
+    listener.eventPredicate = vi::event::eventTypeRenderer;
+    listener.eventCallback = std::tr1::bind(&vi::common::objCBridge::parameter1Action<vi::event::event *>, &bridge, std::tr1::placeholders::_1);
 }
 
 @end

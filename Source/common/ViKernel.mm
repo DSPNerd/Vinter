@@ -20,29 +20,26 @@ namespace vi
         kernel::kernel(vi::scene::scene *scene, vi::graphic::renderer *trenderer, vi::common::context *tcontext)
         {
             ViLog(@"Running Vinter v%i.%i.%i:%i", ViVersionMajor, ViVersionMinor, ViVersionPatch, ViVersionCurrent);
-            ViLog(@"Prepare for dragons!");
+            ViLog(@"Here be dragons!");
             
-            if(!trenderer)
-                throw "Trying to create a kernel instance without providing a renderer which is an illegal configuration!";
-            
+            assert(trenderer);
             srand((unsigned int)time(NULL));
-            scenes = new std::vector<vi::scene::scene *>();
             
             ownsContext = false;
-            context = tcontext;
+            context  = tcontext ? tcontext : vi::common::context::getActiveContext();
             renderer = trenderer;
             
             timestep = 0.0;
             lastDraw = 0.0;
             scaleFactor = 1.0f;
             
-            timer = nil;
+            timer  = nil;
             bridge = nil;
             _sharedKernel = this;
             
             if(scene)
             {
-                this->pushScene(scene);
+                pushScene(scene);
                 std::vector<vi::scene::camera *> cameras = scene->getCameras();
                 std::vector<vi::scene::camera *>::iterator iterator;
                 
@@ -59,7 +56,7 @@ namespace vi
             
             if(!context)
             {
-                context = new vi::common::context();
+                context     = new vi::common::context();
                 ownsContext = true;
             }
             
@@ -70,7 +67,6 @@ namespace vi
         {
             stopRendering();
             
-            delete scenes;
             delete renderer;
             
             if(ownsContext)
@@ -79,8 +75,7 @@ namespace vi
             if(_sharedKernel == this)
                 _sharedKernel = NULL;
         }
-        
-        
+
         
         
         
@@ -89,12 +84,19 @@ namespace vi
             return _sharedKernel;
         }
         
-        
-        bool kernel::checkForExtension(std::string openglExtension)
+        bool kernel::checkOpenGLExtension(std::string openglExtension)
         {
             std::string extensions((const char *)glGetString(GL_EXTENSIONS));
             return (extensions.rfind(openglExtension) != std::string::npos);
         }
+        
+        
+        
+        void kernel::madeSignificantTimeChange()
+        {
+            lastDraw = 0.0;
+            timestep = 0.0;
+        }        
         
         void kernel::drawScene()
         {
@@ -102,9 +104,9 @@ namespace vi
             event.timestep = timestep;
             event.raise();
             
-            if(scenes->size() > 0 && renderer != NULL)
+            if(scenes.size() > 0)
             {
-                vi::scene::scene *scene = scenes->back();
+                vi::scene::scene *scene = scenes.back();
                 scene->draw(renderer, timestep);
             }
             
@@ -132,23 +134,16 @@ namespace vi
             if([CADisplayLink class])
             {
                 timer = [CADisplayLink displayLinkWithTarget:bridge selector:@selector(parameter0Action)];
-                [timer setFrameInterval:floor((1.0f / maxFPS) * 60.0f)];
+                [timer setFrameInterval:floor((1.0 / maxFPS) * 60.0)];
                 [timer addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
             }
             else
                 timer = [NSTimer scheduledTimerWithTimeInterval:1.0/maxFPS target:bridge selector:@selector(parameter0Action) userInfo:nil repeats:YES];
 #endif
-            
 #ifdef __MAC_OS_X_VERSION_MAX_ALLOWED
             timer = [NSTimer scheduledTimerWithTimeInterval:1.0/maxFPS target:bridge selector:@selector(parameter0Action) userInfo:nil repeats:YES];
             [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
 #endif
-        }
-        
-        void kernel::madeSignificantTimeChange()
-        {
-            lastDraw = 0.0f;
-            timestep = 0.0f;
         }
         
         void kernel::stopRendering()
@@ -164,23 +159,17 @@ namespace vi
         }
         
         
-        
+    
         void kernel::pushScene(vi::scene::scene *scene)
         {
-            if(!scene)
-            {
-                this->popScene();
-                return;
-            }
-            
-            scenes->push_back(scene);
+            assert(scene);            
+            scenes.push_back(scene);
         }
         
         void kernel::popScene()
         {
-            scenes->pop_back();
+            scenes.pop_back();
         }
-        
         
         
         
@@ -196,6 +185,18 @@ namespace vi
         vi::common::context *kernel::getContext()
         {
             return context;
+        }
+        
+        std::vector<vi::scene::scene *> kernel::getScenes()
+        {
+            std::vector<vi::scene::scene *> scenesCopy = std::vector<vi::scene::scene *>(scenes);
+            return scenesCopy;
+        }
+        
+        
+        vi::graphic::renderer *kernel::getRenderer()
+        {
+            return renderer;
         }
         
         void kernel::checkError()
@@ -214,7 +215,7 @@ namespace vi
                 case GL_INVALID_VALUE:
                     ViLog(@"GL_INVALID_VALUE error raised. (A numeric argument is out of range.)");
                     break;
-                   
+                    
                 case GL_INVALID_OPERATION:
                     ViLog(@"GL_INVALID_OPERATION error raised. (The specified operation is not allowed in the current state.)");
                     break;
@@ -233,25 +234,13 @@ namespace vi
                     
                 case GL_OUT_OF_MEMORY:
                     ViLog(@"GL_OUT_OF_MEMORY error raised. (There is not enough memory left to execute the command.)");
-                    ViLog(@"OpenGL is in an undefined state now, prepare, here be dragons!");
+                    ViLog(@"OpenGL is in an undefined state now! Prepare, here be dragons!");
                     break;
                     
                 default:
                     break;
             }
 #endif
-        }
-        
-        
-        std::vector<vi::scene::scene *> kernel::getScenes()
-        {
-            std::vector<vi::scene::scene *> scenesCopy = std::vector<vi::scene::scene *>(*scenes);
-            return scenesCopy;
-        }
-        
-        vi::graphic::renderer *kernel::getRenderer()
-        {
-            return renderer;
         }
     }
 }

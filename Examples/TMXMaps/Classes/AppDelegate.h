@@ -22,7 +22,8 @@
     
     vi::scene::tmxNode *tmxScene;
     
-    vi::input::responder *responder;
+    vi::event::eventListener listener;
+    vi::event::input input;
     vi::common::objCBridge bridge;
 }
 

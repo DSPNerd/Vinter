@@ -19,9 +19,10 @@ namespace vi
     {
         rendererOSX::rendererOSX()
         {
-            lastMesh = NULL;
-            currentCamera = NULL;
+            lastMesh        = NULL;
+            currentCamera   = NULL;
             currentMaterial = NULL;
+            batchMesh       = new vi::common::mesh(128 * 4, 128 * 6);
             
             uniformIvFuncs[0] = glUniform1iv;
             uniformIvFuncs[1] = glUniform2iv;
@@ -54,9 +55,11 @@ namespace vi
         
         void rendererOSX::renderBatchList(std::vector<vi::scene::sceneNode *> *nodes, double timestep, bool uiNodes, vi::scene::sceneNode *parent)
         {
-            vi::common::mesh *batchMesh = new vi::common::mesh((uint32_t)nodes->size() * 4, (uint32_t)nodes->size() * 6);
             vi::common::vector2 tsize = parent->getSize();
-            
+        
+            batchMesh->vertexCount  = 0;
+            batchMesh->indexCount   = 0;
+        
             std::vector<vi::scene::sceneNode *>::iterator iterator;
             
             for(iterator=nodes->begin(); iterator!=nodes->end(); iterator++)
@@ -71,8 +74,7 @@ namespace vi
                     if(!vi::common::rect(node->getPosition(), node->getSize()).intersectsRect(currentCamera->frame))
                         continue;
                 }
-                
-                
+            
                 
                 node->visit(timestep);
                 
@@ -105,7 +107,6 @@ namespace vi
             }
             
             renderMesh(batchMesh, uiNodes, parent->matrix);
-            delete batchMesh;
         }
         
         void rendererOSX::renderNodeList(std::vector<vi::scene::sceneNode *> *nodes, double timestep, bool uiNodes)

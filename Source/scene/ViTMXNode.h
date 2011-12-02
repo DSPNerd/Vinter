@@ -17,10 +17,22 @@ namespace vi
 {
     namespace scene
     {
+        /**
+         * Possible TMX map orientations
+         **/
         typedef enum
         {
+            /**
+             * Used as a start value to signal an unknown orientation
+             **/
             tmxNodeOrientationUnknown,
+            /**
+             * The map has an orthogonal orientation
+             **/
             tmxNodeOrientationOrthogonal,
+            /**
+             * The map has an isometric orientation
+             **/
             tmxNodeOrientationIsometric
         } tmxNodeOrientation;
         
@@ -60,6 +72,9 @@ namespace vi
              * Returns the number of layers inside the node.
              **/
             uint32_t getLayerCount();
+            /**
+             * Returns the orientation of the map.
+             **/
             tmxNodeOrientation getOrientation();
             
             /**

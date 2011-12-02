@@ -56,14 +56,26 @@
 #import "ViViewiOS.h"
 
 /**
- * Main namespace containing all other namespaces.
+ * Main namespace containing all other namespaces proved by Vinter.
  **/
 namespace vi
 {
     /**
-     * Common namespace containing common used classes
+     * Namespace containing the animation system
+     **/
+    namespace animation
+    {
+    }
+    /**
+     * Common namespace containing common used classes and data structures
      **/
     namespace common
+    {
+    }
+    /**
+     * Namespace containing the event system
+     **/
+    namespace event
     {
     }
     /**
@@ -73,13 +85,7 @@ namespace vi
     {
     }
     /**
-     * Namespace containing input and event related classes
-     **/
-    namespace input
-    {
-    }
-    /**
-     * Rendering related namespace
+     * Namespace containing objects that are visible or build a scene
      **/
     namespace scene
     {
@@ -106,7 +112,7 @@ namespace vi
 /**
  * @page changelog Changelog
  * <b>Version 0.4.0</b><br />
- * Added a chipmunk wrapper for vi::scene::scene and vi::scene::sceneNode<br />
+ * Added chipmunk support<br />
  * Added support for animations<br />
  * Added tracing functions into the scene, vi::scene::scene::trace()<br />
  * Added support to render nodes in UI space rathern than in world space<br />
@@ -121,6 +127,7 @@ namespace vi
  * Added a new default shader for particles<br />
  * Changed the behavior of adding custom material attributes (aka uniforms), instead of readding a new uniform the material now updates the old one.<br />
  * Refactored the mesh class so that it supports vertex colors.<br />
+ * Refactored the event system and moved it from the input to the newly created event namespace<br />
  * Moved the color class from the graphic to the common namespace (you can do a quick search&replace to update your code!)<br />
  * Moved the renderer and rendererOSX files physically from the scene folder to the graphic folder, no namespace change.<br />
  * Removed the ViTriangulate and ViShape classes<br />

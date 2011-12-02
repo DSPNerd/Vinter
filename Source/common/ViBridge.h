@@ -7,7 +7,6 @@
 //
 
 #include <tr1/functional>
-#import <objc/message.h>
 #import <Foundation/Foundation.h>
 
 namespace vi
@@ -16,109 +15,152 @@ namespace vi
     {
         /**
          * @brief Forwards C++ method invocations to an Objective-C target
-         *
-         * objCBridge instances take a target and a selector that is invoked when one of the member functions is invoked, passing down all parameters
-         * to the Objective-C target. 
-         * @remark Don't forget to typecast the template parameter when binding with std::tr1::bind()!
-         * @remark The target won't be retained!
-         *
-         * @sa ViCppBridge
+         * @details This class takes a target and selector, which are invoked when one of the methods provided by this class is invoked. This is useful for forwarding
+         * C++ callbacks to an Objective-C function.
+         * When you invoke a method with the wrong number of parameters, eg. the receiving object expects three parameters but you invoke parameter1Action(), the missing arguments
+         * will be replaced by NULL. If you pass to many parameters, the not needed parameters are ditched instead.
+         * @see ViCppBridge
          **/
         class objCBridge
         {
         public:
             /**
-             * Constructor
+             * @brief Constructor
+             * @param target The target that should receive the method
+             * @param selector The selector that should be invoked on the target;
+             * @see setTarget()
              **/
-            objCBridge(id ttarget=nil, SEL tselector=NULL);
-            
-            id target; /**< The target to which the methods are forwarded*/
-            SEL selector; /**< The selector invoked on the target */
+            objCBridge(id target=nil, SEL selector=NULL);   
+            /**
+             * @brief Copy Constructor
+             **/
+            objCBridge(objCBridge const& other);
             
             /**
-             * Invokes the selector on the target without passing a parameter.<br />
-             * The signature of the receiving method should look like: - (void)foo
+             * @brief Destructor
+             **/
+            ~objCBridge();
+            
+            
+            objCBridge& operator= (objCBridge const& other);
+
+            
+            
+            /**
+             * @brief Sets a new target and selector
+             * @param target The target that should receive the method
+             * @param selector The selector that should be invoked on the target;
+             **/
+            void setTarget(id target, SEL selector);
+            
+            
+            
+            /**
+             * @brief Invokes the selector on the target without passing any parameter.
+             * @note The signature of the receiving method should look like this: `- (void)foo`
              **/
             void parameter0Action()
             {
-                objc_msgSend(target, selector);
+                invokeWithArguments(&staticNull, &staticNull, &staticNull);
             }
             
             /**
-             * Invokes the selector on the target passing all given parameters.<br />
-             * The signature of the receiving method should look like: - (void)foo:(T)param
+             * @brief Invokes the selector on the target passing all given parameters.
+             * @note The signature of the receiving method should look like this: `- (void)foo:(T)param`
              **/
             template <class T>
             void parameter1Action(T value)
             {
-                objc_msgSend(target, selector, value);
+                invokeWithArguments(&value, &staticNull, &staticNull);
             }
             
             /**
-             * Invokes the selector on the target passing all given parameters.<br />
-             * The signature of the receiving method should look like: - (void)foo:(T1)param1 :(T2)param2
+             * @brief Invokes the selector on the target passing all given parameters.
+             * @note The signature of the receiving method should look like this: `- (void)foo:(T1)param1 :(T2)param2`
              **/
             template <class T1, class T2>
             void parameter2Action(T1 value1, T2 value2)
             {
-                objc_msgSend(target, selector, value1, value2);
+                invokeWithArguments(&value1, &value2, &staticNull);
             }
             
             /**
-             * Invokes the selector on the target passing all given parameters.<br />
-             * The signature of the receiving method should look like: - (void)foo:(T1)param1 :(T2)param2 :(T3)param3
+             * @brief Invokes the selector on the target passing all given parameters.
+             * @note The signature of the receiving method should look like this: `- (void)foo:(T1)param1 :(T2)param2 :(T3)param3`
              **/
             template <class T1, class T2, class T3>
-            void parameter3Action(T1 value1, T2 value2, T3 value3){
-                objc_msgSend(target, selector, value1, value2, value3);
+            void parameter3Action(T1 value1, T2 value2, T3 value3)
+            {
+                invokeWithArguments(&value1, &value2, &value3);
             }
+            
+            
+        private:
+            void invokeWithArguments(void *arg1, void *arg2, void *arg3);
+            
+            bool    targetResponds;
+            int32_t neededArguments;
+            
+            id  target;
+            SEL selector;
+            
+            void *staticNull;
+            NSInvocation *invocation;
         };
     }
 }
 
 
 /**
- * @brief Forwards Objective-C invocations to a C++ target
- * 
- * ViCppBridge instances forward Objective-C method invocations to a C++ target bound using std::tr1::bind(). There are several methods you can invoke
- * on this class which will then invoke the corresponding C++ function if available or, if the function isn't set, ditching parameters and trying to invoke
- * the next function.
+ * @brief Forwards Objective-C invocations to an C++ target
+ * @details This class forwards methods that are invoked on it to a bound function.
+ * @see vi::common::objcBridge
  **/
 @interface ViCppBridge : NSObject
 {
 }
 
+
 /**
- * A function without a parameter, invoked when parameter0Action is invoked.
+ * @brief A function without a parameter, invoked when parameter0Action is invoked.
  **/
 @property (nonatomic, assign) std::tr1::function<void ()> function0;
 /**
- * A function without a parameter, invoked when parameter1Action is invoked.
+ * @brief A function with one parameter, invoked when parameter1Action is invoked.
  **/
 @property (nonatomic, assign) std::tr1::function<void (void *)> function1;
 /**
- * A function without a parameter, invoked when parameter2Action is invoked.
+ * @brief A function with two parameters, invoked when parameter2Action is invoked.
  **/
 @property (nonatomic, assign) std::tr1::function<void (void *, void *)> function2;
 /**
- * A function without a parameter, invoked when parameter3Action is invoked.
+ * @brief A function with three parameters, invoked when parameter3Action is invoked.
  **/
 @property (nonatomic, assign) std::tr1::function<void (void *, void *, void *)> function3;
 
+
 /**
- * Invokes function0 if set, otherwise nothing will happen.
+ * @brief Invokes function0
+ * @details If function0 isn't set, this function won't do anything.
+ * @see function0
  **/
 - (void)parameter0Action;
 /**
- * Invokes function1 or if its not set it will invoke parameter0Action, ditching the parameter.
+ * @brief Invokes function1
+ * @details If function1 isn't set, the function will call parameter0Action instead.
+ * @see function1
  **/
 - (void)parameter1Action:(void *)value;
 /**
- * Invokes function2 or if its not set it will invoke parameter1Action, ditching the last parameter.
+ * @brief Invokes function2
+ * @details If function2 isn't set, the function will call parameter1Action instead.
+ * @see function2
  **/
 - (void)parameter2Action:(void *)value1 :(void *)value2;
 /**
- * Invokes function3 or if its not set it will invoke parameter2Action, ditching the last parameter.
+ * @brief Invokes function3
+ * @details If function3 isn't set, the function will call parameter2Action instead.
+ * @see function3
  **/
 - (void)parameter3Action:(void *)value1 :(void *)value2 :(void *)value3;
 

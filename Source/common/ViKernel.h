@@ -51,7 +51,7 @@ namespace vi
              * Returns true if the given OpenGL extension is available.
              * @param openglExtension The name of the extension to check.
              **/
-            static bool checkForExtension(std::string openglExtension);
+            static bool checkOpenGLExtension(std::string openglExtension);
             
             /**
              * Renders the topmost scene from all cameras using the renderer.
@@ -125,11 +125,10 @@ namespace vi
             float scaleFactor;
             
         private:
-            std::vector<vi::scene::scene *> *scenes;
+            std::vector<vi::scene::scene *> scenes;
             
-            vi::graphic::renderer *renderer;
-            vi::common::context *context;
-            
+            vi::graphic::renderer   *renderer;
+            vi::common::context     *context;
             bool ownsContext;
             
             id timer;

@@ -35,7 +35,7 @@
 #include <cstdlib>
 
 /**
- * @defgroup ViBase Base stuff
+ * @defgroup ViBase Common used stuff
  * @{
  **/
 /**
@@ -53,31 +53,35 @@
 
 /**
  * Returns the current version (major, minor and patch) as single integer.
+ * @remark Vinter follows the SemVer standard, you can read more about this here http://semver.org/
  **/
 #define ViVersionCurrent (((ViVersionMajor) << 16) | ((ViVersionMinor) << 8) | (ViVersionPatch))
 
+
 /**
- * Converts the given radians to degrees
+ * Macro to convert radians to degrees.
  **/
 #define ViRadianToDegree(radians) (radians) * 180.0f / M_PI
 /**
- * Converts the given degrees to radian
+ * Macro to convert degrees to radians.
  **/
 #define ViDegreeToRadian(degrees) (degrees) * M_PI / 180.0f
 
+
 /**
- * Returns a random floating point value in the range of -value * 0.5 to value * 0.5
+ * Returns a random floating point number in the range of (- value * 0.5) to (value * 0.5)
  **/
-#define ViRandom(value) (((((float)rand()) / RAND_MAX) * value) - value * 0.5)
+#define ViRandom(value) (((((GLfloat)rand()) / RAND_MAX) * value) - value * 0.5)
 
 #define ViDeprecated __attribute__((deprecated))
 #define ViDeprecatedLog() do{static bool logged=false; if(!logged){ViLog(@"%s is deprecated! You can and should remove all calls to it.", __PRETTY_FUNCTION__); logged=true;}}while(0)
 #define ViDeprecatedLogReplacement(replacement) do{static bool logged=false; if(!logged){ViLog(@"%s is deprecated! You can and should replace all calls to it with %@.", __PRETTY_FUNCTION__, replacement); logged=true;}}while(0)
 
 /**
- * The epsilon value for float comparison
+ * The epsilon value for float and double comparison
  **/
 #define kViEpsilonFloat 0.0000000001f
+
 
 #ifndef NDEBUG
 #   define __ViLog(...) NSLog(__VA_ARGS__)
@@ -86,7 +90,7 @@
 #endif
 
 /**
- * Logs similar to NSLog strings into the console. However, unlike NSLog, ViLog does nothing in release builds.
+ * Logs strings similar to NSLog into the console. Unlike NSLog, ViLog does nothing in release builds.
  **/
 #define ViLog __ViLog
 

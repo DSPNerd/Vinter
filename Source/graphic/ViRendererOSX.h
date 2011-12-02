@@ -55,6 +55,7 @@ namespace vi
             vi::graphic::material *currentMaterial;
             vi::common::vector3 translation;
             vi::common::mesh *lastMesh;
+            vi::common::mesh *batchMesh;
         };
     }
 }

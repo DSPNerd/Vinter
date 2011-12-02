@@ -51,6 +51,9 @@ namespace vi
              **/
             ~shader();
             
+            /**
+             * Returns the default shader object of the current context
+             **/
             static shader *getDefaultShader();
             
             

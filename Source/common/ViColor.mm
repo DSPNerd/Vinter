@@ -257,9 +257,9 @@ namespace vi
         
         
         
-        void color::lerp(color const& col1, color const& col2, float fac)
+        void color::lerp(color const& col1, color const& col2, GLfloat fac)
         {
-            float invfac = 1.0f - fac;
+            GLfloat invfac = 1.0f - fac;
             
             r = col1.r * invfac + col2.r * fac;
             g = col1.g * invfac + col2.g * fac;
@@ -269,8 +269,10 @@ namespace vi
         
         void color::grayscale()
         {
-            float grayscale = (0.2125f * r) + (0.7154f * g) + (0.0721f * b);
-            r = g = b = grayscale;
+            // Acording to the allmighty interwebs these are the values we want to use to calculate a weighted average grayscale.
+            // Here is some explanation about this http://www.johndcook.com/blog/2009/08/24/more-on-colors-and-grayscale/
+            GLfloat luminosity = (0.2125f * r) + (0.7154f * g) + (0.0721f * b);
+            r = g = b = luminosity;
         }
     }
 }

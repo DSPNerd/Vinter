@@ -65,15 +65,36 @@ namespace vi
             uint32_t size;
         };
         
+        /**
+         * Class that describes a custom vertex shader attribute
+         **/
         class vertexAttribute
         {
         public:
+            /**
+             * The name of the vertex attribute
+             **/
             std::string name;
+            /**
+             * The location or -1 if the location wasn't found
+             **/
             GLuint location;
             
+            /**
+             * Pointer to the data that should be send to the program
+             **/
             void *data;
+            /**
+             * Data type, eg, GL_FLOAT
+             **/
             GLenum type;
+            /**
+             * The number of elements
+             **/
             GLuint size;
+            /**
+             * The stride of the data
+             **/
             GLsizei stride;
         };
         

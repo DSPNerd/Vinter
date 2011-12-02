@@ -58,6 +58,7 @@ namespace vi
              **/
             virtual void setSize(vi::common::vector2 const& size);
             
+            
             /**
              * Sets a new texture. The sprite will automatically update its atlas information according to the new texture when using this function.
              * @param texture The new texture.
@@ -67,6 +68,12 @@ namespace vi
              * Sets new atlas informations. The atlas information is used to render only a part of the texture, defined by begin and size.
              **/
             void setAtlas(vi::common::vector2 const& begin, vi::common::vector2 const& size);
+            /**
+             * Sets a new color, which is written into the mesh if the sprite owns the mesh.
+             * @remark Animatable
+             **/
+            void setColor(vi::common::color const& color);
+            
             
             /**
              * Tells the sprite to write atlas information into the UV members of the mesh
@@ -83,7 +90,13 @@ namespace vi
             virtual void visit(double timestep);
             
         protected:     
+            /**
+             * The begin of the atlas in points
+             **/
             vi::common::vector2 atlasBegin;
+            /**
+             * The size of the atlas in points
+             **/
             vi::common::vector2 atlasSize;
             
             struct
@@ -94,6 +107,7 @@ namespace vi
             
         private:
             void createFromMeshAndMaterial(vi::graphic::texture *texture, vi::common::mesh *sharedMesh, vi::graphic::material *sharedMaterial);
+            void forceSetColor(vi::common::color const& color);
             
             bool writeAtlasInfoIntoMesh;
             bool writeSizeInformationIntoMesh;
@@ -101,6 +115,8 @@ namespace vi
             bool isUpsideDown;
             bool ownsMesh;
             bool ownsMaterial;
+            
+            vi::common::color tempColor;
         };
     }
 }

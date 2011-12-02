@@ -40,6 +40,9 @@ namespace vi
         } animationCurve;
         
         
+        /**
+         * Class that 
+         **/
         class animation
         {
         public:

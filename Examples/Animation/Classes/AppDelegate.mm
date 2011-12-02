@@ -50,6 +50,7 @@
     // Build the clock animation
     stack = server->beginAnimation();
     stack->setRepeatCount(ViAnimationRepeatIndefinitely);
+    stack->setAnimationCurve(vi::animation::animationCurveExponentialEaseIn);
     
     // The clock arm animation is special in a way that it uses an animation path, each path rotates the arm by 6° (360° / 60 seconds)
     for(int i=1; i<=60; i++)

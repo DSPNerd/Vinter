@@ -72,7 +72,7 @@ namespace vi
          * it will also be rendered relative to its parent by the renderer. Childs can also contain childs again.
          * <br />
          * Nodes can be registered as physical nodes since Vinter 0.4.0, this is done by wrapping a Chipmunk shape and body, 
-         * for more information please visit http://chipmunk-physics.net/
+         * for more information about chipmunk visit http://chipmunk-physics.net/
          **/
         class sceneNode
         {
@@ -84,6 +84,10 @@ namespace vi
              * Constructor
              **/
             sceneNode(vi::common::vector2 const& pos=vi::common::vector2(), vi::common::vector2 const& tsize=vi::common::vector2(), uint32_t tlayer = 0);
+            /**
+             * Destructor
+             * @remark Doesn't deletes the material or mesh if it was set!
+             **/
             virtual ~sceneNode();
             
             /**
@@ -303,7 +307,14 @@ namespace vi
              **/
             GLfloat suggestedInertia();
             
+            /**
+             * Returns the chipmunk body wrapped by the node.
+             * @remark Don't alter the user data pointer of the body!
+             **/
             cpBody *getCPBody();
+            /**
+             * Returns the chipmunk shape wrapped by the node.
+             **/
             cpShape *getCPShape();
 #endif
             
@@ -351,6 +362,9 @@ namespace vi
              * The size of the scene node. If you change this directly, call update() to update the node within its tree.
              **/
             vi::common::vector2 size;
+            /**
+             * The scale of the scene node. Currently you don't need to call update() after changing this value
+             **/
             vi::common::vector2 scale;
             /**
              * The bitfield of flags of the scene node. If you change this directly, call update() to update the node within its tree.

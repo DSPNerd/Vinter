@@ -82,7 +82,8 @@
     
     bridge = vi::common::objCBridge(self, @selector(handleEvent:));
     listener.eventPredicate = vi::event::eventTypeRenderer;
-    listener.eventCallback = std::tr1::bind(&vi::common::objCBridge::parameter1Action<vi::event::event *>, &bridge, std::tr1::placeholders::_1);}
+    listener.eventCallback = std::tr1::bind(&vi::common::objCBridge::parameter1Action<vi::event::event *>, &bridge, std::tr1::placeholders::_1);
+}
 
 - (void)applicationWillTerminate:(NSNotification *)notification
 {
