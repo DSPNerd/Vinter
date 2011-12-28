@@ -60,22 +60,14 @@ namespace vi
             return (*iterator).second;
         }
         
-        
-        
-        std::string dataPool::pathForFileInBundle(std::string const& _filePath)
+        std::string dataPool::pathForFileInBundle(NSBundle *bundle, NSString *file, NSString *extension)
         {
+            NSString *path = nil;
+            NSString *resourcePath = [bundle resourcePath];
             std::string result;
             
             @autoreleasepool
             {
-                NSString *filePath = [NSString stringWithUTF8String:_filePath.c_str()];
-                NSString *name = [filePath stringByDeletingPathExtension];
-                NSString *exte = [filePath pathExtension];
-                NSString *path = nil;
-                
-                filePath = [[NSBundle mainBundle] resourcePath];
-
-                
 #ifdef __IPHONE_OS_VERSION_MAX_ALLOWED
                 NSString *device = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) ? @"~iphone" : @"~ipad";
                 NSString *scale = @"";
@@ -84,27 +76,40 @@ namespace vi
                     scale = @"@2x";
                 
                 if(!path)
-                    path = [filePath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@%@%@.%@", name, scale, device, exte]];
+                    path = [bundle pathForResource:[NSString stringWithFormat:@"%@%@%@", file, scale, device] ofType:extension];
                 
-                if(![[NSFileManager defaultManager] fileExistsAtPath:path])
-                    path = [filePath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@%@.%@", name, device, exte]];
+                if(!path)
+                    path = [bundle pathForResource:[NSString stringWithFormat:@"%@%@", file, device] ofType:extension];
                 
-                if(![[NSFileManager defaultManager] fileExistsAtPath:path])
-                    path = [filePath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@%@.%@", name, scale, exte]];
+                if(!path)
+                    path = [bundle pathForResource:[NSString stringWithFormat:@"%@%@", file, scale] ofType:extension];
+                
 #endif
 #ifdef __MAC_OS_X_VERSION_MAX_ALLOWED
                 if(!path)
-                    path = [filePath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@%@.%@", name, @"~mac", exte]];
+                {
+                    path = [[resourcePath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@~mac", file]] stringByAppendingPathExtension:extension];
+                    
+                    if(![[NSFileManager defaultManager] fileExistsAtPath:path])
+                        path = nil;
+                    
+                }
 #endif
                 
-                if(![[NSFileManager defaultManager] fileExistsAtPath:path])
-                    path = [filePath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.%@", name, exte]];
+                if(!path)
+                {
+                    path = [[resourcePath stringByAppendingPathComponent:file] stringByAppendingPathExtension:extension];
+                    
+                    if(![[NSFileManager defaultManager] fileExistsAtPath:path])
+                        path = nil;
+                    
+                }
                 
-                
-                result = std::string([path UTF8String]);
+                result = path ? std::string([path UTF8String]) : std::string();
             }
-           
+            
             return result;
+            
         }
         
         std::string dataPool::pathForFile(std::string const& _file)
@@ -116,42 +121,33 @@ namespace vi
                 NSString *file = [NSString stringWithUTF8String:_file.c_str()];
                 NSString *name = [file stringByDeletingPathExtension];
                 NSString *exte = [file pathExtension];
-                NSString *path = nil;
+                
                 
                 if([[NSFileManager defaultManager] fileExistsAtPath:file])
                 {
                     result = std::string([file UTF8String]);
                 }
-                else if([[file componentsSeparatedByString:@"/"] count] >= 2)
-                {
-                    result = pathForFileInBundle(_file);
-                }
                 else
                 {
-#ifdef __IPHONE_OS_VERSION_MAX_ALLOWED
-                    NSString *device = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) ? @"~iphone" : @"~ipad";
-                    NSString *scale = @"";
+                    // Make sure to check the mainbundle first!
+                    NSBundle *mainBundle = [NSBundle mainBundle];
+                    result = pathForFileInBundle(mainBundle, name, exte);
                     
-                    if(vi::common::kernel::sharedKernel() && fabs(vi::common::kernel::sharedKernel()->scaleFactor - 2.0f) <= kViEpsilonFloat)
-                        scale = @"@2x";
+                    if(result.length() > 0)
+                        return result;
                     
-                    if(!path)
-                        path = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%@%@%@", name, scale, device] ofType:exte];
                     
-                    if(!path)
-                        path = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%@%@", name, device] ofType:exte];
-                    
-                    if(!path)
-                        path = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%@%@", name, scale] ofType:exte];
-#endif
-#ifdef __MAC_OS_X_VERSION_MAX_ALLOWED
-                    if(!path)
-                        path = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%@%@", name, @"~mac"] ofType:exte];
-#endif
-                    if(!path)
-                        path = [[NSBundle mainBundle] pathForResource:name ofType:exte];
-                
-                    result = path ? std::string([path UTF8String]) : pathForFileInBundle(_file);
+                    NSArray *bundles = [[NSBundle allBundles] arrayByAddingObjectsFromArray:[NSBundle allFrameworks]];
+                    for(NSBundle *bundle in bundles)
+                    {
+                        if(bundle == mainBundle)
+                            continue;
+                        
+                        result = pathForFileInBundle(bundle, name, exte);
+                        
+                        if(result.length() > 0)
+                            break;
+                    }
                 }
             }
             

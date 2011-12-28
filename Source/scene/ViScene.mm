@@ -9,12 +9,12 @@
 #import "ViScene.h"
 #import "ViQuadtree.h"
 #import "ViRect.h"
-#import "ViVector2.h"
 #import "ViLine.h"
 #import "ViCamera.h"
 #import "ViSceneNode.h"
 #import "ViRenderer.h"
 #import "ViEvent.h"
+#import "ViKernel.h"
 
 namespace vi
 {
@@ -68,10 +68,12 @@ namespace vi
             cameras  = new std::vector<vi::scene::camera *>();
             animationServer = new vi::animation::animationServer();
             
+            context = NULL;
             addCamera(camera);
             
 #ifdef ViPhysicsChipmunk
             totalPhysicsTime = 0.0;
+            physicsPaused = false;
             
             space = cpSpaceNew();
             setGravity(vi::common::vector2(0.0, 100.0));
@@ -84,6 +86,9 @@ namespace vi
 #ifdef ViPhysicsChipmunk
             cpSpaceFree(space);
 #endif
+            
+            if(context)
+                alcDestroyContext(context);
             
             delete animationServer;
             delete cameras;
@@ -105,13 +110,16 @@ namespace vi
             animationServer->run(timestep);
             
 #ifdef ViPhysicsChipmunk
-            static double physicsstep = 1.0 / 60.0;
-            
-            totalPhysicsTime += timestep;
-            while(totalPhysicsTime >= physicsstep)
+            if(!physicsPaused)
             {
-                totalPhysicsTime -= physicsstep;
-                cpSpaceStep(space, physicsstep);
+                static double physicsstep = 1.0 / 60.0;
+                
+                totalPhysicsTime += timestep;
+                while(totalPhysicsTime >= physicsstep)
+                {
+                    totalPhysicsTime -= physicsstep;
+                    cpSpaceStep(space, physicsstep);
+                }
             }
 #endif
             
@@ -129,6 +137,17 @@ namespace vi
         
         
 #ifdef ViPhysicsChipmunk
+        void scene::pausePhysics()
+        {
+            physicsPaused = true;
+        }
+        
+        void scene::unpausePhysics()
+        {
+            physicsPaused = false;
+        }
+        
+        
         void scene::setGravity(vi::common::vector2 const& gravity)
         {
             cpSpaceSetGravity(space, cpv(gravity.x, gravity.y));
@@ -200,7 +219,7 @@ namespace vi
         void scene::addUINode(vi::scene::sceneNode *node)
         {
             uiNodes.push_back(node);
-            node->scene = this;
+            node->setScene(this);
         }
         
         void scene::removeUINode(vi::scene::sceneNode *node)
@@ -236,7 +255,7 @@ namespace vi
         void scene::addNode(vi::scene::sceneNode *node)
         {
             quadtree->insertObject(node);
-            node->scene = this;
+            node->setScene(this);
             
 #ifdef ViPhysicsChipmunk
             if(node->waitingForActivation)
@@ -251,7 +270,7 @@ namespace vi
                 }
                 else
                 {
-                    node->makeStaticObject(node->staticEnd);
+                    node->makeStaticObject(node->staticStart, node->staticEnd, node->staticRadius);
                 }
                 
                 node->waitingForActivation = false;
@@ -291,6 +310,34 @@ namespace vi
         std::vector<vi::scene::sceneNode *> *scene::UINodes()
         {
             return &uiNodes;
+        }
+        
+        
+        void scene::activate(ALCdevice *device)
+        {
+            if(context)
+            {
+                ALCdevice *contextDevice = alcGetContextsDevice(context);
+                if(contextDevice != device)
+                {
+                    alcDestroyContext(context);
+                    context = NULL;
+                }
+            }
+            
+            if(!context)
+                context = alcCreateContext(device, NULL);
+            
+            alcMakeContextCurrent(context);
+        }
+        
+        void scene::deactivate()
+        {
+            ALCcontext *current = alcGetCurrentContext();
+            if(current == context)
+            {
+                alcMakeContextCurrent(NULL);
+            }
         }
         
         

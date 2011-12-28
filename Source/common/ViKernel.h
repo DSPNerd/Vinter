@@ -8,6 +8,8 @@
 
 #include <string>
 #include <vector>
+
+#import "ViAudio.h"
 #import "ViCamera.h"
 #import "ViScene.h"
 #import "ViRenderer.h"
@@ -74,6 +76,8 @@ namespace vi
              **/
             void stopRendering();
             
+            
+            
             /**
              * Pushes the given scene onto the stack making it the topmost scene.
              **/
@@ -82,6 +86,7 @@ namespace vi
              * Pops the topmost scene from the stack.
              **/
             void popScene();
+            
             
             /**
              * Sets a new context for for the kernel.
@@ -125,6 +130,7 @@ namespace vi
             float scaleFactor;
             
         private:
+            ALCdevice *device;
             std::vector<vi::scene::scene *> scenes;
             
             vi::graphic::renderer   *renderer;

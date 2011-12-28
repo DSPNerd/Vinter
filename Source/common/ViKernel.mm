@@ -33,9 +33,11 @@ namespace vi
             lastDraw = 0.0;
             scaleFactor = 1.0f;
             
+            device = alcOpenDevice(NULL);
             timer  = nil;
             bridge = nil;
             _sharedKernel = this;
+            
             
             if(scene)
             {
@@ -66,6 +68,7 @@ namespace vi
         kernel::~kernel()
         {
             stopRendering();
+            alcCloseDevice(device);
             
             delete renderer;
             
@@ -164,11 +167,20 @@ namespace vi
         {
             assert(scene);            
             scenes.push_back(scene);
+            
+            scene->activate(device);
         }
         
         void kernel::popScene()
         {
+            vi::scene::scene *top = scenes.back();
+            top->deactivate();
+            
             scenes.pop_back();
+            
+            top = scenes.back();
+            if(top)
+                top->activate(device);
         }
         
         
@@ -182,6 +194,8 @@ namespace vi
             ownsContext = false;
         }
         
+
+        
         vi::common::context *kernel::getContext()
         {
             return context;
@@ -193,11 +207,12 @@ namespace vi
             return scenesCopy;
         }
         
-        
         vi::graphic::renderer *kernel::getRenderer()
         {
             return renderer;
         }
+        
+        
         
         void kernel::checkError()
         {

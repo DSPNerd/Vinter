@@ -1,8 +1,8 @@
 //
 //  AppDelegate.h
-//  Particles
+//  Audio
 //
-//  Created by Sidney Just on 10.11.11.
+//  Created by Sidney Just on 14.12.11.
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
@@ -12,16 +12,13 @@
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 {
 @private
-    IBOutlet NSWindow *window;
+    IBOutlet NSWindow  *window;
     IBOutlet ViViewOSX *renderView;
     
     vi::common::kernel *kernel;
-    vi::scene::camera *camera;
     vi::scene::scene *scene;
+    vi::scene::camera *camera;
     vi::graphic::rendererOSX *renderer;
-     
-    vi::scene::baseParticleEffect effect;
-    vi::scene::particleEmitter *emitter;
 }
 
 @end

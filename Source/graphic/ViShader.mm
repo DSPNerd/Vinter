@@ -80,6 +80,7 @@ namespace vi
                 std::string vertexPath = vi::common::dataPool::pathForFile(vertexFile);
                 std::string fragmentPath = vi::common::dataPool::pathForFile(fragmentFile);
                 
+                
                 result = (vertexPath.length() > 0 && fragmentPath.length() > 0);
                 if(result)
                     result = create([NSString stringWithUTF8String:vertexPath.c_str()], [NSString stringWithUTF8String:fragmentPath.c_str()]);

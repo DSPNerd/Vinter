@@ -7,8 +7,11 @@
 //
 
 #include <vector>
+
 #import "ViBase.h"
+#import "ViAudio.h"
 #import "ViVector2.h"
+#import "ViVector3.h"
 #import "ViAnimationServer.h"
 
 namespace vi
@@ -17,7 +20,6 @@ namespace vi
     {
         class quadtree;
         class rect;
-        class vector2;
     }
     
     namespace graphic
@@ -91,6 +93,7 @@ namespace vi
              **/
             std::vector<vi::scene::camera *> getCameras();
             
+            
             /**
              * Adds the given node as UI node
              **/
@@ -118,6 +121,11 @@ namespace vi
              * Deletes all nodes, calling their destructors
              **/
             void deleteAllNodes();
+            
+            
+            void activate(ALCdevice *device);
+            void deactivate();
+            
             
             /**
              * Returns the nodes inside the given rectangle.
@@ -161,6 +169,9 @@ namespace vi
              **/
             void setCollisionSlop(GLfloat slop);
             
+            void pausePhysics();
+            void unpausePhysics();
+            
             /**
              * Enables spatial hashing for the physic scene.
              * Spatial hashing can speed up the collision detection and resolving if you have a scene with many equally sized nodes.
@@ -190,7 +201,11 @@ namespace vi
             vi::animation::animationServer *animationServer;
             vi::common::quadtree *quadtree;
             
+            ALCcontext *context;
+            
 #ifdef ViPhysicsChipmunk
+            bool physicsPaused;
+            
             double totalPhysicsTime;
             cpSpace *space;
 #endif

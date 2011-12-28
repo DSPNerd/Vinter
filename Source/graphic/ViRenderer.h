@@ -36,6 +36,11 @@ namespace vi
         {
         public:
             /**
+             * Virtual desctructor
+             **/
+            virtual ~renderer() {};
+            
+            /**
              * Render the given scene with the given camera. The camera isn't bound when this function is invoked and must unbound before leaving the
              * function.
              **/

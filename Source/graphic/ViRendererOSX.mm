@@ -183,7 +183,7 @@ namespace vi
             
             vi::common::matrix4x4 nodeMatrix = matrix;
             if(translation.length() >= kViEpsilonFloat)
-                nodeMatrix.translate(vi::common::vector3(translation.x, -translation.y, translation.z));
+                nodeMatrix.translate(vi::common::vector3(translation.x, -translation.y, 0.0));
             
             
             if(currentMaterial->shader->matProj != -1)

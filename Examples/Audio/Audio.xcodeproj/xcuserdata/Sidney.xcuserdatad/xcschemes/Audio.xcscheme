@@ -13,10 +13,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E91F0EC5146C055F00503058"
-               BuildableName = "Particles.app"
-               BlueprintName = "Particles"
-               ReferencedContainer = "container:Particles.xcodeproj">
+               BlueprintIdentifier = "E99271821498E8A5007ED653"
+               BuildableName = "Audio.app"
+               BlueprintName = "Audio"
+               ReferencedContainer = "container:Audio.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -31,10 +31,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E91F0EC5146C055F00503058"
-            BuildableName = "Particles.app"
-            BlueprintName = "Particles"
-            ReferencedContainer = "container:Particles.xcodeproj">
+            BlueprintIdentifier = "E99271821498E8A5007ED653"
+            BuildableName = "Audio.app"
+            BlueprintName = "Audio"
+            ReferencedContainer = "container:Audio.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -49,10 +49,10 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E91F0EC5146C055F00503058"
-            BuildableName = "Particles.app"
-            BlueprintName = "Particles"
-            ReferencedContainer = "container:Particles.xcodeproj">
+            BlueprintIdentifier = "E99271821498E8A5007ED653"
+            BuildableName = "Audio.app"
+            BlueprintName = "Audio"
+            ReferencedContainer = "container:Audio.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -67,10 +67,10 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E91F0EC5146C055F00503058"
-            BuildableName = "Particles.app"
-            BlueprintName = "Particles"
-            ReferencedContainer = "container:Particles.xcodeproj">
+            BlueprintIdentifier = "E99271821498E8A5007ED653"
+            BuildableName = "Audio.app"
+            BlueprintName = "Audio"
+            ReferencedContainer = "container:Audio.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

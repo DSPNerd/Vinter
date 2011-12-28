@@ -78,8 +78,11 @@ namespace vi
                 cpVect pPos = body->p;
                 cpFloat pRot = body->a;
                 
-                position = vi::common::vector2(pPos.x, pPos.y) - (size * 0.5);
+                position = vi::common::vector2(roundf(pPos.x), roundf(pPos.y)) - size * 0.5;
                 rotation = pRot;
+                
+                temporaryPosition = position;
+                temporaryRotation = rotation;
 
                 update();
             }
@@ -88,7 +91,7 @@ namespace vi
             matrix.makeIdentity();
             matrix.translate(vi::common::vector3(position.x, - position.y - size.y, 0.0));
             
-            if(rotation > kViEpsilonFloat)
+            if(rotation > kViEpsilonFloat || rotation < -kViEpsilonFloat)
             {
                 float halfWidth  = size.x * 0.5f;
                 float halfHeight = size.y * 0.5f;
@@ -137,7 +140,7 @@ namespace vi
                 
 #ifdef ViPhysicsChipmunk
                 if(body)
-                    cpBodySetPos(body, cpv(position.x, position.y));
+                    cpBodySetPos(body, cpv(position.x + (size.x * 0.5), position.y + (size.y * 0.5)));
 #endif
             }
         }
@@ -173,8 +176,7 @@ namespace vi
                 update();
                 
 #ifdef ViPhysicsChipmunk
-                if(body)
-                    enablePhysics(physicType); // Re-enable physics to update the size changes
+                reenablePhysics();
 #endif
             }
         }
@@ -237,6 +239,18 @@ namespace vi
 #endif
         }
         
+        void sceneNode::setVelocity(vi::common::vector2 const& velocity)
+        {
+            if(body)
+                cpBodySetVel(body, cpv(velocity.x, velocity.y));
+        }
+        
+        void sceneNode::setAngularVelocity(GLfloat avelocity)
+        {
+            if(body)
+                cpBodySetAngVel(body, avelocity);
+        }
+        
         
         
         void sceneNode::forceSetPosition(vi::common::vector2 const& point)
@@ -246,7 +260,7 @@ namespace vi
             
 #ifdef ViPhysicsChipmunk
             if(body)
-                cpBodySetPos(body, cpv(position.x, position.y));
+                cpBodySetPos(body, cpv(position.x + (size.x * 0.5), position.y + (size.y * 0.5)));
 #endif
         }
         
@@ -256,8 +270,7 @@ namespace vi
             update();
             
 #ifdef ViPhysicsChipmunk
-            if(body)
-                enablePhysics(physicType); // Re-enable physics to update the size changes
+            reenablePhysics();
 #endif
         }
         
@@ -303,6 +316,19 @@ namespace vi
         }
         
         
+        void sceneNode::setScene(vi::scene::scene *tscene)
+        {
+            scene = tscene;
+            std::vector<vi::scene::sceneNode *>::iterator iterator;
+            
+            for(iterator=childs.begin(); iterator!=childs.end(); iterator++)
+            {
+                vi::scene::sceneNode *child = *iterator;
+                child->setScene(scene);
+            }
+        }
+        
+        
         bool sceneNode::hasChilds()
         {
             return (childs.size() > 0);
@@ -320,6 +346,7 @@ namespace vi
             
             childs.push_back(child);
             child->parent = this;
+            child->setScene(scene);
         }
         
         void sceneNode::removeChild(vi::scene::sceneNode *child)
@@ -372,6 +399,21 @@ namespace vi
         }
         
         
+        void sceneNode::reenablePhysics()
+        {
+            if(body)
+            {
+                // Velocity and angular velocity aren't stored, so we have to manually save them and reapply them when the new physic body is ready!
+                vi::common::vector2 velocity = getVelocity();
+                GLfloat angVelocity = getAngularVelocity();
+                
+                enablePhysics(physicType);
+                
+                setVelocity(velocity);
+                setAngularVelocity(angVelocity);
+            }
+        }
+        
         void sceneNode::enablePhysics(sceneNodePhysicType type)
         {
             if(shape)
@@ -422,17 +464,20 @@ namespace vi
                 waitingForActivation = true;
         }
         
-        void sceneNode::makeStaticObject(vi::common::vector2 const& end)
+        void sceneNode::makeStaticObject(vi::common::vector2 const& start, vi::common::vector2 const& end, GLfloat height)
         {
             if(shape)
                 disablePhysics();
             
             isStatic = true;
+            
             staticEnd = end;
+            staticStart = start;
+            staticRadius = height;
             
             if(scene)
             {
-                shape = cpSegmentShapeNew(scene->space->staticBody, cpv(position.x, position.y), cpv(end.x, end.y), 0);
+                shape = cpSegmentShapeNew(scene->space->staticBody, cpv(start.x, start.y), cpv(end.x, end.y), height);
                 waitingForActivation = false;
                 
                 cpShapeSetFriction(shape, friction);

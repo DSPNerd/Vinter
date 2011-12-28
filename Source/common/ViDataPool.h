@@ -63,7 +63,7 @@ namespace vi
             static std::vector<uint8_t> base64decode(std::string const& base64String);
             
         private:
-            static std::string pathForFileInBundle(std::string const& filePath);
+            static std::string pathForFileInBundle(NSBundle *bundle, NSString *file, NSString *extension);
             
             std::map<std::string, vi::common::asset *> assets;
         };

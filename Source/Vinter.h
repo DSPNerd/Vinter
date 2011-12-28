@@ -38,6 +38,10 @@
 #import "ViAnimationStack.h"
 #import "ViAnimationServer.h"
 
+#import "ViAudio.h"
+#import "ViSound.h"
+#import "ViSource.h"
+
 #import "ViTexture.h"
 #import "ViTexturePVR.h"
 #import "ViColor.h"

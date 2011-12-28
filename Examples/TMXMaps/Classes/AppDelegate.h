@@ -7,7 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "Vinter.h"
+#import <Vinter2D/Vinter.h>
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 {

@@ -34,7 +34,7 @@
     
     vi::scene::sceneNode *ground = new vi::scene::sceneNode();
     ground->setPosition(vi::common::vector2(-100.0f, 400.0f));
-    ground->makeStaticObject(vi::common::vector2(800.0f, 500.0f));
+    ground->makeStaticObject(ground->getPosition(), vi::common::vector2(800.0f, 500.0f));
     ground->setFriction(0.8);
     ground->setElasticity(0.3);
     
@@ -43,7 +43,7 @@
     
     vi::scene::sceneNode *wall = new vi::scene::sceneNode();
     wall->setPosition(vi::common::vector2(600.0, 500.0));
-    wall->makeStaticObject(vi::common::vector2(600.0, 0.0));
+    wall->makeStaticObject(wall->getPosition(), vi::common::vector2(600.0, 0.0));
     wall->setFriction(0.8);
     wall->setElasticity(0.4);
     

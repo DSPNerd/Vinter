@@ -24,7 +24,6 @@ namespace vi
             end = tend;
         }
         
-        
         bool line::intersects(vi::common::rect const& rect, vi::common::vector2 *intersection)
         {
             for(int i=0; i<4; i++)

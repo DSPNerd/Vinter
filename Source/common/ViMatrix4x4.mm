@@ -146,12 +146,10 @@ namespace vi
         
         void matrix4x4::translate(vector3 const& trans)
         {
-#define M(row, col)  matrix[(row * 4) + col]
-            M(3, 0) += M(0, 0) * trans.x + M(1, 0) * trans.y + M(2, 0) * trans.z;
-            M(3, 1) += M(0, 1) * trans.x + M(1, 1) * trans.y + M(2, 1) * trans.z;
-            M(3, 2) += M(0, 2) * trans.x + M(1, 2) * trans.y + M(2, 2) * trans.z;
-            M(3, 3) += M(0, 3) * trans.x + M(1, 3) * trans.y + M(2, 3) * trans.z;
-#undef M
+            matrix4x4 transMatrix;
+            transMatrix.makeTranslate(trans);
+            
+            *this *= transMatrix;
         }
         
         void matrix4x4::scale(vector3 const& scal)

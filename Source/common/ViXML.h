@@ -10,6 +10,7 @@
 #include <string>
 #import <Foundation/Foundation.h>
 #import "ViBase.h"
+#import "ViAsset.h"
 
 #define ViXMLMaxElements    50
 #define ViXMLMaxAttributes  50
@@ -79,7 +80,7 @@ namespace vi
          * is a DOM parser, meaning that the whole data is loaded into memory! You don't have to explicitly tell the parser to parse but you just create
          * a new instance instead which automatically parses the passed XML file/data.
          **/
-        class xmlParser
+        class xmlParser : public asset
         {
         public:
             /**
@@ -101,7 +102,7 @@ namespace vi
             /**
              * Destructor.
              **/
-            ~xmlParser();
+            virtual ~xmlParser();
             
             /**
              * Returns the root element.

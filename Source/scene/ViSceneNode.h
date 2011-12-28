@@ -175,7 +175,7 @@ namespace vi
              * Adds the node as a static object into the scene
              * @param end The end, in world coordinates, of the node. You can imagine the static body as a straight line that goes from the position of the node to this point
              **/
-            void makeStaticObject(vi::common::vector2 const& end);
+            void makeStaticObject(vi::common::vector2 const& start, vi::common::vector2 const& end, GLfloat height=0.0);
             /**
              * Disables and removes the node from the physics calculation
              **/
@@ -264,6 +264,9 @@ namespace vi
              * Restricts the angular velocity of the node
              **/
             void restrictVelocity(GLfloat velocity);
+            
+            void setVelocity(vi::common::vector2 const& velocity);
+            void setAngularVelocity(GLfloat avelocity);
             
             /**
              * Returns the angular velocity limit of the node
@@ -376,6 +379,8 @@ namespace vi
              **/
             void update();
             
+            void setScene(vi::scene::scene *scene);
+            
             /**
              * The quadtree the scene node is currently inserted to, or NULL
              **/
@@ -410,6 +415,8 @@ namespace vi
             uint32_t group;
             
             vi::common::vector2 staticEnd;
+            vi::common::vector2 staticStart;
+            GLfloat staticRadius;
             sceneNodePhysicType physicType;
 #endif
             
@@ -426,6 +433,8 @@ namespace vi
             void forceSetPosition(vi::common::vector2 const& position);
             void forceSetSize(vi::common::vector2 const& size);
             void forceSetRotation(GLfloat rotation);
+            
+            void reenablePhysics();
         };
     }
 }
