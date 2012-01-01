@@ -10,6 +10,7 @@
 #import <AudioToolbox/ExtendedAudioFile.h>
 #import "ViSound.h"
 #import "ViDataPool.h"
+#import "ViBase.h"
 
 namespace vi
 {
@@ -30,6 +31,9 @@ namespace vi
                 ALenum format;
                 
                 void *data = loadPCMData(url, &size, &format, &frequency);
+                if(!data)
+                    throw "Could not load sound file!";
+                
                 createFromData(data, size, format, frequency);
             }
         }
@@ -42,6 +46,9 @@ namespace vi
             ALenum format;
             
             void *data = loadPCMData(url, &size, &format, &frequency);
+            if(!data)
+                throw "Could not load sound file!";
+            
             createFromData(data, size, format, frequency);
         }
         
@@ -66,9 +73,29 @@ namespace vi
             UInt32							propertySize = sizeof(AudioStreamBasicDescription);
             
             
-            ExtAudioFileOpenURL((CFURLRef)url, &reference);
-            ExtAudioFileGetProperty(reference, kExtAudioFileProperty_FileDataFormat, &propertySize, &inputDescription);
+            status = ExtAudioFileOpenURL((CFURLRef)url, &reference);
+            if(status != noErr)
+            {
+                ViLog(@"Failed to load PCM data for %@.\nError: %s\nComment: %s", url, GetMacOSStatusErrorString(status), GetMacOSStatusCommentString(status));
+                return NULL;
+            }
             
+            status = ExtAudioFileGetProperty(reference, kExtAudioFileProperty_FileDataFormat, &propertySize, &inputDescription);
+            if(status != noErr)
+            {
+                ViLog(@"Failed to load PCM data for %@.\nError: %s\nComment: %s", url, GetMacOSStatusErrorString(status), GetMacOSStatusCommentString(status));
+                ExtAudioFileDispose(reference);
+                return NULL;
+            }
+            
+            
+            if(inputDescription.mChannelsPerFrame > 2)  
+            { 
+                ViLog(@"Failed to load PCM data. Unknwon audio format");
+                ExtAudioFileDispose(reference);
+                return NULL;
+            }
+
             
             outputDescription.mSampleRate = inputDescription.mSampleRate;
             outputDescription.mChannelsPerFrame = inputDescription.mChannelsPerFrame;
@@ -80,8 +107,21 @@ namespace vi
             outputDescription.mBitsPerChannel = 16;
             outputDescription.mFormatFlags = kAudioFormatFlagsNativeEndian | kAudioFormatFlagIsPacked | kAudioFormatFlagIsSignedInteger;
             
-            ExtAudioFileSetProperty(reference, kExtAudioFileProperty_ClientDataFormat, sizeof(AudioStreamBasicDescription), &outputDescription);
-            ExtAudioFileGetProperty(reference, kExtAudioFileProperty_FileLengthFrames, &propertySize, &lengthInFrames);
+            status = ExtAudioFileSetProperty(reference, kExtAudioFileProperty_ClientDataFormat, sizeof(outputDescription), &outputDescription);
+            if(status != noErr)
+            {
+                ViLog(@"Failed to load PCM data for %@.\nError: %s\nComment: %s", url, GetMacOSStatusErrorString(status), GetMacOSStatusCommentString(status));
+                ExtAudioFileDispose(reference);
+                return NULL;
+            }
+            
+            status = ExtAudioFileGetProperty(reference, kExtAudioFileProperty_FileLengthFrames, &propertySize, &lengthInFrames);
+            if(status != noErr)
+            {
+                ViLog(@"Failed to load PCM data for %@.\nError: %s\nComment: %s", url, GetMacOSStatusErrorString(status), GetMacOSStatusCommentString(status));
+                ExtAudioFileDispose(reference);
+                return NULL;
+            }
             
             
             size_t size = lengthInFrames * outputDescription.mBytesPerFrame;
@@ -113,9 +153,7 @@ namespace vi
                 }
             }
             
-            if(reference)
-                ExtAudioFileDispose(reference);
-            
+            ExtAudioFileDispose(reference);
             return data;
         }
         
