@@ -159,8 +159,6 @@
 /* Begin PBXFileReference section */
 		E9009285143F0CD2005C78B8 /* libLibrary (iOS).a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libLibrary (iOS).a"; path = libVinter2D.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9009290143F0D02005C78B8 /* Library (iOS)-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Library (iOS)-Prefix.pch"; sourceTree = "<group>"; };
-		E9009291143F0D02005C78B8 /* Vinter2D (iOS)-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Vinter2D (iOS)-Info.plist"; sourceTree = "<group>"; };
-		E9009292143F0D02005C78B8 /* Vinter2D (iOS)-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Vinter2D (iOS)-Prefix.pch"; sourceTree = "<group>"; };
 		E90BB419146E61870095403F /* ViAsset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViAsset.h; sourceTree = "<group>"; };
 		E90BB41A146E61870095403F /* ViAsset.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViAsset.mm; sourceTree = "<group>"; };
 		E90BB41B146E61870095403F /* ViBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViBase.h; sourceTree = "<group>"; };
@@ -486,8 +484,6 @@
 			isa = PBXGroup;
 			children = (
 				E9009290143F0D02005C78B8 /* Library (iOS)-Prefix.pch */,
-				E9009291143F0D02005C78B8 /* Vinter2D (iOS)-Info.plist */,
-				E9009292143F0D02005C78B8 /* Vinter2D (iOS)-Prefix.pch */,
 				E97A701A1415B86300F255F4 /* main.mm */,
 			);
 			path = "Supporting Files";

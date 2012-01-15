@@ -76,14 +76,18 @@ namespace vi
             status = ExtAudioFileOpenURL((CFURLRef)url, &reference);
             if(status != noErr)
             {
+#ifdef __MAC_OS_VERSION_MAX_ALLOWED
                 ViLog(@"Failed to load PCM data for %@.\nError: %s\nComment: %s", url, GetMacOSStatusErrorString(status), GetMacOSStatusCommentString(status));
+#endif
                 return NULL;
             }
             
             status = ExtAudioFileGetProperty(reference, kExtAudioFileProperty_FileDataFormat, &propertySize, &inputDescription);
             if(status != noErr)
             {
+#ifdef __MAC_OS_VERSION_MAX_ALLOWED
                 ViLog(@"Failed to load PCM data for %@.\nError: %s\nComment: %s", url, GetMacOSStatusErrorString(status), GetMacOSStatusCommentString(status));
+#endif
                 ExtAudioFileDispose(reference);
                 return NULL;
             }
@@ -110,7 +114,9 @@ namespace vi
             status = ExtAudioFileSetProperty(reference, kExtAudioFileProperty_ClientDataFormat, sizeof(outputDescription), &outputDescription);
             if(status != noErr)
             {
+#ifdef __MAC_OS_VERSION_MAX_ALLOWED
                 ViLog(@"Failed to load PCM data for %@.\nError: %s\nComment: %s", url, GetMacOSStatusErrorString(status), GetMacOSStatusCommentString(status));
+#endif
                 ExtAudioFileDispose(reference);
                 return NULL;
             }
@@ -118,7 +124,9 @@ namespace vi
             status = ExtAudioFileGetProperty(reference, kExtAudioFileProperty_FileLengthFrames, &propertySize, &lengthInFrames);
             if(status != noErr)
             {
+#ifdef __MAC_OS_VERSION_MAX_ALLOWED
                 ViLog(@"Failed to load PCM data for %@.\nError: %s\nComment: %s", url, GetMacOSStatusErrorString(status), GetMacOSStatusCommentString(status));
+#endif
                 ExtAudioFileDispose(reference);
                 return NULL;
             }
