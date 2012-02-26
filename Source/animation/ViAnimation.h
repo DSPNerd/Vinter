@@ -190,10 +190,10 @@ namespace vi
                     {
                         double t = time / (duration / 2.0);
                         if(t < 1.0)
-                            return startValue + (change / 2.0 * pow(2.0, 10.0 * (time - 1.0)));
+                            return startValue + (change / 2.0 * pow(2.0, 10.0 * (t - 1.0)));
                         
-                        time -= 1.0;
-                        return startValue + (change / 2.0 * (-pow(2.0, -10 * time) + 2.0));
+                        t -= 1.0;
+                        return startValue + (change / 2.0 * (-pow(2.0, -10 * t) + 2.0));
                         break;
                     }
                         
